@@ -67,10 +67,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)pitScoutButton:(UIButton *)sender {
-    
-    
-}
+
 -(void)viewWillDisappear:(BOOL)animated {
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:nil action:nil];
     [self.navigationItem setBackBarButtonItem:backButton];

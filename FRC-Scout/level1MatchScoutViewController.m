@@ -18,6 +18,7 @@
     IBOutlet UITextView *commentsTextView;
     IBOutlet UIScrollView *scrollView;
     IBOutlet UITextField *matchTextField;
+    IBOutlet UILabel *afterUploadMessageLabel;
 }
 @property (strong, nonatomic) IBOutlet UITextField *teamTextField;
 
@@ -43,6 +44,7 @@
     commentsTextView.layer.cornerRadius = 5;
     commentsTextView.layer.borderWidth = 2;
     commentsTextView.layer.borderColor = [[UIColor grayColor] CGColor];
+    afterUploadMessageLabel.hidden=YES;
     [self teamTextField].placeholder = @"Team";
     matchTextField.placeholder = @"MatchNumber";
     
@@ -69,6 +71,7 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)uploadButton:(UIButton *)sender {
+    __block int status = -1;
     NSString *noteDataString = [NSString stringWithFormat:@"TEAM_NUMBER=%@&MATCH_NUMBER=%@&SHOTS_MADE=%ld&SHOTS_TAKEN=%ld&FOULS=%ld&TRUSS=%ld&COMMENTS=%@", self.teamTextField.text,matchTextField.text,(long)shotMadeStepper.getCurrentValue,(long)shotTakenStepper.getCurrentValue,(long)foulsStepper.getCurrentValue,trussStepper.getCurrentValue,
         commentsTextView.text];
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -83,10 +86,17 @@
     
     NSURLSessionDataTask * dataTask =[defaultSession dataTaskWithRequest:urlRequest completionHandler:^(NSData *dataRaw, NSURLResponse *header, NSError *error) {
     
+        status = 1;
     }];
     
     [dataTask resume];
     
+    if(status == -1) {
+        afterUploadMessageLabel.text = @"No Server Connection";
+    }else {
+        afterUploadMessageLabel.text = @"Success";
+    }
+    afterUploadMessageLabel.hidden = NO;
 }
 
 @end

@@ -87,13 +87,13 @@
     }
  
     
-/*#warning delete following code, it is for testing purposes only
+#warning delete following code, it is for testing purposes only
     
     NSString * storyboardName = @"Main_iPhone";
     NSString * viewControllerID = @"level1";
     UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
     level1MenuViewController * controller = (level1MenuViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
-    [self.navigationController pushViewController:controller animated:YES];*/
+    [self.navigationController pushViewController:controller animated:YES];
     
 }
 - (void)viewDidLoad

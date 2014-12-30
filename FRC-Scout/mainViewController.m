@@ -38,7 +38,7 @@
 - (IBAction)EnterPass:(id)sender {
     
     
-    __block NSNumber *status = [[NSNumber alloc] initWithInteger:1];
+    __block NSNumber *status = [[NSNumber alloc] initWithInteger:-1];
     
     NSString *noteDataString = [NSString stringWithFormat:@"user=%@&password=%@", _Username.text, _Password.text];
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -76,6 +76,15 @@
     }];
     
     [dataTask resume];
+    
+    //if the code gets here and status is still -1, then the server is not working
+    NSLog(@"%@", status);
+    if([status isEqual: [NSNumber numberWithInt:-1]]) {
+        NSLog(@"No Server");
+        
+        [self deniedUSER].text = @"No Connection";
+        [self deniedUSER].hidden = NO;
+    }
  
     
 /*#warning delete following code, it is for testing purposes only

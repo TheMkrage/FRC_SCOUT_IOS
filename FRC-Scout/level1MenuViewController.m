@@ -18,7 +18,7 @@
     IBOutlet UIButton *PitScoutButton;
     IBOutlet UIButton *MatchScoutButton;
     IBOutlet UIButton *ProfilesButton;
-    IBOutlet UIButton *PickListButton;
+    IBOutlet UIButton *TeamListButton;
     IBOutlet UIButton *RankingButton;
 }
 @end
@@ -41,7 +41,7 @@
     PitScoutButton.titleLabel.font = FONT_BEBAS_25;
     MatchScoutButton.titleLabel.font = FONT_BEBAS_25;
     ProfilesButton.titleLabel.font = FONT_BEBAS_25;
-    PickListButton.titleLabel.font = FONT_BEBAS_25;
+    TeamListButton.titleLabel.font = FONT_BEBAS_25;
     RankingButton.titleLabel.font = FONT_BEBAS_25;
 }
 

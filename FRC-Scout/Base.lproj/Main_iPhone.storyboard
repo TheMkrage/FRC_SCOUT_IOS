@@ -91,8 +91,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="pitScoutButton:" destination="L5i-wB-IRK" eventType="touchUpInside" id="oBl-zX-TGo"/>
-                                    <segue destination="nSA-J4-GrH" kind="push" id="nfT-eW-gZf"/>
+                                    <segue destination="nSA-J4-GrH" kind="push" id="w8b-LE-53A"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VqT-Rd-cdn">
@@ -102,13 +101,13 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="sv4-gk-e0S" kind="push" id="vte-IN-3LL"/>
+                                    <segue destination="kdR-nP-D0x" kind="push" id="o15-8D-x9D"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGK-fm-9pd">
-                                <rect key="frame" x="80" y="214" width="155" height="30"/>
+                                <rect key="frame" x="80" y="214" width="155" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Pick List">
+                                <state key="normal" title="Team List">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -121,18 +120,18 @@
                     <navigationItem key="navigationItem" id="uY4-MV-6cd"/>
                     <connections>
                         <outlet property="MatchScoutButton" destination="VqT-Rd-cdn" id="gHz-R7-uos"/>
-                        <outlet property="PickListButton" destination="iGK-fm-9pd" id="D9Y-vG-fyT"/>
-                        <outlet property="PitScoutButton" destination="V8O-1B-sKU" id="XwC-mp-0rH"/>
+                        <outlet property="PitScoutButton" destination="V8O-1B-sKU" id="YTU-eu-Qez"/>
+                        <outlet property="TeamListButton" destination="iGK-fm-9pd" id="ZMd-XP-CHl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eFK-gq-UVV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1234" y="-52"/>
         </scene>
-        <!--Level1 Pick List Table View Controller-->
+        <!--Level1 Team List Table View Controller-->
         <scene sceneID="Foz-hD-5sc">
             <objects>
-                <tableViewController id="FIw-P5-1QP" customClass="level1PickListTableViewController" sceneMemberID="viewController">
+                <tableViewController id="FIw-P5-1QP" customClass="level1TeamListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="G66-96-O2w">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -307,10 +306,36 @@
             </objects>
             <point key="canvasLocation" x="1787" y="-52"/>
         </scene>
+        <!--Match Autonomous View Controller-->
+        <scene sceneID="Mic-K9-h44">
+            <objects>
+                <viewController storyboardIdentifier="autoController" id="wru-0g-3Bt" customClass="matchAutonomousViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xJK-8z-eWN"/>
+                        <viewControllerLayoutGuide type="bottom" id="qOH-gY-Ug3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5h3-fq-zqV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kt5-JV-1RN">
+                                <rect key="frame" x="132" y="175" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nfI-XG-rKS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2166" y="9"/>
+        </scene>
         <!--Level1 Match Scout View Controller-->
         <scene sceneID="nEj-4e-lx7">
             <objects>
-                <viewController id="sv4-gk-e0S" customClass="level1MatchScoutViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="matchController" id="sv4-gk-e0S" customClass="level1MatchScoutViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SOs-vq-Sdz"/>
                         <viewControllerLayoutGuide type="bottom" id="jiB-kW-91K"/>
@@ -319,8 +344,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T8H-cT-UeA">
+                                <rect key="frame" x="260" y="269" width="46" height="30"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextButton:" destination="sv4-gk-e0S" eventType="touchUpInside" id="1zg-gU-GD6"/>
+                                </connections>
+                            </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="znm-D1-fiJ">
-                                <rect key="frame" x="0.0" y="65" width="320" height="503"/>
+                                <rect key="frame" x="0.0" y="65" width="320" height="584"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zqV-U8-UDR">
                                         <rect key="frame" x="20" y="20" width="135" height="30"/>
@@ -332,41 +366,41 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shots Taken" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="twp-e2-24l">
-                                        <rect key="frame" x="41" y="58" width="94" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Stacked Totes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="twp-e2-24l">
+                                        <rect key="frame" x="33" y="58" width="109" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shots Made" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mzj-Td-dNl">
-                                        <rect key="frame" x="187" y="58" width="93" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Stacked Cans" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mzj-Td-dNl">
+                                        <rect key="frame" x="178" y="58" width="108" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fouls" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFr-vx-6s0">
-                                        <rect key="frame" x="66" y="124" width="42" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Max Stack" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFr-vx-6s0">
+                                        <rect key="frame" x="44" y="124" width="82" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Truss" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKm-cE-9fh">
-                                        <rect key="frame" x="212" y="124" width="41" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number of Stacks" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKm-cE-9fh">
+                                        <rect key="frame" x="166" y="124" width="139" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2nE-Vn-2uF">
-                                        <rect key="frame" x="20" y="228" width="280" height="123"/>
+                                        <rect key="frame" x="20" y="428" width="280" height="123"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Comments" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ta-Gj-gvy">
-                                        <rect key="frame" x="118" y="199" width="85" height="21"/>
+                                        <rect key="frame" x="118" y="399" width="85" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ztx-9M-KOR">
-                                        <rect key="frame" x="135" y="359" width="50" height="30"/>
+                                        <rect key="frame" x="135" y="559" width="50" height="30"/>
                                         <state key="normal" title="Upload">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -519,13 +553,58 @@
                                         </connections>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Success!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nee-eb-VDp">
-                                        <rect key="frame" x="8" y="397" width="304" height="30"/>
+                                        <rect key="frame" x="8" y="597" width="304" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number of Noodles" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="san-ya-wTc">
+                                        <rect key="frame" x="12" y="191" width="150" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z0T-ff-UB2" customClass="kragerStepperView">
+                                        <rect key="frame" x="20" y="220" width="130" height="35"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBO-Lc-5Kh">
+                                                <rect key="frame" x="100" y="0.0" width="30" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <state key="normal" title="+">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="plusButton:" destination="Z0T-ff-UB2" eventType="touchUpInside" id="ujJ-1j-Asw"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1D7-QG-NBR">
+                                                <rect key="frame" x="8" y="3" width="30" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                                <state key="normal" title="-">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="minusButton:" destination="Z0T-ff-UB2" eventType="touchUpInside" id="qBi-Ie-53o"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtU-sn-PiZ">
+                                                <rect key="frame" x="38" y="7" width="54" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="minusButton" destination="1D7-QG-NBR" id="idn-sf-vgJ"/>
+                                            <outlet property="number" destination="dtU-sn-PiZ" id="gwf-rh-B2k"/>
+                                            <outlet property="plusButton" destination="tBO-Lc-5Kh" id="821-OB-pNz"/>
+                                        </connections>
+                                    </view>
                                 </subviews>
                             </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="aN5-ot-JIb">
+                                <rect key="frame" x="140" y="500" width="39" height="37"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -533,18 +612,30 @@
                     <connections>
                         <outlet property="afterUploadMessageLabel" destination="nee-eb-VDp" id="DAD-Qd-YXX"/>
                         <outlet property="commentsTextView" destination="2nE-Vn-2uF" id="wzU-x8-Ccc"/>
-                        <outlet property="foulsStepper" destination="93W-Bj-qkK" id="2iL-0k-ZgK"/>
                         <outlet property="matchTextField" destination="6kh-B2-Pgl" id="qc1-Hw-TvL"/>
+                        <outlet property="maxStackStepper" destination="93W-Bj-qkK" id="at5-a2-Mg2"/>
+                        <outlet property="nextToMatch" destination="T8H-cT-UeA" id="6C4-0j-czS"/>
+                        <outlet property="numberOfNoodlesStepper" destination="Z0T-ff-UB2" id="29y-fy-vSW"/>
+                        <outlet property="numberOfStacksStepper" destination="GQ5-Vh-Rzg" id="OnV-vI-AeZ"/>
                         <outlet property="scrollView" destination="znm-D1-fiJ" id="BdY-Pv-zcV"/>
-                        <outlet property="shotMadeStepper" destination="1qW-Vo-LVB" id="S3s-Vp-gER"/>
-                        <outlet property="shotTakenStepper" destination="KEp-lS-Bpy" id="siC-en-1T6"/>
+                        <outlet property="stackedCansStepper" destination="1qW-Vo-LVB" id="nmD-L2-gan"/>
+                        <outlet property="stackedTotesStepper" destination="KEp-lS-Bpy" id="STU-SY-zyc"/>
                         <outlet property="teamTextField" destination="zqV-U8-UDR" id="WpE-1R-xhS"/>
-                        <outlet property="trussStepper" destination="GQ5-Vh-Rzg" id="Br1-6Q-Qg1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qTY-ON-QZq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1787" y="-780"/>
+            <point key="canvasLocation" x="2261" y="-777"/>
+        </scene>
+        <!--Match Page View Controller-->
+        <scene sceneID="Osu-Xw-R6H">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="kdR-nP-D0x" customClass="matchPageViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="SHz-uD-flO"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Ok-4H-t69" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1824" y="-787"/>
         </scene>
         <!--Level1 Pit Scout View Controller-->
         <scene sceneID="gJh-cu-J6k">
@@ -555,11 +646,11 @@
                         <viewControllerLayoutGuide type="bottom" id="75c-50-1So"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="P7g-4c-Z4j">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="slE-k2-eqg">
-                                <rect key="frame" x="0.0" y="62" width="320" height="418"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="slE-k2-eqg">
+                                <rect key="frame" x="0.0" y="62" width="320" height="506"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="adw-38-xYQ">
                                         <rect key="frame" x="90" y="20" width="140" height="30"/>
@@ -617,7 +708,7 @@
                                 <inset key="scrollIndicatorInsets" minX="320" minY="0.0" maxX="700" maxY="0.0"/>
                             </scrollView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpd-ua-qMu" customClass="kragerPickerView">
-                                <rect key="frame" x="0.0" y="360" width="320" height="209"/>
+                                <rect key="frame" x="0.0" y="180" width="320" height="209"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uHq-KS-tfa">
                                         <rect key="frame" x="0.0" y="4" width="320" height="162"/>
@@ -627,6 +718,9 @@
                                         <state key="normal" title="Done">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="doneButton:" destination="bpd-ua-qMu" eventType="touchUpInside" id="rft-ke-wpW"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -635,27 +729,8 @@
                                     <outlet property="picker" destination="uHq-KS-tfa" id="ToQ-w7-l1F"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Og9-XK-Ls9" customClass="kragerPickerView">
-                                <rect key="frame" x="0.0" y="360" width="320" height="209"/>
-                                <subviews>
-                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kHf-xh-fSr">
-                                        <rect key="frame" x="0.0" y="4" width="320" height="162"/>
-                                    </pickerView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E2V-9P-S3n">
-                                        <rect key="frame" x="142" y="170" width="37" height="30"/>
-                                        <state key="normal" title="Done">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="doneButton" destination="E2V-9P-S3n" id="24t-LK-3TU"/>
-                                    <outlet property="picker" destination="kHf-xh-fSr" id="7Ch-m2-Xdo"/>
-                                </connections>
-                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qmT-ve-4AM" customClass="kragerPickerView">
-                                <rect key="frame" x="0.0" y="360" width="320" height="209"/>
+                                <rect key="frame" x="0.0" y="180" width="320" height="209"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6EJ-Ek-7dg">
                                         <rect key="frame" x="0.0" y="4" width="320" height="162"/>
@@ -666,9 +741,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="doneButton:" destination="qmT-ve-4AM" eventType="touchUpInside" id="7bx-Xf-SHf"/>
-                                            <action selector="doneButton:" destination="Og9-XK-Ls9" eventType="touchUpInside" id="OwF-57-Y2A"/>
-                                            <action selector="doneButton:" destination="bpd-ua-qMu" eventType="touchUpInside" id="lNJ-hg-9R9"/>
+                                            <action selector="doneButton:" destination="qmT-ve-4AM" eventType="touchUpInside" id="5xZ-DT-fOL"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -676,6 +749,28 @@
                                 <connections>
                                     <outlet property="doneButton" destination="RNU-TD-KZA" id="NzI-o7-OnQ"/>
                                     <outlet property="picker" destination="6EJ-Ek-7dg" id="LAL-7K-f7L"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Og9-XK-Ls9" customClass="kragerPickerView">
+                                <rect key="frame" x="0.0" y="180" width="320" height="209"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kHf-xh-fSr">
+                                        <rect key="frame" x="0.0" y="4" width="320" height="162"/>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E2V-9P-S3n">
+                                        <rect key="frame" x="142" y="170" width="37" height="30"/>
+                                        <state key="normal" title="Done">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="doneButton:" destination="Og9-XK-Ls9" eventType="touchUpInside" id="Dax-JK-sic"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="doneButton" destination="E2V-9P-S3n" id="24t-LK-3TU"/>
+                                    <outlet property="picker" destination="kHf-xh-fSr" id="7Ch-m2-Xdo"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -688,7 +783,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rUu-vF-mwK"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="addTeamButton" destination="jeu-f4-crb" id="Cqf-xQ-alQ"/>
                         <outlet property="commentLabel" destination="iU7-87-qIT" id="neJ-fZ-WuM"/>

@@ -62,8 +62,8 @@
     
     // Connect data
     [self.drivePicker setData:@[@"4 Wheel", @"6 Cim", @"Holonomic", @"Tread", @"Swerve", @"Omni", @"Mechanum", @"Other"]];
-    [self.intakePicker setData:@[@"Item 1", @"Item 2", @"Item 3", @"Item 4", @"Item 5", @"Other"]];
-    [self.shooterPicker setData:@[@"Item 1", @"Item 2", @"Item 3", @"Item 4", @"Item 5", @"Other"]];
+    [self.intakePicker setData:@[@"intake", @"Item 2", @"Item 3", @"Item 4", @"Item 5", @"Other"]];
+    [self.shooterPicker setData:@[@"shooter", @"Item 2", @"Item 3", @"Item 4", @"Item 5", @"Other"]];
     
     self.drivePicker.hidden = YES;
     self.intakePicker.hidden = YES;
@@ -212,19 +212,23 @@
     activeTextField = textField;
     [scrollView setContentOffset:CGPointMake(activeTextField.center.x - scrollView.frame.size.width/2, activeTextField.center.y - scrollView.frame.size.height/4) animated:NO];
     if(activeTextField == [self driveTextField]){
+        NSLog(@"x: %f",self.drivePicker.frame.origin.x);
+        NSLog(@"y: %f",self.drivePicker.frame.origin.y);
         [self.drivePicker setCenter:CGPointMake(self.drivePicker.center.x, self.view.frame.size.height - 100)];
         [self.drivePicker setBackgroundColor:[UIColor whiteColor]];
         
         //[scrollView setScrollEnabled:NO];
         self.drivePicker.hidden = NO;
+        NSLog(@"x: %f",self.drivePicker.frame.origin.x);
+        NSLog(@"y: %f",self.drivePicker.frame.origin.y);
     }else if(activeTextField == [self intakeTextField]) {
-        [self.intakePicker setCenter:CGPointMake(self.drivePicker.center.x, self.view.frame.size.height - 100)];
+        [self.intakePicker setCenter:CGPointMake(self.intakePicker.center.x, self.view.frame.size.height - 100)];
         [self.intakePicker setBackgroundColor:[UIColor whiteColor]];
         
         //[scrollView setScrollEnabled:NO];
         self.intakePicker.hidden = NO;
     }else if(activeTextField == [self shooterTextField]) {
-        [self.shooterPicker setCenter:CGPointMake(self.drivePicker.center.x, self.view.frame.size.height - 100)];
+        [self.shooterPicker setCenter:CGPointMake(self.shooterPicker.center.x, self.view.frame.size.height - 100)];
         [self.shooterPicker setBackgroundColor:[UIColor whiteColor]];
         
         //[scrollView setScrollEnabled:NO];

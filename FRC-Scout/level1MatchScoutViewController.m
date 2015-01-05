@@ -11,14 +11,16 @@
 
 @interface level1MatchScoutViewController () {
     
-    IBOutlet kragerStepperView *shotTakenStepper;
-    IBOutlet kragerStepperView *shotMadeStepper;
-    IBOutlet kragerStepperView *foulsStepper;
-    IBOutlet kragerStepperView *trussStepper;
+    IBOutlet kragerStepperView *stackedTotesStepper;
+    IBOutlet kragerStepperView *stackedCansStepper;
+    IBOutlet kragerStepperView *maxStackStepper;
+    IBOutlet kragerStepperView *numberOfStacksStepper;
+    IBOutlet kragerStepperView *numberOfNoodlesStepper;
     IBOutlet UITextView *commentsTextView;
     IBOutlet UIScrollView *scrollView;
     IBOutlet UITextField *matchTextField;
     IBOutlet UILabel *afterUploadMessageLabel;
+    IBOutlet UIButton *nextToMatch;
 }
 @property (strong, nonatomic) IBOutlet UITextField *teamTextField;
 
@@ -60,8 +62,12 @@
 }
 
 -(void)viewDidLayoutSubviews {
-    scrollView.contentSize = CGSizeMake(320, 600);
-    [scrollView  setCenter:CGPointMake(scrollView.center.x, scrollView.center.y - 62)];
+    scrollView.frame = CGRectMake(scrollView.frame.origin.x, scrollView.frame.origin.y, 320, self.view.frame.size.height - 102);
+    scrollView.contentSize = CGSizeMake(320, 800);
+    //[scrollView  setCenter:CGPointMake(scrollView.center.x, scrollView.center.y)];
+    //[nextToMatch setFrame:CGRectMake(nextToMatch.frame.origin.x, self.view.frame.size.height - 40, nextToMatch.frame.size.width, nextToMatch.frame.size.height)];
+    
+    
     
 }
 
@@ -70,9 +76,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(IBAction)nextButton:(id)sender {
+    
+}
 - (IBAction)uploadButton:(UIButton *)sender {
     __block int status = -1;
-    NSString *noteDataString = [NSString stringWithFormat:@"TEAM_NUMBER=%@&MATCH_NUMBER=%@&SHOTS_MADE=%ld&SHOTS_TAKEN=%ld&FOULS=%ld&TRUSS=%ld&COMMENTS=%@", self.teamTextField.text,matchTextField.text,(long)shotMadeStepper.getCurrentValue,(long)shotTakenStepper.getCurrentValue,(long)foulsStepper.getCurrentValue,trussStepper.getCurrentValue,
+    NSString *noteDataString = [NSString stringWithFormat:@"TEAM_NUMBER=%@&MATCH_NUMBER=%@&SHOTS_MADE=%ld&SHOTS_TAKEN=%ld&FOULS=%ld&TRUSS=%ld&COMMENTS=%@", self.teamTextField.text,matchTextField.text,(long)stackedCansStepper.getCurrentValue,(long)stackedTotesStepper.getCurrentValue,(long)maxStackStepper.getCurrentValue,numberOfStacksStepper.getCurrentValue,
         commentsTextView.text];
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: nil delegateQueue: [NSOperationQueue mainQueue]];

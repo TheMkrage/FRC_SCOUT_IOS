@@ -17,58 +17,52 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    level1MatchScoutViewController *matchController = [self.storyboard instantiateViewControllerWithIdentifier:@"matchController"];
-    matchController.location = 0;
-    matchAutonomousViewController *autoController = [self.storyboard instantiateViewControllerWithIdentifier:@"autoController"];
-    autoController.location = 1;
-    self.controllerArray = @[matchController, autoController];
+        
+    NSArray *initialController = @[matchViewController];
     // Do any additional setup after loading the view.
+    [self setViewControllers:initialController
+                   direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    [self setDataSource:self];
+    [self setDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (NSUInteger)indexOfViewController:(matchViewController *)viewController {
+    // Return the index of the given data view controller.
+    // For simplicity, this implementation uses a static array of model objects and the view controller stores the model object; you can therefore use the model object to identify the index.
+    return *(viewController.location);
+}
 #pragma mark - Page View Controller Data Source
 
-- (UIViewController *)pageViewController:(UIViewController *)pageViewController viewControllerBeforeViewController:(matchViewController *)viewController
+/*- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
-    NSInteger *index = viewController.location;
+    NSUInteger index = [self indexOfViewController:(matchViewController *)viewController];
     
-    if ((index == 0) || (index == nil)) {
+    if ((index == 0) || (index == NSNotFound)) {
         return nil;
     }
     
-    index =index - 1;
-    
-    return [self.controllerArray objectAtIndex: (NSUInteger)index];
+    index--;
+    return self.controllerArray[index];
 }
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(matchViewController *)viewController
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
-    NSInteger *index = viewController.location;
-    
-    if (index == nil) {
+    NSUInteger index = [self indexOfViewController:(matchViewController *)viewController];
+    if (index == NSNotFound) {
         return nil;
     }
     
     index++;
-    if ((NSUInteger)index == [self.controllerArray count] ) {
+    if (index == [self.controllerArray count]) {
         return nil;
     }
-    return [self.controllerArray objectAtIndex:(NSUInteger)index];
+    return self.controllerArray[index];
 }
-- (NSInteger)presentationCountForPageViewController:(matchViewController *)pageViewController
-{
-    return [self.controllerArray count];
-}
-
-- (NSInteger)presentationIndexForPageViewController:(matchViewController *)pageViewController
-{
-    return 0;
-}
-
+*/
 
 
 /*

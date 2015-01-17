@@ -101,7 +101,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="kdR-nP-D0x" kind="push" id="o15-8D-x9D"/>
+                                    <segue destination="sv4-gk-e0S" kind="modal" id="GpG-4R-P8i"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGK-fm-9pd">
@@ -305,32 +305,6 @@
                 <tapGestureRecognizer id="E3c-Ef-EDe"/>
             </objects>
             <point key="canvasLocation" x="1787" y="-52"/>
-        </scene>
-        <!--Match Autonomous View Controller-->
-        <scene sceneID="Mic-K9-h44">
-            <objects>
-                <viewController storyboardIdentifier="autoController" id="wru-0g-3Bt" customClass="matchAutonomousViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xJK-8z-eWN"/>
-                        <viewControllerLayoutGuide type="bottom" id="qOH-gY-Ug3"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="5h3-fq-zqV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kt5-JV-1RN">
-                                <rect key="frame" x="132" y="175" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nfI-XG-rKS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2166" y="9"/>
         </scene>
         <!--Level1 Match Scout View Controller-->
         <scene sceneID="nEj-4e-lx7">
@@ -625,17 +599,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qTY-ON-QZq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2261" y="-777"/>
-        </scene>
-        <!--Match Page View Controller-->
-        <scene sceneID="Osu-Xw-R6H">
-            <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="kdR-nP-D0x" customClass="matchPageViewController" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="SHz-uD-flO"/>
-                </pageViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4Ok-4H-t69" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1824" y="-787"/>
+            <point key="canvasLocation" x="1787" y="-887"/>
         </scene>
         <!--Level1 Pit Scout View Controller-->
         <scene sceneID="gJh-cu-J6k">

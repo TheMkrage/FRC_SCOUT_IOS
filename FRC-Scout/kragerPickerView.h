@@ -10,6 +10,6 @@
 
 @interface kragerPickerView : UIView<UIPickerViewDelegate,UIPickerViewDataSource>
 
-- (void) setData: (NSArray*) data;
+- (void) setData: (NSArray*) data textField:(UITextField*)textField;
 - (NSString*)getSelectedItem;
 @end

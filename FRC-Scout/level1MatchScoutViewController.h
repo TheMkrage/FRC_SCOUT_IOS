@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "matchViewController.h"
-@interface level1MatchScoutViewController : matchViewController
+@interface level1MatchScoutViewController : UIViewController
 
 @end

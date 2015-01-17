@@ -184,7 +184,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fro-k5-Bc4">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fro-k5-Bc4">
                                 <rect key="frame" x="0.0" y="62" width="320" height="506"/>
                                 <subviews>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p3E-0L-A8P">
@@ -757,9 +757,9 @@
                         <outlet property="imagePicker" destination="A4n-pn-A1v" id="q9B-Cb-IgG"/>
                         <outlet property="intakePicker" destination="Og9-XK-Ls9" id="bSF-PZ-ug3"/>
                         <outlet property="intakeTextField" destination="CgB-yE-UC9" id="Ndc-Fg-QfY"/>
+                        <outlet property="liftPicker" destination="bpd-ua-qMu" id="fdk-zI-i8u"/>
+                        <outlet property="liftTextField" destination="B0A-Hg-KiI" id="f6g-pW-qEm"/>
                         <outlet property="scrollView" destination="slE-k2-eqg" id="Pyt-la-GNH"/>
-                        <outlet property="shooterPicker" destination="bpd-ua-qMu" id="WcF-6l-gpe"/>
-                        <outlet property="shooterTextField" destination="B0A-Hg-KiI" id="hSf-7t-X2D"/>
                         <outlet property="teamImageView" destination="iJP-t2-4IJ" id="MBa-ml-86y"/>
                         <outlet property="teamTextField" destination="adw-38-xYQ" id="KR7-rr-h7O"/>
                     </connections>

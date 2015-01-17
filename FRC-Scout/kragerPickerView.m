@@ -13,20 +13,24 @@
     IBOutlet UIButton* doneButton;
     NSArray* pickerData;
     NSString* selectedItem;
+    
 }
-
+@property UITextField* linkedTextField;
 @end
 
 @implementation kragerPickerView
 
-- (void) setData: (NSArray*) data {
+- (void) setData: (NSArray*) data textField: (UITextField*) textField{
     [picker setDataSource:self];
     [picker setDelegate:self];
     //[self setFrame:CGRectMake(0, 0, 320, 225)];
     pickerData = data;
+    _linkedTextField = textField;
+    
 }
 
 - (IBAction)doneButton:(id)sender {
+    [_linkedTextField setText:[self getSelectedItem]];
     [self setHidden:YES];
 }
 

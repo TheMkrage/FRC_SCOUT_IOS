@@ -58,7 +58,7 @@
      [NSDictionary dictionaryWithObjectsAndKeys:
       FONT_BEBAS_28,
       NSFontAttributeName, nil]];
-    self.title = @"Match Scout";
+    self.tabBarController.title = @"Match Scout";
 }
 
 -(void)viewDidLayoutSubviews {
@@ -77,9 +77,6 @@
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)nextButton:(id)sender {
-    
-}
 - (IBAction)uploadButton:(UIButton *)sender {
     __block int status = -1;
     NSString *noteDataString = [NSString stringWithFormat:@"TEAM_NUMBER=%@&MATCH_NUMBER=%@&SHOTS_MADE=%ld&SHOTS_TAKEN=%ld&FOULS=%ld&TRUSS=%ld&COMMENTS=%@", self.teamTextField.text,matchTextField.text,(long)stackedCansStepper.getCurrentValue,(long)stackedTotesStepper.getCurrentValue,(long)maxStackStepper.getCurrentValue,numberOfStacksStepper.getCurrentValue,

@@ -10,27 +10,62 @@
 #import "kragerPickerView.h"
 @interface level1PitScoutViewController ()
 {
+    id activeAspect;
     UIImage *teamsImage;
     UITextField *activeTextField;
     IBOutlet UIImageView *teamImageView;
     IBOutlet UIScrollView *scrollView;
     Boolean pictureSelected;
     IBOutlet UIButton *imagePicker;
+    IBOutlet UIButton * imageTaker;
     
     IBOutlet UITextView *commentsTextView;
     IBOutlet UILabel *commentLabel;
     
     IBOutlet UIButton *addTeamButton;
-}
-@property (strong, nonatomic) IBOutlet kragerPickerView *drivePicker;
-@property (strong, nonatomic) IBOutlet kragerPickerView *liftPicker;
-@property (strong, nonatomic) IBOutlet kragerPickerView *intakePicker;
+    bool textFieldShouldEdit;
+    }
+
+//ROBOT SPECS
+@property (strong, nonatomic) IBOutlet UILabel *robotSpecsLabel;
+@property (strong, nonatomic) IBOutlet UITextField *weightTextField;
+@property (strong, nonatomic) IBOutlet UITextField *heightTextField;
 
 
-@property (strong, nonatomic) IBOutlet UITextField *teamTextField;
+//DRIVE TRAIN
+@property (strong, nonatomic) IBOutlet UILabel *driveTrainLabel;
 @property (strong, nonatomic) IBOutlet UITextField *driveTextField;
+@property (strong, nonatomic) IBOutlet kragerPickerView *drivePicker;
+@property (strong, nonatomic) IBOutlet kragerPickerView * cimPicker;
+@property (strong, nonatomic) IBOutlet kragerPickerView *frameStrengthPicker;
+@property (strong, nonatomic) IBOutlet UISwitch *twoSpeedSlider;
+@property (strong, nonatomic) IBOutlet UILabel *oneSpeedLabel;
+@property (strong, nonatomic) IBOutlet UILabel *twoSpeedLabel;
+@property (strong, nonatomic) IBOutlet UITextField *cimTextField;
+@property (strong, nonatomic) IBOutlet UITextField *maxSpeedTextField;
+@property (strong, nonatomic) IBOutlet UITextField *frameStrengthTextField;
+
+
+//LIFT SYSTEM
+@property (strong, nonatomic) IBOutlet kragerPickerView *liftPicker;
 @property (strong, nonatomic) IBOutlet UITextField *liftTextField;
+@property (strong, nonatomic) IBOutlet UITextField *maxTotesAtOneTimeTextField;
+@property (strong, nonatomic) IBOutlet UITextField *maxToteHeightTextField;
+@property (strong, nonatomic) IBOutlet UITextField *maxCanHeightTextField;
+@property (strong, nonatomic) IBOutlet UILabel *liftSystemLabel;
+@property (strong, nonatomic) IBOutlet UILabel *internalLabel;
+@property (strong, nonatomic) IBOutlet UILabel *externalLabel;
+
+
+//INTAKE SYSTEM
+@property (strong, nonatomic) IBOutlet kragerPickerView *intakePicker;
 @property (strong, nonatomic) IBOutlet UITextField *intakeTextField;
+
+
+
+//MISC
+@property (strong, nonatomic) IBOutlet UITextField *teamTextField;
+
 
 @end
 
@@ -38,36 +73,70 @@
 #define FONT_BEBAS_20 [UIFont fontWithName: @"Bebas Neue" size:20]
 #define FONT_BEBAS_25 [UIFont fontWithName: @"Bebas Neue" size:25]
 #define FONT_BEBAS_28 [UIFont fontWithName: @"Bebas Neue" size:28]
+static level1PitScoutViewController* instance;
 
 @implementation level1PitScoutViewController
 
++ (level1PitScoutViewController*)getInstance {
+    return instance;
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        instance = self;
     }
     return self;
+}
+- (IBAction)imageTaker:(id)sender {
+    UIImagePickerController* picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    [self presentViewController:picker animated:YES completion:NULL];
 }
 - (IBAction)imagePicker:(id)sender {
     UIImagePickerController* picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
     picker.allowsEditing = YES;
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentViewController:picker animated:YES completion:NULL];
+}
+
+//DO THESE WHEN ADDING NEW PICKER
+- (void) setAllPickersHidden {
+    self.drivePicker.hidden = YES;
+    self.intakePicker.hidden = YES;
+    self.liftPicker.hidden = YES;
+    self.cimPicker.hidden = YES;
+    self.frameStrengthPicker.hidden = YES;
+}
+-(void) addDataToPickers {
+    // Connect data
+    [self.drivePicker setData:@[@"Swerve", @"Tank", @"Slide", @"Mecanum", @"Butterfly", @"Octanum", @"Nonum", @"Holonomic", @"Other"] textField: self.driveTextField withController:self];
+    [self.intakePicker setData:@[@"intake", @"Item 2", @"Item 3", @"Item 4", @"Item 5", @"Other"] textField:self.intakeTextField withController:self];
+    [self.liftPicker setData:@[@"lift", @"Item 2", @"Item 3", @"Item 4", @"Item 5", @"Other"] textField:self.liftTextField withController:self];
+    [self.cimPicker setData:@[@"2CIM", @"3CIM", @"4IM"] textField:[self cimTextField] withController:self];
+    [self.frameStrengthPicker setData:@[@"1",@"2",@"3",@"4"] textField: self.frameStrengthTextField withController:self];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
     
-    // Connect data
-    [self.drivePicker setData:@[@"4 Wheel", @"6 Cim", @"Holonomic", @"Tread", @"Swerve", @"Omni", @"Mechanum", @"Other"] textField: self.driveTextField];
-    [self.intakePicker setData:@[@"lift", @"Item 2", @"Item 3", @"Item 4", @"Item 5", @"Other"] textField:self.intakeTextField];
-    [self.liftPicker setData:@[@"shooter", @"Item 2", @"Item 3", @"Item 4", @"Item 5", @"Other"] textField:self.liftTextField];
+    UITapGestureRecognizer *singleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
+    singleTapGestureRecognizer.numberOfTapsRequired = 1;
+    singleTapGestureRecognizer.enabled = YES;
+    singleTapGestureRecognizer.cancelsTouchesInView = NO;
+    [scrollView addGestureRecognizer:singleTapGestureRecognizer];
     
-    self.drivePicker.hidden = YES;
-    self.intakePicker.hidden = YES;
-    self.liftPicker.hidden = YES;
+    textFieldShouldEdit = false;
+    
+    
+    
+    [self setAllPickersHidden];
+    [self addDataToPickers];
  
     commentsTextView.layer.cornerRadius = 5;
     commentsTextView.layer.borderWidth = 2;
@@ -78,18 +147,51 @@
     
     [self teamTextField].placeholder = @"Team";
     [self driveTextField].placeholder = @"Drive";
-    [self intakeTextField].placeholder = @"Lift";
-    [self liftTextField].placeholder = @"Shooter";
+    [self intakeTextField].placeholder = @"Intake";
+    [self liftTextField].placeholder = @"Lift";
+    [self cimTextField].placeholder = @"CIM";
+    [self heightTextField].placeholder = @"Height";
+    [self weightTextField].placeholder = @"Weight";
+    [self maxSpeedTextField].placeholder = @"Max Speed";
+    [self frameStrengthTextField].placeholder = @"Frame Strength";
+    [self maxCanHeightTextField].placeholder = @"Can Stack Height";
+    [self maxToteHeightTextField].placeholder = @"Tote Stack Height";
+    [self maxTotesAtOneTimeTextField].placeholder = @"Max Tote";
     
+    
+    /*[commentsTextView setKeyboardDismissMode:UIScrollViewKeyboardDismissModeInteractive];
+    commentsTextView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;*/
+    
+    [self teamTextField].keyboardType = UIKeyboardTypePhonePad;
+    [self weightTextField].keyboardType = UIKeyboardTypePhonePad;
+    [self heightTextField].keyboardType = UIKeyboardTypePhonePad;
+    [self maxSpeedTextField].keyboardType = UIKeyboardTypePhonePad;
+    [self maxTotesAtOneTimeTextField].keyboardType = UIKeyboardTypeNamePhonePad;
+    [self maxToteHeightTextField].keyboardType = UIKeyboardTypeNamePhonePad;
+    [self maxCanHeightTextField].keyboardType = UIKeyboardTypeNamePhonePad;
     
     [self teamTextField].delegate = self;
     [self driveTextField].delegate = self;
     [self intakeTextField].delegate = self;
     [self liftTextField].delegate = self;
+    [self cimTextField].delegate = self;
+    [self heightTextField].delegate = self;
+    [self weightTextField].delegate = self;
+    [self maxSpeedTextField].delegate = self;
+    [self maxToteHeightTextField].delegate = self;
+    [self maxTotesAtOneTimeTextField].delegate = self;
+    [self maxCanHeightTextField].delegate = self;
+    [self frameStrengthTextField].delegate = self;
+    commentsTextView.delegate = self;
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    NSLog(@"VIEW WILL DIS");
+    [self setAllPickersHidden];
 }
 
 -(void) viewWillAppear:(BOOL)animated {
-    
+    NSLog(@"VIEW WILL APP");
     [self.navigationController.navigationBar setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:
       FONT_BEBAS_28,
@@ -99,17 +201,34 @@
     addTeamButton.titleLabel.font = FONT_BEBAS_25;
     commentLabel.font = FONT_BEBAS_25;
     imagePicker.titleLabel.font = FONT_BEBAS_25;
+    imageTaker.titleLabel.font = FONT_BEBAS_25;
+    [self liftSystemLabel].font = FONT_BEBAS_25;
     [self teamTextField].font = FONT_BEBAS_20;
     [self intakeTextField].font = FONT_BEBAS_20;
     [self liftTextField].font = FONT_BEBAS_20;
     [self driveTextField].font = FONT_BEBAS_20;
+    [self cimTextField].font = FONT_BEBAS_20;
+    [self weightTextField].font = FONT_BEBAS_20;
+    [self heightTextField].font = FONT_BEBAS_20;
+    [self maxSpeedTextField].font = FONT_BEBAS_20;
+    [self frameStrengthTextField].font = FONT_BEBAS_20;
+    [self driveTrainLabel].font = FONT_BEBAS_25;
+    [self robotSpecsLabel].font = FONT_BEBAS_25;
+    [self oneSpeedLabel].font = FONT_BEBAS_20;
+    [self twoSpeedLabel].font = FONT_BEBAS_20;
+    [self maxCanHeightTextField].font
+    = FONT_BEBAS_20;
+    [self maxToteHeightTextField].font = FONT_BEBAS_20;
+    [self maxTotesAtOneTimeTextField].font = FONT_BEBAS_20;
+     
+    
     commentsTextView.font = FONT_BEBAS_20;
 }
 
 -(void)viewDidLayoutSubviews {
-    
+    NSLog(@"LAYED OUT");
     scrollView.frame = CGRectMake(scrollView.frame.origin.x, scrollView.frame.origin.y, 320, self.view.frame.size.height);
-    scrollView.contentSize = CGSizeMake(320, 700);
+    scrollView.contentSize = CGSizeMake(320, 900);
     [scrollView  setCenter:CGPointMake(scrollView.center.x, scrollView.center.y - 62)];
     
     
@@ -118,6 +237,18 @@
     
 }
 
+-(void) singleTap: (UITapGestureRecognizer*)gesture {
+    NSLog(@"TAP");
+    [self turnOffActiveAspect];
+}
+- (void) turnOffActiveAspect {
+    if([activeAspect isKindOfClass:[kragerPickerView class]]) {
+        [activeAspect setHidden:YES];
+    } else {
+        [activeAspect resignFirstResponder];
+    }
+
+}
 - (IBAction)addTeamButton:(id)sender {
     
     
@@ -187,7 +318,12 @@
     
     [dataTask resume];
 }
-
+-(void)textFieldShouldBeEditable: (UITextField*)field {
+    textFieldShouldEdit = true;
+    
+    
+    [field becomeFirstResponder];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -198,6 +334,7 @@
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
+    NSLog(@"Runnin");
     UIImage *chooseImage = info[UIImagePickerControllerEditedImage];
     
     teamsImage = chooseImage;
@@ -207,34 +344,57 @@
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
+
 #pragma mark - UITextFieldDelegate
--(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    activeTextField = textField;
-    [scrollView setContentOffset:CGPointMake(activeTextField.center.x - scrollView.frame.size.width/2, activeTextField.center.y - scrollView.frame.size.height/4) animated:NO];
-    if(activeTextField == [self driveTextField]){
-        NSLog(@"x: %f",self.drivePicker.frame.origin.x);
-        NSLog(@"y: %f",self.drivePicker.frame.origin.y);
-        [self.drivePicker setCenter:CGPointMake(self.drivePicker.center.x, self.view.frame.size.height - 100)];
-        [self.drivePicker setBackgroundColor:[UIColor whiteColor]];
-        
-        //[scrollView setScrollEnabled:NO];
-        self.drivePicker.hidden = NO;
-        NSLog(@"x: %f",self.drivePicker.frame.origin.x);
-        NSLog(@"y: %f",self.drivePicker.frame.origin.y);
-    }else if(activeTextField == [self intakeTextField]) {
-        [self.intakePicker setCenter:CGPointMake(self.intakePicker.center.x, self.view.frame.size.height - 100)];
-        [self.intakePicker setBackgroundColor:[UIColor whiteColor]];
-        
-        //[scrollView setScrollEnabled:NO];
-        self.intakePicker.hidden = NO;
-    }else if(activeTextField == [self liftTextField]) {
-        [self.liftPicker setCenter:CGPointMake(self.liftPicker.center.x, self.view.frame.size.height - 100)];
-        [self.liftPicker setBackgroundColor:[UIColor whiteColor]];
-        
-        //[scrollView setScrollEnabled:NO];
-        self.liftPicker.hidden = NO;
-    }
+-(BOOL) textFieldShouldBeActive: (kragerPickerView*) picker {
+    [picker setCenter:CGPointMake(self.drivePicker.center.x, self.view.frame.size.height - 150)];
+    [picker setBackgroundColor:[UIColor whiteColor]];
+    
+    //[scrollView setScrollEnabled:NO];
+    activeAspect = picker;
+    picker.hidden = NO;
     return NO;
+}
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    [self turnOffActiveAspect];
+    activeTextField = textField;
+    activeAspect = textField;
+    [scrollView setContentOffset:CGPointMake(0, activeTextField.center.y - scrollView.frame.size.height/4) animated:YES];
+    if(textFieldShouldEdit) {
+        textFieldShouldEdit= NO;
+        return YES;
+    }
+    if(([self drivePicker].hidden == NO || [self intakePicker].hidden == NO || [self liftPicker].hidden == NO || [self cimPicker].hidden == NO || [self frameStrengthPicker].hidden == NO)) {
+        activeAspect = NULL;
+        if([self drivePicker].hidden == NO) {
+            [[self drivePicker] setSelectedValueToTextField];
+        }else if(![self intakePicker].isHidden) {
+            [[self intakePicker] setSelectedValueToTextField];
+        }else if(![self liftPicker].isHidden) {
+            [[self liftPicker] setSelectedValueToTextField];
+        }else if(![self frameStrengthPicker].isHidden) {
+            [[self frameStrengthPicker] setSelectedValueToTextField];
+        }else if(![self cimPicker].isHidden) {
+            [[self cimPicker] setSelectedValueToTextField];
+        }
+        NSLog(@"%hhd",[self liftPicker].hidden);
+        [self setAllPickersHidden];
+       
+       
+    }
+    if(activeTextField == [self driveTextField]){
+        return [self textFieldShouldBeActive: self.drivePicker];
+    }else if(activeTextField == [self intakeTextField]) {
+        return [self textFieldShouldBeActive: self.intakePicker];
+    }else if(activeTextField == [self liftTextField]) {
+        return [self textFieldShouldBeActive: self.liftPicker];
+    }else if(activeTextField == [self cimTextField]) {
+        return [self textFieldShouldBeActive: self.cimPicker];
+    }else if(activeTextField == [self frameStrengthTextField]) {
+        return [self textFieldShouldBeActive: self.frameStrengthPicker];
+    }
+
+    return YES;
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     NSLog(@"fds");
@@ -246,17 +406,41 @@
     NSLog(@"ENDED");
 }
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
+    NSLog(@"SELECTED");
+    
     activeTextField = textField;
-    [scrollView setContentOffset:CGPointMake(activeTextField.center.x - scrollView.frame.size.width/2, activeTextField.center.y - scrollView.frame.size.height/4) animated:NO];
+    
     
 }
-/*- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    NSLog(@"g");
-    activeTextField = textField;
-    [scrollView setContentOffset:CGPointMake(activeTextField.center.x - scrollView.frame.size.width/2, activeTextField.center.y - scrollView.frame.size.height/4) animated:NO];
-}*/
 
-
+#pragma mark - UITextViewDelegate
+-(void)textViewDidBeginEditing:(UITextView *)textView{
+    [self turnOffActiveAspect];
+    activeAspect = textView;
+}
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range
+ replacementText:(NSString *)text
+{
+    // Any new character added is passed in as the "text" parameter
+    if ([text isEqualToString:@"\n"]) {
+        // Be sure to test for equality using the "isEqualToString" message
+        [commentsTextView resignFirstResponder];
+        
+        // Return FALSE so that the final '\n' character doesn't get added
+        return FALSE;
+    }
+    // For any other character return TRUE so that the text gets added to the view
+    return TRUE;
+}
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    [textView resignFirstResponder];
+}
+-(BOOL)textViewShouldEndEditing:(UITextView *)textView {
+    [textView resignFirstResponder];
+    return YES;
+}
 
 
 @end
+
+

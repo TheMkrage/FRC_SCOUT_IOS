@@ -37,6 +37,8 @@
 		7EA3E30C1A1AEE4A00F534A5 /* FRC_ScoutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3E30B1A1AEE4A00F534A5 /* FRC_ScoutTests.m */; };
 		7EA3E3171A1AF39D00F534A5 /* webConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3E3161A1AF39D00F534A5 /* webConnector.m */; };
 		7EBBB0121A4CCB0D003F0C89 /* kragerPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBBB0111A4CCB0D003F0C89 /* kragerPickerView.m */; };
+		7EBF71FD1A6CEC5100A38BFE /* backNextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBF71FC1A6CEC5100A38BFE /* backNextView.m */; };
+		7EC59A121A6DA4B20044E5C0 /* level1AutonomousViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC59A111A6DA4B20044E5C0 /* level1AutonomousViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +99,10 @@
 		7EA3E3161A1AF39D00F534A5 /* webConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = webConnector.m; sourceTree = "<group>"; };
 		7EBBB0101A4CCB0D003F0C89 /* kragerPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kragerPickerView.h; sourceTree = "<group>"; };
 		7EBBB0111A4CCB0D003F0C89 /* kragerPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kragerPickerView.m; sourceTree = "<group>"; };
+		7EBF71FB1A6CEC5100A38BFE /* backNextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = backNextView.h; sourceTree = "<group>"; };
+		7EBF71FC1A6CEC5100A38BFE /* backNextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = backNextView.m; sourceTree = "<group>"; };
+		7EC59A101A6DA4B20044E5C0 /* level1AutonomousViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = level1AutonomousViewController.h; sourceTree = "<group>"; };
+		7EC59A111A6DA4B20044E5C0 /* level1AutonomousViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = level1AutonomousViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,9 +137,8 @@
 				7E94F7AD1A49FF8C0087C196 /* Views */,
 				7E95DEFB1A47EC10000D9A6D /* Tables and Cell */,
 				7EBFBBF91A5A0221003316CE /* MainScreenControllers */,
+				7EC3717F1A5E5BDC00EF764A /* MatchViewControllers */,
 				7E24AA591A29A58E00D13837 /* mileymelon.jpg */,
-				7E0E6FF41A267347004969C0 /* level1MatchScoutViewController.h */,
-				7E0E6FF51A267347004969C0 /* level1MatchScoutViewController.m */,
 				7E0E6FF71A26739E004969C0 /* level1ProfilesViewController.h */,
 				7E0E6FF81A26739E004969C0 /* level1ProfilesViewController.m */,
 				7E0E6FFD1A26746E004969C0 /* level1RankingsViewController.h */,
@@ -151,6 +156,8 @@
 				7E94F7AF1A49FFB70087C196 /* kragerStepperView.m */,
 				7EBBB0101A4CCB0D003F0C89 /* kragerPickerView.h */,
 				7EBBB0111A4CCB0D003F0C89 /* kragerPickerView.m */,
+				7EBF71FB1A6CEC5100A38BFE /* backNextView.h */,
+				7EBF71FC1A6CEC5100A38BFE /* backNextView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -248,7 +255,6 @@
 		7EBFBBF91A5A0221003316CE /* MainScreenControllers */ = {
 			isa = PBXGroup;
 			children = (
-				7EC3717F1A5E5BDC00EF764A /* pageViewControllerForMatch */,
 				7E0E6FED1A2672B8004969C0 /* level1PitScoutViewController.h */,
 				7E0E6FEE1A2672B8004969C0 /* level1PitScoutViewController.m */,
 				7E95BBEC1A4646BF004F3828 /* level1TeamListTableViewController.h */,
@@ -257,11 +263,15 @@
 			name = MainScreenControllers;
 			sourceTree = "<group>";
 		};
-		7EC3717F1A5E5BDC00EF764A /* pageViewControllerForMatch */ = {
+		7EC3717F1A5E5BDC00EF764A /* MatchViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7E0E6FF41A267347004969C0 /* level1MatchScoutViewController.h */,
+				7E0E6FF51A267347004969C0 /* level1MatchScoutViewController.m */,
+				7EC59A101A6DA4B20044E5C0 /* level1AutonomousViewController.h */,
+				7EC59A111A6DA4B20044E5C0 /* level1AutonomousViewController.m */,
 			);
-			name = pageViewControllerForMatch;
+			name = MatchViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,6 +383,8 @@
 				7EA3E2F71A1AEE4A00F534A5 /* mainViewController.m in Sources */,
 				7EA3E2EA1A1AEE4900F534A5 /* main.m in Sources */,
 				7EBBB0121A4CCB0D003F0C89 /* kragerPickerView.m in Sources */,
+				7EC59A121A6DA4B20044E5C0 /* level1AutonomousViewController.m in Sources */,
+				7EBF71FD1A6CEC5100A38BFE /* backNextView.m in Sources */,
 				7E94FA9F1A493B7B0010D0FD /* pitScoutView.m in Sources */,
 				7E95BBEE1A4646BF004F3828 /* level1TeamListTableViewController.m in Sources */,
 				7E0E6FF61A267347004969C0 /* level1MatchScoutViewController.m in Sources */,

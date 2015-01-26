@@ -32,6 +32,21 @@
         [self setTitle:tickedBoxStr forState:UIControlStateNormal];
     }
 }
+
+-(bool) getStatus {
+
+    NSString *tickedBoxStr = @"\u2611";
+    
+    if ([[self titleLabel].text isEqualToString:tickedBoxStr])
+    {
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
+
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

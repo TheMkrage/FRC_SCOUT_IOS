@@ -60,6 +60,10 @@
 //INTAKE SYSTEM
 @property (strong, nonatomic) IBOutlet kragerPickerView *intakePicker;
 @property (strong, nonatomic) IBOutlet UITextField *intakeTextField;
+@property (strong, nonatomic) IBOutlet UILabel *intakeSystemLabel;
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *noYesLabels;
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *intakeLabels;
+
 
 
 
@@ -162,13 +166,13 @@ static level1PitScoutViewController* instance;
     /*[commentsTextView setKeyboardDismissMode:UIScrollViewKeyboardDismissModeInteractive];
     commentsTextView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;*/
     
-    [self teamTextField].keyboardType = UIKeyboardTypePhonePad;
-    [self weightTextField].keyboardType = UIKeyboardTypePhonePad;
-    [self heightTextField].keyboardType = UIKeyboardTypePhonePad;
-    [self maxSpeedTextField].keyboardType = UIKeyboardTypePhonePad;
-    [self maxTotesAtOneTimeTextField].keyboardType = UIKeyboardTypeNamePhonePad;
-    [self maxToteHeightTextField].keyboardType = UIKeyboardTypeNamePhonePad;
-    [self maxCanHeightTextField].keyboardType = UIKeyboardTypeNamePhonePad;
+    [self teamTextField].keyboardType = UIKeyboardTypeNumberPad;
+    [self weightTextField].keyboardType = UIKeyboardTypeNumberPad;
+    [self heightTextField].keyboardType = UIKeyboardTypeNumberPad;
+    [self maxSpeedTextField].keyboardType = UIKeyboardTypeNumberPad;
+    [[self maxTotesAtOneTimeTextField]setKeyboardType:UIKeyboardTypeNumberPad];
+    [self maxToteHeightTextField].keyboardType = UIKeyboardTypeNumberPad;
+    [self maxCanHeightTextField].keyboardType = UIKeyboardTypeNumberPad;
     
     [self teamTextField].delegate = self;
     [self driveTextField].delegate = self;
@@ -198,11 +202,24 @@ static level1PitScoutViewController* instance;
       NSFontAttributeName, nil]];
     self.title = @"Pit Scout";
     
+    [self setFonts];
+    }
+
+-(void)viewDidLayoutSubviews {
+    NSLog(@"LAYED OUT");
+    scrollView.frame = CGRectMake(scrollView.frame.origin.x, scrollView.frame.origin.y, 320, self.view.frame.size.height);
+    scrollView.contentSize = CGSizeMake(320, 1600);
+    [scrollView  setCenter:CGPointMake(scrollView.center.x, scrollView.center.y - 62)];
+    [self.view layoutSubviews];
+    
+}
+
+-(void) setFonts {
     addTeamButton.titleLabel.font = FONT_BEBAS_25;
     commentLabel.font = FONT_BEBAS_25;
     imagePicker.titleLabel.font = FONT_BEBAS_25;
     imageTaker.titleLabel.font = FONT_BEBAS_25;
-    [self liftSystemLabel].font = FONT_BEBAS_25;
+    [self liftSystemLabel].font = FONT_BEBAS_28;
     [self teamTextField].font = FONT_BEBAS_20;
     [self intakeTextField].font = FONT_BEBAS_20;
     [self liftTextField].font = FONT_BEBAS_20;
@@ -212,31 +229,28 @@ static level1PitScoutViewController* instance;
     [self heightTextField].font = FONT_BEBAS_20;
     [self maxSpeedTextField].font = FONT_BEBAS_20;
     [self frameStrengthTextField].font = FONT_BEBAS_20;
-    [self driveTrainLabel].font = FONT_BEBAS_25;
-    [self robotSpecsLabel].font = FONT_BEBAS_25;
+    [self driveTrainLabel].font = FONT_BEBAS_28;
+    [self robotSpecsLabel].font = FONT_BEBAS_28;
     [self oneSpeedLabel].font = FONT_BEBAS_20;
     [self twoSpeedLabel].font = FONT_BEBAS_20;
     [self maxCanHeightTextField].font
     = FONT_BEBAS_20;
     [self maxToteHeightTextField].font = FONT_BEBAS_20;
     [self maxTotesAtOneTimeTextField].font = FONT_BEBAS_20;
-     
-    
+    [self internalLabel].font = FONT_BEBAS_20;
+    [self externalLabel].font = FONT_BEBAS_20;
+    [self intakeSystemLabel].font =
+    FONT_BEBAS_28;
+    for(int i = 0; i < [self noYesLabels].count; i++) {
+        NSLog(@"%d", i);
+        NSLog(@"%lu", (unsigned long)[self noYesLabels].count);
+        [[[self noYesLabels] objectAtIndex: i] setFont : FONT_BEBAS_20];
+    }
+    for(int i = 0; i < [self intakeLabels].count; i++) {
+        [[[self intakeLabels] objectAtIndex:i] setFont: FONT_BEBAS_25];
+    }
     commentsTextView.font = FONT_BEBAS_20;
 }
-
--(void)viewDidLayoutSubviews {
-    NSLog(@"LAYED OUT");
-    scrollView.frame = CGRectMake(scrollView.frame.origin.x, scrollView.frame.origin.y, 320, self.view.frame.size.height);
-    scrollView.contentSize = CGSizeMake(320, 900);
-    [scrollView  setCenter:CGPointMake(scrollView.center.x, scrollView.center.y - 62)];
-    
-    
-    
-    [self.view layoutSubviews];
-    
-}
-
 -(void) singleTap: (UITapGestureRecognizer*)gesture {
     NSLog(@"TAP");
     [self turnOffActiveAspect];
@@ -347,9 +361,9 @@ static level1PitScoutViewController* instance;
 
 #pragma mark - UITextFieldDelegate
 -(BOOL) textFieldShouldBeActive: (kragerPickerView*) picker {
-    [picker setCenter:CGPointMake(self.drivePicker.center.x, self.view.frame.size.height - 150)];
+    [picker setCenter:CGPointMake(picker.frame.origin.x, self.view.frame.size.height - 150)];
     [picker setBackgroundColor:[UIColor whiteColor]];
-    
+    NSLog(@":ACTIVEFADSFASDFASDFADS");
     //[scrollView setScrollEnabled:NO];
     activeAspect = picker;
     picker.hidden = NO;

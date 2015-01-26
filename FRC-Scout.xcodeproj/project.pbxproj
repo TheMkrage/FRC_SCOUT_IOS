@@ -38,6 +38,7 @@
 		7EA3E3171A1AF39D00F534A5 /* webConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3E3161A1AF39D00F534A5 /* webConnector.m */; };
 		7EBBB0121A4CCB0D003F0C89 /* kragerPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBBB0111A4CCB0D003F0C89 /* kragerPickerView.m */; };
 		7EBF71FD1A6CEC5100A38BFE /* backNextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBF71FC1A6CEC5100A38BFE /* backNextView.m */; };
+		7EC4B8721A734ACE00BA97C8 /* checkBoxLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC4B8711A734ACE00BA97C8 /* checkBoxLabel.m */; };
 		7EC59A121A6DA4B20044E5C0 /* level1AutonomousViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC59A111A6DA4B20044E5C0 /* level1AutonomousViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +102,8 @@
 		7EBBB0111A4CCB0D003F0C89 /* kragerPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kragerPickerView.m; sourceTree = "<group>"; };
 		7EBF71FB1A6CEC5100A38BFE /* backNextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = backNextView.h; sourceTree = "<group>"; };
 		7EBF71FC1A6CEC5100A38BFE /* backNextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = backNextView.m; sourceTree = "<group>"; };
+		7EC4B8701A734ACE00BA97C8 /* checkBoxLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = checkBoxLabel.h; sourceTree = "<group>"; };
+		7EC4B8711A734ACE00BA97C8 /* checkBoxLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = checkBoxLabel.m; sourceTree = "<group>"; };
 		7EC59A101A6DA4B20044E5C0 /* level1AutonomousViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = level1AutonomousViewController.h; sourceTree = "<group>"; };
 		7EC59A111A6DA4B20044E5C0 /* level1AutonomousViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = level1AutonomousViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,6 +161,8 @@
 				7EBBB0111A4CCB0D003F0C89 /* kragerPickerView.m */,
 				7EBF71FB1A6CEC5100A38BFE /* backNextView.h */,
 				7EBF71FC1A6CEC5100A38BFE /* backNextView.m */,
+				7EC4B8701A734ACE00BA97C8 /* checkBoxLabel.h */,
+				7EC4B8711A734ACE00BA97C8 /* checkBoxLabel.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -396,6 +401,7 @@
 				7E98771B1A244F92004735C8 /* level1MenuViewController.m in Sources */,
 				7EA3E2EE1A1AEE4900F534A5 /* mainAppDelegate.m in Sources */,
 				7E94F7AC1A49F2B40087C196 /* pickListCell.m in Sources */,
+				7EC4B8721A734ACE00BA97C8 /* checkBoxLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

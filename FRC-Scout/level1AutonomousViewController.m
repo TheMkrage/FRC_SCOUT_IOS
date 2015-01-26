@@ -18,6 +18,16 @@
 
     
 }
+//Starting Pos
+
+//checkBoxes
+@property (strong, nonatomic) IBOutlet checkBoxLabel *byLandFillCheckBox;
+@property (strong, nonatomic) IBOutlet checkBoxLabel *byYellowToteCheckBox;
+@property (strong, nonatomic) IBOutlet checkBoxLabel *ImmobileCheckBox;
+@property (strong, nonatomic) IBOutlet checkBoxLabel *otherCheckBox;
+//Other
+@property (strong, nonatomic) IBOutlet UITextField *otherTextField;
+
 
 
 
@@ -35,11 +45,17 @@
 }
 
 -(void) setFonts {
+    //the box will show up when user clicks checkbox
+    [[self otherTextField] setHidden:YES];
     
 }
 
 -(void) setData {
    
+}
+
+-(void) setDelegates {
+    [self otherTextField].delegate = self;
 }
 
 

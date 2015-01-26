@@ -260,6 +260,7 @@
 		7EBFBBF91A5A0221003316CE /* MainScreenControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7ECEB7B51A760EE200D5F40A /* Pit Scout Controller */,
 				7E0E6FED1A2672B8004969C0 /* level1PitScoutViewController.h */,
 				7E0E6FEE1A2672B8004969C0 /* level1PitScoutViewController.m */,
 				7E95BBEC1A4646BF004F3828 /* level1TeamListTableViewController.h */,
@@ -273,10 +274,17 @@
 			children = (
 				7E0E6FF41A267347004969C0 /* level1MatchScoutViewController.h */,
 				7E0E6FF51A267347004969C0 /* level1MatchScoutViewController.m */,
+			);
+			name = MatchViewControllers;
+			sourceTree = "<group>";
+		};
+		7ECEB7B51A760EE200D5F40A /* Pit Scout Controller */ = {
+			isa = PBXGroup;
+			children = (
 				7EC59A101A6DA4B20044E5C0 /* level1AutonomousViewController.h */,
 				7EC59A111A6DA4B20044E5C0 /* level1AutonomousViewController.m */,
 			);
-			name = MatchViewControllers;
+			name = "Pit Scout Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

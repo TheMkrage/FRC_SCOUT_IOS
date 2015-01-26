@@ -31,6 +31,7 @@
     {
         [self setTitle:tickedBoxStr forState:UIControlStateNormal];
     }
+    
 }
 
 -(bool) getStatus {

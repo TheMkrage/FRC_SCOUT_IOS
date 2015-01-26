@@ -47,7 +47,11 @@
 -(void) setFonts {
     //the box will show up when user clicks checkbox
     [[self otherTextField] setHidden:YES];
+    [[self otherTextField] setPlaceholder:@"Other"];
     
+}
+- (IBAction)otherCheckBoxPositions:(checkBoxLabel *)sender {
+    [[self otherTextField] setHidden:![self otherTextField].hidden];
 }
 
 -(void) setData {
@@ -57,6 +61,7 @@
 -(void) setDelegates {
     [self otherTextField].delegate = self;
 }
+
 
 
 -(void) viewDidLayoutSubviews {

@@ -426,7 +426,7 @@ static level1PitScoutViewController* instance;
 
 #pragma mark - UITextFieldDelegate
 -(BOOL) textFieldShouldBeActive: (kragerPickerView*) picker {
-    [picker setCenter:CGPointMake(picker.frame.origin.x, self.view.frame.size.height - 150)];
+    [picker setCenter:CGPointMake(picker.frame.origin.x + picker.frame.size.width/2, self.view.frame.size.height - 150)];
     [picker setBackgroundColor:[UIColor whiteColor]];
     NSLog(@":ACTIVEFADSFASDFASDFADS");
     //[scrollView setScrollEnabled:NO];

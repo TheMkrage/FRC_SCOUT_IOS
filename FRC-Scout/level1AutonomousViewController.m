@@ -23,7 +23,7 @@
 //checkBoxes
 @property (strong, nonatomic) IBOutlet checkBoxLabel *byLandFillCheckBox;
 @property (strong, nonatomic) IBOutlet checkBoxLabel *byYellowToteCheckBox;
-@property (strong, nonatomic) IBOutlet checkBoxLabel *ImmobileCheckBox;
+@property (strong, nonatomic) IBOutlet checkBoxLabel *immobileCheckBox;
 @property (strong, nonatomic) IBOutlet checkBoxLabel *otherCheckBox;
 //Other
 @property (strong, nonatomic) IBOutlet UITextField *otherTextField;
@@ -40,12 +40,25 @@
 
 
 -(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     self.tabBarController.title = @"Autonomous";
     [self setFonts];
+    [self setDelegates];
     
 }
 
 -(void) viewDidLoad {
+    [super viewDidLoad];
+
+    
+    UITapGestureRecognizer *singleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
+    singleTapGestureRecognizer.numberOfTapsRequired = 1;
+    singleTapGestureRecognizer.enabled = YES;
+    singleTapGestureRecognizer.cancelsTouchesInView = NO;
+    [scrollView addGestureRecognizer:singleTapGestureRecognizer];
+    
+    scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
+    
     [self setData];
 }
 
@@ -54,6 +67,13 @@
     [[self otherTextField] setHidden:YES];
     [[self otherTextField] setPlaceholder:@"Other"];
     
+    [[self byLandFillCheckBox] setTitle:@"\u2610" forState:UIControlStateNormal];
+    [[self byYellowToteCheckBox] setTitle:@"\u2610" forState:UIControlStateNormal];
+    [[self byLandFillCheckBox] setTitle:@"\u2610" forState:UIControlStateNormal];
+    [[self immobileCheckBox] setTitle:@"\u2610" forState:UIControlStateNormal];
+    [[self otherCheckBox] setTitle:@"\u2610" forState:UIControlStateNormal];
+
+
 }
 
 
@@ -68,7 +88,13 @@
 
 
 -(void) viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
     scrollView.contentSize = CGSizeMake(self.view.frame.size.width, 720);
+}
+
+-(void) singleTap: (UITapGestureRecognizer*)gesture {
+    NSLog(@"TAP");
+    [self turnOffActiveAspect];
 }
 
 - (void) turnOffActiveAspect {
@@ -81,15 +107,7 @@
 }
 
 #pragma mark - UITextFieldDelegate
--(BOOL) textFieldShouldBeActive: (kragerPickerView*) picker {
-    //[picker setCenter:CGPointMake(self.drivePicker.center.x, self.view.frame.size.height - 150)];
-    [picker setBackgroundColor:[UIColor whiteColor]];
-    
-    //[scrollView setScrollEnabled:NO];
-    activeAspect = picker;
-    picker.hidden = NO;
-    return NO;
-}
+
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     [self turnOffActiveAspect];
     activeTextField = textField;
@@ -100,7 +118,7 @@
         return YES;
     }
 #warning GET RID OF THIS
-    return NO;
+    return YES;
     /*if(([self drivePicker].hidden == NO || [self intakePicker].hidden == NO || [self liftPicker].hidden == NO || [self cimPicker].hidden == NO || [self frameStrengthPicker].hidden == NO)) {
         activeAspect = NULL;
         if([self drivePicker].hidden == NO) {

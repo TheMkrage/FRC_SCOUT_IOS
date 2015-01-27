@@ -8,9 +8,8 @@
 
 #import "checkBoxLabel.h"
 @interface checkBoxLabel() {
-    
+    id hiddenObj;
 }
-@property (strong,nonatomic) id hiddenObject;
 @end
 @implementation checkBoxLabel
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -32,20 +31,21 @@
     if ([[self titleLabel].text isEqualToString:tickedBoxStr])
     {
         [self setTitle:untickedBoxStr forState:UIControlStateNormal];
-        if(self.hiddenObject!= nil)
-            [[self hiddenObject] setHidden:YES];
+        if(hiddenObj!= nil)
+            [hiddenObj setHidden:YES];
     }
     else
     {
         [self setTitle:tickedBoxStr forState:UIControlStateNormal];
-        if(self.hiddenObject!= nil)
-            [[self hiddenObject] setHidden:NO];
+        if(hiddenObj!= nil)
+            [hiddenObj setHidden:NO];
     }
     
 }
 
--(void) setHiddenObject: (id) hiddenObject{
-    self.hiddenObject = hiddenObject;
+-(void) setHiddenObject: (id) hiddenObject2 {
+    hiddenObj = hiddenObject2;
+    return;
 }
 
 -(bool) getStatus {

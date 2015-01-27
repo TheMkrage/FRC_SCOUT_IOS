@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface checkBoxLabel : UIButton
-
+-(void) setHiddenObject: (id) hiddenObject;
 @end

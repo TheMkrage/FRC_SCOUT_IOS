@@ -42,6 +42,11 @@
 -(void)viewWillAppear:(BOOL)animated {
     self.tabBarController.title = @"Autonomous";
     [self setFonts];
+    
+}
+
+-(void) viewDidLoad {
+    [self setData];
 }
 
 -(void) setFonts {
@@ -50,13 +55,10 @@
     [[self otherTextField] setPlaceholder:@"Other"];
     
 }
-- (IBAction)otherCheckBoxPositions:(checkBoxLabel *)sender {
-    NSLog(@"RESET");
-    [[self otherTextField] setHidden:NO];
-}
+
 
 -(void) setData {
-   
+    [[self otherCheckBox] setHiddenObject:[self otherTextField]];
 }
 
 -(void) setDelegates {

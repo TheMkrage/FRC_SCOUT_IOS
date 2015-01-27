@@ -51,7 +51,8 @@
     
 }
 - (IBAction)otherCheckBoxPositions:(checkBoxLabel *)sender {
-    [[self otherTextField] setHidden:![self otherTextField].hidden];
+    NSLog(@"RESET");
+    [[self otherTextField] setHidden:NO];
 }
 
 -(void) setData {

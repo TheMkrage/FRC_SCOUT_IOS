@@ -424,7 +424,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="otherCheckBoxPositions:" destination="Fm5-t6-Inm" eventType="touchUpInside" id="oHy-rV-Fqg"/>
+                                            <action selector="otherCheckBoxPositions:" destination="Fm5-t6-Inm" eventType="touchUpInside" id="whh-N0-VRl"/>
                                         </connections>
                                     </button>
                                 </subviews>

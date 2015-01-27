@@ -7,7 +7,11 @@
 //
 
 #import "checkBoxLabel.h"
-
+@interface checkBoxLabel() {
+    
+}
+@property (strong,nonatomic) id hiddenObject;
+@end
 @implementation checkBoxLabel
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -15,6 +19,8 @@
     if (CGRectContainsPoint([self frame], [touch locationInView:self.superview]))
     {
         [self togglePaidStatus];
+        
+        
     }
 }
 
@@ -26,12 +32,20 @@
     if ([[self titleLabel].text isEqualToString:tickedBoxStr])
     {
         [self setTitle:untickedBoxStr forState:UIControlStateNormal];
+        if(self.hiddenObject!= nil)
+            [[self hiddenObject] setHidden:YES];
     }
     else
     {
         [self setTitle:tickedBoxStr forState:UIControlStateNormal];
+        if(self.hiddenObject!= nil)
+            [[self hiddenObject] setHidden:NO];
     }
     
+}
+
+-(void) setHiddenObject: (id) hiddenObject{
+    self.hiddenObject = hiddenObject;
 }
 
 -(bool) getStatus {

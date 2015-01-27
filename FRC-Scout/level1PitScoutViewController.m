@@ -24,6 +24,7 @@
     
     IBOutlet UIButton *addTeamButton;
     bool textFieldShouldEdit;
+    UIImage *chooseImage;
     }
 
 //ROBOT SPECS
@@ -265,8 +266,71 @@ static level1PitScoutViewController* instance;
 }
 - (IBAction)addTeamButton:(id)sender {
     
+    CFReadStreamRef rstream;
+    CFWriteStreamRef wstream;
     
-    double filename = [[NSDate date] timeIntervalSince1970];
+    //connect to server
+    CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)@"mrflark.org", 3309, &rstream, &wstream);
+    NSLog(@"connected to server");
+    
+    //init i/o with server
+    NSInputStream* is = objc_unretainedObject(rstream);
+    [is scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    [is open];
+    
+    NSOutputStream* os = objc_unretainedObject(wstream);
+    [os scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    [os open];
+ 
+    //send a string
+#warning DID NOT COMPLETE SWITCHES, THE FIRST MAX SPEED SHOULD BE ONE SPEED, TWO SPEED
+    NSString *toSend = [NSString stringWithFormat:@"{status:2,cmd:\"add team\",team_number:%@,weight:%@,height:%@,speed:%@,cim:\"%@\",drivetrain:\"%@\",lift:\"%@\",max_speed:%@,frame_strength:%@,max_tote:%@,tote_stack_height:%@,can:%@}", [self teamTextField].text, [self weightTextField].text, [self heightTextField].text, [self maxSpeedTextField].text, [self cimTextField].text, [self driveTextField].text, [self liftTextField].text, [self maxSpeedTextField].text, [self frameStrengthTextField].text, [self maxTotesAtOneTimeTextField].text, [self maxToteHeightTextField].text, [self maxCanHeightTextField].text];
+     NSData *dataString = [toSend dataUsingEncoding:NSUTF8StringEncoding];
+    const uint8_t* bytesString = (const uint8_t*)[dataString bytes];
+    [os write:bytesString maxLength:[dataString length]];
+    
+    //send an image
+    
+    NSLog(@"loading image...");
+    NSMutableData* data = [[NSMutableData alloc] init];
+    [data appendData:UIImagePNGRepresentation(chooseImage)];
+    [data appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    
+
+    NSLog(@"image loaded");
+    NSLog(@"%lu", (unsigned long)[data bytes]);
+    
+    
+    bool sendingImage = true;
+    NSUInteger loc = 0;
+    while(sendingImage) {
+        
+        NSData* temp = [data subdataWithRange:NSMakeRange(loc, 1024)];
+        const uint8_t* bytes = (const uint8_t*)[temp bytes];
+        [os write:bytes maxLength:[data length]];
+        if(loc > [data length])
+            sendingImage = false;
+        loc += 1024;
+        
+    }
+    
+    
+    NSLog(@"sent data");
+    
+    
+    /* //this send method doesn't work
+     uint8_t buf[1024];
+     NSInteger* bytesRead;
+     bytesRead = [is read:buf maxLength:1024];
+     NSString* stringFromData = [[NSString alloc] initWithBytes:buf length:bytesRead encoding:NSUTF8StringEncoding];
+     
+     NSLog(@"%@", stringFromData);
+     */
+    [is close];
+    [os close];
+    
+    
+    /*double filename = [[NSDate date] timeIntervalSince1970];
     NSNumber *myDoubleNumber = [NSNumber numberWithDouble:filename];
     NSString *stringOfFilename = [myDoubleNumber stringValue];
     
@@ -304,7 +368,7 @@ static level1PitScoutViewController* instance;
     [dataTask resume];
     
     //____________________________________________
-    [self uploadTextWithImage: lastFiveDigits];
+    [self uploadTextWithImage: lastFiveDigits];*/
    
 
 }
@@ -349,10 +413,11 @@ static level1PitScoutViewController* instance;
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     NSLog(@"Runnin");
-    UIImage *chooseImage = info[UIImagePickerControllerEditedImage];
+    chooseImage = info[UIImagePickerControllerEditedImage];
     
     teamsImage = chooseImage;
     teamImageView.image = chooseImage;
+    
     
     //do button later
     [picker dismissViewControllerAnimated:YES completion:NULL];

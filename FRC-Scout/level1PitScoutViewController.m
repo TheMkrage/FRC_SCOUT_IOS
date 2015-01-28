@@ -129,7 +129,6 @@ static level1PitScoutViewController* instance;
 {
     [super viewDidLoad];
     scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
-    self.title = @"Robot Specs";
     
     UITapGestureRecognizer *singleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
     singleTapGestureRecognizer.numberOfTapsRequired = 1;
@@ -202,7 +201,7 @@ static level1PitScoutViewController* instance;
      [NSDictionary dictionaryWithObjectsAndKeys:
       FONT_BEBAS_28,
       NSFontAttributeName, nil]];
-    self.title = @"Pit Scout";
+    self.tabBarController.title = @"Robot Specs";
     
     [self setFonts];
     }

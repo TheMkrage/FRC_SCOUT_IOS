@@ -1425,7 +1425,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Y2m-Me-fPG">
-                                <rect key="frame" x="0.0" y="62" width="320" height="540"/>
+                                <rect key="frame" x="0.0" y="56" width="320" height="540"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </scrollView>
                         </subviews>
@@ -1435,7 +1435,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wmE-Ao-iGE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2573" y="-3200"/>
+            <point key="canvasLocation" x="2553" y="-3513"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9yx-wN-4UR">

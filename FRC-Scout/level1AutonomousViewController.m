@@ -14,7 +14,6 @@
     UITextField *activeTextField;
     id activeAspect;
     IBOutlet UIScrollView* scrollView;
-    IBOutlet checkBoxLabel *checkBox;
 
     
 }
@@ -24,10 +23,18 @@
 @property (strong, nonatomic) IBOutlet checkBoxLabel *byLandFillCheckBox;
 @property (strong, nonatomic) IBOutlet checkBoxLabel *byYellowToteCheckBox;
 @property (strong, nonatomic) IBOutlet checkBoxLabel *immobileCheckBox;
-@property (strong, nonatomic) IBOutlet checkBoxLabel *otherCheckBox;
+@property (strong, nonatomic) IBOutlet checkBoxLabel *otherPosCheckBox;
 //Other
-@property (strong, nonatomic) IBOutlet UITextField *otherTextField;
+@property (strong, nonatomic) IBOutlet UITextField *otherPosTextField;
 
+//AUTO GOALS
+@property (strong, nonatomic) IBOutlet checkBoxLabel *totesMovedCheckBox;
+@property (strong, nonatomic) IBOutlet checkBoxLabel *totesStackedCheckBox;
+@property (strong, nonatomic) IBOutlet checkBoxLabel *trashCanMovedCheckBox;
+@property (strong, nonatomic) IBOutlet checkBoxLabel *trashCansFromMiddleCheckBox;
+@property (strong, nonatomic) IBOutlet checkBoxLabel *otherGoalsCheckBox;
+@property (strong, nonatomic) IBOutlet checkBoxLabel *robotMovedCheckBox;
+@property (strong, nonatomic) IBOutlet UITextField *otherGoalsTextField;
 
 
 
@@ -64,32 +71,40 @@
 
 -(void) setFonts {
     //the box will show up when user clicks checkbox
-    [[self otherTextField] setHidden:YES];
-    [[self otherTextField] setPlaceholder:@"Other"];
+    [[self otherPosTextField] setHidden:YES];
+    [[self otherPosTextField] setPlaceholder:@"Other"];
+    [[self otherGoalsTextField] setHidden:YES];
+    [[self otherGoalsTextField] setPlaceholder:@"Other"];
     
     [[self byLandFillCheckBox] setTitle:@"\u2610" forState:UIControlStateNormal];
     [[self byYellowToteCheckBox] setTitle:@"\u2610" forState:UIControlStateNormal];
     [[self byLandFillCheckBox] setTitle:@"\u2610" forState:UIControlStateNormal];
     [[self immobileCheckBox] setTitle:@"\u2610" forState:UIControlStateNormal];
-    [[self otherCheckBox] setTitle:@"\u2610" forState:UIControlStateNormal];
-
-
+    [[self otherPosCheckBox] setTitle:@"\u2610" forState:UIControlStateNormal];
+    [[self totesMovedCheckBox] setTitle:@"\u2610" forState:UIControlStateNormal];
+    [[self totesStackedCheckBox] setTitle:@"\u2610" forState:UIControlStateNormal];
+    [[self trashCanMovedCheckBox] setTitle:@"\u2610" forState:UIControlStateNormal];
+    [[self trashCansFromMiddleCheckBox] setTitle:@"\u2610" forState:UIControlStateNormal];
+    [[self robotMovedCheckBox] setTitle:@"\u2610" forState:UIControlStateNormal];
+    [[self otherGoalsCheckBox] setTitle:@"\u2610" forState:UIControlStateNormal];
 }
 
 
 -(void) setData {
-    [[self otherCheckBox] setHiddenObject:[self otherTextField]];
+    [[self otherPosCheckBox] setHiddenObject:[self otherPosTextField]];
+    [[self otherGoalsCheckBox] setHiddenObject:[self otherGoalsTextField]];
 }
 
 -(void) setDelegates {
-    [self otherTextField].delegate = self;
+    [self otherPosTextField].delegate = self;
+    [self otherGoalsTextField].delegate = self;
 }
 
 
 
 -(void) viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, 720);
+    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, 900);
 }
 
 -(void) singleTap: (UITapGestureRecognizer*)gesture {
@@ -178,7 +193,4 @@
     // Drawing code
 }
 */
-
-- (IBAction)checkBoxButton:(id)sender {
-}
 @end

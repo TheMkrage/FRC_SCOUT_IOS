@@ -22,6 +22,8 @@
 @property (strong, nonatomic) IBOutlet kragerPickerView *preferredPicker;
 
 @property (strong, nonatomic) IBOutlet UITextView *strategyTextView;
+@property (strong, nonatomic) IBOutlet UIScrollView *humanPlayerBoyGirlSwitch;
+@property (strong, nonatomic) IBOutlet UISwitch *humanPlayerNoodlesSwitch;
 
 
 @end
@@ -79,6 +81,7 @@
 -(void) setDelegates {
     [self cooperationTextField].delegate = self;
     [self preferredTextField].delegate = self;
+    [self strategyTextView].delegate = self;
 }
 
 -(void) singleTap:(UITapGestureRecognizer*)gesture {
@@ -101,8 +104,6 @@
 }
 -(void)textFieldShouldBeEditable: (UITextField*)field {
     textFieldShouldEdit = true;
-    
-    
     [field becomeFirstResponder];
 }
 
@@ -156,10 +157,38 @@
     NSLog(@"SELECTED");
     
     activeTextField = textField;
-    
-    
 }
 
+#pragma mark - UITextViewDelegate
+-(void)textViewDidBeginEditing:(UITextView *)textView{
+    if(!(textView == activeAspect)) {
+        [self turnOffActiveAspect];
+        activeAspect = textView;
+    }
+    [scrollView setContentOffset:CGPointMake(0, ((UITextView*)activeAspect).center.y - scrollView.frame.size.height/4) animated:YES];
+}
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range
+ replacementText:(NSString *)text
+{
+    // Any new character added is passed in as the "text" parameter
+    if ([text isEqualToString:@"\n"]) {
+        // Be sure to test for equality using the "isEqualToString" message
+        [textView resignFirstResponder];
+        
+        // Return FALSE so that the final '\n' character doesn't get added
+        return FALSE;
+    }
+    // For any other character return TRUE so that the text gets added to the view
+    return TRUE;
+}
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    [textView resignFirstResponder];
+}
+-(BOOL)textViewShouldEndEditing:(UITextView *)textView {
+    NSLog(@"STOP");
+    [textView resignFirstResponder];
+    return YES;
+}
 
 
 @end

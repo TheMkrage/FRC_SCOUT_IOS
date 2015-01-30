@@ -49,6 +49,10 @@
     scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
     
     [self setData];
+    
+    self.strategyTextView.layer.cornerRadius = 5;
+    self.strategyTextView.layer.borderWidth = 2;
+    self.strategyTextView.layer.borderColor = [[UIColor grayColor] CGColor];
 
 }
 

@@ -41,6 +41,7 @@
 		7EC4B8721A734ACE00BA97C8 /* checkBoxLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC4B8711A734ACE00BA97C8 /* checkBoxLabel.m */; };
 		7EC59A121A6DA4B20044E5C0 /* level1AutonomousViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC59A111A6DA4B20044E5C0 /* level1AutonomousViewController.m */; };
 		7EC71E161A78697600E3546B /* level1PitTeleopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC71E151A78697600E3546B /* level1PitTeleopViewController.m */; };
+		7ED0F0BF1A7B5488004237F6 /* level1PitMiscViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED0F0BE1A7B5488004237F6 /* level1PitMiscViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,8 @@
 		7EC59A111A6DA4B20044E5C0 /* level1AutonomousViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = level1AutonomousViewController.m; sourceTree = "<group>"; };
 		7EC71E141A78697600E3546B /* level1PitTeleopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = level1PitTeleopViewController.h; sourceTree = "<group>"; };
 		7EC71E151A78697600E3546B /* level1PitTeleopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = level1PitTeleopViewController.m; sourceTree = "<group>"; };
+		7ED0F0BD1A7B5488004237F6 /* level1PitMiscViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = level1PitMiscViewController.h; sourceTree = "<group>"; };
+		7ED0F0BE1A7B5488004237F6 /* level1PitMiscViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = level1PitMiscViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,6 +291,8 @@
 				7EC59A111A6DA4B20044E5C0 /* level1AutonomousViewController.m */,
 				7EC71E141A78697600E3546B /* level1PitTeleopViewController.h */,
 				7EC71E151A78697600E3546B /* level1PitTeleopViewController.m */,
+				7ED0F0BD1A7B5488004237F6 /* level1PitMiscViewController.h */,
+				7ED0F0BE1A7B5488004237F6 /* level1PitMiscViewController.m */,
 			);
 			name = "Pit Scout Controller";
 			sourceTree = "<group>";
@@ -410,6 +415,7 @@
 				7EA3E3171A1AF39D00F534A5 /* webConnector.m in Sources */,
 				7E94F7B01A49FFB70087C196 /* kragerStepperView.m in Sources */,
 				7EC71E161A78697600E3546B /* level1PitTeleopViewController.m in Sources */,
+				7ED0F0BF1A7B5488004237F6 /* level1PitMiscViewController.m in Sources */,
 				7E0E6FF91A26739E004969C0 /* level1ProfilesViewController.m in Sources */,
 				7E95DEFE1A47EC57000D9A6D /* matchScoutTableCell.m in Sources */,
 				7E98771B1A244F92004735C8 /* level1MenuViewController.m in Sources */,

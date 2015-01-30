@@ -208,9 +208,9 @@ static level1PitScoutViewController* instance;
 
 -(void)viewDidLayoutSubviews {
     NSLog(@"LAYED OUT");
-    scrollView.frame = CGRectMake(scrollView.frame.origin.x, scrollView.frame.origin.y, 320, self.view.frame.size.height);
+    scrollView.frame = CGRectMake(scrollView.frame.origin.x, 0, 320, self.view.frame.size.height);
     scrollView.contentSize = CGSizeMake(320, 1600);
-    [scrollView  setCenter:CGPointMake(scrollView.center.x, scrollView.center.y - 62)];
+    //[scrollView  setCenter:CGPointMake(scrollView.center.x, scrollView.center.y - 62)];
     [self.view layoutSubviews];
     
 }

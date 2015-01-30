@@ -594,7 +594,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PDe-hX-5i8">
-                                        <rect key="frame" x="122" y="262" width="77" height="30"/>
+                                        <rect key="frame" x="122" y="335" width="77" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="BebasNeue" family="Bebas Neue" pointSize="25"/>
                                         <state key="normal" title="ADD TEAM">

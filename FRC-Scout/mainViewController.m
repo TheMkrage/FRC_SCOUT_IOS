@@ -121,8 +121,9 @@
 }
 
 -(void)viewDidLayoutSubviews {
-    scrollView.contentSize = CGSizeMake(320, 600);
-    [scrollView  setCenter:CGPointMake(scrollView.center.x, scrollView.center.y - 62)];
+    scrollView.contentSize = CGSizeMake(320, 800);
+    scrollView.frame = CGRectMake(scrollView.frame.origin.x, -56, 320, self.view.frame.size.height);
+    //[scrollView  setCenter:CGPointMake(scrollView.center.x, scrollView.center.y - 62)];
     
     [self.view layoutSubviews];
 }

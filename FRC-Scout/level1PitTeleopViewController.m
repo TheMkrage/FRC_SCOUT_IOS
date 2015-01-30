@@ -78,10 +78,11 @@
 
 -(void) setDelegates {
     [self cooperationTextField].delegate = self;
+    [self preferredTextField].delegate = self;
 }
 
 -(void) singleTap:(UITapGestureRecognizer*)gesture {
-    NSLog(@"TAP");
+
     [self turnOffActiveAspect];
 }
 
@@ -90,11 +91,19 @@
         [activeAspect setHidden:YES];
     } else {
         [activeAspect resignFirstResponder];
+            NSLog(@"TAP");
     }
 }
 
 - (void) setAllPickersHidden {
     self.cooperationPicker.hidden = YES;
+    self.preferredPicker.hidden = YES;
+}
+-(void)textFieldShouldBeEditable: (UITextField*)field {
+    textFieldShouldEdit = true;
+    
+    
+    [field becomeFirstResponder];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -116,18 +125,22 @@
         textFieldShouldEdit= NO;
         return YES;
     }
-    if(([self cooperationPicker].hidden == NO)) {
+    NSLog(@"GFD");
+    if(([self cooperationPicker].hidden == NO || [self preferredPicker].hidden == NO)) {
         activeAspect = NULL;
         if([self cooperationPicker].hidden == NO) {
             [[self cooperationPicker] setSelectedValueToTextField];
+        }else if([self preferredPicker].hidden == NO) {
+            [[self preferredPicker] setSelectedValueToTextField];
         }
         [self setAllPickersHidden];
-        
-        
     }
+    
     if(activeTextField == [self cooperationTextField]){
         return [self textFieldShouldBeActive: self.cooperationPicker];
-    }    
+    }else if(activeTextField == [self preferredTextField]){
+        return [self textFieldShouldBeActive: self.preferredPicker];
+    }
     return YES;
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

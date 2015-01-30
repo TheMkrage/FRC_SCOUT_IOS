@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface level1PitMiscViewController : UIViewController
+@interface level1PitMiscViewController : UIViewController <UITextViewDelegate>
 
 @end

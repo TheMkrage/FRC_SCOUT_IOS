@@ -16,6 +16,10 @@
     UITextField *activeTextField;
     id activeAspect;
 }
+@property (strong, nonatomic) IBOutlet UITextField *cooperationTextField;
+@property (strong, nonatomic) IBOutlet kragerPickerView *cooperationPicker;
+
+@property (strong, nonatomic) IBOutlet UITextView *strategyTextView;
 
 
 @end
@@ -27,6 +31,7 @@
     self.tabBarController.title = @"Teleop";
     [self setFonts];
     [self setDelegates];
+    [self setAllPickersHidden];
     
 }
 - (void)viewDidLoad {
@@ -52,7 +57,7 @@
     NSLog(@"LAYED OUT");
     scrollView.frame = CGRectMake(scrollView.frame.origin.x, scrollView.frame.origin.y, 320, self.view.frame.size.height);
     scrollView.contentSize = CGSizeMake(320, 1600);
-    [scrollView  setCenter:CGPointMake(scrollView.center.x, scrollView.center.y - 62)];
+   
     [self.view layoutSubviews];
     
 }
@@ -62,11 +67,13 @@
 }
 
 -(void) setData {
+    [[self cooperationPicker] setData:@[@"None",@"Stacked",@"Not Stacked"] textField:[self cooperationTextField] withController:self];
     
+    [self cooperationTextField].placeholder = @"Cooperation";
 }
 
 -(void) setDelegates {
-    
+    [self cooperationTextField].delegate = self;
 }
 
 -(void) singleTap:(UITapGestureRecognizer*)gesture {
@@ -80,19 +87,62 @@
     } else {
         [activeAspect resignFirstResponder];
     }
+}
+
+- (void) setAllPickersHidden {
+    self.cooperationPicker.hidden = YES;
+}
+
+#pragma mark - UITextFieldDelegate
+-(BOOL) textFieldShouldBeActive: (kragerPickerView*) picker {
+    [picker setCenter:CGPointMake(picker.frame.origin.x + picker.frame.size.width/2, self.view.frame.size.height - 150)];
+    [picker setBackgroundColor:[UIColor whiteColor]];
+    NSLog(@":ACTIVEFADSFASDFASDFADS");
+    //[scrollView setScrollEnabled:NO];
+    activeAspect = picker;
+    picker.hidden = NO;
+    return NO;
+}
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    [self turnOffActiveAspect];
+    activeTextField = textField;
+    activeAspect = textField;
+    [scrollView setContentOffset:CGPointMake(0, activeTextField.center.y - scrollView.frame.size.height/4) animated:YES];
+    if(textFieldShouldEdit) {
+        textFieldShouldEdit= NO;
+        return YES;
+    }
+    if(([self cooperationPicker].hidden == NO)) {
+        activeAspect = NULL;
+        if([self cooperationPicker].hidden == NO) {
+            [[self cooperationPicker] setSelectedValueToTextField];
+        }
+        [self setAllPickersHidden];
+        
+        
+    }
+    if(activeTextField == [self cooperationTextField]){
+        return [self textFieldShouldBeActive: self.cooperationPicker];
+    }    
+    return YES;
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    NSLog(@"fds");
+    [textField resignFirstResponder];
+    return NO;
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField {
+    NSLog(@"ENDED");
+}
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    NSLog(@"SELECTED");
+    
+    activeTextField = textField;
+    
     
 }
 
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

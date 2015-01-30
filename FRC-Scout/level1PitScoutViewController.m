@@ -494,6 +494,7 @@ static level1PitScoutViewController* instance;
 
 #pragma mark - UITextViewDelegate
 -(void)textViewDidBeginEditing:(UITextView *)textView{
+    [scrollView setContentOffset:CGPointMake(0, ((UITextView*)activeAspect).center.y - scrollView.frame.size.height/4) animated:YES];
     [self turnOffActiveAspect];
     activeAspect = textView;
 }

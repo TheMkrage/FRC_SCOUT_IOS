@@ -260,6 +260,7 @@ static level1PitScoutViewController* instance;
     if([activeAspect isKindOfClass:[kragerPickerView class]]) {
         [activeAspect setHidden:YES];
     } else {
+        NSLog(@"STOP");
         [activeAspect resignFirstResponder];
     }
 
@@ -494,8 +495,10 @@ static level1PitScoutViewController* instance;
 
 #pragma mark - UITextViewDelegate
 -(void)textViewDidBeginEditing:(UITextView *)textView{
-    [self turnOffActiveAspect];
-    activeAspect = textView;
+    if(!(textView == activeAspect)) {
+        [self turnOffActiveAspect];
+        activeAspect = textView;
+    }
     [scrollView setContentOffset:CGPointMake(0, ((UITextView*)activeAspect).center.y - scrollView.frame.size.height/4) animated:YES];
 }
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range
@@ -516,6 +519,7 @@ static level1PitScoutViewController* instance;
     [textView resignFirstResponder];
 }
 -(BOOL)textViewShouldEndEditing:(UITextView *)textView {
+    NSLog(@"STOP");
     [textView resignFirstResponder];
     return YES;
 }

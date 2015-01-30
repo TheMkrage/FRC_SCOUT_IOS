@@ -18,6 +18,8 @@
 }
 @property (strong, nonatomic) IBOutlet UITextField *cooperationTextField;
 @property (strong, nonatomic) IBOutlet kragerPickerView *cooperationPicker;
+@property (strong, nonatomic) IBOutlet UITextField *preferredTextField;
+@property (strong, nonatomic) IBOutlet kragerPickerView *preferredPicker;
 
 @property (strong, nonatomic) IBOutlet UITextView *strategyTextView;
 
@@ -68,8 +70,10 @@
 
 -(void) setData {
     [[self cooperationPicker] setData:@[@"None",@"Stacked",@"Not Stacked"] textField:[self cooperationTextField] withController:self];
+    [[self preferredPicker] setData:@[@"Totes",@"Cans",@"Noodles",@"Cooperation",@"Other"] textField:[self preferredTextField] withController:self];
     
     [self cooperationTextField].placeholder = @"Cooperation";
+    [self preferredTextField].placeholder = @"Preferred Scoring";
 }
 
 -(void) setDelegates {
@@ -97,7 +101,7 @@
 -(BOOL) textFieldShouldBeActive: (kragerPickerView*) picker {
     [picker setCenter:CGPointMake(picker.frame.origin.x + picker.frame.size.width/2, self.view.frame.size.height - 150)];
     [picker setBackgroundColor:[UIColor whiteColor]];
-    NSLog(@":ACTIVEFADSFASDFASDFADS");
+    //NSLog(@":ACTIVEFADSFASDFASDFADS");
     //[scrollView setScrollEnabled:NO];
     activeAspect = picker;
     picker.hidden = NO;

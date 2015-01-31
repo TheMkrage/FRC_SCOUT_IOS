@@ -1626,7 +1626,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="gL6-ij-Z7x">
-                                <rect key="frame" x="0.0" y="56" width="320" height="646"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="704"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="M2z-aM-gsB" customClass="checkBoxLabel">
@@ -1813,6 +1813,31 @@
                                     </textField>
                                 </subviews>
                             </scrollView>
+                            <view contentMode="scaleToFill" id="xqI-6u-2qE" customClass="kragerPickerView">
+                                <rect key="frame" x="0.0" y="271" width="320" height="209"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" id="6Ad-OS-tMQ">
+                                        <rect key="frame" x="0.0" y="4" width="320" height="162"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ehx-mE-KMT">
+                                        <rect key="frame" x="142" y="170" width="37" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Done">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="doneButton:" destination="xqI-6u-2qE" eventType="touchUpInside" id="XRX-pP-6Nx"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="doneButton" destination="ehx-mE-KMT" id="Kk6-XC-wjO"/>
+                                    <outlet property="picker" destination="6Ad-OS-tMQ" id="PIT-RU-cPl"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1820,6 +1845,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="750"/>
                     <connections>
+                        <outlet property="autoPicker" destination="xqI-6u-2qE" id="5DB-ks-Mur"/>
                         <outlet property="byLandFillCheckBox" destination="7ui-qJ-2vU" id="lXT-Nf-aaD"/>
                         <outlet property="byYellowToteCheckBox" destination="RCe-F6-Ql5" id="bPo-aV-4dd"/>
                         <outlet property="immobileCheckBox" destination="qo4-Za-hZQ" id="1YK-ML-Qkw"/>

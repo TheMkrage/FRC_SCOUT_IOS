@@ -36,6 +36,7 @@
 @property (strong, nonatomic) IBOutlet checkBoxLabel *robotMovedCheckBox;
 @property (strong, nonatomic) IBOutlet UITextField *otherGoalsTextField;
 
+@property (strong, nonatomic) IBOutlet kragerPickerView *autoPicker;
 
 
 @end
@@ -103,7 +104,7 @@
 
 
 -(void) viewDidLayoutSubviews {
-    scrollView.frame = CGRectMake(scrollView.frame.origin.x, 56, 320, self.view.frame.size.height);
+    scrollView.frame = CGRectMake(scrollView.frame.origin.x , scrollView.frame.origin.y , 320, self.view.frame.size.height);
     scrollView.contentSize = CGSizeMake(320, 900);
     //[scrollView  setCenter:CGPointMake(scrollView.center.x, scrollView.center.y - 62)];
     [self.view layoutSubviews];

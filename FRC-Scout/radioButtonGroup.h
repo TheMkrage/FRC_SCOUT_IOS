@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "checkBoxLabel.h"
 @interface radioButtonGroup : NSObject
-
+-(void)setEverythingOtherThan:(checkBoxLabel*) checkBox;
 @end

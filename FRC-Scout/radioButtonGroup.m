@@ -7,6 +7,7 @@
 //
 
 #import "radioButtonGroup.h"
+#import "checkBoxLabel.h"
 @interface radioButtonGroup () {
 
 }
@@ -18,5 +19,8 @@
     self = [super init];
     self.arrayOfChecks = array;
     return self;
+}
+-(void)setEverythingOtherThan:(checkBoxLabel*) checkBox {
+    
 }
 @end

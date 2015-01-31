@@ -10,6 +10,7 @@
 #import "radioButtonGroup.h"
 @interface checkBoxLabel() {
     id hiddenObj;
+    radioButtonGroup *radioGroup;
 }
 @end
 @implementation checkBoxLabel

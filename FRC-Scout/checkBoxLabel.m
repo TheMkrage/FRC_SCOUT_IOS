@@ -7,6 +7,7 @@
 //
 
 #import "checkBoxLabel.h"
+#import "radioButtonGroup.h"
 @interface checkBoxLabel() {
     id hiddenObj;
 }
@@ -37,6 +38,9 @@
     else
     {
         [self setTitle:tickedBoxStr forState:UIControlStateNormal];
+        if(radioGroup != nil) {
+            [radioGroup setEverythingOtherThan:self];
+        }
         if(hiddenObj!= nil)
             [hiddenObj setHidden:NO];
     }

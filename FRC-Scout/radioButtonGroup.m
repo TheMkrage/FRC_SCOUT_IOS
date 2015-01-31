@@ -7,7 +7,16 @@
 //
 
 #import "radioButtonGroup.h"
+@interface radioButtonGroup () {
 
+}
+@property NSMutableArray *arrayOfChecks;
+@end
 @implementation radioButtonGroup
 
+-(id)initWithCheckBoxes:(NSMutableArray*) array {
+    self = [super init];
+    self.arrayOfChecks = array;
+    return self;
+}
 @end

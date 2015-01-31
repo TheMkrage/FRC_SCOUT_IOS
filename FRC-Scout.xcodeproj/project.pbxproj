@@ -12,6 +12,7 @@
 		7E0E6FF91A26739E004969C0 /* level1ProfilesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0E6FF81A26739E004969C0 /* level1ProfilesViewController.m */; };
 		7E0E6FFF1A26746E004969C0 /* level1RankingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0E6FFE1A26746E004969C0 /* level1RankingsViewController.m */; };
 		7E24AA5A1A29A58E00D13837 /* mileymelon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7E24AA591A29A58E00D13837 /* mileymelon.jpg */; };
+		7E2FFD271A7CA0D10089ABFF /* radioButtonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E2FFD261A7CA0D10089ABFF /* radioButtonGroup.m */; };
 		7E94F7AC1A49F2B40087C196 /* pickListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E94F7AB1A49F2B40087C196 /* pickListCell.m */; };
 		7E94F7B01A49FFB70087C196 /* kragerStepperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E94F7AF1A49FFB70087C196 /* kragerStepperView.m */; };
 		7E94FA9F1A493B7B0010D0FD /* pitScoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E94FA9E1A493B7B0010D0FD /* pitScoutView.m */; };
@@ -66,6 +67,8 @@
 		7E0E6FFE1A26746E004969C0 /* level1RankingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = level1RankingsViewController.m; sourceTree = "<group>"; };
 		7E0E70001A2714E7004969C0 /* Calibri Bold Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calibri Bold Italic.ttf"; sourceTree = "<group>"; };
 		7E24AA591A29A58E00D13837 /* mileymelon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mileymelon.jpg; sourceTree = "<group>"; };
+		7E2FFD251A7CA0D10089ABFF /* radioButtonGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = radioButtonGroup.h; sourceTree = "<group>"; };
+		7E2FFD261A7CA0D10089ABFF /* radioButtonGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = radioButtonGroup.m; sourceTree = "<group>"; };
 		7E94F7AA1A49F2B40087C196 /* pickListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pickListCell.h; sourceTree = "<group>"; };
 		7E94F7AB1A49F2B40087C196 /* pickListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pickListCell.m; sourceTree = "<group>"; };
 		7E94F7AE1A49FFB70087C196 /* kragerStepperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kragerStepperView.h; sourceTree = "<group>"; };
@@ -171,6 +174,8 @@
 				7EBF71FC1A6CEC5100A38BFE /* backNextView.m */,
 				7EC4B8701A734ACE00BA97C8 /* checkBoxLabel.h */,
 				7EC4B8711A734ACE00BA97C8 /* checkBoxLabel.m */,
+				7E2FFD251A7CA0D10089ABFF /* radioButtonGroup.h */,
+				7E2FFD261A7CA0D10089ABFF /* radioButtonGroup.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -422,6 +427,7 @@
 				7E94F7B01A49FFB70087C196 /* kragerStepperView.m in Sources */,
 				7EC71E161A78697600E3546B /* level1PitTeleopViewController.m in Sources */,
 				7ED0F0BF1A7B5488004237F6 /* level1PitMiscViewController.m in Sources */,
+				7E2FFD271A7CA0D10089ABFF /* radioButtonGroup.m in Sources */,
 				7E0E6FF91A26739E004969C0 /* level1ProfilesViewController.m in Sources */,
 				7E95DEFE1A47EC57000D9A6D /* matchScoutTableCell.m in Sources */,
 				7E98771B1A244F92004735C8 /* level1MenuViewController.m in Sources */,

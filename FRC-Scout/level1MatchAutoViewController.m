@@ -119,6 +119,10 @@
     [self pickerSetTo: (checkBoxLabel*) self.trashCansFromMiddleCheckBox];
 }
 
+- (void) pickerSetTo:(checkBoxLabel*) checkBox {
+    [self.autoPicker setHidden:NO];
+}
+
 -(void) singleTap: (UITapGestureRecognizer*)gesture {
     NSLog(@"TAP");
     [self turnOffActiveAspect];

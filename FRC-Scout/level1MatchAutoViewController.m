@@ -109,6 +109,15 @@
     //[scrollView  setCenter:CGPointMake(scrollView.center.x, scrollView.center.y - 62)];
     [self.view layoutSubviews];
 }
+- (IBAction)totesMovedCheckBox:(id)sender {
+    [self pickerSetTo: (checkBoxLabel*) self.totesMovedCheckBox];
+}
+- (IBAction)trashCansMovedCheckBox:(id)sender {
+    [self pickerSetTo: (checkBoxLabel*) self.trashCanMovedCheckBox];
+}
+- (IBAction)trashCansFromMiddleCheckBox:(id)sender {
+    [self pickerSetTo: (checkBoxLabel*) self.trashCansFromMiddleCheckBox];
+}
 
 -(void) singleTap: (UITapGestureRecognizer*)gesture {
     NSLog(@"TAP");

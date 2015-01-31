@@ -40,6 +40,7 @@
 		7EBF71FD1A6CEC5100A38BFE /* backNextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBF71FC1A6CEC5100A38BFE /* backNextView.m */; };
 		7EC4B8721A734ACE00BA97C8 /* checkBoxLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC4B8711A734ACE00BA97C8 /* checkBoxLabel.m */; };
 		7EC59A121A6DA4B20044E5C0 /* level1AutonomousViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC59A111A6DA4B20044E5C0 /* level1AutonomousViewController.m */; };
+		7EC685BD1A7C569800E44086 /* level1MatchAutoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC685BC1A7C569800E44086 /* level1MatchAutoViewController.m */; };
 		7EC71E161A78697600E3546B /* level1PitTeleopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC71E151A78697600E3546B /* level1PitTeleopViewController.m */; };
 		7ED0F0BF1A7B5488004237F6 /* level1PitMiscViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED0F0BE1A7B5488004237F6 /* level1PitMiscViewController.m */; };
 /* End PBXBuildFile section */
@@ -108,6 +109,8 @@
 		7EC4B8711A734ACE00BA97C8 /* checkBoxLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = checkBoxLabel.m; sourceTree = "<group>"; };
 		7EC59A101A6DA4B20044E5C0 /* level1AutonomousViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = level1AutonomousViewController.h; sourceTree = "<group>"; };
 		7EC59A111A6DA4B20044E5C0 /* level1AutonomousViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = level1AutonomousViewController.m; sourceTree = "<group>"; };
+		7EC685BB1A7C569800E44086 /* level1MatchAutoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = level1MatchAutoViewController.h; sourceTree = "<group>"; };
+		7EC685BC1A7C569800E44086 /* level1MatchAutoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = level1MatchAutoViewController.m; sourceTree = "<group>"; };
 		7EC71E141A78697600E3546B /* level1PitTeleopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = level1PitTeleopViewController.h; sourceTree = "<group>"; };
 		7EC71E151A78697600E3546B /* level1PitTeleopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = level1PitTeleopViewController.m; sourceTree = "<group>"; };
 		7ED0F0BD1A7B5488004237F6 /* level1PitMiscViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = level1PitMiscViewController.h; sourceTree = "<group>"; };
@@ -146,7 +149,6 @@
 				7E94F7AD1A49FF8C0087C196 /* Views */,
 				7E95DEFB1A47EC10000D9A6D /* Tables and Cell */,
 				7EBFBBF91A5A0221003316CE /* MainScreenControllers */,
-				7EC3717F1A5E5BDC00EF764A /* MatchViewControllers */,
 				7E24AA591A29A58E00D13837 /* mileymelon.jpg */,
 				7E0E6FF71A26739E004969C0 /* level1ProfilesViewController.h */,
 				7E0E6FF81A26739E004969C0 /* level1ProfilesViewController.m */,
@@ -266,6 +268,7 @@
 		7EBFBBF91A5A0221003316CE /* MainScreenControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7EC3717F1A5E5BDC00EF764A /* MatchViewControllers */,
 				7ECEB7B51A760EE200D5F40A /* Pit Scout Controller */,
 				7E95BBEC1A4646BF004F3828 /* level1TeamListTableViewController.h */,
 				7E95BBED1A4646BF004F3828 /* level1TeamListTableViewController.m */,
@@ -278,6 +281,8 @@
 			children = (
 				7E0E6FF41A267347004969C0 /* level1MatchScoutViewController.h */,
 				7E0E6FF51A267347004969C0 /* level1MatchScoutViewController.m */,
+				7EC685BB1A7C569800E44086 /* level1MatchAutoViewController.h */,
+				7EC685BC1A7C569800E44086 /* level1MatchAutoViewController.m */,
 			);
 			name = MatchViewControllers;
 			sourceTree = "<group>";
@@ -405,6 +410,7 @@
 				7E0E6FFF1A26746E004969C0 /* level1RankingsViewController.m in Sources */,
 				7EA3E2F71A1AEE4A00F534A5 /* mainViewController.m in Sources */,
 				7EA3E2EA1A1AEE4900F534A5 /* main.m in Sources */,
+				7EC685BD1A7C569800E44086 /* level1MatchAutoViewController.m in Sources */,
 				7EBBB0121A4CCB0D003F0C89 /* kragerPickerView.m in Sources */,
 				7EC59A121A6DA4B20044E5C0 /* level1AutonomousViewController.m in Sources */,
 				7EBF71FD1A6CEC5100A38BFE /* backNextView.m in Sources */,

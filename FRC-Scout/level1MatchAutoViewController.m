@@ -95,7 +95,8 @@
     [[self otherPosCheckBox] setHiddenObject:[self otherPosTextField]];
     [[self otherGoalsCheckBox] setHiddenObject:[self otherGoalsTextField]];
     NSMutableArray *startPosArray = [NSMutableArray arrayWithArray:@[self.byLandFillCheckBox, self.byYellowToteCheckBox, self.immobileCheckBox, self.otherPosCheckBox]];
-    radioButtonGroup *startingPosRadioGroup = [[radioButtonGroup alloc] initWithCheckBoxes:startPosArray];
+    radioButtonGroup *startingPosRadioGroup =
+    [[radioButtonGroup alloc] initWithCheckBoxes:startPosArray];
 }
 
 -(void) setDelegates {

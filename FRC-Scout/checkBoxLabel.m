@@ -38,9 +38,18 @@
     }
     else
     {
-        [self setTicked];
+        [self setTickedToggle];
     }
     
+}
+-(void) setTickedToggle {
+    NSString *untickedBoxStr = @"\u2610";
+    NSString *tickedBoxStr = @"\u2611";
+    [self setTitle:tickedBoxStr forState:UIControlStateNormal];
+    
+    if(hiddenObj!= nil)
+        [hiddenObj setHidden:NO];
+
 }
 
 -(void) setTicked {

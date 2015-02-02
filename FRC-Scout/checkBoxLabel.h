@@ -10,4 +10,6 @@
 
 @interface checkBoxLabel : UIButton
 -(void) setHiddenObject: (id) hiddenObject;
+-(void) setTicked;
+-(void) setUnticked;
 @end

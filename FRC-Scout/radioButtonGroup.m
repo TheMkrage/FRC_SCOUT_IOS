@@ -18,6 +18,9 @@
 -(id)initWithCheckBoxes:(NSMutableArray*) array {
     self = [super init];
     self.arrayOfChecks = array;
+    for(int i = 0; i < self.arrayOfChecks.count; i++) {
+        [[[self arrayOfChecks] objectAtIndex:i] setRadioGroup: self];
+    }
     return self;
 }
 -(void)setEverythingOtherThan:(checkBoxLabel*) checkBox {

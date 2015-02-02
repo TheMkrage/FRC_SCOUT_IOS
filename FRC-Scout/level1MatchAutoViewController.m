@@ -94,6 +94,7 @@
 -(void) setData {
     [[self otherPosCheckBox] setHiddenObject:[self otherPosTextField]];
     [[self otherGoalsCheckBox] setHiddenObject:[self otherGoalsTextField]];
+    
 }
 
 -(void) setDelegates {

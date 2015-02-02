@@ -43,6 +43,7 @@
 		7EC59A121A6DA4B20044E5C0 /* level1AutonomousViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC59A111A6DA4B20044E5C0 /* level1AutonomousViewController.m */; };
 		7EC685BD1A7C569800E44086 /* level1MatchAutoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC685BC1A7C569800E44086 /* level1MatchAutoViewController.m */; };
 		7EC71E161A78697600E3546B /* level1PitTeleopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC71E151A78697600E3546B /* level1PitTeleopViewController.m */; };
+		7ECCF80E1A7F4AF20026D6F2 /* scoutingapp.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ECCF80D1A7F4AF20026D6F2 /* scoutingapp.png */; };
 		7ED0F0BF1A7B5488004237F6 /* level1PitMiscViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED0F0BE1A7B5488004237F6 /* level1PitMiscViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +117,7 @@
 		7EC685BC1A7C569800E44086 /* level1MatchAutoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = level1MatchAutoViewController.m; sourceTree = "<group>"; };
 		7EC71E141A78697600E3546B /* level1PitTeleopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = level1PitTeleopViewController.h; sourceTree = "<group>"; };
 		7EC71E151A78697600E3546B /* level1PitTeleopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = level1PitTeleopViewController.m; sourceTree = "<group>"; };
+		7ECCF80D1A7F4AF20026D6F2 /* scoutingapp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scoutingapp.png; sourceTree = "<group>"; };
 		7ED0F0BD1A7B5488004237F6 /* level1PitMiscViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = level1PitMiscViewController.h; sourceTree = "<group>"; };
 		7ED0F0BE1A7B5488004237F6 /* level1PitMiscViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = level1PitMiscViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -234,6 +236,7 @@
 				7EA3E2F61A1AEE4A00F534A5 /* mainViewController.m */,
 				7EA3E3151A1AF39D00F534A5 /* webConnector.h */,
 				7EA3E3161A1AF39D00F534A5 /* webConnector.m */,
+				7ECCF80D1A7F4AF20026D6F2 /* scoutingapp.png */,
 				7E0E6FF01A2672BF004969C0 /* Level 1 */,
 				7EA3E2F81A1AEE4A00F534A5 /* Images.xcassets */,
 				7EA3E2E41A1AEE4900F534A5 /* Supporting Files */,
@@ -390,6 +393,7 @@
 				7EA3E2F41A1AEE4A00F534A5 /* Main_iPad.storyboard in Resources */,
 				7EA3E2F91A1AEE4A00F534A5 /* Images.xcassets in Resources */,
 				7EA3E2F11A1AEE4A00F534A5 /* Main_iPhone.storyboard in Resources */,
+				7ECCF80E1A7F4AF20026D6F2 /* scoutingapp.png in Resources */,
 				7E9778CF1A2055CE008B2D3A /* BebasNeue.otf in Resources */,
 				7E24AA5A1A29A58E00D13837 /* mileymelon.jpg in Resources */,
 				7EA3E2E81A1AEE4900F534A5 /* InfoPlist.strings in Resources */,

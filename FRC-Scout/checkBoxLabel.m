@@ -13,7 +13,9 @@
     radioButtonGroup *radioGroup;
 }
 @end
+
 @implementation checkBoxLabel
+
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [touches anyObject];
@@ -32,20 +34,32 @@
     
     if ([[self titleLabel].text isEqualToString:tickedBoxStr])
     {
-        [self setTitle:untickedBoxStr forState:UIControlStateNormal];
-        if(hiddenObj!= nil)
-            [hiddenObj setHidden:YES];
+        [self setUnticked];
     }
     else
     {
-        [self setTitle:tickedBoxStr forState:UIControlStateNormal];
-        if(radioGroup != nil) {
-            [radioGroup setEverythingOtherThan:self];
-        }
-        if(hiddenObj!= nil)
-            [hiddenObj setHidden:NO];
+        [self setTicked];
     }
     
+}
+
+-(void) setTicked {
+    NSString *untickedBoxStr = @"\u2610";
+    NSString *tickedBoxStr = @"\u2611";
+    [self setTitle:tickedBoxStr forState:UIControlStateNormal];
+    if(radioGroup != nil) {
+        [radioGroup setEverythingOtherThan:self];
+    }
+    if(hiddenObj!= nil)
+        [hiddenObj setHidden:NO];
+}
+
+-(void) setUnticked {
+    NSString *untickedBoxStr = @"\u2610";
+    NSString *tickedBoxStr = @"\u2611";
+    [self setTitle:untickedBoxStr forState:UIControlStateNormal];
+    if(hiddenObj!= nil)
+        [hiddenObj setHidden:YES];
 }
 
 -(void) setHiddenObject: (id) hiddenObject2 {

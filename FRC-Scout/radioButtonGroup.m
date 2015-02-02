@@ -21,6 +21,9 @@
     return self;
 }
 -(void)setEverythingOtherThan:(checkBoxLabel*) checkBox {
-    
+    int index;
+    for(int i = 0; i < [self arrayOfChecks].count; i ++) {
+        if(checkBox == arrarOfChecks.alloc)
+    }
 }
 @end

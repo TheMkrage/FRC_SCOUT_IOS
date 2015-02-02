@@ -23,8 +23,11 @@
 -(void)setEverythingOtherThan:(checkBoxLabel*) checkBox {
     int index;
     for(int i = 0; i < [self arrayOfChecks].count; i ++) {
-        if(checkBox == [arrarOfChecks objectAtIndex:i])
-            checkBox to
+        if(checkBox == [[self arrayOfChecks] objectAtIndex:i])
+            [[[self arrayOfChecks] objectAtIndex:i] setTicked];
+        else {
+            [[[self arrayOfChecks] objectAtIndex:i] setUnticked];
+        }
             
     }
 }

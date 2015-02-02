@@ -10,4 +10,5 @@
 #import "checkBoxLabel.h"
 @interface radioButtonGroup : NSObject
 -(void)setEverythingOtherThan:(checkBoxLabel*) checkBox;
+-(id)initWithCheckBoxes:(NSMutableArray*) array;
 @end

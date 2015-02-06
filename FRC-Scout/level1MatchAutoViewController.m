@@ -58,7 +58,8 @@
 -(void) viewDidLoad {
     [super viewDidLoad];
     
-    
+    [[self autoPicker] setHidden:YES];
+    [[self autoPicker] setCenter:CGPointMake(self.autoPicker.frame.origin.x + self.autoPicker.frame.size.width/2, self.view.frame.size.height - 150)];
     UITapGestureRecognizer *singleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
     singleTapGestureRecognizer.numberOfTapsRequired = 1;
     singleTapGestureRecognizer.enabled = YES;
@@ -88,12 +89,18 @@
     [[self trashCansFromMiddleCheckBox] setTitle:@"\u2610" forState:UIControlStateNormal];
     [[self robotMovedCheckBox] setTitle:@"\u2610" forState:UIControlStateNormal];
     [[self otherGoalsCheckBox] setTitle:@"\u2610" forState:UIControlStateNormal];
+    
+    [[self totesStackedCheckBox] setHiddenObject:[self autoPicker]];
+    [[self totesMovedCheckBox] setHiddenObject:[self autoPicker]];
+    [[self trashCansFromMiddleCheckBox] setHiddenObject:[self autoPicker]];
+    [[self trashCanMovedCheckBox] setHiddenObject:[self autoPicker]];
 }
 
 
 -(void) setData {
     [[self otherPosCheckBox] setHiddenObject:[self otherPosTextField]];
     [[self otherGoalsCheckBox] setHiddenObject:[self otherGoalsTextField]];
+    [[self autoPicker] setData:@[@"1",@"2",@"3",@"4",@"5"] textField:nil withController:self];
     NSMutableArray *startPosArray = [NSMutableArray arrayWithArray:@[self.byLandFillCheckBox, self.byYellowToteCheckBox, self.immobileCheckBox, self.otherPosCheckBox]];
     radioButtonGroup *startingPosRadioGroup =
     [[radioButtonGroup alloc] initWithCheckBoxes:startPosArray];
@@ -109,7 +116,7 @@
 
 
 -(void) viewDidLayoutSubviews {
-    scrollView.frame = CGRectMake(scrollView.frame.origin.x , scrollView.frame.origin.y + 62, 320, self.view.frame.size.height);
+    scrollView.frame = CGRectMake(scrollView.frame.origin.x , scrollView.frame.origin.y, 320, self.view.frame.size.height);
     scrollView.contentSize = CGSizeMake(320, 900);
     //[scrollView  setCenter:CGPointMake(scrollView.center.x, scrollView.center.y - 62)];
     [self.view layoutSubviews];

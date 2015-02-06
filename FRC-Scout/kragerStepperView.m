@@ -24,6 +24,7 @@
         value = 0;
         // Initialization code
     }
+    
     return self;
 }
 

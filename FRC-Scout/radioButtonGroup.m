@@ -20,14 +20,16 @@
     self.arrayOfChecks = array;
     for(int i = 0; i < self.arrayOfChecks.count; i++) {
         [[[self arrayOfChecks] objectAtIndex:i] setRadioGroup: self];
+        NSLog(@"%d",
+              i);
     }
     return self;
 }
 -(void)setEverythingOtherThan:(checkBoxLabel*) checkBox {
-    int index;
+    NSLog(@"FDSAFA");
     for(int i = 0; i < [self arrayOfChecks].count; i ++) {
         if(checkBox == [[self arrayOfChecks] objectAtIndex:i])
-            [[[self arrayOfChecks] objectAtIndex:i] setTicked];
+            [[[self arrayOfChecks] objectAtIndex:i] setTickedToggle];
         else {
             [[[self arrayOfChecks] objectAtIndex:i] setUnticked];
         }

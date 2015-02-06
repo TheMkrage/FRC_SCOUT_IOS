@@ -12,6 +12,7 @@
 @interface checkBoxLabel : UIButton
 -(void) setHiddenObject: (id) hiddenObject;
 -(void) setTicked;
+-(void) setTickedToggle;
 -(void) setUnticked;
 -(void) setRadioGroup: (radioButtonGroup*) group;
 @end

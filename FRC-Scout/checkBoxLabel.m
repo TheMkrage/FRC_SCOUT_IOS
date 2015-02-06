@@ -38,7 +38,7 @@
     }
     else
     {
-        [self setTickedToggle];
+        [self setTicked];
     }
     
 }
@@ -56,6 +56,7 @@
     NSString *untickedBoxStr = @"\u2610";
     NSString *tickedBoxStr = @"\u2611";
     [self setTitle:tickedBoxStr forState:UIControlStateNormal];
+    NSLog(@"TICK");
     if(radioGroup != nil) {
         [radioGroup setEverythingOtherThan:self];
     }

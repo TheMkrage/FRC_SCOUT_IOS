@@ -97,6 +97,8 @@
     NSMutableArray *startPosArray = [NSMutableArray arrayWithArray:@[self.byLandFillCheckBox, self.byYellowToteCheckBox, self.immobileCheckBox, self.otherPosCheckBox]];
     radioButtonGroup *startingPosRadioGroup =
     [[radioButtonGroup alloc] initWithCheckBoxes:startPosArray];
+    NSMutableArray *autoOptions = [NSMutableArray arrayWithArray:@[self.robotMovedCheckBox, self.totesMovedCheckBox, self.trashCanMovedCheckBox, self.trashCansFromMiddleCheckBox, self.totesStackedCheckBox, self.otherGoalsCheckBox]];
+    radioButtonGroup *autoOptionsRadioGroup = [[radioButtonGroup alloc] initWithCheckBoxes:autoOptions];
 }
 
 -(void) setDelegates {

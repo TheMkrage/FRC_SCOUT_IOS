@@ -16,6 +16,65 @@
 
 @implementation webConnector
 
+-(void) sendImage: (UIImage*) image{
+    CFReadStreamRef rstream;
+    CFWriteStreamRef wstream;
+    
+    //connect to server
+    CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)@"mrflark.org", 3309, &rstream, &wstream);
+    
+    NSInputStream* is = objc_unretainedObject(rstream);
+    [is scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    [is open];
+    
+    NSOutputStream* os = objc_unretainedObject(wstream);
+    [os scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    [os open];
+    
+    //send a string
+#warning DID NOT COMPLETE SWITCHES, THE FIRST MAX SPEED SHOULD BE ONE SPEED, TWO SPEED
+    
+    //send an image
+    
+    NSLog(@"loading image...");
+    NSMutableData* data = [[NSMutableData alloc] init];
+    [data appendData:UIImagePNGRepresentation(image)];
+    [data appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    
+    NSLog(@"image loaded");
+    NSLog(@"%lu", (unsigned long)[data bytes]);
+    
+    
+    bool sendingImage = true;
+    NSUInteger loc = 0;
+    while(sendingImage) {
+        
+        NSData* temp = [data subdataWithRange:NSMakeRange(loc, 1024)];
+        const uint8_t* bytes = (const uint8_t*)[temp bytes];
+        [os write:bytes maxLength:[data length]];
+        if(loc > [data length])
+            sendingImage = false;
+        loc += 1024;
+        
+    }
+    
+    
+    NSLog(@"sent data");
+    
+    
+    /* //this send method doesn't work
+     uint8_t buf[1024];
+     NSInteger* bytesRead;
+     bytesRead = [is read:buf maxLength:1024];
+     NSString* stringFromData = [[NSString alloc] initWithBytes:buf length:bytesRead encoding:NSUTF8StringEncoding];
+     
+     NSLog(@"%@", stringFromData);
+     */
+    [is close];
+    [os close];
+
+}
 
 - (void)downloadItems{
     //downloads the json for you

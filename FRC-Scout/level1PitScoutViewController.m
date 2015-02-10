@@ -283,9 +283,13 @@ static level1PitScoutViewController* instance;
     [os scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     [os open];
  
+    NSMutableData* data = [[NSMutableData alloc] init];
+    [data appendData:UIImageJPEGRepresentation(chooseImage, .5)];
+    //[data appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    
     //send a string
 #warning DID NOT COMPLETE SWITCHES, THE FIRST MAX SPEED SHOULD BE ONE SPEED, TWO SPEED
-    NSString *toSend = [NSString stringWithFormat:@"{status:2,cmd:\"add team\",team_number:%@,weight:%@,height:%@,speed:%@,cim:\"%@\",drivetrain:\"%@\",lift:\"%@\",max_speed:%@,frame_strength:%@,max_tote:%@,tote_stack_height:%@,can:%@}", [self teamTextField].text, [self weightTextField].text, [self heightTextField].text, [self maxSpeedTextField].text, [self cimTextField].text, [self driveTextField].text, [self liftTextField].text, [self maxSpeedTextField].text, [self frameStrengthTextField].text, [self maxTotesAtOneTimeTextField].text, [self maxToteHeightTextField].text, [self maxCanHeightTextField].text];
+    NSString *toSend = [NSString stringWithFormat:@"{status:2,cmd:\"add team\",team_number:%@,weight:%@,height:%@,speed:%@,cim:\"%@\",drivetrain:\"%@\",lift:\"%@\",max_speed:%@,frame_strength:%@,max_tote:%@,tote_stack_height:%@,can:%@,length:%lu}", [self teamTextField].text, [self weightTextField].text, [self heightTextField].text, [self maxSpeedTextField].text, [self cimTextField].text, [self driveTextField].text, [self liftTextField].text, [self maxSpeedTextField].text, [self frameStrengthTextField].text, [self maxTotesAtOneTimeTextField].text, [self maxToteHeightTextField].text, [self maxCanHeightTextField].text, (unsigned long)[data length]];
      NSData *dataString = [toSend dataUsingEncoding:NSUTF8StringEncoding];
     const uint8_t* bytesString = (const uint8_t*)[dataString bytes];
     [os write:bytesString maxLength:[dataString length]];
@@ -293,27 +297,32 @@ static level1PitScoutViewController* instance;
     //send an image
     
     NSLog(@"loading image...");
-    NSMutableData* data = [[NSMutableData alloc] init];
-    [data appendData:UIImagePNGRepresentation(chooseImage)];
-    [data appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    
     
 
     NSLog(@"image loaded");
     NSLog(@"%lu", (unsigned long)[data bytes]);
     
     
+    
+    
     bool sendingImage = true;
     NSUInteger loc = 0;
-    while(sendingImage) {
-        
-        NSData* temp = [data subdataWithRange:NSMakeRange(loc, 1024)];
-        const uint8_t* bytes = (const uint8_t*)[temp bytes];
+   
+    //while(sendingImage) {
+        //NSData* data4 = [NSData dataWithData:data];
+        //NSData* temp = [data4 subdataWithRange:NSMakeRange(0, [data length])];
+        const uint8_t* bytes = (const uint8_t*)[data bytes];
         [os write:bytes maxLength:[data length]];
-        if(loc > [data length])
+        loc += 10240;
+        /*if(loc > [data4 length]) {
+            loc -= 1024;
+            NSUInteger finalLength = [data4 length] - loc;
             sendingImage = false;
-        loc += 1024;
+        }*/
         
-    }
+        
+    //}
     
     
     NSLog(@"sent data");

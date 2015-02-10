@@ -283,20 +283,23 @@ static level1PitScoutViewController* instance;
     [is open];
     
     NSOutputStream* os = objc_unretainedObject(wstream);
-    [os setDelegate: self];
-    [os scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     
+    data = [NSMutableData dataWithData:UIImageJPEGRepresentation(chooseImage, .5)];
+    
+    [os scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    [os setDelegate:self];
     [os open];
     
  
-    data = UIImageJPEGRepresentation(chooseImage, .5);
+    
     
     //[data appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
     
     //send a string
 #warning DID NOT COMPLETE SWITCHES, THE FIRST MAX SPEED SHOULD BE ONE SPEED, TWO SPEED
     NSString *toSend = [NSString stringWithFormat:@"{status:2,cmd:\"add team\",team_number:%@,weight:%@,height:%@,speed:%@,cim:\"%@\",drivetrain:\"%@\",lift:\"%@\",max_speed:%@,frame_strength:%@,max_tote:%@,tote_stack_height:%@,can:%@,length:%lu}", [self teamTextField].text, [self weightTextField].text, [self heightTextField].text, [self maxSpeedTextField].text, [self cimTextField].text, [self driveTextField].text, [self liftTextField].text, [self maxSpeedTextField].text, [self frameStrengthTextField].text, [self maxTotesAtOneTimeTextField].text, [self maxToteHeightTextField].text, [self maxCanHeightTextField].text, (unsigned long)[data length]];
-     NSData *dataString = [toSend dataUsingEncoding:NSUTF8StringEncoding];
+   // NSString *toSend = [NSString stringWithFormat:@"]
+    NSData *dataString = [toSend dataUsingEncoding:NSUTF8StringEncoding];
     const uint8_t* bytesString = (const uint8_t*)[dataString bytes];
     [os write:bytesString maxLength:[dataString length]];
     
@@ -305,7 +308,7 @@ static level1PitScoutViewController* instance;
     NSLog(@"loading image...");
     
     
-
+    
     NSLog(@"image loaded");
    
     
@@ -355,6 +358,9 @@ static level1PitScoutViewController* instance;
      */
     [is close];
     [os close];
+    /*?[os setDelegate: self];
+    [os open];
+    [os ]*/
     
     
     
@@ -554,13 +560,11 @@ static level1PitScoutViewController* instance;
 
 - (void)stream:(NSStream *)stream handleEvent:(NSStreamEvent)eventCode
 {
+    NSLog(@"FDAF");
     switch(eventCode) {
         case NSStreamEventHasSpaceAvailable:
         {
-            NSString *toSend = [NSString stringWithFormat:@"{status:2,cmd:\"add team\",team_number:%@,weight:%@,height:%@,speed:%@,cim:\"%@\",drivetrain:\"%@\",lift:\"%@\",max_speed:%@,frame_strength:%@,max_tote:%@,tote_stack_height:%@,can:%@,length:%lu}", [self teamTextField].text, [self weightTextField].text, [self heightTextField].text, [self maxSpeedTextField].text, [self cimTextField].text, [self driveTextField].text, [self liftTextField].text, [self maxSpeedTextField].text, [self frameStrengthTextField].text, [self maxTotesAtOneTimeTextField].text, [self maxToteHeightTextField].text, [self maxCanHeightTextField].text, (unsigned long)[data length]];
-            NSData *dataString = [toSend dataUsingEncoding:NSUTF8StringEncoding];
-            const uint8_t* bytesString = (const uint8_t*)[dataString bytes];
-            [(NSOutputStream*) stream write:bytesString maxLength:[dataString length]];
+            
             
             uint8_t *readBytes = (uint8_t *)[data mutableBytes];
             readBytes += byteIndex; // instance variable to move pointer

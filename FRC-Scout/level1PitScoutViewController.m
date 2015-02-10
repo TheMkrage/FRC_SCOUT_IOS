@@ -25,6 +25,9 @@
     IBOutlet UIButton *addTeamButton;
     bool textFieldShouldEdit;
     UIImage *chooseImage;
+    
+    NSMutableData* data;
+    NSUInteger byteIndex;
     }
 
 //ROBOT SPECS
@@ -280,11 +283,14 @@ static level1PitScoutViewController* instance;
     [is open];
     
     NSOutputStream* os = objc_unretainedObject(wstream);
+    [os setDelegate: self];
     [os scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    
     [os open];
+    
  
-    NSMutableData* data = [[NSMutableData alloc] init];
-    [data appendData:UIImageJPEGRepresentation(chooseImage, .5)];
+    data = UIImageJPEGRepresentation(chooseImage, .5);
+    
     //[data appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
     
     //send a string
@@ -301,7 +307,7 @@ static level1PitScoutViewController* instance;
     
 
     NSLog(@"image loaded");
-    NSLog(@"%lu", (unsigned long)[data bytes]);
+   
     
     
     
@@ -312,9 +318,20 @@ static level1PitScoutViewController* instance;
     //while(sendingImage) {
         //NSData* data4 = [NSData dataWithData:data];
         //NSData* temp = [data4 subdataWithRange:NSMakeRange(0, [data length])];
+    
+    /*uint8_t *readBytes = (uint8_t *)[data mutableBytes];
+    readBytes += byteIndex; // instance variable to move pointer
+    int data_len = [data length];
+    unsigned int len = ((data_len - byteIndex >= 1024) ?
+                        1024 : (data_len-byteIndex));
+    uint8_t buf[len];
+    (void)memcpy(buf, readBytes, len);
+    len = [os write:(const uint8_t *)buf maxLength:len];
+    byteIndex += len;
+    
         const uint8_t* bytes = (const uint8_t*)[data bytes];
         [os write:bytes maxLength:[data length]];
-        loc += 10240;
+        loc += 10240;*/
         /*if(loc > [data4 length]) {
             loc -= 1024;
             NSUInteger finalLength = [data4 length] - loc;
@@ -338,6 +355,8 @@ static level1PitScoutViewController* instance;
      */
     [is close];
     [os close];
+    
+    
     
     
     /*double filename = [[NSDate date] timeIntervalSince1970];
@@ -533,6 +552,30 @@ static level1PitScoutViewController* instance;
     return YES;
 }
 
+- (void)stream:(NSStream *)stream handleEvent:(NSStreamEvent)eventCode
+{
+    switch(eventCode) {
+        case NSStreamEventHasSpaceAvailable:
+        {
+            NSString *toSend = [NSString stringWithFormat:@"{status:2,cmd:\"add team\",team_number:%@,weight:%@,height:%@,speed:%@,cim:\"%@\",drivetrain:\"%@\",lift:\"%@\",max_speed:%@,frame_strength:%@,max_tote:%@,tote_stack_height:%@,can:%@,length:%lu}", [self teamTextField].text, [self weightTextField].text, [self heightTextField].text, [self maxSpeedTextField].text, [self cimTextField].text, [self driveTextField].text, [self liftTextField].text, [self maxSpeedTextField].text, [self frameStrengthTextField].text, [self maxTotesAtOneTimeTextField].text, [self maxToteHeightTextField].text, [self maxCanHeightTextField].text, (unsigned long)[data length]];
+            NSData *dataString = [toSend dataUsingEncoding:NSUTF8StringEncoding];
+            const uint8_t* bytesString = (const uint8_t*)[dataString bytes];
+            [(NSOutputStream*) stream write:bytesString maxLength:[dataString length]];
+            
+            uint8_t *readBytes = (uint8_t *)[data mutableBytes];
+            readBytes += byteIndex; // instance variable to move pointer
+            int data_len = [data length];
+            unsigned int len = ((data_len - byteIndex >= 1024) ?
+                                1024 : (data_len-byteIndex));
+            uint8_t buf[len];
+            (void)memcpy(buf, readBytes, len);
+            len = [(NSOutputStream*)stream write:(const uint8_t *)buf maxLength:len];
+            byteIndex += len;
+            break;
+        }
+            // continued ...
+    }
+}
 
 @end
 

@@ -8,6 +8,7 @@
 
 #import "level1PitScoutViewController.h"
 #import "kragerPickerView.h"
+#import "JSONObject.h"
 @interface level1PitScoutViewController ()
 {
     id activeAspect;
@@ -287,7 +288,6 @@ static level1PitScoutViewController* instance;
     
     
     [os scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-    [os setDelegate:self];
     [os open];
     
  
@@ -296,7 +296,28 @@ static level1PitScoutViewController* instance;
     //[data appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
     
 #warning DID NOT COMPLETE SWITCHES, THE FIRST MAX SPEED SHOULD BE ONE SPEED, TWO SPEED
-    NSString *toSend = [NSString stringWithFormat:@"{status:2,cmd:\"add team\",team_number:%@,weight:%@,height:%@,speed:%@,cim:\"%@\",drivetrain:\"%@\",lift:\"%@\",max_speed:%@,frame_strength:%@,max_tote:%@,tote_stack_height:%@,can:%@,image_size:%lu}", [self teamTextField].text, [self weightTextField].text, [self heightTextField].text, [self maxSpeedTextField].text, [self cimTextField].text, [self driveTextField].text, [self liftTextField].text, [self maxSpeedTextField].text, [self frameStrengthTextField].text, [self maxTotesAtOneTimeTextField].text, [self maxToteHeightTextField].text, [self maxCanHeightTextField].text, (unsigned long)[UIImagePNGRepresentation(chooseImage) length]];
+    //NSString *toSend = [NSString stringWithFormat:@"{status:2,cmd:\"add team\",team_number:%@,weight:%@,height:%@,speed:%@,cim:\"%@\",drivetrain:\"%@\",lift:\"%@\",max_speed:%@,frame_strength:%@,max_tote:%@,tote_stack_height:%@,can:%@,image_size:%lu}", [self teamTextField].text, [self weightTextField].text, [self heightTextField].text, [self maxSpeedTextField].text, [self cimTextField].text, [self driveTextField].text, [self liftTextField].text, [self maxSpeedTextField].text, [self frameStrengthTextField].text, [self maxTotesAtOneTimeTextField].text, [self maxToteHeightTextField].text, [self maxCanHeightTextField].text, (unsigned long)[UIImagePNGRepresentation(chooseImage) length]];
+    JSONObject *sendingData = [[JSONObject alloc] init];
+    [sendingData addObject:[NSNumber numberWithInt:2] forKey:@"status"];
+    [sendingData addObject:@"add team" forKey:@"cmd"];
+    [sendingData addObject:self.teamTextField.text forKey:@"team_number"];
+    [sendingData addObject:self.weightTextField.text forKey:@"weight"];
+    [sendingData addObject:self.heightTextField.text forKey:@"height"];
+    [sendingData addObject:self.maxSpeedTextField.text forKey:@"speed"];
+    [sendingData addObject:self.cimTextField.text forKey:@"cim"];
+    [sendingData addObject:self.driveTextField.text forKey:@"drivetrain"];
+    [sendingData addObject:self.liftTextField.text forKey:@"lift"];
+#warning fix boolean thing with JSONobject
+    //[sendingData addObject:(Boolean)[self.twoSpeedSlider isOn]  forKey:@"max_speed"];
+    [sendingData addObject:self.frameStrengthTextField.text forKey:@"frame_strength"];
+    [sendingData addObject:self.maxTotesAtOneTimeTextField.text forKey:@"max_tote"];
+    [sendingData addObject:self.maxToteHeightTextField.text forKey:@"tote_stack_height"];
+    [sendingData addObject:self.maxCanHeightTextField.text forKey:@"can"];
+    [sendingData addObject:[NSNumber numberWithLong: [UIImagePNGRepresentation(chooseImage) length]] forKey:@"image_size"];
+    
+    NSString* toSend = [sendingData getJSONString];
+    NSLog(@"%@",toSend);
+    
     // NSString *toSend = [NSString stringWithFormat:@"]
     
     data = [NSMutableData dataWithData:[toSend dataUsingEncoding:NSUTF8StringEncoding]];

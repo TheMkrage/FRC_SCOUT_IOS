@@ -12,5 +12,5 @@
 
 -(id) init;
 -(NSString*) getJSONString;
-
+-(void) addObject: (id)obj forKey: (NSString*)key;
 @end

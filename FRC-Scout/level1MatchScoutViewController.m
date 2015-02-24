@@ -78,32 +78,6 @@
 }
 
 - (IBAction)uploadButton:(UIButton *)sender {
-    __block int status = -1;
-    NSString *noteDataString = [NSString stringWithFormat:@"TEAM_NUMBER=%@&MATCH_NUMBER=%@&SHOTS_MADE=%ld&SHOTS_TAKEN=%ld&FOULS=%ld&TRUSS=%ld&COMMENTS=%@", self.teamTextField.text,matchTextField.text,(long)stackedCansStepper.getCurrentValue,(long)stackedTotesStepper.getCurrentValue,(long)maxStackStepper.getCurrentValue,numberOfStacksStepper.getCurrentValue,
-        commentsTextView.text];
-    NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
-    
-    NSURL * url = [NSURL URLWithString:@"http://mrflark.org/frcscout/ios-ms-upload.php"];
-    NSMutableURLRequest * urlRequest = [NSMutableURLRequest requestWithURL:url];
-    [urlRequest setHTTPMethod:@"POST"];
-    
-    [urlRequest setHTTPBody:[noteDataString dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    
-    NSURLSessionDataTask * dataTask =[defaultSession dataTaskWithRequest:urlRequest completionHandler:^(NSData *dataRaw, NSURLResponse *header, NSError *error) {
-    
-        status = 1;
-    }];
-    
-    [dataTask resume];
-    
-    if(status == -1) {
-        afterUploadMessageLabel.text = @"No Server Connection";
-    }else {
-        afterUploadMessageLabel.text = @"Success";
-    }
-    afterUploadMessageLabel.hidden = NO;
+#warning no uploadButton yet
 }
-
 @end

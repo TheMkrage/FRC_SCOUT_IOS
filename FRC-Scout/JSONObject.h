@@ -10,4 +10,7 @@
 
 @interface JSONObject : NSObject
 
+-(id) init;
+-(NSString*) getJSONString;
+
 @end

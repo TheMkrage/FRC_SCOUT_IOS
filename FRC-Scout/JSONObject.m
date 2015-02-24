@@ -43,5 +43,9 @@
     return @"";
 }
 
+-(void) addObject: (id)obj forKey: (NSString*)key {
+    if(obj != nil)
+        [self.dictionary setObject:obj forKey:key];
+}
 
 @end

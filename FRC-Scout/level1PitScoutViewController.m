@@ -325,137 +325,15 @@ static level1PitScoutViewController* instance;
 
     }
     
-    //send a string
-
-    
-    //send an image
-    
     NSLog(@"loading image...");
-    
-    
-    
     NSLog(@"image loaded");
-   
-    
-    
-    
-    
-    bool sendingImage = true;
-    NSUInteger loc = 0;
-   
-    //while(sendingImage) {
-        //NSData* data4 = [NSData dataWithData:data];
-        //NSData* temp = [data4 subdataWithRange:NSMakeRange(0, [data length])];
-    
-    /*uint8_t *readBytes = (uint8_t *)[data mutableBytes];
-    readBytes += byteIndex; // instance variable to move pointer
-    int data_len = [data length];
-    unsigned int len = ((data_len - byteIndex >= 1024) ?
-                        1024 : (data_len-byteIndex));
-    uint8_t buf[len];
-    (void)memcpy(buf, readBytes, len);
-    len = [os write:(const uint8_t *)buf maxLength:len];
-    byteIndex += len;
-    
-        const uint8_t* bytes = (const uint8_t*)[data bytes];
-        [os write:bytes maxLength:[data length]];
-        loc += 10240;*/
-        /*if(loc > [data4 length]) {
-            loc -= 1024;
-            NSUInteger finalLength = [data4 length] - loc;
-            sendingImage = false;
-        }*/
-        
-        
-    //}
-    
-    
     NSLog(@"sent data");
     
-    
-    /* //this send method doesn't work
-     uint8_t buf[1024];
-     NSInteger* bytesRead;
-     bytesRead = [is read:buf maxLength:1024];
-     NSString* stringFromData = [[NSString alloc] initWithBytes:buf length:bytesRead encoding:NSUTF8StringEncoding];
-     
-     NSLog(@"%@", stringFromData);
-     */
     [is close];
     [os close];
-    /*?[os setDelegate: self];
-    [os open];
-    [os ]*/
-    
-    
-    
-    
-    /*double filename = [[NSDate date] timeIntervalSince1970];
-    NSNumber *myDoubleNumber = [NSNumber numberWithDouble:filename];
-    NSString *stringOfFilename = [myDoubleNumber stringValue];
-    
-    NSString *lastFiveDigits = [stringOfFilename substringWithRange: NSMakeRange( stringOfFilename.length - 6, 5)];
-    
-    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"http://mrflark.org/frcscout/image-upload.php?filename=%@%@", lastFiveDigits, @".jpg"]];
-    
-    NSMutableData* data = [[NSMutableData alloc] init];
-    
-    UIImage* image = [UIImage imageNamed: @"mileymelon.jpg"];
-    
-    //NSString *noteDataString = [NSString stringWithFormat:@"filename="];
-    //[data appendData: [noteDataString dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    
-    NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
-    
-    [data appendData:imageData];
-    NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
-    
-    NSMutableURLRequest * urlRequest = [NSMutableURLRequest requestWithURL:url];
-    [urlRequest setHTTPMethod:@"POST"];
-    
-    [urlRequest setHTTPBody:imageData];
-    
-    
-    NSURLSessionDataTask * dataTask =[defaultSession dataTaskWithRequest:urlRequest completionHandler:^(NSData *dataRaw, NSURLResponse *header, NSError *error) {
-        NSDictionary *json = [NSJSONSerialization
-                              JSONObjectWithData:dataRaw
-                              options:kNilOptions error:&error];
-        
-    }];
-    
-    [dataTask resume];
-    
-    //____________________________________________
-    [self uploadTextWithImage: lastFiveDigits];*/
    
+}
 
-}
--(void) uploadTextWithImage:(NSString*) picFileName{
-    NSString *picLocation = [NSString stringWithFormat:@"pictures/%@%@,",picFileName,@".jpg"];
-    
-    
-    NSString *noteDataString = [NSString stringWithFormat:@"NUMBER=%@&PIC_LOC=&%@DRIVE=%@&SHOOTER=%@&INTAKE=%@&COMMENTS=%@", [self teamTextField].text, picLocation, self.driveTextField.text,self.liftTextField.text,self.intakeTextField.text,commentsTextView.text];
-    NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
-    
-    NSURL * url = [NSURL URLWithString:@"http://mrflark.org/frcscout/ios-ps-upload.php"];
-    NSMutableURLRequest * urlRequest = [NSMutableURLRequest requestWithURL:url];
-    [urlRequest setHTTPMethod:@"POST"];
-    
-    [urlRequest setHTTPBody:[noteDataString dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    
-    NSURLSessionDataTask * dataTask =[defaultSession dataTaskWithRequest:urlRequest completionHandler:^(NSData *dataRaw, NSURLResponse *header, NSError *error) {
-        NSDictionary *json = [NSJSONSerialization
-                              JSONObjectWithData:dataRaw
-                              options:kNilOptions error:&error];
-        
-    }];
-    
-    [dataTask resume];
-}
 -(void)textFieldShouldBeEditable: (UITextField*)field {
     textFieldShouldEdit = true;
     
@@ -583,28 +461,6 @@ static level1PitScoutViewController* instance;
     return YES;
 }
 
-- (void)stream:(NSStream *)stream handleEvent:(NSStreamEvent)eventCode
-{
-    NSLog(@"FDAF");
-    switch(eventCode) {
-        case NSStreamEventHasSpaceAvailable:
-        {
-            
-            
-            uint8_t *readBytes = (uint8_t *)[data mutableBytes];
-            readBytes += byteIndex; // instance variable to move pointer
-            int data_len = [data length];
-            unsigned int len = ((data_len - byteIndex >= 1024) ?
-                                1024 : (data_len-byteIndex));
-            uint8_t buf[len];
-            (void)memcpy(buf, readBytes, len);
-            len = [(NSOutputStream*)stream write:(const uint8_t *)buf maxLength:len];
-            byteIndex += len;
-            break;
-        }
-            // continued ...
-    }
-}
 
 @end
 

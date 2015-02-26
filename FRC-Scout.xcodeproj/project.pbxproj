@@ -44,6 +44,7 @@
 		7EC685BD1A7C569800E44086 /* level1MatchAutoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC685BC1A7C569800E44086 /* level1MatchAutoViewController.m */; };
 		7EC6A1231A9FDC7F001C43B9 /* QueueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6A1221A9FDC7F001C43B9 /* QueueManager.m */; };
 		7EC6A1271A9FE26D001C43B9 /* JSONRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6A1261A9FE26D001C43B9 /* JSONRequest.m */; };
+		7EC6A12A1A9FE618001C43B9 /* ImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6A1291A9FE618001C43B9 /* ImageRequest.m */; };
 		7EC71E161A78697600E3546B /* level1PitTeleopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC71E151A78697600E3546B /* level1PitTeleopViewController.m */; };
 		7ECCF80E1A7F4AF20026D6F2 /* scoutingapp.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ECCF80D1A7F4AF20026D6F2 /* scoutingapp.png */; };
 		7ED0F0BF1A7B5488004237F6 /* level1PitMiscViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED0F0BE1A7B5488004237F6 /* level1PitMiscViewController.m */; };
@@ -122,6 +123,8 @@
 		7EC6A1221A9FDC7F001C43B9 /* QueueManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueueManager.m; sourceTree = "<group>"; };
 		7EC6A1251A9FE26D001C43B9 /* JSONRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONRequest.h; sourceTree = "<group>"; };
 		7EC6A1261A9FE26D001C43B9 /* JSONRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONRequest.m; sourceTree = "<group>"; };
+		7EC6A1281A9FE618001C43B9 /* ImageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageRequest.h; sourceTree = "<group>"; };
+		7EC6A1291A9FE618001C43B9 /* ImageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageRequest.m; sourceTree = "<group>"; };
 		7EC71E141A78697600E3546B /* level1PitTeleopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = level1PitTeleopViewController.h; sourceTree = "<group>"; };
 		7EC71E151A78697600E3546B /* level1PitTeleopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = level1PitTeleopViewController.m; sourceTree = "<group>"; };
 		7ECCF80D1A7F4AF20026D6F2 /* scoutingapp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scoutingapp.png; sourceTree = "<group>"; };
@@ -313,6 +316,8 @@
 				7EC6A1221A9FDC7F001C43B9 /* QueueManager.m */,
 				7EC6A1251A9FE26D001C43B9 /* JSONRequest.h */,
 				7EC6A1261A9FE26D001C43B9 /* JSONRequest.m */,
+				7EC6A1281A9FE618001C43B9 /* ImageRequest.h */,
+				7EC6A1291A9FE618001C43B9 /* ImageRequest.m */,
 			);
 			name = "Queue Uploader";
 			sourceTree = "<group>";
@@ -448,6 +453,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E0E6FFF1A26746E004969C0 /* level1RankingsViewController.m in Sources */,
+				7EC6A12A1A9FE618001C43B9 /* ImageRequest.m in Sources */,
 				7EC6A1231A9FDC7F001C43B9 /* QueueManager.m in Sources */,
 				7EA3E2F71A1AEE4A00F534A5 /* mainViewController.m in Sources */,
 				7EA3E2EA1A1AEE4900F534A5 /* main.m in Sources */,

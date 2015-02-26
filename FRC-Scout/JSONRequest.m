@@ -7,7 +7,25 @@
 //
 
 #import "JSONRequest.h"
+#import "JSONObject.h"
+@interface JSONRequest ()
+@property(nonatomic, strong) NSString* mainString;
+
+@end
 
 @implementation JSONRequest
 
+-(id) initWithJSONString:(NSString*)string {
+    self = [super init];
+    self.mainString = string;
+    return self;
+}
+-(id) initWithJSONObject: (JSONObject*)object {
+    self = [super init];
+    self.mainString = [object getJSONString];
+    return self;
+}
+-(void) upload {
+    
+}
 @end

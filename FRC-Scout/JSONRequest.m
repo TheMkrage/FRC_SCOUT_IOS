@@ -26,6 +26,32 @@
     return self;
 }
 -(void) upload {
+    if (self.mainString == nil) {
+        return;
+    }
+    CFReadStreamRef rstream;
+    CFWriteStreamRef wstream;
     
+    //connect to server
+    CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)@"mrflark.org", 3309, &rstream, &wstream);
+    NSLog(@"connected to server");
+    
+    //init i/o with server
+    NSInputStream* is = objc_unretainedObject(rstream);
+    [is scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    [is open];
+    
+    NSOutputStream* os = objc_unretainedObject(wstream);
+    
+    
+    
+    [os scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    [os open];
+
+    NSMutableData* data = [NSMutableData dataWithData:[self.mainString dataUsingEncoding:NSUTF8StringEncoding]];
+    const uint8_t* bytesString = (const uint8_t*)[data bytes];
+    [os write:bytesString maxLength:[data length]];
+    
+    [os close];
 }
 @end

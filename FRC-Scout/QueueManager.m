@@ -33,6 +33,6 @@
 }
 
 -(void) tryToUpload {
-    
+    NSLog(@"IM TRYING BABE");
 }
 @end

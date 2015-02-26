@@ -7,7 +7,7 @@
 //
 
 #import "level1MenuViewController.h"
-
+#import "QueueManager.h"
 #define FONT_BEBAS_15 [UIFont fontWithName: @"Bebas Neue" size:15]
 #define FONT_BEBAS_25 [UIFont fontWithName: @"Bebas Neue" size:25]
 #define FONT_BEBAS_28 [UIFont fontWithName: @"Bebas Neue" size:28]
@@ -37,6 +37,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    QueueManager* man = [QueueManager sharedManager];
 
     PitScoutButton.titleLabel.font = FONT_BEBAS_25;
     MatchScoutButton.titleLabel.font = FONT_BEBAS_25;

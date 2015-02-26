@@ -6,8 +6,11 @@
 //  Copyright (c) 2015 Matthew Krager. All rights reserved.
 //
 
+#import "JSONObject.h"
 #import <Foundation/Foundation.h>
 
 @interface JSONRequest : NSObject
-
+-(id) initWithJSONObject: (JSONObject*)object;
+-(id) initWithString: (NSString*)string;
+-(void) upload;
 @end

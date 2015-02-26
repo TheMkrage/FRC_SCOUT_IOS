@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface ImageRequest : NSObject
-
+-(void) upload;
+-(id) initWithImage:(UIImage*)image;
 @end

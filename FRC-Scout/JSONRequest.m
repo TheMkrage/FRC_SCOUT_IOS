@@ -15,7 +15,7 @@
 
 @implementation JSONRequest
 
--(id) initWithJSONString:(NSString*)string {
+-(id) initWithString: (NSString*)string {
     self = [super init];
     self.mainString = string;
     return self;

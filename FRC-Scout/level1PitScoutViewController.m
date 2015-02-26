@@ -307,8 +307,8 @@ static level1PitScoutViewController* instance;
     [sendingData addObject:self.cimTextField.text forKey:@"cim"];
     [sendingData addObject:self.driveTextField.text forKey:@"drivetrain"];
     [sendingData addObject:self.liftTextField.text forKey:@"lift"];
-#warning fix boolean thing with JSONobject
-    //[sendingData addObject:(Boolean)[self.twoSpeedSlider isOn]  forKey:@"max_speed"];
+#warning boolean using nsnumber value
+    [sendingData addObject:[NSNumber numberWithBool:[self.twoSpeedSlider isOn]]  forKey:@"max_speed"];
     [sendingData addObject:self.frameStrengthTextField.text forKey:@"frame_strength"];
     [sendingData addObject:self.maxTotesAtOneTimeTextField.text forKey:@"max_tote"];
     [sendingData addObject:self.maxToteHeightTextField.text forKey:@"tote_stack_height"];
@@ -326,7 +326,7 @@ static level1PitScoutViewController* instance;
     
     data = [NSMutableData dataWithData:UIImagePNGRepresentation(chooseImage)];
     
-    int len = [data length];
+    NSUInteger len = [data length];
     Byte* byteData = (Byte*)malloc(len);
     [data getBytes:byteData length:len];
     
@@ -336,8 +336,8 @@ static level1PitScoutViewController* instance;
     while(byteIndex < [data length]) {
         uint8_t *readBytes = (uint8_t *)[data mutableBytes];
         readBytes += byteIndex; // instance variable to move pointer
-        int data_len = [data length];
-        unsigned int len = ((data_len - byteIndex >= 1024) ?
+        NSUInteger data_len = [data length];
+        unsigned long len = ((data_len - byteIndex >= 1024) ?
                             1024 : (data_len-byteIndex));
         uint8_t buf[len];
         (void)memcpy(buf, readBytes, len);

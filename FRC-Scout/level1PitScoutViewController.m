@@ -415,7 +415,6 @@ static level1PitScoutViewController* instance;
         }else if(![self cimPicker].isHidden) {
             [[self cimPicker] setSelectedValueToTextField];
         }
-        NSLog(@"%hhd",[self liftPicker].hidden);
         [self setAllPickersHidden];
        
        

@@ -7,7 +7,13 @@
 //
 
 #import "QueueManager.h"
+@interface QueueManager () {
+    
+}
 
+@property NSTimer* uploadTimer;
+
+@end
 @implementation QueueManager
 
 + (id)sharedManager {
@@ -21,8 +27,12 @@
 
 - (id)init {
     if (self = [super init]) {
-        //someProperty = @"Default Property Value";
+        self.uploadTimer = [NSTimer scheduledTimerWithTimeInterval:15.0 target:self selector:@selector(tryToUpload) userInfo:nil repeats:YES];
     }
     return self;
+}
+
+-(void) tryToUpload {
+    
 }
 @end

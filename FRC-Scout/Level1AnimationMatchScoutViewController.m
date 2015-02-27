@@ -38,13 +38,12 @@
 
 -(void) setPicsHidden {
     
-    [self.Tote0 setImage:[UIImage imageNamed:@"Tote.png"]];
-    [self.Tote0 setHidden:YES];
-    [self.Tote1 setHidden:YES];
-    [self.Tote2 setHidden:YES];
-    [self.Tote3 setHidden:YES];
-    [self.Tote4 setHidden:YES];
-    [self.Tote5 setHidden:YES];
+    [self.Tote0 setImage:[UIImage imageNamed:@"ToteOutline.png"]];
+    [self.Tote1 setImage:[UIImage imageNamed:@"ToteOutline.png"]];
+    [self.Tote2 setImage:[UIImage imageNamed:@"ToteOutline.png"]];
+    [self.Tote3 setImage:[UIImage imageNamed:@"ToteOutline.png"]];
+    [self.Tote4 setImage:[UIImage imageNamed:@"ToteOutline.png"]];
+    [self.Tote5 setImage:[UIImage imageNamed:@"ToteOutline.png"]];
     
     NSLog(@"%f", self.Tote5.frame.origin.x);
     NSLog(@"%f", self.Tote5.frame.origin.y);
@@ -77,9 +76,9 @@
         NSLog(@"THING%d",i);
         if(y < [[self.toteArray objectAtIndex:i] frame].origin.y) {
             NSLog(@"MAKE IT VISIIVLE");
-            [[self.toteArray objectAtIndex:i] setHidden:NO];
+            [[self.toteArray objectAtIndex:i] setImage:[UIImage imageNamed:@"Tote.png"]];
         }else {
-            [[self.toteArray objectAtIndex:i] setHidden:YES];
+           [[self.toteArray objectAtIndex:i] setImage:[UIImage imageNamed:@"ToteOutline.png"]];
         }
     }
 }

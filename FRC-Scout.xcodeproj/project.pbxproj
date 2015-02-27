@@ -47,7 +47,7 @@
 		7EC6A12A1A9FE618001C43B9 /* ImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6A1291A9FE618001C43B9 /* ImageRequest.m */; };
 		7EC6A12D1A9FF5CA001C43B9 /* Level1AnimationMatchScoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6A12C1A9FF5CA001C43B9 /* Level1AnimationMatchScoutViewController.m */; };
 		7EC6A12F1A9FFB7B001C43B9 /* BadTote.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EC6A12E1A9FFB7B001C43B9 /* BadTote.png */; };
-		7EC6A1311AA002E2001C43B9 /* Tote.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EC6A1301AA002E2001C43B9 /* Tote.png */; };
+		7EC6A1311AA002E2001C43B9 /* Tote.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EC6A1301AA002E2001C43B9 /* Tote.jpg */; };
 		7EC6A1341AA0083B001C43B9 /* ToteSwipeGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6A1331AA0083B001C43B9 /* ToteSwipeGestureRecognizer.m */; };
 		7EC71E161A78697600E3546B /* level1PitTeleopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC71E151A78697600E3546B /* level1PitTeleopViewController.m */; };
 		7ECCF80E1A7F4AF20026D6F2 /* scoutingapp.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ECCF80D1A7F4AF20026D6F2 /* scoutingapp.png */; };
@@ -132,7 +132,7 @@
 		7EC6A12B1A9FF5CA001C43B9 /* Level1AnimationMatchScoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level1AnimationMatchScoutViewController.h; sourceTree = "<group>"; };
 		7EC6A12C1A9FF5CA001C43B9 /* Level1AnimationMatchScoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level1AnimationMatchScoutViewController.m; sourceTree = "<group>"; };
 		7EC6A12E1A9FFB7B001C43B9 /* BadTote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BadTote.png; sourceTree = "<group>"; };
-		7EC6A1301AA002E2001C43B9 /* Tote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tote.png; sourceTree = "<group>"; };
+		7EC6A1301AA002E2001C43B9 /* Tote.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Tote.jpg; sourceTree = "<group>"; };
 		7EC6A1321AA0083B001C43B9 /* ToteSwipeGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToteSwipeGestureRecognizer.h; sourceTree = "<group>"; };
 		7EC6A1331AA0083B001C43B9 /* ToteSwipeGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToteSwipeGestureRecognizer.m; sourceTree = "<group>"; };
 		7EC71E141A78697600E3546B /* level1PitTeleopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = level1PitTeleopViewController.h; sourceTree = "<group>"; };
@@ -173,8 +173,8 @@
 			children = (
 				7E9877191A244F92004735C8 /* level1MenuViewController.h */,
 				7E98771A1A244F92004735C8 /* level1MenuViewController.m */,
-				7E94F7AD1A49FF8C0087C196 /* Views */,
 				7E95DEFB1A47EC10000D9A6D /* Tables and Cell */,
+				7E94F7AD1A49FF8C0087C196 /* Views */,
 				7EBFBBF91A5A0221003316CE /* MainScreenControllers */,
 				7E24AA591A29A58E00D13837 /* mileymelon.jpg */,
 				7E0E6FF71A26739E004969C0 /* level1ProfilesViewController.h */,
@@ -248,7 +248,8 @@
 		7EA3E2E31A1AEE4900F534A5 /* FRC-Scout */ = {
 			isa = PBXGroup;
 			children = (
-				7EC6A1301AA002E2001C43B9 /* Tote.png */,
+				7EC6A1351AA03A97001C43B9 /* Gestures */,
+				7EC6A1301AA002E2001C43B9 /* Tote.jpg */,
 				7EC6A12E1A9FFB7B001C43B9 /* BadTote.png */,
 				7EC6A1241A9FDC87001C43B9 /* Queue Uploader */,
 				7EEA9ADF1A9C46EC00BF5CCA /* JSON */,
@@ -302,8 +303,6 @@
 		7EBFBBF91A5A0221003316CE /* MainScreenControllers */ = {
 			isa = PBXGroup;
 			children = (
-				7EC6A1321AA0083B001C43B9 /* ToteSwipeGestureRecognizer.h */,
-				7EC6A1331AA0083B001C43B9 /* ToteSwipeGestureRecognizer.m */,
 				7EC3717F1A5E5BDC00EF764A /* MatchViewControllers */,
 				7ECEB7B51A760EE200D5F40A /* Pit Scout Controller */,
 				7E95BBEC1A4646BF004F3828 /* level1TeamListTableViewController.h */,
@@ -336,6 +335,15 @@
 				7EC6A1291A9FE618001C43B9 /* ImageRequest.m */,
 			);
 			name = "Queue Uploader";
+			sourceTree = "<group>";
+		};
+		7EC6A1351AA03A97001C43B9 /* Gestures */ = {
+			isa = PBXGroup;
+			children = (
+				7EC6A1321AA0083B001C43B9 /* ToteSwipeGestureRecognizer.h */,
+				7EC6A1331AA0083B001C43B9 /* ToteSwipeGestureRecognizer.m */,
+			);
+			name = Gestures;
 			sourceTree = "<group>";
 		};
 		7ECEB7B51A760EE200D5F40A /* Pit Scout Controller */ = {
@@ -442,7 +450,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EC6A1311AA002E2001C43B9 /* Tote.png in Resources */,
+				7EC6A1311AA002E2001C43B9 /* Tote.jpg in Resources */,
 				7EA3E2F41A1AEE4A00F534A5 /* Main_iPad.storyboard in Resources */,
 				7EA3E2F91A1AEE4A00F534A5 /* Images.xcassets in Resources */,
 				7EA3E2F11A1AEE4A00F534A5 /* Main_iPhone.storyboard in Resources */,

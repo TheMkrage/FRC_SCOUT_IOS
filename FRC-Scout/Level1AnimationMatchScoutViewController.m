@@ -9,7 +9,7 @@
 #import "Level1AnimationMatchScoutViewController.h"
 #import "ToteSwipeGestureRecognizer.h"
 @interface Level1AnimationMatchScoutViewController ()
-@property (strong, nonatomic) IBOutlet UIImageView *Tote0;
+@property (weak, nonatomic) IBOutlet UIImageView *Tote0;
 @property (strong, nonatomic) IBOutlet UIImageView *Tote1;
 @property (strong, nonatomic) IBOutlet UIImageView *Tote2;
 @property (strong, nonatomic) IBOutlet UIImageView *Tote3;
@@ -37,6 +37,8 @@
 }
 
 -(void) setPicsHidden {
+    
+    [self.Tote0 setImage:[UIImage imageNamed:@"Tote.png"]];
     [self.Tote0 setHidden:YES];
     [self.Tote1 setHidden:YES];
     [self.Tote2 setHidden:YES];

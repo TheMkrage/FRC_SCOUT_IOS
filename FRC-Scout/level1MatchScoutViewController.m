@@ -67,8 +67,6 @@
     //[scrollView  setCenter:CGPointMake(scrollView.center.x, scrollView.center.y)];
     //[nextToMatch setFrame:CGRectMake(nextToMatch.frame.origin.x, self.view.frame.size.height - 40, nextToMatch.frame.size.width, nextToMatch.frame.size.height)];
     
-    
-    
 }
 
 - (void)didReceiveMemoryWarning

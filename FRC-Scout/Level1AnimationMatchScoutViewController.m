@@ -22,11 +22,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setPicsHidden];
+    
+    
     ToteSwipeGestureRecognizer *recognizer;
     
     recognizer = [[ToteSwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:) controller:self];
     [recognizer setDirection:(UISwipeGestureRecognizerDirectionDown | UISwipeGestureRecognizerDirectionUp)];
     [[self view] addGestureRecognizer:recognizer];
+    
+    
+    NSLog(@"PIC HIDDEN");
 }
 
 -(void) setPicsHidden {
@@ -37,21 +44,40 @@
     [self.Tote4 setHidden:YES];
     [self.Tote5 setHidden:YES];
     
+    NSLog(@"%f", self.Tote5.frame.origin.x);
+    NSLog(@"%f", self.Tote5.frame.origin.y);
+    
+    self.toteArray = [[NSMutableArray alloc]init];
+    
     [self.toteArray addObject:self.Tote0];
     [self.toteArray addObject:self.Tote1];
     [self.toteArray addObject:self.Tote2];
     [self.toteArray addObject:self.Tote3];
     [self.toteArray addObject:self.Tote4];
     [self.toteArray addObject:self.Tote5];
+    
+    
+    NSLog(@"%lu", (unsigned long)self.toteArray.count);
 }
 -(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
     
 }
 
+-(void)viewDidLayoutSubviews {
+    [self.view layoutSubviews];
+}
+
+
 -(void) updateTotesWithX: (int) x Y: (int) y {
+    NSLog(@"UPDATING %lu", (unsigned long)self.toteArray.count)
+    ;
     for(int i = 0; i < self.toteArray.count; i++) {
+        NSLog(@"THING%d",i);
         if(y < [[self.toteArray objectAtIndex:i] frame].origin.y) {
+            NSLog(@"MAKE IT VISIIVLE");
             [[self.toteArray objectAtIndex:i] setHidden:NO];
+        }else {
+            [[self.toteArray objectAtIndex:i] setHidden:YES];
         }
     }
 }

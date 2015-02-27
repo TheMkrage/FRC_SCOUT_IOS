@@ -12,7 +12,7 @@
 }
 
 @property NSTimer* uploadTimer;
-
+@property NSMutableArray* arrayOfRequests;
 @end
 @implementation QueueManager
 
@@ -28,11 +28,19 @@
 - (id)init {
     if (self = [super init]) {
         self.uploadTimer = [NSTimer scheduledTimerWithTimeInterval:15.0 target:self selector:@selector(tryToUpload) userInfo:nil repeats:YES];
+        self.arrayOfRequests = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
 -(void) tryToUpload {
     NSLog(@"IM TRYING BABE");
+    [self performSelectorInBackground:@selector(saySomething) withObject:nil];
+}
+
+-(void) saySomething {
+    while(true) {
+        NSLog(@"dasf");
+    }
 }
 @end

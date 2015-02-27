@@ -29,6 +29,9 @@
 
 - (void)touchesMoved:(NSSet *)touches
            withEvent:(UIEvent *)event {
-    NSLog(@"MOVING");
+    UITouch* touch = [touches anyObject];
+    CGPoint point = [touch locationInView:self.controller.view];
+    NSLog(@"%f,%f", point.x, point.y);
+    [self.controller updateTotesWithX:point.x Y:point.y];
 }
 @end

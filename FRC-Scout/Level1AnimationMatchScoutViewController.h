@@ -10,4 +10,5 @@
 
 @interface Level1AnimationMatchScoutViewController : UIViewController 
 
+-(void) updateTotesWithX: (int) x Y: (int) y;
 @end

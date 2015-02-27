@@ -45,6 +45,8 @@
 		7EC6A1231A9FDC7F001C43B9 /* QueueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6A1221A9FDC7F001C43B9 /* QueueManager.m */; };
 		7EC6A1271A9FE26D001C43B9 /* JSONRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6A1261A9FE26D001C43B9 /* JSONRequest.m */; };
 		7EC6A12A1A9FE618001C43B9 /* ImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6A1291A9FE618001C43B9 /* ImageRequest.m */; };
+		7EC6A12D1A9FF5CA001C43B9 /* Level1AnimationMatchScoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6A12C1A9FF5CA001C43B9 /* Level1AnimationMatchScoutViewController.m */; };
+		7EC6A12F1A9FFB7B001C43B9 /* BadTote.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EC6A12E1A9FFB7B001C43B9 /* BadTote.png */; };
 		7EC71E161A78697600E3546B /* level1PitTeleopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC71E151A78697600E3546B /* level1PitTeleopViewController.m */; };
 		7ECCF80E1A7F4AF20026D6F2 /* scoutingapp.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ECCF80D1A7F4AF20026D6F2 /* scoutingapp.png */; };
 		7ED0F0BF1A7B5488004237F6 /* level1PitMiscViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED0F0BE1A7B5488004237F6 /* level1PitMiscViewController.m */; };
@@ -125,6 +127,9 @@
 		7EC6A1261A9FE26D001C43B9 /* JSONRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONRequest.m; sourceTree = "<group>"; };
 		7EC6A1281A9FE618001C43B9 /* ImageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageRequest.h; sourceTree = "<group>"; };
 		7EC6A1291A9FE618001C43B9 /* ImageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageRequest.m; sourceTree = "<group>"; };
+		7EC6A12B1A9FF5CA001C43B9 /* Level1AnimationMatchScoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level1AnimationMatchScoutViewController.h; sourceTree = "<group>"; };
+		7EC6A12C1A9FF5CA001C43B9 /* Level1AnimationMatchScoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level1AnimationMatchScoutViewController.m; sourceTree = "<group>"; };
+		7EC6A12E1A9FFB7B001C43B9 /* BadTote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BadTote.png; sourceTree = "<group>"; };
 		7EC71E141A78697600E3546B /* level1PitTeleopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = level1PitTeleopViewController.h; sourceTree = "<group>"; };
 		7EC71E151A78697600E3546B /* level1PitTeleopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = level1PitTeleopViewController.m; sourceTree = "<group>"; };
 		7ECCF80D1A7F4AF20026D6F2 /* scoutingapp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scoutingapp.png; sourceTree = "<group>"; };
@@ -238,6 +243,7 @@
 		7EA3E2E31A1AEE4900F534A5 /* FRC-Scout */ = {
 			isa = PBXGroup;
 			children = (
+				7EC6A12E1A9FFB7B001C43B9 /* BadTote.png */,
 				7EC6A1241A9FDC87001C43B9 /* Queue Uploader */,
 				7EEA9ADF1A9C46EC00BF5CCA /* JSON */,
 				7E0E70001A2714E7004969C0 /* Calibri Bold Italic.ttf */,
@@ -305,6 +311,8 @@
 				7E0E6FF51A267347004969C0 /* level1MatchScoutViewController.m */,
 				7EC685BB1A7C569800E44086 /* level1MatchAutoViewController.h */,
 				7EC685BC1A7C569800E44086 /* level1MatchAutoViewController.m */,
+				7EC6A12B1A9FF5CA001C43B9 /* Level1AnimationMatchScoutViewController.h */,
+				7EC6A12C1A9FF5CA001C43B9 /* Level1AnimationMatchScoutViewController.m */,
 			);
 			name = MatchViewControllers;
 			sourceTree = "<group>";
@@ -431,6 +439,7 @@
 				7EA3E2F11A1AEE4A00F534A5 /* Main_iPhone.storyboard in Resources */,
 				7ECCF80E1A7F4AF20026D6F2 /* scoutingapp.png in Resources */,
 				7E9778CF1A2055CE008B2D3A /* BebasNeue.otf in Resources */,
+				7EC6A12F1A9FFB7B001C43B9 /* BadTote.png in Resources */,
 				7E24AA5A1A29A58E00D13837 /* mileymelon.jpg in Resources */,
 				7EA3E2E81A1AEE4900F534A5 /* InfoPlist.strings in Resources */,
 			);
@@ -458,6 +467,7 @@
 				7EA3E2F71A1AEE4A00F534A5 /* mainViewController.m in Sources */,
 				7EA3E2EA1A1AEE4900F534A5 /* main.m in Sources */,
 				7EC685BD1A7C569800E44086 /* level1MatchAutoViewController.m in Sources */,
+				7EC6A12D1A9FF5CA001C43B9 /* Level1AnimationMatchScoutViewController.m in Sources */,
 				7EBBB0121A4CCB0D003F0C89 /* kragerPickerView.m in Sources */,
 				7EC59A121A6DA4B20044E5C0 /* level1AutonomousViewController.m in Sources */,
 				7EBF71FD1A6CEC5100A38BFE /* backNextView.m in Sources */,

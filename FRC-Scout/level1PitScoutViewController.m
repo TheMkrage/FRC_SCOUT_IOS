@@ -9,6 +9,9 @@
 #import "level1PitScoutViewController.h"
 #import "kragerPickerView.h"
 #import "JSONObject.h"
+#import "QueueManager.h"
+#import "JSONRequest.h"
+#import "ImageRequest.h"
 @interface level1PitScoutViewController ()
 {
     id activeAspect;
@@ -316,14 +319,25 @@ static level1PitScoutViewController* instance;
     [sendingData addObject:[NSNumber numberWithLong: [UIImagePNGRepresentation(chooseImage) length]] forKey:@"image_size"];
     
     NSString* toSend = [sendingData getJSONString];
+    
+    QueueManager* man = [QueueManager sharedManager];
+    JSONRequest* req = [[JSONRequest alloc] initWithString:toSend];
+    [man addRequestObject:req];
     NSLog(@"%@",toSend);
     
     // NSString *toSend = [NSString stringWithFormat:@"]
     
+    //in case qqueue dont work
+    /*
     data = [NSMutableData dataWithData:[toSend dataUsingEncoding:NSUTF8StringEncoding]];
     const uint8_t* bytesString = (const uint8_t*)[data bytes];
     [os write:bytesString maxLength:[data length]];
+    */
+    ImageRequest* imageReq = [[ImageRequest alloc] initWithImage:chooseImage];
+    [man addRequestObject:imageReq];
     
+    //in case queue doesnt work
+    /*
     data = [NSMutableData dataWithData:UIImagePNGRepresentation(chooseImage)];
     
     NSUInteger len = [data length];
@@ -349,7 +363,7 @@ static level1PitScoutViewController* instance;
     NSLog(@"loading image...");
     NSLog(@"image loaded");
     NSLog(@"sent data");
-    
+    */
     [is close];
     [os close];
    

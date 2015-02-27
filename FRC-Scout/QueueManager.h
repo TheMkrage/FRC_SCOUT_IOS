@@ -10,4 +10,5 @@
 
 @interface QueueManager : NSObject
 + (id)sharedManager;
+-(void) addRequestObject: (id) object;
 @end

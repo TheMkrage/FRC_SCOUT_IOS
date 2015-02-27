@@ -54,4 +54,8 @@
         [self.arrayOfRequests replaceObjectAtIndex:i-1 withObject:temp];
     }
 }
+
+-(void) addRequestObject: (id) object {
+    [self.arrayOfRequests addObject:object];
+}
 @end

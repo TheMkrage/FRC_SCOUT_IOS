@@ -944,6 +944,16 @@
                                             <outlet property="plusButton" destination="tBO-Lc-5Kh" id="821-OB-pNz"/>
                                         </connections>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Tqo-Cx-tPR">
+                                        <rect key="frame" x="209" y="301" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="ZW0-5d-mSc" kind="push" id="Llq-YH-OMP"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -969,6 +979,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qTY-ON-QZq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2478" y="-351"/>
+        </scene>
+        <!--Level1 Animation Match Scout View Controller-->
+        <scene sceneID="AqD-JC-uNq">
+            <objects>
+                <viewController id="ZW0-5d-mSc" customClass="Level1AnimationMatchScoutViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fcg-VZ-HQc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BadTote.png" id="PSR-0Q-5ru">
+                                <rect key="frame" x="34" y="417" width="120" height="74"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BadTote.png" id="vuV-VU-OxS">
+                                <rect key="frame" x="34" y="344" width="120" height="74"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BadTote.png" id="SwG-2V-gtP">
+                                <rect key="frame" x="34" y="270" width="120" height="74"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BadTote.png" id="Y4n-CW-eSm">
+                                <rect key="frame" x="34" y="197" width="120" height="74"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BadTote.png" id="86A-cP-FMT">
+                                <rect key="frame" x="34" y="123" width="120" height="74"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BadTote.png" id="NVQ-iP-dgq">
+                                <rect key="frame" x="34" y="50" width="120" height="74"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="QdT-XF-Lst"/>
+                    <connections>
+                        <outlet property="Tote0" destination="PSR-0Q-5ru" id="l6S-95-6Zx"/>
+                        <outlet property="Tote1" destination="vuV-VU-OxS" id="dv1-mn-okA"/>
+                        <outlet property="Tote2" destination="SwG-2V-gtP" id="6Gg-oy-NzP"/>
+                        <outlet property="Tote3" destination="Y4n-CW-eSm" id="EqD-Cx-djw"/>
+                        <outlet property="Tote4" destination="86A-cP-FMT" id="A8w-VH-Nvd"/>
+                        <outlet property="Tote5" destination="NVQ-iP-dgq" id="95A-2y-5xe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RsC-3Z-sVy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3116" y="-351"/>
         </scene>
         <!--Robot Specs-->
         <scene sceneID="gJh-cu-J6k">
@@ -1894,6 +1953,9 @@
             <point key="canvasLocation" x="2452" y="-1329"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="BadTote.png" width="725" height="453"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

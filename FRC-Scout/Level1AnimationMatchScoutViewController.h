@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Level1AnimationMatchScoutViewController : UIViewController
+@interface Level1AnimationMatchScoutViewController : UIViewController 
 
 @end

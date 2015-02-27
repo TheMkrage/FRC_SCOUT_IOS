@@ -7,7 +7,7 @@
 //
 
 #import "Level1AnimationMatchScoutViewController.h"
-
+#import "ToteSwipeGestureRecognizer.h"
 @interface Level1AnimationMatchScoutViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *Tote0;
 @property (strong, nonatomic) IBOutlet UIImageView *Tote1;
@@ -22,11 +22,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UISwipeGestureRecognizer *recognizer;
+    ToteSwipeGestureRecognizer *recognizer;
     
-    recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    recognizer = [[ToteSwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
     [recognizer setDirection:(UISwipeGestureRecognizerDirectionDown | UISwipeGestureRecognizerDirectionUp)];
     [[self view] addGestureRecognizer:recognizer];
+   
 }
 
 -(void) setPicsHidden {
@@ -45,7 +46,13 @@
     [self.toteArray addObject:self.Tote5];
 }
 -(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
+    for(int i = 0; i < self.toteArray.count; i++) {
+    }
+        
+    
     NSLog((@"SWIPE"));
+    NSLog(@"%f,%f", [recognizer locationInView:[recognizer view]].x,[recognizer locationInView:[recognizer view]].y);
+    NSLog(@"With 1: %f,%f", [recognizer locationOfTouch:1 inView:[recognizer view]].x,[recognizer locationOfTouch:1 inView:[recognizer view]].y);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,4 +70,8 @@
 }
 */
 
+- (BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    
+    return YES;
+}
 @end

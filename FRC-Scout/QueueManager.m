@@ -7,6 +7,8 @@
 //
 
 #import "QueueManager.h"
+#import "JSONRequest.h"
+#import "ImageRequest.h"
 @interface QueueManager () {
     
 }
@@ -35,12 +37,21 @@
 
 -(void) tryToUpload {
     NSLog(@"IM TRYING BABE");
-    [self performSelectorInBackground:@selector(saySomething) withObject:nil];
+    if(self.arrayOfRequests.count != 0)
+        [self performSelectorInBackground:@selector(uploadObjectZero) withObject:nil];
 }
 
--(void) saySomething {
-    while(true) {
-        NSLog(@"dasf");
+-(void) uploadObjectZero {
+    
+    if([[self.arrayOfRequests objectAtIndex:0] isKindOfClass: [JSONRequest class]]) {
+        [[self.arrayOfRequests objectAtIndex:0] upload];
+    }else if ([[self.arrayOfRequests objectAtIndex:0] isKindOfClass: [ImageRequest class]]) {
+        [[self.arrayOfRequests objectAtIndex:0] upload];
+    }
+    for(int i = 1; i < self.arrayOfRequests.count; i++) {
+        id temp = [self.arrayOfRequests objectAtIndex:1];
+        [self.arrayOfRequests removeObjectAtIndex:i];
+        [self.arrayOfRequests replaceObjectAtIndex:i-1 withObject:temp];
     }
 }
 @end

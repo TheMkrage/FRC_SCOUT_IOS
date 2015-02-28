@@ -169,6 +169,7 @@
         }else {
             [self.goOffScreenTimer invalidate];
             self.goOffScreenTimer = nil;
+            self.numberOfTotes = 0;
             doneGoingRight = false;
             
         }

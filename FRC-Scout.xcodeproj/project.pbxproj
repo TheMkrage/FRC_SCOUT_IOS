@@ -52,6 +52,7 @@
 		7EC6A1371AA13DD6001C43B9 /* CanBoy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EC6A1361AA13DD6001C43B9 /* CanBoy.jpg */; };
 		7EC6A1391AA1467B001C43B9 /* TrashCan.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EC6A1381AA1467B001C43B9 /* TrashCan.png */; };
 		7EC6A13B1AA15E86001C43B9 /* Tote_Outline.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EC6A13A1AA15E86001C43B9 /* Tote_Outline.png */; };
+		7EC6A13E1AA16A4B001C43B9 /* ToteStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6A13D1AA16A4B001C43B9 /* ToteStack.m */; };
 		7EC71E161A78697600E3546B /* level1PitTeleopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC71E151A78697600E3546B /* level1PitTeleopViewController.m */; };
 		7ECCF80E1A7F4AF20026D6F2 /* scoutingapp.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ECCF80D1A7F4AF20026D6F2 /* scoutingapp.png */; };
 		7ED0F0BF1A7B5488004237F6 /* level1PitMiscViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED0F0BE1A7B5488004237F6 /* level1PitMiscViewController.m */; };
@@ -141,6 +142,8 @@
 		7EC6A1361AA13DD6001C43B9 /* CanBoy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CanBoy.jpg; sourceTree = "<group>"; };
 		7EC6A1381AA1467B001C43B9 /* TrashCan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TrashCan.png; sourceTree = "<group>"; };
 		7EC6A13A1AA15E86001C43B9 /* Tote_Outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tote_Outline.png; sourceTree = "<group>"; };
+		7EC6A13C1AA16A4B001C43B9 /* ToteStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToteStack.h; sourceTree = "<group>"; };
+		7EC6A13D1AA16A4B001C43B9 /* ToteStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToteStack.m; sourceTree = "<group>"; };
 		7EC71E141A78697600E3546B /* level1PitTeleopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = level1PitTeleopViewController.h; sourceTree = "<group>"; };
 		7EC71E151A78697600E3546B /* level1PitTeleopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = level1PitTeleopViewController.m; sourceTree = "<group>"; };
 		7ECCF80D1A7F4AF20026D6F2 /* scoutingapp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scoutingapp.png; sourceTree = "<group>"; };
@@ -254,6 +257,7 @@
 		7EA3E2E31A1AEE4900F534A5 /* FRC-Scout */ = {
 			isa = PBXGroup;
 			children = (
+				7EC6A13F1AA16A59001C43B9 /* Tote Match Scout */,
 				7EC6A1351AA03A97001C43B9 /* Gestures */,
 				7EC6A1301AA002E2001C43B9 /* Tote.png */,
 				7EC6A13A1AA15E86001C43B9 /* Tote_Outline.png */,
@@ -353,6 +357,15 @@
 				7EC6A1331AA0083B001C43B9 /* ToteSwipeGestureRecognizer.m */,
 			);
 			name = Gestures;
+			sourceTree = "<group>";
+		};
+		7EC6A13F1AA16A59001C43B9 /* Tote Match Scout */ = {
+			isa = PBXGroup;
+			children = (
+				7EC6A13C1AA16A4B001C43B9 /* ToteStack.h */,
+				7EC6A13D1AA16A4B001C43B9 /* ToteStack.m */,
+			);
+			name = "Tote Match Scout";
 			sourceTree = "<group>";
 		};
 		7ECEB7B51A760EE200D5F40A /* Pit Scout Controller */ = {
@@ -503,6 +516,7 @@
 				7E94FA9F1A493B7B0010D0FD /* pitScoutView.m in Sources */,
 				7E95BBEE1A4646BF004F3828 /* level1TeamListTableViewController.m in Sources */,
 				7E0E6FF61A267347004969C0 /* level1MatchScoutViewController.m in Sources */,
+				7EC6A13E1AA16A4B001C43B9 /* ToteStack.m in Sources */,
 				7E0E6FEF1A2672B8004969C0 /* level1PitScoutViewController.m in Sources */,
 				7EA3E3171A1AF39D00F534A5 /* webConnector.m in Sources */,
 				7E94F7B01A49FFB70087C196 /* kragerStepperView.m in Sources */,

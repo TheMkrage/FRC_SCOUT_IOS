@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ToteStack : UIView
-
+@interface ToteStack : NSObject
+-(id) initWithTotes: (int) totes Can: (int) can;
 @end

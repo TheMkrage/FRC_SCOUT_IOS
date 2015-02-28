@@ -8,22 +8,33 @@
 
 #import "ToteStack.h"
 @interface ToteStack ()
-@property int totes;
-@property int can;
-@property int stack;
+@property (nonatomic)  int totes;
+@property (nonatomic)  int can;
 @property(strong, nonatomic) NSMutableArray* toteArray;
 @end
 @implementation ToteStack
 
--(id) initWithTotes: (int) totes Can: (int) can stack: (int) stack{
+-(id) initWithTotes: (int) totes Can: (int) can {
     self = [super init];
     self.totes = totes;
     self.can = can;
-    self.stack = stack;
     return self;
 }
 
+-(int) getTotes {
+    return self.totes;
+}
 
+-(int) getCan {
+    return self.can;
+}
 
+-(void) setCan:(int)can {
+    self.can = can;
+}
+
+-(void) setTotes:(int)totes {
+    self.totes = totes;
+}
 
 @end

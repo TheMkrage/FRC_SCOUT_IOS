@@ -8,6 +8,7 @@
 
 #import "Level1AnimationMatchScoutViewController.h"
 #import "ToteSwipeGestureRecognizer.h"
+#import "ToteStack.h"
 @interface Level1AnimationMatchScoutViewController () {
     bool firstTime;
     bool doneGoingRight;
@@ -21,16 +22,19 @@
 @property (strong, nonatomic) IBOutlet UIImageView *Tote3;
 @property (strong, nonatomic) IBOutlet UIImageView *Tote4;
 @property (strong, nonatomic) IBOutlet UIImageView *Tote5;
+@property (strong, nonatomic) NSMutableArray* toteStackArray;
 @property (strong, nonatomic) NSTimer* goOffScreenTimer;
 @property int numberOfTotes;
 @property NSMutableArray* toteArray;
+@property int stackNumber;
 @end
 
 @implementation Level1AnimationMatchScoutViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.toteStackArray = [[NSMutableArray alloc]init];
+    self.stackNumber = 0;
     firstTime = true;
     doneGoingRight = false;
     [self setPicsHidden];
@@ -144,8 +148,23 @@
     
     self.goOffScreenTimer = [NSTimer scheduledTimerWithTimeInterval:.02 target:self selector:@selector(runNextToteAnimation) userInfo:nil repeats:YES];
     NSLog(@"ATTEMPT");
+    
+    [self prepareForNextStack];
 }
 
+-(void) prepareForNextStack {
+    ToteStack* temp = [[ToteStack alloc] initWithTotes:[self isToteActivated] Can:self.numberOfTotes];
+    [self.toteStackArray setObject:temp atIndexedSubscript:self.stackNumber];
+    
+}
+
+//ints are bools in c
+-(int) isToteActivated {
+    if([self.addCanButton.titleLabel.text isEqualToString:@"Add Can"]) {
+        return false;
+    }
+    return true;
+}
 -(void) runNextToteAnimation {
     NSLog(@"RUNNING");
     if(self.Tote0.frame.origin.x < self.view.frame.size. width + 50 && !doneGoingRight) {
@@ -163,7 +182,8 @@
                 [view setFrame:CGRectMake(-80, view.frame.origin.y, view.frame.size.width, view.frame.size.height)];
             }
             [self.canBoyImageView setFrame:CGRectMake(-75, self.canBoyImageView.frame.origin.y, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
-            [self resetImage];
+            self.stackNumber++;
+            [self updateStackToStack: self.stackNumber];
         }
         
         if(self.Tote0.frame.origin.x < 123) {
@@ -180,6 +200,10 @@
             
         }
     }
+}
+
+-(void) updateStackToStack: (int) num {
+    
 }
 
 -(void) resetImage {

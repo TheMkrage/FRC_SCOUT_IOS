@@ -1051,11 +1051,6 @@
                                     <action selector="nextStackButton:" destination="ZW0-5d-mSc" eventType="touchUpInside" id="Dz3-pF-74I"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" id="XuV-vS-ZCE">
-                                <rect key="frame" x="66" y="161" width="160" height="284"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

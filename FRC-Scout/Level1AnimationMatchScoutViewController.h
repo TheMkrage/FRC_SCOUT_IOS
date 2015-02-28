@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Level1AnimationMatchScoutViewController : UIViewController 
+@interface Level1AnimationMatchScoutViewController : UIViewController <UIGestureRecognizerDelegate>
 
 -(void) updateTotesWithX: (int) x Y: (int) y;
 @end

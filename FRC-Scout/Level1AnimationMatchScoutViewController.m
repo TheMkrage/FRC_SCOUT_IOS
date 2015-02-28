@@ -9,6 +9,9 @@
 #import "Level1AnimationMatchScoutViewController.h"
 #import "ToteSwipeGestureRecognizer.h"
 @interface Level1AnimationMatchScoutViewController ()
+@property (strong, nonatomic) IBOutlet UIImageView *canBoyImageView;
+@property (strong, nonatomic) IBOutlet UIButton *addCanButton;
+@property (strong, nonatomic) IBOutlet UILabel *counterLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *Tote0;
 @property (strong, nonatomic) IBOutlet UIImageView *Tote1;
 @property (strong, nonatomic) IBOutlet UIImageView *Tote2;
@@ -31,13 +34,14 @@
     recognizer = [[ToteSwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:) controller:self];
     [recognizer setDirection:(UISwipeGestureRecognizerDirectionDown | UISwipeGestureRecognizerDirectionUp)];
     [[self view] addGestureRecognizer:recognizer];
-    
+    [recognizer setDelegate:self];
     
     NSLog(@"PIC HIDDEN");
 }
 
 -(void) setPicsHidden {
     
+    [self.canBoyImageView setHidden:YES];
     [self.Tote0 setImage:[UIImage imageNamed:@"ToteOutline.png"]];
     [self.Tote1 setImage:[UIImage imageNamed:@"ToteOutline.png"]];
     [self.Tote2 setImage:[UIImage imageNamed:@"ToteOutline.png"]];
@@ -76,11 +80,21 @@
         NSLog(@"THING%d",i);
         if(y < [[self.toteArray objectAtIndex:i] frame].origin.y) {
             NSLog(@"MAKE IT VISIIVLE");
-            [[self.toteArray objectAtIndex:i] setImage:[UIImage imageNamed:@"Tote.png"]];
+            if(x < self.view.frame.size.width/2) {
+                [[self.toteArray objectAtIndex:i] setImage:[UIImage imageNamed:@"Tote.png"]];
+                [self.counterLabel setFrame:CGRectMake([self.counterLabel frame].origin.x, [[self.toteArray objectAtIndex:i] frame].origin.y, [self.counterLabel  frame].size.width, [self.counterLabel frame].size.height)];
+                [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x, [[self.toteArray objectAtIndex:i] frame].origin.y - self.canBoyImageView.frame.size.height, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
+            }
         }else {
            [[self.toteArray objectAtIndex:i] setImage:[UIImage imageNamed:@"ToteOutline.png"]];
+            //[self.counterLabel setFrame:CGRectMake([self.counterLabel frame].origin.x, [[self.toteArray objectAtIndex:i] frame].origin.y, [self.counterLabel  frame].size.width, [self.counterLabel frame].size.height)];
+
         }
     }
+}
+- (IBAction)addCanMethod:(UIButton *)sender {
+    NSLog(@"FDSAFSAD");
+    [self.canBoyImageView setHidden:NO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -98,8 +112,14 @@
 }
 */
 
-- (BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-    
-    return YES;
+
+#pragma mark tap delegate
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    // test if our control subview is on-screen
+    CGPoint point = [touch locationInView:self.view];
+    if(point.x < self.view.frame.size.width/2) {
+        return YES;
+    }
+    return NO;
 }
 @end

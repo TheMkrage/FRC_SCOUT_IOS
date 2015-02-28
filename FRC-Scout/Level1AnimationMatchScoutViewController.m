@@ -88,11 +88,14 @@
     
     for(int i = 0; i < self.toteArray.count; i++) {
         
-        NSLog(@"TOTES : %d", self.numberOfTotes);
+       
        // NSLog(@"THING%d",i);
         if(y < [[self.toteArray objectAtIndex:i] frame].origin.y) {
             //NSLog(@"MAKE IT VISIIVLE");
-            if(x < self.view.frame.size.width/2) {
+            
+            if(x < self.view.frame
+               .size.width - 68 && x > 68) {
+                 NSLog(@"TOTES : %d", self.numberOfTotes);
                 [[self.toteArray objectAtIndex:i] setImage:[UIImage imageNamed:@"Tote.png"]];
                                 self.numberOfTotes = i + 1;
                 [self.counterLabel setText:[NSString stringWithFormat:@"%d",self.numberOfTotes]];
@@ -111,6 +114,9 @@
             
         }
         [self.counterLabel setFrame:CGRectMake([self.counterLabel frame].origin.x, [[self.toteArray objectAtIndex:self.numberOfTotes - 1] frame].origin.y, [self.counterLabel  frame].size.width, [self.counterLabel frame].size.height)];
+        NSLog(@"tap: %d", y);
+        NSLog(@"%f", self.counterLabel.frame
+              .origin.y);
         [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x, [[self.toteArray objectAtIndex:self.numberOfTotes - 1] frame].origin.y - self.canBoyImageView.frame.size.height, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
 
         
@@ -160,7 +166,7 @@
             [self resetImage];
         }
         
-        if(self.Tote0.frame.origin.x < 16) {
+        if(self.Tote0.frame.origin.x < 123) {
             for(int i =0 ; i < self.toteArray.count; i++) {
                 UIImageView* view = [self.toteArray objectAtIndex:i];
                 [view setFrame:CGRectMake(view.frame.origin.x + 5, view.frame.origin.y, view.frame.size.width, view.frame.size.height)];
@@ -183,6 +189,8 @@
     }
     [self.addCanButton setTitle:@"Add Can" forState:UIControlStateNormal];
     [self.canBoyImageView setHidden:YES];
+    
+    firstTime = true;
 
 }
 /*
@@ -200,7 +208,8 @@
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     // test if our control subview is on-screen
     CGPoint point = [touch locationInView:self.view];
-    if(point.x < self.view.frame.size.width/2) {
+    if(point.x < self.view.frame
+       .size.width - 68 && point.x > 68) {
         return YES;
     }
     return NO;

@@ -36,7 +36,6 @@
 }
 
 -(void) tryToUpload {
-    NSLog(@"IM TRYING BABE");
     if(self.arrayOfRequests.count != 0)
         [self performSelectorInBackground:@selector(uploadObjectZero) withObject:nil];
 }

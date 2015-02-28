@@ -8,7 +8,9 @@
 
 #import "Level1AnimationMatchScoutViewController.h"
 #import "ToteSwipeGestureRecognizer.h"
-@interface Level1AnimationMatchScoutViewController ()
+@interface Level1AnimationMatchScoutViewController () {
+    bool firstTime;
+}
 @property (strong, nonatomic) IBOutlet UIImageView *canBoyImageView;
 @property (strong, nonatomic) IBOutlet UIButton *addCanButton;
 @property (strong, nonatomic) IBOutlet UILabel *counterLabel;
@@ -18,6 +20,8 @@
 @property (strong, nonatomic) IBOutlet UIImageView *Tote3;
 @property (strong, nonatomic) IBOutlet UIImageView *Tote4;
 @property (strong, nonatomic) IBOutlet UIImageView *Tote5;
+@property (strong, nonatomic) NSTimer* goOffScreenTimer;
+@property int numberOfTotes;
 @property NSMutableArray* toteArray;
 @end
 
@@ -26,6 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    firstTime = true;
     [self setPicsHidden];
     
     
@@ -42,12 +47,12 @@
 -(void) setPicsHidden {
     
     [self.canBoyImageView setHidden:YES];
-    [self.Tote0 setImage:[UIImage imageNamed:@"ToteOutline.png"]];
-    [self.Tote1 setImage:[UIImage imageNamed:@"ToteOutline.png"]];
-    [self.Tote2 setImage:[UIImage imageNamed:@"ToteOutline.png"]];
-    [self.Tote3 setImage:[UIImage imageNamed:@"ToteOutline.png"]];
-    [self.Tote4 setImage:[UIImage imageNamed:@"ToteOutline.png"]];
-    [self.Tote5 setImage:[UIImage imageNamed:@"ToteOutline.png"]];
+    [self.Tote0 setImage:[UIImage imageNamed:@"Tote_Outline.png"]];
+    [self.Tote1 setImage:[UIImage imageNamed:@"Tote_Outline.png"]];
+    [self.Tote2 setImage:[UIImage imageNamed:@"Tote_Outline.png"]];
+    [self.Tote3 setImage:[UIImage imageNamed:@"Tote_Outline.png"]];
+    [self.Tote4 setImage:[UIImage imageNamed:@"Tote_Outline.png"]];
+    [self.Tote5 setImage:[UIImage imageNamed:@"Tote_Outline.png"]];
     
     NSLog(@"%f", self.Tote5.frame.origin.x);
     NSLog(@"%f", self.Tote5.frame.origin.y);
@@ -61,7 +66,7 @@
     [self.toteArray addObject:self.Tote4];
     [self.toteArray addObject:self.Tote5];
     
-    
+    self.numberOfTotes = 1;
     NSLog(@"%lu", (unsigned long)self.toteArray.count);
 }
 -(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
@@ -74,32 +79,71 @@
 
 
 -(void) updateTotesWithX: (int) x Y: (int) y {
-    NSLog(@"UPDATING %lu", (unsigned long)self.toteArray.count)
-    ;
+    if(firstTime) {
+        self.numberOfTotes = 1;
+        firstTime = false;
+    }
+    
     for(int i = 0; i < self.toteArray.count; i++) {
-        NSLog(@"THING%d",i);
+        
+        NSLog(@"TOTES : %d", self.numberOfTotes);
+       // NSLog(@"THING%d",i);
         if(y < [[self.toteArray objectAtIndex:i] frame].origin.y) {
-            NSLog(@"MAKE IT VISIIVLE");
+            //NSLog(@"MAKE IT VISIIVLE");
             if(x < self.view.frame.size.width/2) {
                 [[self.toteArray objectAtIndex:i] setImage:[UIImage imageNamed:@"Tote.png"]];
-                [self.counterLabel setFrame:CGRectMake([self.counterLabel frame].origin.x, [[self.toteArray objectAtIndex:i] frame].origin.y, [self.counterLabel  frame].size.width, [self.counterLabel frame].size.height)];
-                [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x, [[self.toteArray objectAtIndex:i] frame].origin.y - self.canBoyImageView.frame.size.height, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
+                                self.numberOfTotes = i + 1;
+                [self.counterLabel setText:[NSString stringWithFormat:@"%d",self.numberOfTotes]];
             }
         }else {
-           [[self.toteArray objectAtIndex:i] setImage:[UIImage imageNamed:@"ToteOutline.png"]];
-            //[self.counterLabel setFrame:CGRectMake([self.counterLabel frame].origin.x, [[self.toteArray objectAtIndex:i] frame].origin.y, [self.counterLabel  frame].size.width, [self.counterLabel frame].size.height)];
-
+            if([[[self.toteArray objectAtIndex:i] image] isEqual:[UIImage imageNamed:@"Tote.png"]]) {
+                
+               // NSLog(@"GOING DOWN");
+                self.numberOfTotes = i + 1;
+                [self.counterLabel setText:[NSString stringWithFormat:@"%d",self.numberOfTotes]];
+                
+            }
+            
+                
+           [[self.toteArray objectAtIndex:i] setImage:[UIImage imageNamed:@"Tote_Outline.png"]];
+            
         }
+        [self.counterLabel setFrame:CGRectMake([self.counterLabel frame].origin.x, [[self.toteArray objectAtIndex:self.numberOfTotes - 1] frame].origin.y, [self.counterLabel  frame].size.width, [self.counterLabel frame].size.height)];
+        [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x, [[self.toteArray objectAtIndex:self.numberOfTotes - 1] frame].origin.y - self.canBoyImageView.frame.size.height, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
+
+        
     }
 }
 - (IBAction)addCanMethod:(UIButton *)sender {
+    NSLog(@"TESTING");
     NSLog(@"FDSAFSAD");
-    [self.canBoyImageView setHidden:NO];
+    if([sender.titleLabel.text isEqualToString: @"Add Can"])  {
+        [self.canBoyImageView setHidden:NO];
+        [sender setTitle: @"Remove Can" forState:UIControlStateNormal];
+        NSLog(@"fdsafa");
+    }else if([sender.titleLabel.text isEqualToString: @"Remove Can"]){
+        NSLog(@"REMOVE CAN");
+        [self.canBoyImageView setHidden:YES];
+        [sender setTitle: @"Add Can" forState:UIControlStateNormal];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)nextStackButton:(UIButton *)sender {
+    self.goOffScreenTimer = [NSTimer scheduledTimerWithTimeInterval:.05 target:self selector:@selector(runNextToteAnimation) userInfo:nil repeats:YES];
+}
+
+-(void) runNextToteAnimation {
+    if(self.Tote0.frame.origin.x < self.view.frame.size. width + 50) {
+        NSLog(@"RUNNING");
+        for(int i =0 ; i < self.toteArray.count; i++) {
+        UIImageView* view = [self.toteArray objectAtIndex:i];
+        [view setFrame:CGRectMake(view.frame.origin.x + 5, view.frame.origin.y, view.frame.size.width, view.frame.size.height)];
+        }
+    }
 }
 
 /*

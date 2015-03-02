@@ -94,22 +94,23 @@
     for(int i = 0; i < self.toteArray.count; i++) {
         
        
-       // NSLog(@"THING%d",i);
+       //if the tap is above the totes home
         if(y < [[self.toteArray objectAtIndex:i] frame].origin.y) {
-            //NSLog(@"MAKE IT VISIIVLE");
+        
             
+            //if in correct x coords
             if(x < self.view.frame
                .size.width - 68 && x > 68) {
-                 NSLog(@"TOTES : %d", self.numberOfTotes);
+
                 [[self.toteArray objectAtIndex:i] setImage:[UIImage imageNamed:@"Tote.png"]];
-                                self.numberOfTotes = i + 1;
+                self.numberOfTotes = i + 1;
                 [self.counterLabel setText:[NSString stringWithFormat:@"%d",self.numberOfTotes]];
             }
         }else {
             if([[[self.toteArray objectAtIndex:i] image] isEqual:[UIImage imageNamed:@"Tote.png"]]) {
                 
-               // NSLog(@"GOING DOWN");
-                self.numberOfTotes = i + 1;
+               NSLog(@"GOING DOWN");
+                self.numberOfTotes = i;
                 [self.counterLabel setText:[NSString stringWithFormat:@"%d",self.numberOfTotes]];
                 
             }
@@ -160,13 +161,13 @@
 }
 
 -(void) prepareForNextStack {
-    ToteStack* temp = [[ToteStack alloc] initWithTotes:[self isToteActivated] Can:self.numberOfTotes];
+    ToteStack* temp = [[ToteStack alloc] initWithTotes: self.numberOfTotes Can: [self isCanActivated]];
     [self.toteStackArray setObject:temp atIndexedSubscript:self.stackNumber];
     
 }
 
 //ints are bools in c
--(int) isToteActivated {
+-(int) isCanActivated {
     if([self.addCanButton.titleLabel.text isEqualToString:@"Add Can"]) {
         return 0;
     }

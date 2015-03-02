@@ -24,6 +24,7 @@
             <string>BebasNeue</string>
             <string>BebasNeue</string>
             <string>BebasNeue</string>
+            <string>BebasNeue</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1051,6 +1052,17 @@
                                     <action selector="nextStackButton:" destination="ZW0-5d-mSc" eventType="touchUpInside" id="Dz3-pF-74I"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6Ml-xe-Cu5">
+                                <rect key="frame" x="16" y="351" width="90" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="BebasNeue" family="Bebas Neue" pointSize="18"/>
+                                <state key="normal" title="Previous Stack">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="previousStackkButton:" destination="ZW0-5d-mSc" eventType="touchUpInside" id="9a7-Jc-SZZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1067,6 +1079,7 @@
                         <outlet property="addCanButton" destination="gaf-5r-5OL" id="JDO-n2-cnR"/>
                         <outlet property="canBoyImageView" destination="jK1-EJ-Oxw" id="q8x-BO-zjf"/>
                         <outlet property="counterLabel" destination="VMu-fs-gyC" id="Tpf-Nn-A5Z"/>
+                        <outlet property="prevStackButton" destination="6Ml-xe-Cu5" id="Jct-aN-rCk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RsC-3Z-sVy" userLabel="First Responder" sceneMemberID="firstResponder"/>

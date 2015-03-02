@@ -22,6 +22,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *Tote3;
 @property (strong, nonatomic) IBOutlet UIImageView *Tote4;
 @property (strong, nonatomic) IBOutlet UIImageView *Tote5;
+@property (strong, nonatomic) IBOutlet UIButton *prevStackButton;
 @property (strong, nonatomic) NSMutableArray* toteStackArray;
 @property (strong, nonatomic) NSTimer* goOffScreenTimer;
 @property int numberOfTotes;
@@ -117,13 +118,19 @@
            [[self.toteArray objectAtIndex:i] setImage:[UIImage imageNamed:@"Tote_Outline.png"]];
             
         }
-        [self.counterLabel setFrame:CGRectMake([self.counterLabel frame].origin.x, [[self.toteArray objectAtIndex:self.numberOfTotes - 1] frame].origin.y, [self.counterLabel  frame].size.width, [self.counterLabel frame].size.height)];
-        NSLog(@"tap: %d", y);
-        NSLog(@"%f", self.counterLabel.frame
-              .origin.y);
-        [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x, [[self.toteArray objectAtIndex:self.numberOfTotes - 1] frame].origin.y - self.canBoyImageView.frame.size.height, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
+        //if no tote to put label next to
+        if(self.numberOfTotes == 0) {
+            [self.counterLabel setFrame:CGRectMake([self.counterLabel frame].origin.x, 384, [self.counterLabel  frame].size.width, [self.counterLabel frame].size.height)];
+            [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x, 356, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
+        }else {
+            [self.counterLabel setFrame:CGRectMake([self.counterLabel frame].origin.x, [[self.toteArray objectAtIndex:self.numberOfTotes - 1] frame].origin.y, [self.counterLabel  frame].size.width, [self.counterLabel frame].size.height)];
+            NSLog(@"tap: %d", y);
+            NSLog(@"%f", self.counterLabel.frame
+                  .origin.y);
+            [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x, [[self.toteArray objectAtIndex:self.numberOfTotes - 1] frame].origin.y - self.canBoyImageView.frame.size.height, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
+    }
 
-        
+    
     }
 }
 - (IBAction)addCanMethod:(UIButton *)sender {
@@ -161,9 +168,9 @@
 //ints are bools in c
 -(int) isToteActivated {
     if([self.addCanButton.titleLabel.text isEqualToString:@"Add Can"]) {
-        return false;
+        return 0;
     }
-    return true;
+    return 1;
 }
 -(void) runNextToteAnimation {
     NSLog(@"RUNNING");
@@ -203,9 +210,33 @@
 }
 
 -(void) updateStackToStack: (int) num {
+    if(num >= self.toteStackArray.count) {
+        [self.toteStackArray setObject:[[ToteStack alloc]initWithTotes:0 Can:0] atIndexedSubscript:num];
+    }
     
+    if(num == 0) {
+        [self.prevStackButton setHidden:YES];
+    }else {
+        [self.prevStackButton setHidden:NO];
+    }
+    
+    
+    [self updateTotesWithX:70 Y:[self getYForTotes:[[self.toteStackArray objectAtIndex:num] getTotes]]];
 }
 
+-(int) getYForTotes: (int) y {
+    switch (y) {
+        case 0:
+            return 400;
+            break;
+        case 1:
+            return 345;
+            break;
+        default:
+            break;
+    }
+    return 0;
+}
 -(void) resetImage {
     for(int i =0 ; i < self.toteArray.count; i++) {
         UIImageView* view = [self.toteArray objectAtIndex:i];
@@ -217,6 +248,51 @@
     firstTime = true;
 
 }
+
+- (IBAction)previousStackkButton:(UIButton *)sender {
+    self.goOffScreenTimer = [NSTimer scheduledTimerWithTimeInterval:.02 target:self selector:@selector(runPreviousToteAnimation) userInfo:nil repeats:YES];
+}
+
+-(void)runPreviousToteAnimation {
+    NSLog(@"RUNNING");
+    if(self.Tote0.frame.origin.x > -80 && !doneGoingRight) {
+        
+        for(int i =0 ; i < self.toteArray.count; i++) {
+            UIImageView* view = [self.toteArray objectAtIndex:i];
+            [view setFrame:CGRectMake(view.frame.origin.x - 5, view.frame.origin.y, view.frame.size.width, view.frame.size.height)];
+        }
+        [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x - 5, self.canBoyImageView.frame.origin.y, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
+    }else {
+        if(!doneGoingRight) {
+            doneGoingRight = true;
+            for(int i =0 ; i < self.toteArray.count; i++) {
+                UIImageView* view = [self.toteArray objectAtIndex:i];
+                [view setFrame:CGRectMake(self.view.frame.size.width + 50, view.frame.origin.y, view.frame.size.width, view.frame.size.height)];
+            }
+            [self.canBoyImageView setFrame:CGRectMake(self.view.frame.size.width + 45, self.canBoyImageView.frame.origin.y, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
+            self.stackNumber--;
+            [self updateStackToStack: self.stackNumber];
+        }
+        
+        if(self.Tote0.frame.origin.x > 123) {
+            for(int i =0 ; i < self.toteArray.count; i++) {
+                UIImageView* view = [self.toteArray objectAtIndex:i];
+                [view setFrame:CGRectMake(view.frame.origin.x - 5, view.frame.origin.y, view.frame.size.width, view.frame.size.height)];
+            }
+            [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x - 5, self.canBoyImageView.frame.origin.y, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
+        }else {
+            [self.goOffScreenTimer invalidate];
+            self.goOffScreenTimer = nil;
+            self.numberOfTotes = 1;
+            doneGoingRight = false;
+            
+        }
+    }
+
+}
+
+
+
 /*
 #pragma mark - Navigation
 

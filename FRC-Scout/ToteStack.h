@@ -10,4 +10,8 @@
 
 @interface ToteStack : NSObject
 -(id) initWithTotes: (int) totes Can: (int) can;
+-(void) setCan:(int)can;
+-(void) setTotes:(int)totes;
+-(int) getCan;
+-(int) getTotes;
 @end

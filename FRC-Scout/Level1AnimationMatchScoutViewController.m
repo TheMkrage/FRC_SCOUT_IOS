@@ -237,7 +237,9 @@
         [self.prevStackButton setHidden:NO];
     }
     
-    
+    //set label
+    [self.counterLabel setText: [NSString stringWithFormat:@"%d",[[self.toteStackArray objectAtIndex:num] getTotes]]];
+    //update images
     [self updateTotesWithX:70 Y:[self getYForTotes:[[self.toteStackArray objectAtIndex:num] getTotes]]];
     
     

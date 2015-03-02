@@ -189,9 +189,9 @@
         
         for(int i =0 ; i < self.toteArray.count; i++) {
             UIImageView* view = [self.toteArray objectAtIndex:i];
-            [view setFrame:CGRectMake(view.frame.origin.x + 5, view.frame.origin.y, view.frame.size.width, view.frame.size.height)];
+            [view setFrame:CGRectMake(view.frame.origin.x + 10, view.frame.origin.y, view.frame.size.width, view.frame.size.height)];
         }
-        [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x + 5, self.canBoyImageView.frame.origin.y, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
+        [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x + 10, self.canBoyImageView.frame.origin.y, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
     }else {
         if(!doneGoingRight) {
             doneGoingRight = true;
@@ -207,9 +207,9 @@
         if(self.Tote0.frame.origin.x < 123) {
             for(int i =0 ; i < self.toteArray.count; i++) {
                 UIImageView* view = [self.toteArray objectAtIndex:i];
-                [view setFrame:CGRectMake(view.frame.origin.x + 5, view.frame.origin.y, view.frame.size.width, view.frame.size.height)];
+                [view setFrame:CGRectMake(view.frame.origin.x + 10, view.frame.origin.y, view.frame.size.width, view.frame.size.height)];
             }
-            [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x + 5, self.canBoyImageView.frame.origin.y, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
+            [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x + 10, self.canBoyImageView.frame.origin.y, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
         }else {
             [self.goOffScreenTimer invalidate];
             self.goOffScreenTimer = nil;
@@ -299,9 +299,9 @@
         
         for(int i =0 ; i < self.toteArray.count; i++) {
             UIImageView* view = [self.toteArray objectAtIndex:i];
-            [view setFrame:CGRectMake(view.frame.origin.x - 5, view.frame.origin.y, view.frame.size.width, view.frame.size.height)];
+            [view setFrame:CGRectMake(view.frame.origin.x - 10, view.frame.origin.y, view.frame.size.width, view.frame.size.height)];
         }
-        [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x - 5, self.canBoyImageView.frame.origin.y, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
+        [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x - 10, self.canBoyImageView.frame.origin.y, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
     }else {
         if(!doneGoingRight) {
             doneGoingRight = true;
@@ -317,9 +317,9 @@
         if(self.Tote0.frame.origin.x > 123) {
             for(int i =0 ; i < self.toteArray.count; i++) {
                 UIImageView* view = [self.toteArray objectAtIndex:i];
-                [view setFrame:CGRectMake(view.frame.origin.x - 5, view.frame.origin.y, view.frame.size.width, view.frame.size.height)];
+                [view setFrame:CGRectMake(view.frame.origin.x - 10, view.frame.origin.y, view.frame.size.width, view.frame.size.height)];
             }
-            [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x - 5, self.canBoyImageView.frame.origin.y, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
+            [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x - 10, self.canBoyImageView.frame.origin.y, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
         }else {
             [self.goOffScreenTimer invalidate];
             self.goOffScreenTimer = nil;

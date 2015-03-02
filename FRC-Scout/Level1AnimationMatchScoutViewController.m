@@ -231,7 +231,22 @@
             return 400;
             break;
         case 1:
-            return 345;
+            return 380;
+            break;
+        case 2:
+            return 330;
+            break;
+        case 3:
+            return 280;
+            break;
+        case 4:
+            return 230;
+            break;
+        case 5:
+            return 190;
+            break;
+        case 6:
+            return 140;
             break;
         default:
             break;

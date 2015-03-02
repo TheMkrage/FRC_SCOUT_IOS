@@ -26,6 +26,7 @@
             <string>BebasNeue</string>
             <string>BebasNeue</string>
             <string>BebasNeue</string>
+            <string>BebasNeue</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1069,6 +1070,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="BebasNeue" family="Bebas Neue" pointSize="23"/>
                                 <state key="normal" title="DONE">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GbM-Wm-ePa">
+                                <rect key="frame" x="221" y="190" width="82" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="BebasNeue" family="Bebas Neue" pointSize="18"/>
+                                <state key="normal" title="Add Noodle">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>

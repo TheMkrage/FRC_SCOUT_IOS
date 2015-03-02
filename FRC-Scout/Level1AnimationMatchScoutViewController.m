@@ -137,16 +137,12 @@
     }
 }
 - (IBAction)addCanMethod:(UIButton *)sender {
-    NSLog(@"TESTING");
-    NSLog(@"FDSAFSAD");
-    if([sender.titleLabel.text isEqualToString: @"Add Can"])  {
-        [self.canBoyImageView setHidden:NO];
-        [sender setTitle: @"Remove Can" forState:UIControlStateNormal];
-        NSLog(@"fdsafa");
-    }else if([sender.titleLabel.text isEqualToString: @"Remove Can"]){
-        NSLog(@"REMOVE CAN");
-        [self.canBoyImageView setHidden:YES];
-        [sender setTitle: @"Add Can" forState:UIControlStateNormal];
+   
+    if(![self isCanActivated])  {
+        [self setCanOn];
+      
+    }else if([self isCanActivated]){
+        [self setCanOff];
     }
 }
 
@@ -172,10 +168,20 @@
 
 //ints are bools in c
 -(int) isCanActivated {
-    if([self.addCanButton.titleLabel.text isEqualToString:@"Add Can"]) {
+    if([self.canBoyImageView isHidden]) {
         return 0;
     }
     return 1;
+}
+
+-(void) setCanOff {
+    [self.addCanButton setTitle:@"Add Can" forState:UIControlStateNormal];
+    [self.canBoyImageView setHidden:YES];
+}
+
+-(void) setCanOn {
+    [self.canBoyImageView setHidden:NO];
+    [self.addCanButton setTitle: @"Remove Can" forState:UIControlStateNormal];
 }
 -(void) runNextToteAnimation {
     NSLog(@"RUNNING");
@@ -272,8 +278,7 @@
         UIImageView* view = [self.toteArray objectAtIndex:i];
         [view setImage: [UIImage imageNamed:@"Tote_Outline.png"]];
     }
-    [self.addCanButton setTitle:@"Add Can" forState:UIControlStateNormal];
-    [self.canBoyImageView setHidden:YES];
+    [self setCanOff];
     
     firstTime = true;
     
@@ -304,7 +309,7 @@
                 UIImageView* view = [self.toteArray objectAtIndex:i];
                 [view setFrame:CGRectMake(self.view.frame.size.width + 50, view.frame.origin.y, view.frame.size.width, view.frame.size.height)];
             }
-            [self.canBoyImageView setFrame:CGRectMake(self.view.frame.size.width + 45, self.canBoyImageView.frame.origin.y, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
+            [self.canBoyImageView setFrame:CGRectMake(self.view.frame.size.width + 55, self.canBoyImageView.frame.origin.y, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
             self.stackNumber--;
             [self updateStackToStack: self.stackNumber];
         }

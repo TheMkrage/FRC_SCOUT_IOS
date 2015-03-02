@@ -88,59 +88,47 @@
 
 
 -(void) updateTotesWithX: (int) x Y: (int) y {
-    if(firstTime) {
-        self.numberOfTotes = 1;
-        firstTime = false;
-    }
     
+     NSLog(@"TOTES: %d", self.numberOfTotes);
     for(int i = 0; i < self.toteArray.count; i++) {
         
         
         //if the tap is above the totes home
         if(y < [[self.toteArray objectAtIndex:i] frame].origin.y) {
             
-            
-            //if in correct x coords
-            if(x < self.view.frame
-               .size.width - 68 && x > 68) {
-                
-                [[self.toteArray objectAtIndex:i] setImage:[UIImage imageNamed:@"Tote.png"]];
-                self.numberOfTotes = i + 1;
-                [self.counterLabel setText:[NSString stringWithFormat:@"%d",self.numberOfTotes]];
-            }
+            [[self.toteArray objectAtIndex:i] setImage:[UIImage imageNamed:@"Tote.png"]];
+            self.numberOfTotes = i + 1;
         }else {
             if([[[self.toteArray objectAtIndex:i] image] isEqual:[UIImage imageNamed:@"Tote.png"]]) {
                 
-                NSLog(@"GOING DOWN");
+                //NSLog(@"GOING DOWN");
                 self.numberOfTotes = i;
-                [self.counterLabel setText:[NSString stringWithFormat:@"%d",self.numberOfTotes]];
-                
             }
-            
-            
             [[self.toteArray objectAtIndex:i] setImage:[UIImage imageNamed:@"Tote_Outline.png"]];
             
         }
+        
         //if no tote to put label next to
         if(self.numberOfTotes == 0) {
+           
             [self.counterLabel setFrame:CGRectMake([self.counterLabel frame].origin.x, 384, [self.counterLabel  frame].size.width, [self.counterLabel frame].size.height)];
             [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x, 356, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
         }else {
             [self.counterLabel setFrame:CGRectMake([self.counterLabel frame].origin.x, [[self.toteArray objectAtIndex:self.numberOfTotes - 1] frame].origin.y, [self.counterLabel  frame].size.width, [self.counterLabel frame].size.height)];
-            NSLog(@"tap: %d", y);
-            NSLog(@"%f", self.counterLabel.frame
-                  .origin.y);
             [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x, [[self.toteArray objectAtIndex:self.numberOfTotes - 1] frame].origin.y - self.canBoyImageView.frame.size.height, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
         }
+         NSLog(@"TOTES: %d", self.numberOfTotes);
+        
+        [self.counterLabel setText:[NSString stringWithFormat:@"%d",self.numberOfTotes]];
         
         
     }
 }
 - (IBAction)addCanMethod:(UIButton *)sender {
-   
+    
     if(![self isCanActivated])  {
         [self setCanOn];
-      
+        
     }else if([self isCanActivated]){
         [self setCanOff];
     }
@@ -184,7 +172,6 @@
     [self.addCanButton setTitle: @"Remove Can" forState:UIControlStateNormal];
 }
 -(void) runNextToteAnimation {
-    NSLog(@"RUNNING");
     if(self.Tote0.frame.origin.x < self.view.frame.size. width + 50 && !doneGoingRight) {
         
         for(int i =0 ; i < self.toteArray.count; i++) {
@@ -239,6 +226,7 @@
     
     //set label
     [self.counterLabel setText: [NSString stringWithFormat:@"%d",[[self.toteStackArray objectAtIndex:num] getTotes]]];
+    [self resetImage];
     //update images
     [self updateTotesWithX:70 Y:[self getYForTotes:[[self.toteStackArray objectAtIndex:num] getTotes]]];
     
@@ -296,7 +284,6 @@
 }
 
 -(void)runPreviousToteAnimation {
-    NSLog(@"RUNNING");
     if(self.Tote0.frame.origin.x > -80 && !doneGoingRight) {
         
         for(int i =0 ; i < self.toteArray.count; i++) {

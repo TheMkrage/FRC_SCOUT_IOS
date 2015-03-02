@@ -12,6 +12,7 @@
 @interface Level1AnimationMatchScoutViewController () {
     bool firstTime;
     bool doneGoingRight;
+    bool timerRunning;
 }
 @property (strong, nonatomic) IBOutlet UIImageView *canBoyImageView;
 @property (strong, nonatomic) IBOutlet UIButton *addCanButton;
@@ -34,6 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    timerRunning = false;
     self.toteStackArray = [[NSMutableArray alloc]init];
     self.stackNumber = 0;
     firstTime = true;
@@ -93,15 +95,15 @@
     
     for(int i = 0; i < self.toteArray.count; i++) {
         
-       
-       //if the tap is above the totes home
-        if(y < [[self.toteArray objectAtIndex:i] frame].origin.y) {
         
+        //if the tap is above the totes home
+        if(y < [[self.toteArray objectAtIndex:i] frame].origin.y) {
+            
             
             //if in correct x coords
             if(x < self.view.frame
                .size.width - 68 && x > 68) {
-
+                
                 [[self.toteArray objectAtIndex:i] setImage:[UIImage imageNamed:@"Tote.png"]];
                 self.numberOfTotes = i + 1;
                 [self.counterLabel setText:[NSString stringWithFormat:@"%d",self.numberOfTotes]];
@@ -109,14 +111,14 @@
         }else {
             if([[[self.toteArray objectAtIndex:i] image] isEqual:[UIImage imageNamed:@"Tote.png"]]) {
                 
-               NSLog(@"GOING DOWN");
+                NSLog(@"GOING DOWN");
                 self.numberOfTotes = i;
                 [self.counterLabel setText:[NSString stringWithFormat:@"%d",self.numberOfTotes]];
                 
             }
             
-                
-           [[self.toteArray objectAtIndex:i] setImage:[UIImage imageNamed:@"Tote_Outline.png"]];
+            
+            [[self.toteArray objectAtIndex:i] setImage:[UIImage imageNamed:@"Tote_Outline.png"]];
             
         }
         //if no tote to put label next to
@@ -129,9 +131,9 @@
             NSLog(@"%f", self.counterLabel.frame
                   .origin.y);
             [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x, [[self.toteArray objectAtIndex:self.numberOfTotes - 1] frame].origin.y - self.canBoyImageView.frame.size.height, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
-    }
-
-    
+        }
+        
+        
     }
 }
 - (IBAction)addCanMethod:(UIButton *)sender {
@@ -153,11 +155,13 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)nextStackButton:(UIButton *)sender {
-    
-    self.goOffScreenTimer = [NSTimer scheduledTimerWithTimeInterval:.02 target:self selector:@selector(runNextToteAnimation) userInfo:nil repeats:YES];
-    NSLog(@"ATTEMPT");
-    
-    [self prepareForNextStack];
+    if(!timerRunning) {
+        self.goOffScreenTimer = [NSTimer scheduledTimerWithTimeInterval:.02 target:self selector:@selector(runNextToteAnimation) userInfo:nil repeats:YES];
+        NSLog(@"ATTEMPT");
+        
+        [self prepareForNextStack];
+        timerRunning = true;
+    }
 }
 
 -(void) prepareForNextStack {
@@ -178,8 +182,8 @@
     if(self.Tote0.frame.origin.x < self.view.frame.size. width + 50 && !doneGoingRight) {
         
         for(int i =0 ; i < self.toteArray.count; i++) {
-        UIImageView* view = [self.toteArray objectAtIndex:i];
-        [view setFrame:CGRectMake(view.frame.origin.x + 5, view.frame.origin.y, view.frame.size.width, view.frame.size.height)];
+            UIImageView* view = [self.toteArray objectAtIndex:i];
+            [view setFrame:CGRectMake(view.frame.origin.x + 5, view.frame.origin.y, view.frame.size.width, view.frame.size.height)];
         }
         [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x + 5, self.canBoyImageView.frame.origin.y, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
     }else {
@@ -203,16 +207,22 @@
         }else {
             [self.goOffScreenTimer invalidate];
             self.goOffScreenTimer = nil;
-            self.numberOfTotes = 0;
             doneGoingRight = false;
+            timerRunning = false;
             
         }
     }
 }
 
--(void) updateStackToStack: (int) num {
+-(void) updateStackToStack: (int) num{
     if(num >= self.toteStackArray.count) {
         [self.toteStackArray setObject:[[ToteStack alloc]initWithTotes:0 Can:0] atIndexedSubscript:num];
+    }
+    
+    if([[self.toteStackArray objectAtIndex:num] getCan] == 1) {
+        [self.canBoyImageView setHidden: NO];
+    }else {
+        [self.canBoyImageView setHidden: YES];
     }
     
     if(num == 0) {
@@ -223,9 +233,13 @@
     
     
     [self updateTotesWithX:70 Y:[self getYForTotes:[[self.toteStackArray objectAtIndex:num] getTotes]]];
+    
+    
 }
 
 -(int) getYForTotes: (int) y {
+    NSLog(@"SETTING Y FOR :%d", y);
+    self.numberOfTotes = y;
     switch (y) {
         case 0:
             return 400;
@@ -262,11 +276,16 @@
     [self.canBoyImageView setHidden:YES];
     
     firstTime = true;
-
+    
 }
 
 - (IBAction)previousStackkButton:(UIButton *)sender {
-    self.goOffScreenTimer = [NSTimer scheduledTimerWithTimeInterval:.02 target:self selector:@selector(runPreviousToteAnimation) userInfo:nil repeats:YES];
+    if(!timerRunning) {
+        self.goOffScreenTimer = [NSTimer scheduledTimerWithTimeInterval:.02 target:self selector:@selector(runPreviousToteAnimation) userInfo:nil repeats:YES];
+        
+        [self prepareForNextStack];
+        timerRunning = true;
+    }
 }
 
 -(void)runPreviousToteAnimation {
@@ -299,25 +318,25 @@
         }else {
             [self.goOffScreenTimer invalidate];
             self.goOffScreenTimer = nil;
-            self.numberOfTotes = 1;
             doneGoingRight = false;
+            timerRunning = false;
             
         }
     }
-
+    
 }
 
 
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 
 #pragma mark tap delegate

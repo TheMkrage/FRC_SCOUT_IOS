@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FRC-Scout/Level1AnimationMatchScoutViewController.m"
-            timestampString = "446964847.266877"
+            timestampString = "446966533.897125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "-updateTotesWithX:Y:"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,12 +186,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FRC-Scout/Level1AnimationMatchScoutViewController.m"
-            timestampString = "446964847.266877"
+            timestampString = "446966533.897125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
-            landmarkName = "-isToteActivated"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "-isCanActivated"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FRC-Scout/Level1AnimationMatchScoutViewController.m"
-            timestampString = "446964847.266877"
+            timestampString = "446967197.290378"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "272"
-            endingLineNumber = "272"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
             landmarkName = "-runPreviousToteAnimation"
             landmarkType = "5">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FRC-Scout/Level1AnimationMatchScoutViewController.m"
-            timestampString = "446964847.266877"
+            timestampString = "446967197.290378"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "273"
-            endingLineNumber = "273"
+            startingLineNumber = "307"
+            endingLineNumber = "307"
             landmarkName = "-runPreviousToteAnimation"
             landmarkType = "5">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FRC-Scout/Level1AnimationMatchScoutViewController.m"
-            timestampString = "446964847.266877"
+            timestampString = "446967197.290378"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
+            startingLineNumber = "308"
+            endingLineNumber = "308"
             landmarkName = "-runPreviousToteAnimation"
             landmarkType = "5">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FRC-Scout/Level1AnimationMatchScoutViewController.m"
-            timestampString = "446964847.266877"
+            timestampString = "446967197.290378"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "275"
-            endingLineNumber = "275"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
             landmarkName = "-runPreviousToteAnimation"
             landmarkType = "5">
          </BreakpointContent>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FRC-Scout/Level1AnimationMatchScoutViewController.m"
-            timestampString = "446964847.266877"
+            timestampString = "446967197.290378"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
             landmarkName = "-runPreviousToteAnimation"
             landmarkType = "5">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FRC-Scout/Level1AnimationMatchScoutViewController.m"
-            timestampString = "446964847.266877"
+            timestampString = "446967197.290378"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
             landmarkName = "-runPreviousToteAnimation"
             landmarkType = "5">
          </BreakpointContent>

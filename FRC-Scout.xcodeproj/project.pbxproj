@@ -263,6 +263,8 @@
 				7EC6A13F1AA16A59001C43B9 /* Tote Match Scout */,
 				7EC6A1351AA03A97001C43B9 /* Gestures */,
 				7EC6A1301AA002E2001C43B9 /* Tote.png */,
+				7EC3560F1AA582A4003F4EE6 /* DataManager.h */,
+				7EC356101AA582A4003F4EE6 /* DataManager.m */,
 				7EC6A13A1AA15E86001C43B9 /* Tote_Outline.png */,
 				7EC6A12E1A9FFB7B001C43B9 /* BadTote.png */,
 				7EC6A1361AA13DD6001C43B9 /* CanBoy.jpg */,
@@ -283,8 +285,6 @@
 				7E0E6FF01A2672BF004969C0 /* Level 1 */,
 				7EA3E2F81A1AEE4A00F534A5 /* Images.xcassets */,
 				7EA3E2E41A1AEE4900F534A5 /* Supporting Files */,
-				7EC3560F1AA582A4003F4EE6 /* DataManager.h */,
-				7EC356101AA582A4003F4EE6 /* DataManager.m */,
 			);
 			path = "FRC-Scout";
 			sourceTree = "<group>";

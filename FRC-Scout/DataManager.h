@@ -7,8 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JSONObject.h"
 
 @interface DataManager : NSObject
 
 + (id)sharedManager;
+-(void) addJSONObject: (JSONObject*) obj onArray:(int)arrayNum at:(int)spot;
+-(JSONObject*) getJSONObjectOnArray:(int) arrayNum spot: (int) spot ;
+-(NSMutableArray*) getArrayNum: (int) arrayNum ;
+- (void) clearArray: (int) arrayNum;
 @end

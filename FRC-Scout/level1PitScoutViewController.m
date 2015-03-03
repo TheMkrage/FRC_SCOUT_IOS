@@ -12,6 +12,7 @@
 #import "QueueManager.h"
 #import "JSONRequest.h"
 #import "ImageRequest.h"
+#import "DataManager.h"
 @interface level1PitScoutViewController ()
 {
     id activeAspect;
@@ -63,6 +64,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *liftSystemLabel;
 @property (strong, nonatomic) IBOutlet UILabel *internalLabel;
 @property (strong, nonatomic) IBOutlet UILabel *externalLabel;
+@property (strong, nonatomic) IBOutlet UISwitch *externalInternalSwitch;
 
 
 //INTAKE SYSTEM
@@ -71,6 +73,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *intakeSystemLabel;
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *noYesLabels;
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *intakeLabels;
+@property (strong, nonatomic) IBOutlet UISwitch *changeOrientationSwitch;
+@property (strong, nonatomic) IBOutlet UISwitch *upsideDownTotesSwitch;
+@property (strong, nonatomic) IBOutlet UISwitch *canOffGround;
+@property (strong, nonatomic) IBOutlet UISwitch *poolNoodles;
 
 
 
@@ -200,6 +206,40 @@ static level1PitScoutViewController* instance;
 -(void)viewWillDisappear:(BOOL)animated {
     NSLog(@"VIEW WILL DIS");
     [self setAllPickersHidden];
+    
+    //save all data and add to datamanager
+    JSONObject *sendingData = [[JSONObject alloc] init];
+    [sendingData addObject:[NSNumber numberWithInt:2] forKey:@"status"];
+    [sendingData addObject:@"add team" forKey:@"cmd"];
+    [sendingData addObject:self.teamTextField.text forKey:@"team_number"];
+    [sendingData addObject:self.weightTextField.text forKey:@"weight"];
+    [sendingData addObject:self.heightTextField.text forKey:@"height"];
+    [sendingData addObject:self.maxSpeedTextField.text forKey:@"speed"];
+    [sendingData addObject:self.cimTextField.text forKey:@"cim"];
+    [sendingData addObject:self.driveTextField.text forKey:@"drivetrain"];
+    [sendingData addObject:self.liftTextField.text forKey:@"lift"];
+    [sendingData addObject:self.intakeSystemLabel.text forKey:@"intake"];
+    
+    //switches
+#warning boolean using nsnumber value
+    [sendingData addObject:[NSNumber numberWithBool:[self.twoSpeedSlider isOn]]  forKey:@"max_speed"];
+    [sendingData addObject:[NSNumber numberWithBool:[self.externalInternalSwitch isOn]] forKey:@"left_ext"];
+    [sendingData addObject:[NSNumber numberWithBool:[self.changeOrientationSwitch isOn]] forKey:@"tote_orientation_change"];
+    [sendingData addObject:[NSNumber numberWithBool:[self.upsideDownTotesSwitch isOn]] forKey: @"tote_inverted"];
+    [sendingData addObject:[NSNumber numberWithBool:[self.canOffGround isOn]] forKey:@"cans_held"];
+    [sendingData addObject:[NSNumber numberWithBool:[self.poolNoodles isOn]] forKey:@"pool_noodles"];
+    
+    [sendingData addObject:self.frameStrengthTextField.text forKey:@"frame_strength"];
+    [sendingData addObject:self.maxTotesAtOneTimeTextField.text forKey:@"max_tote"];
+    [sendingData addObject:self.maxToteHeightTextField.text forKey:@"tote_stack_height"];
+    [sendingData addObject:self.maxCanHeightTextField.text forKey:@"can"];
+    [sendingData addObject:[NSNumber numberWithLong: [UIImagePNGRepresentation(chooseImage) length]] forKey:@"image_size"];
+    
+    DataManager *dataMan = [DataManager sharedManager];
+    
+    //adds to the DataManager to be sent at a later time
+    [dataMan addJSONObject:sendingData onArray:0 at:0];
+
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -272,9 +312,9 @@ static level1PitScoutViewController* instance;
     }
 
 }
-- (IBAction)addTeamButton:(id)sender {
+//- (IBAction)addTeamButton:(id)sender {
     
-    CFReadStreamRef rstream;
+    /*CFReadStreamRef rstream;
     CFWriteStreamRef wstream;
     
     //connect to server
@@ -297,28 +337,13 @@ static level1PitScoutViewController* instance;
     NSLog(@"%lu",(unsigned long)[UIImagePNGRepresentation(chooseImage) length]);
     
     //[data appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
+     */
     
 #warning DID NOT COMPLETE SWITCHES, THE FIRST MAX SPEED SHOULD BE ONE SPEED, TWO SPEED
     //NSString *toSend = [NSString stringWithFormat:@"{status:2,cmd:\"add team\",team_number:%@,weight:%@,height:%@,speed:%@,cim:\"%@\",drivetrain:\"%@\",lift:\"%@\",max_speed:%@,frame_strength:%@,max_tote:%@,tote_stack_height:%@,can:%@,image_size:%lu}", [self teamTextField].text, [self weightTextField].text, [self heightTextField].text, [self maxSpeedTextField].text, [self cimTextField].text, [self driveTextField].text, [self liftTextField].text, [self maxSpeedTextField].text, [self frameStrengthTextField].text, [self maxTotesAtOneTimeTextField].text, [self maxToteHeightTextField].text, [self maxCanHeightTextField].text, (unsigned long)[UIImagePNGRepresentation(chooseImage) length]];
-    JSONObject *sendingData = [[JSONObject alloc] init];
-    [sendingData addObject:[NSNumber numberWithInt:2] forKey:@"status"];
-    [sendingData addObject:@"add team" forKey:@"cmd"];
-    [sendingData addObject:self.teamTextField.text forKey:@"team_number"];
-    [sendingData addObject:self.weightTextField.text forKey:@"weight"];
-    [sendingData addObject:self.heightTextField.text forKey:@"height"];
-    [sendingData addObject:self.maxSpeedTextField.text forKey:@"speed"];
-    [sendingData addObject:self.cimTextField.text forKey:@"cim"];
-    [sendingData addObject:self.driveTextField.text forKey:@"drivetrain"];
-    [sendingData addObject:self.liftTextField.text forKey:@"lift"];
-#warning boolean using nsnumber value
-    [sendingData addObject:[NSNumber numberWithBool:[self.twoSpeedSlider isOn]]  forKey:@"max_speed"];
-    [sendingData addObject:self.frameStrengthTextField.text forKey:@"frame_strength"];
-    [sendingData addObject:self.maxTotesAtOneTimeTextField.text forKey:@"max_tote"];
-    [sendingData addObject:self.maxToteHeightTextField.text forKey:@"tote_stack_height"];
-    [sendingData addObject:self.maxCanHeightTextField.text forKey:@"can"];
-    [sendingData addObject:[NSNumber numberWithLong: [UIImagePNGRepresentation(chooseImage) length]] forKey:@"image_size"];
-    
-    
+
+    //the following code was the original server test that worked.  It will be kept until we are sure we do not need to test anymore
+    /*
     NSString* toSend = [sendingData getJSONString];
     
     QueueManager* man = [QueueManager sharedManager];
@@ -329,13 +354,20 @@ static level1PitScoutViewController* instance;
     // NSString *toSend = [NSString stringWithFormat:@"]
     
     //in case qqueue dont work
+     */
+    
+    
+    //the rest of these are old tries of uploading, they will be kept until it is apparent that they can be deleted
     /*
     data = [NSMutableData dataWithData:[toSend dataUsingEncoding:NSUTF8StringEncoding]];
     const uint8_t* bytesString = (const uint8_t*)[data bytes];
     [os write:bytesString maxLength:[data length]];
     */
-    ImageRequest* imageReq = [[ImageRequest alloc] initWithImage:chooseImage];
-    [man addRequestObject:imageReq];
+    
+    //sends image request
+    /*ImageRequest* imageReq = [[ImageRequest alloc] initWithImage:chooseImage];
+    [man addRequestObject:imageReq];*/
+    
     
     //in case queue doesnt work
     /*
@@ -365,10 +397,12 @@ static level1PitScoutViewController* instance;
     NSLog(@"image loaded");
     NSLog(@"sent data");
     */
-    [is close];
-    [os close];
+    
+    
+    //[is close];
+    //[os close];
    
-}
+//}
 
 -(void)textFieldShouldBeEditable: (UITextField*)field {
     textFieldShouldEdit = true;

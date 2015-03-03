@@ -1542,6 +1542,8 @@
                     <size key="freeformSize" width="320" height="1700"/>
                     <connections>
                         <outlet property="addTeamButton" destination="jeu-f4-crb" id="Cqf-xQ-alQ"/>
+                        <outlet property="canOffGround" destination="T3E-7C-d9f" id="2a7-h3-DjN"/>
+                        <outlet property="changeOrientationSwitch" destination="aY3-cx-DXX" id="6re-3Q-s5F"/>
                         <outlet property="cimPicker" destination="RPf-cN-Zww" id="r4T-y3-gPY"/>
                         <outlet property="cimTextField" destination="AhR-kU-NP3" id="BXM-RV-hvG"/>
                         <outlet property="commentLabel" destination="iU7-87-qIT" id="neJ-fZ-WuM"/>
@@ -1549,6 +1551,7 @@
                         <outlet property="drivePicker" destination="qmT-ve-4AM" id="4Em-tO-gGb"/>
                         <outlet property="driveTextField" destination="YEe-9k-ukP" id="9SJ-QU-eBv"/>
                         <outlet property="driveTrainLabel" destination="1vn-Vo-JYK" id="RIf-Z7-Abd"/>
+                        <outlet property="externalInternalSwitch" destination="tPa-uN-XNx" id="IW3-9a-247"/>
                         <outlet property="externalLabel" destination="MLl-Hk-0En" id="RCj-Sz-A9k"/>
                         <outlet property="frameStrengthPicker" destination="VRJ-a8-CyJ" id="fSZ-51-yyv"/>
                         <outlet property="frameStrengthTextField" destination="abJ-Kh-65G" id="LCS-a1-w20"/>
@@ -1567,12 +1570,14 @@
                         <outlet property="maxToteHeightTextField" destination="HvO-4u-WbD" id="TBk-ml-mp0"/>
                         <outlet property="maxTotesAtOneTimeTextField" destination="Gdq-QP-AJW" id="MVK-Ud-fA3"/>
                         <outlet property="oneSpeedLabel" destination="wVa-yD-wZB" id="e2n-Ta-bMg"/>
+                        <outlet property="poolNoodles" destination="beQ-j2-30K" id="eoN-XJ-UvO"/>
                         <outlet property="robotSpecsLabel" destination="PeO-DL-Okz" id="5j6-TL-C6g"/>
                         <outlet property="scrollView" destination="slE-k2-eqg" id="Pyt-la-GNH"/>
                         <outlet property="teamImageView" destination="iJP-t2-4IJ" id="MBa-ml-86y"/>
                         <outlet property="teamTextField" destination="adw-38-xYQ" id="KR7-rr-h7O"/>
                         <outlet property="twoSpeedLabel" destination="fEC-E4-vEL" id="am6-kD-wUL"/>
                         <outlet property="twoSpeedSlider" destination="RBo-9o-fZb" id="JRL-zV-U7K"/>
+                        <outlet property="upsideDownTotesSwitch" destination="vPS-ao-Cde" id="S2J-bq-gGw"/>
                         <outlet property="weightTextField" destination="Atp-nU-Gno" id="179-9N-0f5"/>
                         <outletCollection property="noYesLabels" destination="iPE-n3-JXf" id="2Ri-o9-8GG"/>
                         <outletCollection property="noYesLabels" destination="S0g-uH-9Pj" id="c2Y-8o-wfs"/>

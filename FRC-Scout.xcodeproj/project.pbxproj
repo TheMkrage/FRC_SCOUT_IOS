@@ -39,6 +39,7 @@
 		7EA3E3171A1AF39D00F534A5 /* webConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3E3161A1AF39D00F534A5 /* webConnector.m */; };
 		7EBBB0121A4CCB0D003F0C89 /* kragerPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBBB0111A4CCB0D003F0C89 /* kragerPickerView.m */; };
 		7EBF71FD1A6CEC5100A38BFE /* backNextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBF71FC1A6CEC5100A38BFE /* backNextView.m */; };
+		7EC356111AA582A4003F4EE6 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC356101AA582A4003F4EE6 /* DataManager.m */; };
 		7EC4B8721A734ACE00BA97C8 /* checkBoxLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC4B8711A734ACE00BA97C8 /* checkBoxLabel.m */; };
 		7EC59A121A6DA4B20044E5C0 /* level1AutonomousViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC59A111A6DA4B20044E5C0 /* level1AutonomousViewController.m */; };
 		7EC685BD1A7C569800E44086 /* level1MatchAutoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC685BC1A7C569800E44086 /* level1MatchAutoViewController.m */; };
@@ -121,6 +122,8 @@
 		7EBBB0111A4CCB0D003F0C89 /* kragerPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kragerPickerView.m; sourceTree = "<group>"; };
 		7EBF71FB1A6CEC5100A38BFE /* backNextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = backNextView.h; sourceTree = "<group>"; };
 		7EBF71FC1A6CEC5100A38BFE /* backNextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = backNextView.m; sourceTree = "<group>"; };
+		7EC3560F1AA582A4003F4EE6 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		7EC356101AA582A4003F4EE6 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		7EC4B8701A734ACE00BA97C8 /* checkBoxLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = checkBoxLabel.h; sourceTree = "<group>"; };
 		7EC4B8711A734ACE00BA97C8 /* checkBoxLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = checkBoxLabel.m; sourceTree = "<group>"; };
 		7EC59A101A6DA4B20044E5C0 /* level1AutonomousViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = level1AutonomousViewController.h; sourceTree = "<group>"; };
@@ -280,6 +283,8 @@
 				7E0E6FF01A2672BF004969C0 /* Level 1 */,
 				7EA3E2F81A1AEE4A00F534A5 /* Images.xcassets */,
 				7EA3E2E41A1AEE4900F534A5 /* Supporting Files */,
+				7EC3560F1AA582A4003F4EE6 /* DataManager.h */,
+				7EC356101AA582A4003F4EE6 /* DataManager.m */,
 			);
 			path = "FRC-Scout";
 			sourceTree = "<group>";
@@ -504,6 +509,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E0E6FFF1A26746E004969C0 /* level1RankingsViewController.m in Sources */,
+				7EC356111AA582A4003F4EE6 /* DataManager.m in Sources */,
 				7EC6A12A1A9FE618001C43B9 /* ImageRequest.m in Sources */,
 				7EC6A1231A9FDC7F001C43B9 /* QueueManager.m in Sources */,
 				7EA3E2F71A1AEE4A00F534A5 /* mainViewController.m in Sources */,

@@ -35,13 +35,13 @@
  Each array is an array of json string.  The reason for this is so the data from multiple views can be sent all at once
  There are two arrays (at least when this was written there were.  Array # 0 is pit scout while Array # 1 is match scout.  In each of these, there is a code for each page.  Look as follows:
  Array #0 - pit scout
-    0: Robot Specs
-    1: Teleop
-    2: Auto
-    3: Misc
+ 0: Robot Specs
+ 1: Teleop
+ 2: Auto
+ 3: Misc
  Array #1 - match scout
-    0: Auto
-    1: Match
+ 0: Auto
+ 1: Match
  */
 
 
@@ -84,7 +84,22 @@
             return [[NSMutableArray alloc] init];
             break;
     }
+    
+}
 
+
+//clears array with specified number
+- (void) clearArray: (int) arrayNum {
+    switch (arrayNum) {
+        case 0:
+            self.pitScoutArray = [[NSMutableArray alloc] init];
+            break;
+        case 1:
+            self.matchScoutArray = [[NSMutableArray alloc] init];
+            break;
+        default:
+            break;
+    }
 }
 
 

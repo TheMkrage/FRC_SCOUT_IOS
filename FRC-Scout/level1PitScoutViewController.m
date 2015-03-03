@@ -318,6 +318,7 @@ static level1PitScoutViewController* instance;
     [sendingData addObject:self.maxCanHeightTextField.text forKey:@"can"];
     [sendingData addObject:[NSNumber numberWithLong: [UIImagePNGRepresentation(chooseImage) length]] forKey:@"image_size"];
     
+    
     NSString* toSend = [sendingData getJSONString];
     
     QueueManager* man = [QueueManager sharedManager];

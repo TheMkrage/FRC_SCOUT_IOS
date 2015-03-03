@@ -36,7 +36,6 @@
 		7EA3E3021A1AEE4A00F534A5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA3E2E11A1AEE4900F534A5 /* UIKit.framework */; };
 		7EA3E30A1A1AEE4A00F534A5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3E3081A1AEE4A00F534A5 /* InfoPlist.strings */; };
 		7EA3E30C1A1AEE4A00F534A5 /* FRC_ScoutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3E30B1A1AEE4A00F534A5 /* FRC_ScoutTests.m */; };
-		7EA3E3171A1AF39D00F534A5 /* webConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3E3161A1AF39D00F534A5 /* webConnector.m */; };
 		7EBBB0121A4CCB0D003F0C89 /* kragerPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBBB0111A4CCB0D003F0C89 /* kragerPickerView.m */; };
 		7EBF71FD1A6CEC5100A38BFE /* backNextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBF71FC1A6CEC5100A38BFE /* backNextView.m */; };
 		7EC356111AA582A4003F4EE6 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC356101AA582A4003F4EE6 /* DataManager.m */; };
@@ -116,8 +115,6 @@
 		7EA3E3071A1AEE4A00F534A5 /* FRC-ScoutTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FRC-ScoutTests-Info.plist"; sourceTree = "<group>"; };
 		7EA3E3091A1AEE4A00F534A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7EA3E30B1A1AEE4A00F534A5 /* FRC_ScoutTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FRC_ScoutTests.m; sourceTree = "<group>"; };
-		7EA3E3151A1AF39D00F534A5 /* webConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = webConnector.h; sourceTree = "<group>"; };
-		7EA3E3161A1AF39D00F534A5 /* webConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = webConnector.m; sourceTree = "<group>"; };
 		7EBBB0101A4CCB0D003F0C89 /* kragerPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kragerPickerView.h; sourceTree = "<group>"; };
 		7EBBB0111A4CCB0D003F0C89 /* kragerPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kragerPickerView.m; sourceTree = "<group>"; };
 		7EBF71FB1A6CEC5100A38BFE /* backNextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = backNextView.h; sourceTree = "<group>"; };
@@ -279,8 +276,6 @@
 				7EA3E2F21A1AEE4A00F534A5 /* Main_iPad.storyboard */,
 				7EA3E2F51A1AEE4A00F534A5 /* mainViewController.h */,
 				7EA3E2F61A1AEE4A00F534A5 /* mainViewController.m */,
-				7EA3E3151A1AF39D00F534A5 /* webConnector.h */,
-				7EA3E3161A1AF39D00F534A5 /* webConnector.m */,
 				7ECCF80D1A7F4AF20026D6F2 /* scoutingapp.png */,
 				7E0E6FF01A2672BF004969C0 /* Level 1 */,
 				7EA3E2F81A1AEE4A00F534A5 /* Images.xcassets */,
@@ -524,7 +519,6 @@
 				7E0E6FF61A267347004969C0 /* level1MatchScoutViewController.m in Sources */,
 				7EC6A13E1AA16A4B001C43B9 /* ToteStack.m in Sources */,
 				7E0E6FEF1A2672B8004969C0 /* level1PitScoutViewController.m in Sources */,
-				7EA3E3171A1AF39D00F534A5 /* webConnector.m in Sources */,
 				7E94F7B01A49FFB70087C196 /* kragerStepperView.m in Sources */,
 				7EC71E161A78697600E3546B /* level1PitTeleopViewController.m in Sources */,
 				7ED0F0BF1A7B5488004237F6 /* level1PitMiscViewController.m in Sources */,

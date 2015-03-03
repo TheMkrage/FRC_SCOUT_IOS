@@ -7,7 +7,12 @@
 //
 
 #import "DataManager.h"
-
+#import "JSONObject.h"
+@interface DataManager () {
+    
+}
+@property (strong, nonatomic)NSMutableArray* dataArray;
+@end
 @implementation DataManager
 + (id)sharedManager {
     static DataManager *sharedManager = nil;
@@ -24,4 +29,9 @@
     }
     return self;
 }
+
+-(void) addJSONString: (JSONObject*) obj {
+    
+}
+
 @end

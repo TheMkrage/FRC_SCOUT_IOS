@@ -58,4 +58,34 @@
     }
 }
 
+-(JSONObject*) getJSONObjectOnArray:(int) arrayNum spot: (int) spot {
+    switch (arrayNum) {
+        case 0:
+            return [self.pitScoutArray objectAtIndex:spot];
+            break;
+        case 1:
+            return [self.matchScoutArray objectAtIndex:spot];
+            break;
+        default:
+            return [[JSONObject alloc] init];
+            break;
+    }
+}
+
+-(NSMutableArray*) getArrayNum: (int) arrayNum {
+    switch (arrayNum) {
+        case 0:
+            return self.pitScoutArray;
+            break;
+        case 1:
+            return self.matchScoutArray;
+            break;
+        default:
+            return [[NSMutableArray alloc] init];
+            break;
+    }
+
+}
+
+
 @end

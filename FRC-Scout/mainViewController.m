@@ -7,7 +7,6 @@
 //
 
 #import "mainViewController.h"
-#import "webConnector.h"
 #import "textUIDelegate.h"
 #import "level1MenuViewController.h"
 
@@ -15,7 +14,7 @@
     IBOutlet UIScrollView *scrollView;
     NSMutableArray *usernames;
     NSMutableArray *passwords;
-    webConnector *_webConnector;
+   
     UITextField *activeTextField;
     NSArray *teamsData;
 }

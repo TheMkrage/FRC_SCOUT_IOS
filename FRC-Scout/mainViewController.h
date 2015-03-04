@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "webConnector.h"
-@interface mainViewController : UIViewController <webProtocol,UITextFieldDelegate>
+@interface mainViewController : UIViewController <UITextFieldDelegate>
 
 @end

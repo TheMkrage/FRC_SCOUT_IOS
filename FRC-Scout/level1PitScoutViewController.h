@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface level1PitScoutViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate>
-
+-(NSString*)getTeam;
 + (level1PitScoutViewController*)getInstance;
 - (void)textFieldShouldBeEditable: (UITextField*)field ;
 @end

@@ -100,7 +100,7 @@
 -(void) setData {
     [[self otherPosCheckBox] setHiddenObject:[self otherPosTextField]];
     [[self otherGoalsCheckBox] setHiddenObject:[self otherGoalsTextField]];
-    [[self autoPicker] setData:@[@"1",@"2",@"3",@"4",@"5"] textField:nil withController:self];
+    [[self autoPicker] setData:@[@"1",@"2",@"3",@"4",@"5"] textField:nil withController:self withCode:@"auto_number"];
     NSMutableArray *startPosArray = [NSMutableArray arrayWithArray:@[self.byLandFillCheckBox, self.byYellowToteCheckBox, self.immobileCheckBox, self.otherPosCheckBox]];
     radioButtonGroup *startingPosRadioGroup =
     [[radioButtonGroup alloc] initWithCheckBoxes:startPosArray];

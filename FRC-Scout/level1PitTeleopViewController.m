@@ -75,9 +75,9 @@
 }
 
 -(void) setData {
-    [[self cooperationPicker] setData:@[@"None",@"Stacked",@"Not Stacked"] textField:[self cooperationTextField] withController:self];
+    /*[[self cooperationPicker] setData:@[@"None",@"Stacked",@"Not Stacked"] textField:[self cooperationTextField] withController:self];
     [[self preferredPicker] setData:@[@"Totes",@"Cans",@"Noodles",@"Cooperation",@"Other"] textField:[self preferredTextField] withController:self];
-    
+    */
     [self cooperationTextField].placeholder = @"Cooperation";
     [self preferredTextField].placeholder = @"Preferred Scoring";
 }

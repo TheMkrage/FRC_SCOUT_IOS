@@ -8,10 +8,12 @@
 
 #import "kragerPickerView.h"
 #import "level1PitScoutViewController.h"
+#import <Firebase/Firebase.h>
 @interface kragerPickerView()
 {
     IBOutlet UIPickerView* picker;
     IBOutlet UIButton* doneButton;
+    NSString* code;
     NSArray* pickerData;
     NSString* selectedItem;
     level1PitScoutViewController* controller;
@@ -22,7 +24,8 @@
 
 @implementation kragerPickerView
 
-- (void) setData: (NSArray*) data textField: (UITextField*) textField withController: (UIViewController*) viewController{
+- (void) setData: (NSArray*) data textField: (UITextField*) textField withController: (UIViewController*) viewController withCode:(NSString*) code1{
+    code = code1;
     selectedItem = pickerData[0];
     [picker setDataSource:self];
     [picker setDelegate:self];
@@ -84,7 +87,13 @@
     NSLog(@"picked: %@",pickerData[row]);
     selectedItem = pickerData[row];
     [self setSelectedValueToTextField];
+    [self updateCodeToServer];
     //NSLog(@"%hhd", [selectedItem containsString:@"Other"]);
+}
+
+-(void) updateCodeToServer {
+    Firebase* ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit/%@",[controller getTeam], code]];
+    [ref setValue:selectedItem];
 }
 
 

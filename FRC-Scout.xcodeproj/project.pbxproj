@@ -40,6 +40,7 @@
 		7EBF71FD1A6CEC5100A38BFE /* backNextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBF71FC1A6CEC5100A38BFE /* backNextView.m */; };
 		7EC356111AA582A4003F4EE6 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC356101AA582A4003F4EE6 /* DataManager.m */; };
 		7EC4B8721A734ACE00BA97C8 /* checkBoxLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC4B8711A734ACE00BA97C8 /* checkBoxLabel.m */; };
+		7EC58B801AA91EB000267534 /* kragerTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC58B7F1AA91EB000267534 /* kragerTextField.m */; };
 		7EC59A121A6DA4B20044E5C0 /* level1AutonomousViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC59A111A6DA4B20044E5C0 /* level1AutonomousViewController.m */; };
 		7EC650231AA81DB1002A8A11 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC650221AA81DB1002A8A11 /* Firebase.framework */; };
 		7EC650251AA827EE002A8A11 /* libicucore.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC650241AA827EE002A8A11 /* libicucore.A.dylib */; };
@@ -128,6 +129,8 @@
 		7EC356101AA582A4003F4EE6 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		7EC4B8701A734ACE00BA97C8 /* checkBoxLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = checkBoxLabel.h; sourceTree = "<group>"; };
 		7EC4B8711A734ACE00BA97C8 /* checkBoxLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = checkBoxLabel.m; sourceTree = "<group>"; };
+		7EC58B7E1AA91EB000267534 /* kragerTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kragerTextField.h; sourceTree = "<group>"; };
+		7EC58B7F1AA91EB000267534 /* kragerTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kragerTextField.m; sourceTree = "<group>"; };
 		7EC59A101A6DA4B20044E5C0 /* level1AutonomousViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = level1AutonomousViewController.h; sourceTree = "<group>"; };
 		7EC59A111A6DA4B20044E5C0 /* level1AutonomousViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = level1AutonomousViewController.m; sourceTree = "<group>"; };
 		7EC650221AA81DB1002A8A11 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = "FRC-Scout/Firebase.framework"; sourceTree = "<group>"; };
@@ -224,6 +227,8 @@
 				7EC4B8711A734ACE00BA97C8 /* checkBoxLabel.m */,
 				7E2FFD251A7CA0D10089ABFF /* radioButtonGroup.h */,
 				7E2FFD261A7CA0D10089ABFF /* radioButtonGroup.m */,
+				7EC58B7E1AA91EB000267534 /* kragerTextField.h */,
+				7EC58B7F1AA91EB000267534 /* kragerTextField.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -550,6 +555,7 @@
 				7EC6A1271A9FE26D001C43B9 /* JSONRequest.m in Sources */,
 				7E94F7AC1A49F2B40087C196 /* pickListCell.m in Sources */,
 				7EC4B8721A734ACE00BA97C8 /* checkBoxLabel.m in Sources */,
+				7EC58B801AA91EB000267534 /* kragerTextField.m in Sources */,
 				7EC6A1341AA0083B001C43B9 /* ToteSwipeGestureRecognizer.m in Sources */,
 				7EEA9AE21A9C470E00BF5CCA /* JSONObject.m in Sources */,
 			);

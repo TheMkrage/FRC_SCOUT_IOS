@@ -34,7 +34,7 @@
     
     NSMutableData* data;
     NSUInteger byteIndex;
-    }
+}
 
 //ROBOT SPECS
 @property (strong, nonatomic) IBOutlet UILabel *robotSpecsLabel;
@@ -156,7 +156,7 @@ static level1PitScoutViewController* instance;
     
     [self setAllPickersHidden];
     [self addDataToPickers];
- 
+    
     commentsTextView.layer.cornerRadius = 5;
     commentsTextView.layer.borderWidth = 2;
     commentsTextView.layer.borderColor = [[UIColor grayColor] CGColor];
@@ -179,7 +179,7 @@ static level1PitScoutViewController* instance;
     
     
     /*[commentsTextView setKeyboardDismissMode:UIScrollViewKeyboardDismissModeInteractive];
-    commentsTextView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;*/
+     commentsTextView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;*/
     
     [self teamTextField].keyboardType = UIKeyboardTypeNumberPad;
     [self weightTextField].keyboardType = UIKeyboardTypeNumberPad;
@@ -214,9 +214,9 @@ static level1PitScoutViewController* instance;
 -(void) saveData {
     //save all data and add to datamanager
     JSONObject *sendingData = [[JSONObject alloc] init];
-    [sendingData addObject:[NSNumber numberWithInt:2] forKey:@"status"];
-    [sendingData addObject:@"add team" forKey:@"cmd"];
-    [sendingData addObject:self.teamTextField.text forKey:@"team_number"];
+    //[sendingData addObject:[NSNumber numberWithInt:2] forKey:@"status"];
+    //[sendingData addObject:@"add team" forKey:@"cmd"];
+    //[sendingData addObject:self.teamTextField.text forKey:@"team_number"];
     [sendingData addObject:self.weightTextField.text forKey:@"weight"];
     [sendingData addObject:self.heightTextField.text forKey:@"height"];
     [sendingData addObject:self.maxSpeedTextField.text forKey:@"speed"];
@@ -240,11 +240,15 @@ static level1PitScoutViewController* instance;
     [sendingData addObject:self.maxCanHeightTextField.text forKey:@"can"];
     [sendingData addObject:[NSNumber numberWithLong: [UIImagePNGRepresentation(chooseImage) length]] forKey:@"image_size"];
     
+    Firebase* ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit",self.teamTextField.text]] ;
+    [ref setValue:[sendingData getDictionary]];
+    
+    
     DataManager *dataMan = [DataManager sharedManager];
     
     //adds to the DataManager to be sent at a later time
     [dataMan addJSONObject:sendingData onArray:0 at:0];
-
+    
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -256,7 +260,7 @@ static level1PitScoutViewController* instance;
     self.tabBarController.title = @"Robot Specs";
     
     [self setFonts];
-    }
+}
 
 -(void)viewDidLayoutSubviews {
     NSLog(@"LAYED OUT");
@@ -315,101 +319,102 @@ static level1PitScoutViewController* instance;
         NSLog(@"STOP");
         [activeAspect resignFirstResponder];
     }
-
+    
 }
 - (IBAction)addTeamButton:(id)sender {
     
-    Firebase *ref = [[Firebase alloc] initWithUrl:@"https://friarscout.firebaseio.com/teams/100/pit/notes"];
+    Firebase *ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit/frame_strength", self.teamTextField.text]];
     [ref setValue:@"FDSA"];
+    //[self saveData];
 }
-    /*CFReadStreamRef rstream;
-    CFWriteStreamRef wstream;
-    
-    //connect to server
-    CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)@"mrflark.org", 3309, &rstream, &wstream);
-    NSLog(@"connected to server");
-    
-    //init i/o with server
-    NSInputStream* is = objc_unretainedObject(rstream);
-    [is scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-    [is open];
-    
-    NSOutputStream* os = objc_unretainedObject(wstream);
-    
-    
-    
-    [os scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-    [os open];
-    
+/*CFReadStreamRef rstream;
+ CFWriteStreamRef wstream;
  
-    NSLog(@"%lu",(unsigned long)[UIImagePNGRepresentation(chooseImage) length]);
-    
-    //[data appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
-     */
-    
+ //connect to server
+ CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)@"mrflark.org", 3309, &rstream, &wstream);
+ NSLog(@"connected to server");
+ 
+ //init i/o with server
+ NSInputStream* is = objc_unretainedObject(rstream);
+ [is scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+ [is open];
+ 
+ NSOutputStream* os = objc_unretainedObject(wstream);
+ 
+ 
+ 
+ [os scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+ [os open];
+ 
+ 
+ NSLog(@"%lu",(unsigned long)[UIImagePNGRepresentation(chooseImage) length]);
+ 
+ //[data appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
+ */
+
 #warning DID NOT COMPLETE SWITCHES, THE FIRST MAX SPEED SHOULD BE ONE SPEED, TWO SPEED
-    //NSString *toSend = [NSString stringWithFormat:@"{status:2,cmd:\"add team\",team_number:%@,weight:%@,height:%@,speed:%@,cim:\"%@\",drivetrain:\"%@\",lift:\"%@\",max_speed:%@,frame_strength:%@,max_tote:%@,tote_stack_height:%@,can:%@,image_size:%lu}", [self teamTextField].text, [self weightTextField].text, [self heightTextField].text, [self maxSpeedTextField].text, [self cimTextField].text, [self driveTextField].text, [self liftTextField].text, [self maxSpeedTextField].text, [self frameStrengthTextField].text, [self maxTotesAtOneTimeTextField].text, [self maxToteHeightTextField].text, [self maxCanHeightTextField].text, (unsigned long)[UIImagePNGRepresentation(chooseImage) length]];
+//NSString *toSend = [NSString stringWithFormat:@"{status:2,cmd:\"add team\",team_number:%@,weight:%@,height:%@,speed:%@,cim:\"%@\",drivetrain:\"%@\",lift:\"%@\",max_speed:%@,frame_strength:%@,max_tote:%@,tote_stack_height:%@,can:%@,image_size:%lu}", [self teamTextField].text, [self weightTextField].text, [self heightTextField].text, [self maxSpeedTextField].text, [self cimTextField].text, [self driveTextField].text, [self liftTextField].text, [self maxSpeedTextField].text, [self frameStrengthTextField].text, [self maxTotesAtOneTimeTextField].text, [self maxToteHeightTextField].text, [self maxCanHeightTextField].text, (unsigned long)[UIImagePNGRepresentation(chooseImage) length]];
 
-    //the following code was the original server test that worked.  It will be kept until we are sure we do not need to test anymore
-    /*
-    NSString* toSend = [sendingData getJSONString];
-    
-    QueueManager* man = [QueueManager sharedManager];
-    JSONRequest* req = [[JSONRequest alloc] initWithString:toSend];
-    [man addRequestObject:req];
-    NSLog(@"%@",toSend);
-    
-    // NSString *toSend = [NSString stringWithFormat:@"]
-    
-    //in case qqueue dont work
-     */
-    
-    
-    //the rest of these are old tries of uploading, they will be kept until it is apparent that they can be deleted
-    /*
-    data = [NSMutableData dataWithData:[toSend dataUsingEncoding:NSUTF8StringEncoding]];
-    const uint8_t* bytesString = (const uint8_t*)[data bytes];
-    [os write:bytesString maxLength:[data length]];
-    */
-    
-    //sends image request
-    /*ImageRequest* imageReq = [[ImageRequest alloc] initWithImage:chooseImage];
-    [man addRequestObject:imageReq];*/
-    
-    
-    //in case queue doesnt work
-    /*
-    data = [NSMutableData dataWithData:UIImagePNGRepresentation(chooseImage)];
-    
-    NSUInteger len = [data length];
-    Byte* byteData = (Byte*)malloc(len);
-    [data getBytes:byteData length:len];
-    
-    //[os write:byteData maxLength:len];
-    byteIndex = 0;
-    //worked last time
-    while(byteIndex < [data length]) {
-        uint8_t *readBytes = (uint8_t *)[data mutableBytes];
-        readBytes += byteIndex; // instance variable to move pointer
-        NSUInteger data_len = [data length];
-        unsigned long len = ((data_len - byteIndex >= 1024) ?
-                            1024 : (data_len-byteIndex));
-        uint8_t buf[len];
-        (void)memcpy(buf, readBytes, len);
-        len = [(NSOutputStream*)os write:(const uint8_t *)buf maxLength:len];
-        byteIndex += len;
+//the following code was the original server test that worked.  It will be kept until we are sure we do not need to test anymore
+/*
+ NSString* toSend = [sendingData getJSONString];
+ 
+ QueueManager* man = [QueueManager sharedManager];
+ JSONRequest* req = [[JSONRequest alloc] initWithString:toSend];
+ [man addRequestObject:req];
+ NSLog(@"%@",toSend);
+ 
+ // NSString *toSend = [NSString stringWithFormat:@"]
+ 
+ //in case qqueue dont work
+ */
 
-    }
-    
-    NSLog(@"loading image...");
-    NSLog(@"image loaded");
-    NSLog(@"sent data");
-    */
-    
-    
-    //[is close];
-    //[os close];
-   
+
+//the rest of these are old tries of uploading, they will be kept until it is apparent that they can be deleted
+/*
+ data = [NSMutableData dataWithData:[toSend dataUsingEncoding:NSUTF8StringEncoding]];
+ const uint8_t* bytesString = (const uint8_t*)[data bytes];
+ [os write:bytesString maxLength:[data length]];
+ */
+
+//sends image request
+/*ImageRequest* imageReq = [[ImageRequest alloc] initWithImage:chooseImage];
+ [man addRequestObject:imageReq];*/
+
+
+//in case queue doesnt work
+/*
+ data = [NSMutableData dataWithData:UIImagePNGRepresentation(chooseImage)];
+ 
+ NSUInteger len = [data length];
+ Byte* byteData = (Byte*)malloc(len);
+ [data getBytes:byteData length:len];
+ 
+ //[os write:byteData maxLength:len];
+ byteIndex = 0;
+ //worked last time
+ while(byteIndex < [data length]) {
+ uint8_t *readBytes = (uint8_t *)[data mutableBytes];
+ readBytes += byteIndex; // instance variable to move pointer
+ NSUInteger data_len = [data length];
+ unsigned long len = ((data_len - byteIndex >= 1024) ?
+ 1024 : (data_len-byteIndex));
+ uint8_t buf[len];
+ (void)memcpy(buf, readBytes, len);
+ len = [(NSOutputStream*)os write:(const uint8_t *)buf maxLength:len];
+ byteIndex += len;
+ 
+ }
+ 
+ NSLog(@"loading image...");
+ NSLog(@"image loaded");
+ NSLog(@"sent data");
+ */
+
+
+//[is close];
+//[os close];
+
 //}
 
 -(void)textFieldShouldBeEditable: (UITextField*)field {
@@ -473,8 +478,8 @@ static level1PitScoutViewController* instance;
             [[self cimPicker] setSelectedValueToTextField];
         }
         [self setAllPickersHidden];
-       
-       
+        
+        
     }
     if(activeTextField == [self driveTextField]){
         return [self textFieldShouldBeActive: self.drivePicker];
@@ -487,7 +492,7 @@ static level1PitScoutViewController* instance;
     }else if(activeTextField == [self frameStrengthTextField]) {
         return [self textFieldShouldBeActive: self.frameStrengthPicker];
     }
-
+    
     return YES;
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

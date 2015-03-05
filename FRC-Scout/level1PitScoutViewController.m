@@ -137,6 +137,8 @@ static level1PitScoutViewController* instance;
     [self.liftPicker setData:@[@"lift", @"Item 2", @"Item 3", @"Item 4", @"Item 5", @"Other"] textField:self.liftTextField withController:self];
     [self.cimPicker setData:@[@"2CIM", @"3CIM", @"4IM"] textField:[self cimTextField] withController:self];
     [self.frameStrengthPicker setData:@[@"1",@"2",@"3",@"4"] textField: self.frameStrengthTextField withController:self];
+    
+    
 }
 
 - (void)viewDidLoad
@@ -417,6 +419,28 @@ static level1PitScoutViewController* instance;
 
 //}
 
+-(void) setFieldsToValue:(FDataSnapshot*)snapshot {
+    
+    NSLog(@"FDSAFDSAFQSD");
+    [self setTextOfField:self.weightTextField withValue:snapshot.value[@"weight"]];
+    [self setTextOfField:self.heightTextField withValue:snapshot.value[@"height"]];
+    [self setTextOfField:self.cimTextField withValue:snapshot.value[@"cim"]];
+    [self setTextOfField:self.maxSpeedTextField withValue:snapshot.value[@"speed"]];
+    [self setTextOfField:self.driveTextField withValue:snapshot.value[@"drivetrain"]];
+    [self setTextOfField:self.frameStrengthTextField withValue:snapshot.value[@"frame_strength"]];
+    [self setTextOfField:self.liftTextField withValue:snapshot.value[@"lift"]];
+    [self setTextOfField:self.maxTotesAtOneTimeTextField withValue:snapshot.value[@"max_tote"]];
+    [self setTextOfField:self.maxToteHeightTextField   withValue:snapshot.value[@"tote_stack_height"]];
+    [self setTextOfField:self.maxCanHeightTextField withValue:snapshot.value[@"can"]];
+    [self setTextOfField:self.intakeTextField withValue:snapshot.value[@"intake"]];
+}
+
+-(void) setTextOfField: (UITextField*)field withValue: (id)  value {
+    if(value == nil)
+        return;
+    [field setText:[NSString stringWithFormat:@"%@",value]];
+}
+
 -(void)textFieldShouldBeEditable: (UITextField*)field {
     textFieldShouldEdit = true;
     
@@ -502,8 +526,21 @@ static level1PitScoutViewController* instance;
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    if(textField == self.teamTextField) {
+        NSLog(@"FDit worksSFADSF %@", self.teamTextField.text);
+        Firebase *ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit", self.teamTextField.text]];
+        [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+            [self setFieldsToValue:snapshot];
+        } withCancelBlock:^(NSError *error) {
+            NSLog(@"Cancel");
+        }];
+    }else {
+        
+    }
     NSLog(@"ENDED");
 }
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     NSLog(@"SELECTED");
     

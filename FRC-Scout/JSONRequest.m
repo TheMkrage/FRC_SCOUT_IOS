@@ -9,24 +9,24 @@
 #import "JSONRequest.h"
 #import "JSONObject.h"
 @interface JSONRequest ()
-@property(nonatomic, strong) NSString* mainString;
+@property(nonatomic, strong) NSDictionary* mainDictionary;
 
 @end
 
 @implementation JSONRequest
 
--(id) initWithString: (NSString*)string {
+-(id) initWithString: (NSDictionary*)string {
     self = [super init];
-    self.mainString = string;
+    self.mainDictionary = string;
     return self;
 }
 -(id) initWithJSONObject: (JSONObject*)object {
     self = [super init];
-    self.mainString = [object getJSONString];
+    self.mainDictionary = [object getDictionary];
     return self;
 }
 -(void) upload {
-    if (self.mainString == nil) {
+    if (self.mainDictionary == nil) {
         return;
     }
     CFReadStreamRef rstream;
@@ -48,9 +48,9 @@
     [os scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     [os open];
 
-    NSMutableData* data = [NSMutableData dataWithData:[self.mainString dataUsingEncoding:NSUTF8StringEncoding]];
-    const uint8_t* bytesString = (const uint8_t*)[data bytes];
-    [os write:bytesString maxLength:[data length]];
+    //NSMutableData* data = [NSMutableData dataWithData:[self.mainDictionary dataUsingEncoding:NSUTF8StringEncoding]];
+    //const uint8_t* bytesString = (const uint8_t*)[data bytes];
+    //[os write:bytesString maxLength:[data length]];
     
     [os close];
 }

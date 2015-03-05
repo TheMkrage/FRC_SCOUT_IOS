@@ -42,6 +42,10 @@
 		7EC4B8721A734ACE00BA97C8 /* checkBoxLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC4B8711A734ACE00BA97C8 /* checkBoxLabel.m */; };
 		7EC59A121A6DA4B20044E5C0 /* level1AutonomousViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC59A111A6DA4B20044E5C0 /* level1AutonomousViewController.m */; };
 		7EC650231AA81DB1002A8A11 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC650221AA81DB1002A8A11 /* Firebase.framework */; };
+		7EC650251AA827EE002A8A11 /* libicucore.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC650241AA827EE002A8A11 /* libicucore.A.dylib */; };
+		7EC650271AA82809002A8A11 /* libc++.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC650261AA82809002A8A11 /* libc++.1.dylib */; };
+		7EC650291AA8280E002A8A11 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC650281AA8280E002A8A11 /* Security.framework */; };
+		7EC6502B1AA8281E002A8A11 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC6502A1AA8281E002A8A11 /* SystemConfiguration.framework */; };
 		7EC685BD1A7C569800E44086 /* level1MatchAutoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC685BC1A7C569800E44086 /* level1MatchAutoViewController.m */; };
 		7EC6A1231A9FDC7F001C43B9 /* QueueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6A1221A9FDC7F001C43B9 /* QueueManager.m */; };
 		7EC6A1271A9FE26D001C43B9 /* JSONRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6A1261A9FE26D001C43B9 /* JSONRequest.m */; };
@@ -127,6 +131,10 @@
 		7EC59A101A6DA4B20044E5C0 /* level1AutonomousViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = level1AutonomousViewController.h; sourceTree = "<group>"; };
 		7EC59A111A6DA4B20044E5C0 /* level1AutonomousViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = level1AutonomousViewController.m; sourceTree = "<group>"; };
 		7EC650221AA81DB1002A8A11 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = "FRC-Scout/Firebase.framework"; sourceTree = "<group>"; };
+		7EC650241AA827EE002A8A11 /* libicucore.A.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.A.dylib; path = usr/lib/libicucore.A.dylib; sourceTree = SDKROOT; };
+		7EC650261AA82809002A8A11 /* libc++.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.1.dylib"; path = "usr/lib/libc++.1.dylib"; sourceTree = SDKROOT; };
+		7EC650281AA8280E002A8A11 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		7EC6502A1AA8281E002A8A11 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		7EC685BB1A7C569800E44086 /* level1MatchAutoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = level1MatchAutoViewController.h; sourceTree = "<group>"; };
 		7EC685BC1A7C569800E44086 /* level1MatchAutoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = level1MatchAutoViewController.m; sourceTree = "<group>"; };
 		7EC6A1211A9FDC7F001C43B9 /* QueueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueueManager.h; sourceTree = "<group>"; };
@@ -160,6 +168,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EC6502B1AA8281E002A8A11 /* SystemConfiguration.framework in Frameworks */,
+				7EC650291AA8280E002A8A11 /* Security.framework in Frameworks */,
+				7EC650271AA82809002A8A11 /* libc++.1.dylib in Frameworks */,
+				7EC650251AA827EE002A8A11 /* libicucore.A.dylib in Frameworks */,
 				7EA3E2E01A1AEE4900F534A5 /* CoreGraphics.framework in Frameworks */,
 				7EA3E2E21A1AEE4900F534A5 /* UIKit.framework in Frameworks */,
 				7EA3E2DE1A1AEE4900F534A5 /* Foundation.framework in Frameworks */,
@@ -249,6 +261,10 @@
 		7EA3E2DC1A1AEE4900F534A5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7EC6502A1AA8281E002A8A11 /* SystemConfiguration.framework */,
+				7EC650281AA8280E002A8A11 /* Security.framework */,
+				7EC650261AA82809002A8A11 /* libc++.1.dylib */,
+				7EC650241AA827EE002A8A11 /* libicucore.A.dylib */,
 				7EC650221AA81DB1002A8A11 /* Firebase.framework */,
 				7EA3E2DD1A1AEE4900F534A5 /* Foundation.framework */,
 				7EA3E2DF1A1AEE4900F534A5 /* CoreGraphics.framework */,
@@ -679,6 +695,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FRC-Scout/FRC-Scout-Prefix.pch";
 				INFOPLIST_FILE = "FRC-Scout/FRC-Scout-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -699,6 +716,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FRC-Scout/FRC-Scout-Prefix.pch";
 				INFOPLIST_FILE = "FRC-Scout/FRC-Scout-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

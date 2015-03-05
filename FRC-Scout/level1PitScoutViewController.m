@@ -13,6 +13,7 @@
 #import "JSONRequest.h"
 #import "ImageRequest.h"
 #import "DataManager.h"
+#import <Firebase/Firebase.h>
 @interface level1PitScoutViewController ()
 {
     id activeAspect;
@@ -207,6 +208,10 @@ static level1PitScoutViewController* instance;
     NSLog(@"VIEW WILL DIS");
     [self setAllPickersHidden];
     
+    [self saveData];
+}
+
+-(void) saveData {
     //save all data and add to datamanager
     JSONObject *sendingData = [[JSONObject alloc] init];
     [sendingData addObject:[NSNumber numberWithInt:2] forKey:@"status"];
@@ -312,8 +317,11 @@ static level1PitScoutViewController* instance;
     }
 
 }
-//- (IBAction)addTeamButton:(id)sender {
+- (IBAction)addTeamButton:(id)sender {
     
+    Firebase *ref = [[Firebase alloc] initWithUrl:@"https://friarscout.firebaseio.com/teams/100/pit/notes"];
+    [ref setValue:@"FDSA"];
+}
     /*CFReadStreamRef rstream;
     CFWriteStreamRef wstream;
     

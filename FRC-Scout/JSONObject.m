@@ -21,6 +21,10 @@
     return self;
 }
 
+-(NSDictionary*)getDictionary {
+    return self.dictionary;
+}
+
 -(NSString*) getJSONString {
     NSError *error = nil;
     NSData *json;

@@ -13,6 +13,7 @@
 #import "JSONRequest.h"
 #import "ImageRequest.h"
 #import "DataManager.h"
+#import "kragerTextField.h"
 #import <Firebase/Firebase.h>
 @interface level1PitScoutViewController ()
 {
@@ -52,7 +53,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *oneSpeedLabel;
 @property (strong, nonatomic) IBOutlet UILabel *twoSpeedLabel;
 @property (strong, nonatomic) IBOutlet UITextField *cimTextField;
-@property (strong, nonatomic) IBOutlet UITextField *maxSpeedTextField;
+@property (strong, nonatomic) IBOutlet kragerTextField *maxSpeedTextField;
 @property (strong, nonatomic) IBOutlet UITextField *frameStrengthTextField;
 
 
@@ -166,18 +167,26 @@ static level1PitScoutViewController* instance;
     
     pictureSelected = false;
     
+    [self.externalInternalSwitch addTarget:self action:@selector(changeSwitch:) forControlEvents:UIControlEventValueChanged];
+    
     [self teamTextField].placeholder = @"Team";
     [self driveTextField].placeholder = @"Drive";
     [self intakeTextField].placeholder = @"Intake";
     [self liftTextField].placeholder = @"Lift";
     [self cimTextField].placeholder = @"CIM";
     [self heightTextField].placeholder = @"Height";
+    [(kragerTextField*)self.heightTextField setCode:@"height"];
     [self weightTextField].placeholder = @"Weight";
+    [(kragerTextField*)self.weightTextField setCode:@"weight"];
     [self maxSpeedTextField].placeholder = @"Max Speed";
+    [(kragerTextField*) self.maxSpeedTextField setCode:@"max_speed"];
     [self frameStrengthTextField].placeholder = @"Frame Strength";
     [self maxCanHeightTextField].placeholder = @"Can Stack Height";
+    [(kragerTextField*)self.maxCanHeightTextField setCode:@"can"];
     [self maxToteHeightTextField].placeholder = @"Tote Stack Height";
+    [(kragerTextField*)self.maxToteHeightTextField setCode:@"tote_stack_height"];
     [self maxTotesAtOneTimeTextField].placeholder = @"Max Tote";
+    [(kragerTextField*)self.maxTotesAtOneTimeTextField setCode:@"max_tote"];
     
     
     /*[commentsTextView setKeyboardDismissMode:UIScrollViewKeyboardDismissModeInteractive];
@@ -190,6 +199,8 @@ static level1PitScoutViewController* instance;
     [[self maxTotesAtOneTimeTextField]setKeyboardType:UIKeyboardTypeNumberPad];
     [self maxToteHeightTextField].keyboardType = UIKeyboardTypeNumberPad;
     [self maxCanHeightTextField].keyboardType = UIKeyboardTypeNumberPad;
+    
+    
     
     [self teamTextField].delegate = self;
     [self driveTextField].delegate = self;
@@ -419,9 +430,13 @@ static level1PitScoutViewController* instance;
 
 //}
 
+
+
 -(void) setFieldsToValue:(FDataSnapshot*)snapshot {
     
     NSLog(@"FDSAFDSAFQSD");
+    if(snapshot == nil)
+        return;
     [self setTextOfField:self.weightTextField withValue:snapshot.value[@"weight"]];
     [self setTextOfField:self.heightTextField withValue:snapshot.value[@"height"]];
     [self setTextOfField:self.cimTextField withValue:snapshot.value[@"cim"]];
@@ -525,7 +540,7 @@ static level1PitScoutViewController* instance;
     return NO;
 }
 
--(void)textFieldDidEndEditing:(UITextField *)textField {
+-(void)textFieldDidEndEditing:(kragerTextField *)textField {
     
     if(textField == self.teamTextField) {
         NSLog(@"FDit worksSFADSF %@", self.teamTextField.text);
@@ -536,7 +551,11 @@ static level1PitScoutViewController* instance;
             NSLog(@"Cancel");
         }];
     }else {
+        NSString* key = [textField getCode];
+        Firebase *ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit/%@", self.teamTextField.text, key]];
         
+        NSLog(@"%@", key);
+        [ref setValue:textField.text];
     }
     NSLog(@"ENDED");
 }

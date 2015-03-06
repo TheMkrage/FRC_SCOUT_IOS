@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface pickListCell : UITableViewCell
+@interface PickListCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *robotImage;
 @property (strong, nonatomic) IBOutlet UILabel *teamNumLabel;
 

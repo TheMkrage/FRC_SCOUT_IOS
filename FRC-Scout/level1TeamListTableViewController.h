@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface level1TeamListTableViewController : UITableViewController
+@interface Level1TeamListTableViewController : UITableViewController
 
 @end

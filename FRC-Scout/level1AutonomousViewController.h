@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface level1AutonomousViewController : UIViewController <UITextFieldDelegate>
+@interface Level1AutonomousViewController : UIViewController <UITextFieldDelegate>
 
 
 @end

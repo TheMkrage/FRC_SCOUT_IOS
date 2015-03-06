@@ -6,20 +6,20 @@
 //  Copyright (c) 2015 Matthew Krager. All rights reserved.
 //
 
-#import "level1PitTeleopViewController.h"
-#import "kragerPickerView.h"
-#import "checkBoxLabel.h"
+#import "Level1PitTeleopViewController.h"
+#import "KragerPickerView.h"
+#import "CheckBoxLabel.h"
 
-@interface level1PitTeleopViewController () {
+@interface Level1PitTeleopViewController () {
     IBOutlet UIScrollView *scrollView;
     bool textFieldShouldEdit;
     UITextField *activeTextField;
     id activeAspect;
 }
 @property (strong, nonatomic) IBOutlet UITextField *cooperationTextField;
-@property (strong, nonatomic) IBOutlet kragerPickerView *cooperationPicker;
+@property (strong, nonatomic) IBOutlet KragerPickerView *cooperationPicker;
 @property (strong, nonatomic) IBOutlet UITextField *preferredTextField;
-@property (strong, nonatomic) IBOutlet kragerPickerView *preferredPicker;
+@property (strong, nonatomic) IBOutlet KragerPickerView *preferredPicker;
 
 @property (strong, nonatomic) IBOutlet UITextView *strategyTextView;
 @property (strong, nonatomic) IBOutlet UIScrollView *humanPlayerBoyGirlSwitch;
@@ -28,7 +28,7 @@
 
 @end
 
-@implementation level1PitTeleopViewController
+@implementation Level1PitTeleopViewController
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -94,7 +94,7 @@
 }
 
 - (void) turnOffActiveAspect {
-    if([activeAspect isKindOfClass:[kragerPickerView class]]) {
+    if([activeAspect isKindOfClass:[KragerPickerView class]]) {
         [activeAspect setHidden:YES];
     } else {
         [activeAspect resignFirstResponder];
@@ -112,7 +112,7 @@
 }
 
 #pragma mark - UITextFieldDelegate
--(BOOL) textFieldShouldBeActive: (kragerPickerView*) picker {
+-(BOOL) textFieldShouldBeActive: (KragerPickerView*) picker {
     [picker setCenter:CGPointMake(picker.frame.origin.x + picker.frame.size.width/2, self.view.frame.size.height - 150)];
     [picker setBackgroundColor:[UIColor whiteColor]];
     //NSLog(@":ACTIVEFADSFASDFASDFADS");

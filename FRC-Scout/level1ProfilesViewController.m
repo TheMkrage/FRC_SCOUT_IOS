@@ -6,20 +6,20 @@
 //  Copyright (c) 2014 Matthew Krager. All rights reserved.
 //
 
-#import "level1ProfilesViewController.h"
-#import "matchScoutTableCell.h"
-#import "pitScoutView.h"
-@interface level1ProfilesViewController (){
+#import "Level1ProfilesViewController.h"
+#import "MatchScoutTableCell.h"
+#import "PitScoutView.h"
+@interface Level1ProfilesViewController (){
     
     IBOutlet UITableView *matchScoutTable;
     IBOutlet UIScrollView *scrollView;
-    IBOutlet pitScoutView *pitScoutView;
+    IBOutlet PitScoutView *pitScoutView;
     NSMutableArray *quals;
 }
 
 @end
 
-@implementation level1ProfilesViewController
+@implementation Level1ProfilesViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -61,7 +61,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    matchScoutTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"matchCell" forIndexPath:indexPath];
+    MatchScoutTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"matchCell" forIndexPath:indexPath];
     cell.matchNumberLabel.text = [quals objectAtIndex:[indexPath row]];
     //NSLog(@"HEell");
     return cell;

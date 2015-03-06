@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Matthew Krager. All rights reserved.
 //
 
-#import "backNextView.h"
-@interface backNextView () {
+#import "BackNextView.h"
+@interface BackNextView () {
     IBOutlet UIButton* nextButton;
     IBOutlet UIButton* backButton;
     id nextViewController;
@@ -15,7 +15,7 @@
     UINavigationController* navigationController;
 }
 @end
-@implementation backNextView
+@implementation BackNextView
 
 - (void) setBackButton:(bool) b {
     [backButton setHidden:b];

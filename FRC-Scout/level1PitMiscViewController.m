@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 Matthew Krager. All rights reserved.
 //
 
-#import "level1PitMiscViewController.h"
-#import "kragerPickerView.h"
+#import "Level1PitMiscViewController.h"
+#import "KragerPickerView.h"
 
-@interface level1PitMiscViewController ()
+@interface Level1PitMiscViewController ()
 {
     id activeAspect;
     IBOutlet UIScrollView *scrollView;
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation level1PitMiscViewController
+@implementation Level1PitMiscViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -57,7 +57,7 @@
     [self turnOffActiveAspect];
 }
 - (void) turnOffActiveAspect {
-    if([activeAspect isKindOfClass:[kragerPickerView class]]) {
+    if([activeAspect isKindOfClass:[KragerPickerView class]]) {
         [activeAspect setHidden:YES];
     } else {
         NSLog(@"STOP");

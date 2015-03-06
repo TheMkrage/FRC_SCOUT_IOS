@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 Matthew Krager. All rights reserved.
 //
 
-#import "level1AutonomousViewController.h"
-#import"kragerPickerView.h"
-#import "checkBoxLabel.h"
-@interface level1AutonomousViewController () {
+#import "Level1AutonomousViewController.h"
+#import"KragerPickerView.h"
+#import "CheckBoxLabel.h"
+@interface Level1AutonomousViewController () {
     bool textFieldShouldEdit;
     UITextField *activeTextField;
     id activeAspect;
@@ -20,20 +20,20 @@
 //Starting Pos
 
 //checkBoxes
-@property (strong, nonatomic) IBOutlet checkBoxLabel *byLandFillCheckBox;
-@property (strong, nonatomic) IBOutlet checkBoxLabel *byYellowToteCheckBox;
-@property (strong, nonatomic) IBOutlet checkBoxLabel *immobileCheckBox;
-@property (strong, nonatomic) IBOutlet checkBoxLabel *otherPosCheckBox;
+@property (strong, nonatomic) IBOutlet CheckBoxLabel *byLandFillCheckBox;
+@property (strong, nonatomic) IBOutlet CheckBoxLabel *byYellowToteCheckBox;
+@property (strong, nonatomic) IBOutlet CheckBoxLabel *immobileCheckBox;
+@property (strong, nonatomic) IBOutlet CheckBoxLabel *otherPosCheckBox;
 //Other
 @property (strong, nonatomic) IBOutlet UITextField *otherPosTextField;
 
 //AUTO GOALS
-@property (strong, nonatomic) IBOutlet checkBoxLabel *totesMovedCheckBox;
-@property (strong, nonatomic) IBOutlet checkBoxLabel *totesStackedCheckBox;
-@property (strong, nonatomic) IBOutlet checkBoxLabel *trashCanMovedCheckBox;
-@property (strong, nonatomic) IBOutlet checkBoxLabel *trashCansFromMiddleCheckBox;
-@property (strong, nonatomic) IBOutlet checkBoxLabel *otherGoalsCheckBox;
-@property (strong, nonatomic) IBOutlet checkBoxLabel *robotMovedCheckBox;
+@property (strong, nonatomic) IBOutlet CheckBoxLabel *totesMovedCheckBox;
+@property (strong, nonatomic) IBOutlet CheckBoxLabel *totesStackedCheckBox;
+@property (strong, nonatomic) IBOutlet CheckBoxLabel *trashCanMovedCheckBox;
+@property (strong, nonatomic) IBOutlet CheckBoxLabel *trashCansFromMiddleCheckBox;
+@property (strong, nonatomic) IBOutlet CheckBoxLabel *otherGoalsCheckBox;
+@property (strong, nonatomic) IBOutlet CheckBoxLabel *robotMovedCheckBox;
 @property (strong, nonatomic) IBOutlet UITextField *otherGoalsTextField;
 
 
@@ -43,7 +43,7 @@
 #define FONT_BEBAS_20 [UIFont fontWithName: @"Bebas Neue" size:20]
 #define FONT_BEBAS_25 [UIFont fontWithName: @"Bebas Neue" size:25]
 #define FONT_BEBAS_28 [UIFont fontWithName: @"Bebas Neue" size:28]
-@implementation level1AutonomousViewController
+@implementation Level1AutonomousViewController
 
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -115,7 +115,7 @@
 }
 
 - (void) turnOffActiveAspect {
-    if([activeAspect isKindOfClass:[kragerPickerView class]]) {
+    if([activeAspect isKindOfClass:[KragerPickerView class]]) {
         [activeAspect setHidden:YES];
     } else {
         [activeAspect resignFirstResponder];

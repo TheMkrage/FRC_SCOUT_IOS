@@ -6,16 +6,16 @@
 //  Copyright (c) 2014 Matthew Krager. All rights reserved.
 //
 
-#import "level1MatchScoutViewController.h"
-#import "kragerStepperView.h"
+#import "Level1MatchScoutViewController.h"
+#import "KragerStepperView.h"
 
-@interface level1MatchScoutViewController () {
+@interface Level1MatchScoutViewController () {
     
-    IBOutlet kragerStepperView *stackedTotesStepper;
-    IBOutlet kragerStepperView *stackedCansStepper;
-    IBOutlet kragerStepperView *maxStackStepper;
-    IBOutlet kragerStepperView *numberOfStacksStepper;
-    IBOutlet kragerStepperView *numberOfNoodlesStepper;
+    IBOutlet KragerStepperView *stackedTotesStepper;
+    IBOutlet KragerStepperView *stackedCansStepper;
+    IBOutlet KragerStepperView *maxStackStepper;
+    IBOutlet KragerStepperView *numberOfStacksStepper;
+    IBOutlet KragerStepperView *numberOfNoodlesStepper;
     IBOutlet UITextView *commentsTextView;
     IBOutlet UIScrollView *scrollView;
     IBOutlet UITextField *matchTextField;
@@ -29,7 +29,7 @@
 #define FONT_BEBAS_25 [UIFont fontWithName: @"Bebas Neue" size:25]
 #define FONT_BEBAS_28 [UIFont fontWithName: @"Bebas Neue" size:28]
 
-@implementation level1MatchScoutViewController
+@implementation Level1MatchScoutViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

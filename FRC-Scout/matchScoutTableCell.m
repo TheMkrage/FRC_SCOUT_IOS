@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Matthew Krager. All rights reserved.
 //
 
-#import "matchScoutTableCell.h"
+#import "MatchScoutTableCell.h"
 
-@implementation matchScoutTableCell
+@implementation MatchScoutTableCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

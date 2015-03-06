@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface level1MatchAutoViewController : UIViewController <UITextViewDelegate,UITextFieldDelegate>
+@interface Level1MatchAutoViewController : UIViewController <UITextViewDelegate,UITextFieldDelegate>
 
 @end

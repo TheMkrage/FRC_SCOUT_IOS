@@ -6,12 +6,12 @@
 //  Copyright (c) 2014 Matthew Krager. All rights reserved.
 //
 
-#import "pitScoutView.h"
-@interface pitScoutView()
+#import "PitScoutView.h"
+@interface PitScoutView()
 
 @end
 
-@implementation pitScoutView
+@implementation PitScoutView
 
 - (id)initWithFrame:(CGRect)frame
 {

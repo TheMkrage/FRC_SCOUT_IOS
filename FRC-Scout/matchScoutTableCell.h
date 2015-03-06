@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface matchScoutTableCell : UITableViewCell
+@interface MatchScoutTableCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *matchNumberLabel;
 @property (strong, nonatomic) IBOutlet UILabel *redScore;
 @property (strong, nonatomic) IBOutlet UILabel *BlueScore;

@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 Matthew Krager. All rights reserved.
 //
 
-#import "level1MatchAutoViewController.h"
-#import"kragerPickerView.h"
-#import "checkBoxLabel.h"
-@interface level1MatchAutoViewController () {
+#import "Level1MatchAutoViewController.h"
+#import"KragerPickerView.h"
+#import "CheckBoxLabel.h"
+@interface Level1MatchAutoViewController () {
     bool textFieldShouldEdit;
     UITextField *activeTextField;
     id activeAspect;
@@ -20,23 +20,23 @@
 //Starting Pos
 
 //checkBoxes
-@property (strong, nonatomic) IBOutlet checkBoxLabel *byLandFillCheckBox;
-@property (strong, nonatomic) IBOutlet checkBoxLabel *byYellowToteCheckBox;
-@property (strong, nonatomic) IBOutlet checkBoxLabel *immobileCheckBox;
-@property (strong, nonatomic) IBOutlet checkBoxLabel *otherPosCheckBox;
+@property (strong, nonatomic) IBOutlet CheckBoxLabel *byLandFillCheckBox;
+@property (strong, nonatomic) IBOutlet CheckBoxLabel *byYellowToteCheckBox;
+@property (strong, nonatomic) IBOutlet CheckBoxLabel *immobileCheckBox;
+@property (strong, nonatomic) IBOutlet CheckBoxLabel *otherPosCheckBox;
 //Other
 @property (strong, nonatomic) IBOutlet UITextField *otherPosTextField;
 
 //AUTO GOALS
-@property (strong, nonatomic) IBOutlet checkBoxLabel *totesMovedCheckBox;
-@property (strong, nonatomic) IBOutlet checkBoxLabel *totesStackedCheckBox;
-@property (strong, nonatomic) IBOutlet checkBoxLabel *trashCanMovedCheckBox;
-@property (strong, nonatomic) IBOutlet checkBoxLabel *trashCansFromMiddleCheckBox;
-@property (strong, nonatomic) IBOutlet checkBoxLabel *otherGoalsCheckBox;
-@property (strong, nonatomic) IBOutlet checkBoxLabel *robotMovedCheckBox;
+@property (strong, nonatomic) IBOutlet CheckBoxLabel *totesMovedCheckBox;
+@property (strong, nonatomic) IBOutlet CheckBoxLabel *totesStackedCheckBox;
+@property (strong, nonatomic) IBOutlet CheckBoxLabel *trashCanMovedCheckBox;
+@property (strong, nonatomic) IBOutlet CheckBoxLabel *trashCansFromMiddleCheckBox;
+@property (strong, nonatomic) IBOutlet CheckBoxLabel *otherGoalsCheckBox;
+@property (strong, nonatomic) IBOutlet CheckBoxLabel *robotMovedCheckBox;
 @property (strong, nonatomic) IBOutlet UITextField *otherGoalsTextField;
 
-@property (strong, nonatomic) IBOutlet kragerPickerView *autoPicker;
+@property (strong, nonatomic) IBOutlet KragerPickerView *autoPicker;
 
 
 @end
@@ -44,7 +44,7 @@
 #define FONT_BEBAS_20 [UIFont fontWithName: @"Bebas Neue" size:20]
 #define FONT_BEBAS_25 [UIFont fontWithName: @"Bebas Neue" size:25]
 #define FONT_BEBAS_28 [UIFont fontWithName: @"Bebas Neue" size:28]
-@implementation level1MatchAutoViewController
+@implementation Level1MatchAutoViewController
 
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -102,10 +102,10 @@
     [[self otherGoalsCheckBox] setHiddenObject:[self otherGoalsTextField]];
     [[self autoPicker] setData:@[@"1",@"2",@"3",@"4",@"5"] textField:nil withController:self withCode:@"auto_number"];
     NSMutableArray *startPosArray = [NSMutableArray arrayWithArray:@[self.byLandFillCheckBox, self.byYellowToteCheckBox, self.immobileCheckBox, self.otherPosCheckBox]];
-    radioButtonGroup *startingPosRadioGroup =
-    [[radioButtonGroup alloc] initWithCheckBoxes:startPosArray];
+    RadioButtonGroup *startingPosRadioGroup =
+    [[RadioButtonGroup alloc] initWithCheckBoxes:startPosArray];
     NSMutableArray *autoOptions = [NSMutableArray arrayWithArray:@[self.robotMovedCheckBox, self.totesMovedCheckBox, self.trashCanMovedCheckBox, self.trashCansFromMiddleCheckBox, self.totesStackedCheckBox, self.otherGoalsCheckBox]];
-    radioButtonGroup *autoOptionsRadioGroup = [[radioButtonGroup alloc] initWithCheckBoxes:autoOptions];
+    RadioButtonGroup *autoOptionsRadioGroup = [[RadioButtonGroup alloc] initWithCheckBoxes:autoOptions];
 }
 
 -(void) setDelegates {
@@ -122,16 +122,16 @@
     [self.view layoutSubviews];
 }
 - (IBAction)totesMovedCheckBox:(id)sender {
-    [self pickerSetTo: (checkBoxLabel*) self.totesMovedCheckBox];
+    [self pickerSetTo: (CheckBoxLabel*) self.totesMovedCheckBox];
 }
 - (IBAction)trashCansMovedCheckBox:(id)sender {
-    [self pickerSetTo: (checkBoxLabel*) self.trashCanMovedCheckBox];
+    [self pickerSetTo: (CheckBoxLabel*) self.trashCanMovedCheckBox];
 }
 - (IBAction)trashCansFromMiddleCheckBox:(id)sender {
-    [self pickerSetTo: (checkBoxLabel*) self.trashCansFromMiddleCheckBox];
+    [self pickerSetTo: (CheckBoxLabel*) self.trashCansFromMiddleCheckBox];
 }
 
-- (void) pickerSetTo:(checkBoxLabel*) checkBox {
+- (void) pickerSetTo:(CheckBoxLabel*) checkBox {
     [self.autoPicker setHidden:NO];
 }
 
@@ -141,7 +141,7 @@
 }
 
 - (void) turnOffActiveAspect {
-    if([activeAspect isKindOfClass:[kragerPickerView class]]) {
+    if([activeAspect isKindOfClass:[KragerPickerView class]]) {
         [activeAspect setHidden:YES];
     } else {
         [activeAspect resignFirstResponder];

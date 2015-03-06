@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="lwZ-ov-W89">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -101,7 +100,7 @@
         <!--Level1 Menu View Controller-->
         <scene sceneID="cK0-gu-JjM">
             <objects>
-                <viewController storyboardIdentifier="level1" id="L5i-wB-IRK" customClass="level1MenuViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="level1" id="L5i-wB-IRK" customClass="Level1MenuViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Wx-mo-4Au">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -156,13 +155,13 @@
         <!--Level1 Team List Table View Controller-->
         <scene sceneID="Foz-hD-5sc">
             <objects>
-                <tableViewController id="FIw-P5-1QP" customClass="level1TeamListTableViewController" sceneMemberID="viewController">
+                <tableViewController id="FIw-P5-1QP" customClass="Level1TeamListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="G66-96-O2w">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="teamCell" rowHeight="80" id="Fkd-1F-PbS" customClass="pickListCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="teamCell" rowHeight="80" id="Fkd-1F-PbS" customClass="PickListCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fkd-1F-PbS" id="88f-4f-ehf">
@@ -222,7 +221,7 @@
         <!--Level1 Profiles View Controller-->
         <scene sceneID="soj-d3-qd1">
             <objects>
-                <viewController storyboardIdentifier="level1Profile" id="TAM-PI-opy" customClass="level1ProfilesViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="level1Profile" id="TAM-PI-opy" customClass="Level1ProfilesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g7M-7T-7ig">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -240,7 +239,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="matchCell" id="Imr-Fd-Qob" customClass="matchScoutTableCell">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="matchCell" id="Imr-Fd-Qob" customClass="MatchScoutTableCell">
                                                 <rect key="frame" x="0.0" y="22" width="280" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Imr-Fd-Qob" id="GCL-ZM-U7p">
@@ -277,7 +276,7 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <view contentMode="scaleToFill" id="68T-cy-Q1P" customClass="pitScoutView">
+                                    <view contentMode="scaleToFill" id="68T-cy-Q1P" customClass="PitScoutView">
                                         <rect key="frame" x="148" y="20" width="152" height="173"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
@@ -353,7 +352,7 @@
         <!--Autonomous-->
         <scene sceneID="DMi-Yi-PIC">
             <objects>
-                <viewController id="Fm5-t6-Inm" customClass="level1AutonomousViewController" sceneMemberID="viewController">
+                <viewController id="Fm5-t6-Inm" customClass="Level1AutonomousViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eHk-XU-JFl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="750"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -362,13 +361,13 @@
                                 <rect key="frame" x="0.0" y="56" width="320" height="646"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xIj-ps-x90" customClass="checkBoxLabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xIj-ps-x90" customClass="CheckBoxLabel">
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="biP-R5-s2b" customClass="checkBoxLabel">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="biP-R5-s2b" customClass="CheckBoxLabel">
                                         <rect key="frame" x="8" y="73" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -383,7 +382,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="C5J-yR-t1h" customClass="checkBoxLabel">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="C5J-yR-t1h" customClass="CheckBoxLabel">
                                         <rect key="frame" x="8" y="111" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -391,7 +390,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gvz-6V-13N" customClass="checkBoxLabel">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gvz-6V-13N" customClass="CheckBoxLabel">
                                         <rect key="frame" x="8" y="149" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -420,7 +419,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MSu-jK-6pD" customClass="checkBoxLabel">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MSu-jK-6pD" customClass="CheckBoxLabel">
                                         <rect key="frame" x="8" y="187" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -448,7 +447,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Htb-7X-GMn" customClass="checkBoxLabel">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Htb-7X-GMn" customClass="CheckBoxLabel">
                                         <rect key="frame" x="8" y="321" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -456,7 +455,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4mr-Tz-90J" customClass="checkBoxLabel">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4mr-Tz-90J" customClass="CheckBoxLabel">
                                         <rect key="frame" x="8" y="435" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -464,7 +463,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="A5I-n4-GfR" customClass="checkBoxLabel">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="A5I-n4-GfR" customClass="CheckBoxLabel">
                                         <rect key="frame" x="8" y="359" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -472,7 +471,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dBq-k7-DiO" customClass="checkBoxLabel">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dBq-k7-DiO" customClass="CheckBoxLabel">
                                         <rect key="frame" x="8" y="397" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -508,7 +507,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="a56-06-xsW" customClass="checkBoxLabel">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="a56-06-xsW" customClass="CheckBoxLabel">
                                         <rect key="frame" x="8" y="474" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -523,7 +522,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1tS-4J-msP" customClass="checkBoxLabel">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1tS-4J-msP" customClass="CheckBoxLabel">
                                         <rect key="frame" x="8" y="284" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -575,7 +574,7 @@
         <!--Misc.-->
         <scene sceneID="CN4-u7-wYo">
             <objects>
-                <viewController id="jr7-zl-B4t" customClass="level1PitMiscViewController" sceneMemberID="viewController">
+                <viewController id="jr7-zl-B4t" customClass="Level1PitMiscViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NAO-6m-hin">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -666,7 +665,7 @@
         <!--Match Scout-->
         <scene sceneID="nEj-4e-lx7">
             <objects>
-                <viewController storyboardIdentifier="matchController" title="Match Scout" id="sv4-gk-e0S" customClass="level1MatchScoutViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="matchController" title="Match Scout" id="sv4-gk-e0S" customClass="Level1MatchScoutViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9cR-N3-yNX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -736,7 +735,7 @@
                                             <action selector="uploadButton:" destination="sv4-gk-e0S" eventType="touchUpInside" id="mpq-Oa-Stm"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" id="KEp-lS-Bpy" customClass="kragerStepperView">
+                                    <view contentMode="scaleToFill" id="KEp-lS-Bpy" customClass="KragerStepperView">
                                         <rect key="frame" x="20" y="84" width="130" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
@@ -776,7 +775,7 @@
                                             <outlet property="plusButton" destination="arh-1l-leb" id="ZUP-77-vXW"/>
                                         </connections>
                                     </view>
-                                    <view contentMode="scaleToFill" id="1qW-Vo-LVB" customClass="kragerStepperView">
+                                    <view contentMode="scaleToFill" id="1qW-Vo-LVB" customClass="KragerStepperView">
                                         <rect key="frame" x="170" y="84" width="130" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
@@ -816,7 +815,7 @@
                                             <outlet property="plusButton" destination="kJ7-ia-bLH" id="lfF-rv-AX8"/>
                                         </connections>
                                     </view>
-                                    <view contentMode="scaleToFill" id="93W-Bj-qkK" customClass="kragerStepperView">
+                                    <view contentMode="scaleToFill" id="93W-Bj-qkK" customClass="KragerStepperView">
                                         <rect key="frame" x="20" y="148" width="130" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
@@ -856,7 +855,7 @@
                                             <outlet property="plusButton" destination="jlw-su-jAC" id="4l5-m9-YS5"/>
                                         </connections>
                                     </view>
-                                    <view contentMode="scaleToFill" id="GQ5-Vh-Rzg" customClass="kragerStepperView">
+                                    <view contentMode="scaleToFill" id="GQ5-Vh-Rzg" customClass="KragerStepperView">
                                         <rect key="frame" x="170" y="148" width="130" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
@@ -910,7 +909,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" id="Z0T-ff-UB2" customClass="kragerStepperView">
+                                    <view contentMode="scaleToFill" id="Z0T-ff-UB2" customClass="KragerStepperView">
                                         <rect key="frame" x="20" y="220" width="130" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
@@ -1107,7 +1106,7 @@
         <!--Robot Specs-->
         <scene sceneID="gJh-cu-J6k">
             <objects>
-                <viewController id="nSA-J4-GrH" customClass="level1PitScoutViewController" sceneMemberID="viewController">
+                <viewController id="nSA-J4-GrH" customClass="Level1PitScoutViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P7g-4c-Z4j">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1700"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1116,7 +1115,7 @@
                                 <rect key="frame" x="0.0" y="56" width="320" height="1553"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="adw-38-xYQ" customClass="kragerTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="adw-38-xYQ" customClass="KragerTextField">
                                         <rect key="frame" x="90" y="20" width="140" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1175,19 +1174,19 @@
                                             <action selector="imagePicker:" destination="nSA-J4-GrH" eventType="touchUpInside" id="Kc9-e4-QQD"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="Atp-nU-Gno" customClass="kragerTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="Atp-nU-Gno" customClass="KragerTextField">
                                         <rect key="frame" x="15" y="246" width="140" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="n0r-h1-bNB" customClass="kragerTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="n0r-h1-bNB" customClass="KragerTextField">
                                         <rect key="frame" x="172" y="246" width="140" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="RBo-9o-fZb">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="RBo-9o-fZb" customClass="KragerSwitchView">
                                         <rect key="frame" x="186" y="353" width="51" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </switch>
@@ -1217,7 +1216,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="FUn-Qq-jCY">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="FUn-Qq-jCY" customClass="KragerTextField">
                                         <rect key="frame" x="172" y="405" width="140" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1250,25 +1249,25 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="Gdq-QP-AJW" customClass="kragerTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="Gdq-QP-AJW" customClass="KragerTextField">
                                         <rect key="frame" x="172" y="605" width="140" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="HvO-4u-WbD" customClass="kragerTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="HvO-4u-WbD" customClass="KragerTextField">
                                         <rect key="frame" x="15" y="655" width="140" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="rLw-Mq-EqQ" customClass="kragerTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="rLw-Mq-EqQ" customClass="KragerTextField">
                                         <rect key="frame" x="172" y="655" width="140" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="B0A-Hg-KiI" customClass="kragerTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="B0A-Hg-KiI" customClass="KragerTextField">
                                         <rect key="frame" x="15" y="605" width="140" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1281,7 +1280,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="tPa-uN-XNx">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="tPa-uN-XNx" customClass="KragerSwitchView">
                                         <rect key="frame" x="136" y="705" width="51" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </switch>
@@ -1299,13 +1298,13 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="CgB-yE-UC9" customClass="kragerTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="CgB-yE-UC9" customClass="KragerTextField">
                                         <rect key="frame" x="90" y="855" width="140" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="aY3-cx-DXX">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="aY3-cx-DXX" customClass="KragerSwitchView">
                                         <rect key="frame" x="136" y="933" width="51" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </switch>
@@ -1337,7 +1336,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="vPS-ao-Cde">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="vPS-ao-Cde" customClass="KragerSwitchView">
                                         <rect key="frame" x="133" y="1027" width="51" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </switch>
@@ -1362,7 +1361,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="T3E-7C-d9f">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="T3E-7C-d9f" customClass="KragerSwitchView">
                                         <rect key="frame" x="136" y="1122" width="51" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </switch>
@@ -1387,7 +1386,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="beQ-j2-30K">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="beQ-j2-30K" customClass="KragerSwitchView">
                                         <rect key="frame" x="136" y="1214" width="51" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </switch>
@@ -1408,7 +1407,7 @@
                                 </subviews>
                                 <inset key="scrollIndicatorInsets" minX="320" minY="0.0" maxX="700" maxY="0.0"/>
                             </scrollView>
-                            <view contentMode="scaleToFill" id="bpd-ua-qMu" customClass="kragerPickerView">
+                            <view contentMode="scaleToFill" id="bpd-ua-qMu" customClass="KragerPickerView">
                                 <rect key="frame" x="0.0" y="310" width="320" height="209"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -1433,7 +1432,7 @@
                                     <outlet property="picker" destination="uHq-KS-tfa" id="ToQ-w7-l1F"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" id="qmT-ve-4AM" customClass="kragerPickerView">
+                            <view contentMode="scaleToFill" id="qmT-ve-4AM" customClass="KragerPickerView">
                                 <rect key="frame" x="0.0" y="310" width="320" height="209"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -1458,7 +1457,7 @@
                                     <outlet property="picker" destination="6EJ-Ek-7dg" id="LAL-7K-f7L"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" id="RPf-cN-Zww" customClass="kragerPickerView">
+                            <view contentMode="scaleToFill" id="RPf-cN-Zww" customClass="KragerPickerView">
                                 <rect key="frame" x="0.0" y="310" width="320" height="209"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -1483,7 +1482,7 @@
                                     <outlet property="picker" destination="gmP-9S-e4r" id="XIR-Rn-wAS"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" id="Og9-XK-Ls9" customClass="kragerPickerView">
+                            <view contentMode="scaleToFill" id="Og9-XK-Ls9" customClass="KragerPickerView">
                                 <rect key="frame" x="0.0" y="310" width="320" height="209"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -1508,7 +1507,7 @@
                                     <outlet property="picker" destination="kHf-xh-fSr" id="7Ch-m2-Xdo"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" id="VRJ-a8-CyJ" customClass="kragerPickerView">
+                            <view contentMode="scaleToFill" id="VRJ-a8-CyJ" customClass="KragerPickerView">
                                 <rect key="frame" x="0.0" y="396" width="320" height="209"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -1600,7 +1599,7 @@
         <!--Teleop-->
         <scene sceneID="WTy-pf-5sa">
             <objects>
-                <viewController id="PEC-Db-R1s" customClass="level1PitTeleopViewController" sceneMemberID="viewController">
+                <viewController id="PEC-Db-R1s" customClass="Level1PitTeleopViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UnV-Qq-JX6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1662,7 +1661,7 @@
                                     </label>
                                 </subviews>
                             </scrollView>
-                            <view contentMode="scaleToFill" id="CyD-n0-dB1" customClass="kragerPickerView">
+                            <view contentMode="scaleToFill" id="CyD-n0-dB1" customClass="KragerPickerView">
                                 <rect key="frame" x="0.0" y="180" width="320" height="209"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -1687,7 +1686,7 @@
                                     <outlet property="picker" destination="GnB-91-BjV" id="BrZ-hI-g5X"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" id="BBE-Vd-DRW" customClass="kragerPickerView">
+                            <view contentMode="scaleToFill" id="BBE-Vd-DRW" customClass="KragerPickerView">
                                 <rect key="frame" x="0.0" y="180" width="320" height="209"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -1752,7 +1751,7 @@
         <!--Autonomous-->
         <scene sceneID="BHn-fE-7l9">
             <objects>
-                <viewController id="7fk-Ih-Zur" customClass="level1MatchAutoViewController" sceneMemberID="viewController">
+                <viewController id="7fk-Ih-Zur" customClass="Level1MatchAutoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x2V-7s-OOa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="750"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1761,13 +1760,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="704"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="M2z-aM-gsB" customClass="checkBoxLabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="M2z-aM-gsB" customClass="CheckBoxLabel">
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7ui-qJ-2vU" customClass="checkBoxLabel">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7ui-qJ-2vU" customClass="CheckBoxLabel">
                                         <rect key="frame" x="8" y="73" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -1782,7 +1781,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RCe-F6-Ql5" customClass="checkBoxLabel">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RCe-F6-Ql5" customClass="CheckBoxLabel">
                                         <rect key="frame" x="8" y="111" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -1790,7 +1789,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qo4-Za-hZQ" customClass="checkBoxLabel">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qo4-Za-hZQ" customClass="CheckBoxLabel">
                                         <rect key="frame" x="8" y="149" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -1839,7 +1838,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="USj-nJ-WHl" customClass="checkBoxLabel">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="USj-nJ-WHl" customClass="CheckBoxLabel">
                                         <rect key="frame" x="8" y="321" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -1850,7 +1849,7 @@
                                             <action selector="totesMovedCheckBox:" destination="7fk-Ih-Zur" eventType="touchUpInside" id="0md-e5-6gB"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NTX-6o-3Us" customClass="checkBoxLabel">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NTX-6o-3Us" customClass="CheckBoxLabel">
                                         <rect key="frame" x="8" y="435" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -1858,7 +1857,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eUc-l8-H7D" customClass="checkBoxLabel">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eUc-l8-H7D" customClass="CheckBoxLabel">
                                         <rect key="frame" x="8" y="359" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -1869,7 +1868,7 @@
                                             <action selector="trashCansMovedCheckBox:" destination="7fk-Ih-Zur" eventType="touchUpInside" id="iNC-XM-Ia0"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OPJ-Qa-rgj" customClass="checkBoxLabel">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OPJ-Qa-rgj" customClass="CheckBoxLabel">
                                         <rect key="frame" x="8" y="397" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -1908,7 +1907,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sMu-1f-2w2" customClass="checkBoxLabel">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sMu-1f-2w2" customClass="CheckBoxLabel">
                                         <rect key="frame" x="8" y="474" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -1923,7 +1922,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0kG-oH-6Qr" customClass="checkBoxLabel">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0kG-oH-6Qr" customClass="CheckBoxLabel">
                                         <rect key="frame" x="8" y="284" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -1969,7 +1968,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xwo-bv-wdx" customClass="checkBoxLabel">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xwo-bv-wdx" customClass="CheckBoxLabel">
                                         <rect key="frame" x="8" y="187" width="30" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -1980,7 +1979,7 @@
                                     </button>
                                 </subviews>
                             </scrollView>
-                            <view contentMode="scaleToFill" id="xqI-6u-2qE" customClass="kragerPickerView">
+                            <view contentMode="scaleToFill" id="xqI-6u-2qE" customClass="KragerPickerView">
                                 <rect key="frame" x="0.0" y="271" width="320" height="209"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>

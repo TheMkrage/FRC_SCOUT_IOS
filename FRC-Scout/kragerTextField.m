@@ -6,14 +6,14 @@
 //  Copyright (c) 2015 Matthew Krager. All rights reserved.
 //
 
-#import "kragerTextField.h"
-@interface kragerTextField() {
+#import "KragerTextField.h"
+@interface KragerTextField() {
     NSString* code;
 }
 
 @end
 
-@implementation kragerTextField
+@implementation KragerTextField
 
 -(id) initWithCode: (NSString*) code1 {
     self = [super init];

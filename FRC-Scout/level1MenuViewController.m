@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 Matthew Krager. All rights reserved.
 //
 
-#import "level1MenuViewController.h"
+#import "Level1MenuViewController.h"
 #import "QueueManager.h"
 #define FONT_BEBAS_15 [UIFont fontWithName: @"Bebas Neue" size:15]
 #define FONT_BEBAS_25 [UIFont fontWithName: @"Bebas Neue" size:25]
 #define FONT_BEBAS_28 [UIFont fontWithName: @"Bebas Neue" size:28]
 #define FONT_CALIBRI_25 [UIFont fontWithName: @"Calibri Italic" size:25]
 
-@interface level1MenuViewController (){
+@interface Level1MenuViewController (){
     
     IBOutlet UIButton *PitScoutButton;
     IBOutlet UIButton *MatchScoutButton;
@@ -23,7 +23,7 @@
 }
 @end
 
-@implementation level1MenuViewController
+@implementation Level1MenuViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

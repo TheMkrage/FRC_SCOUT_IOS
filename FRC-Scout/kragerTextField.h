@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface kragerTextField : UITextField
+@interface KragerTextField : UITextField
 
 -(NSString*) getCode;
 -(void) setCode:(NSString *)code;

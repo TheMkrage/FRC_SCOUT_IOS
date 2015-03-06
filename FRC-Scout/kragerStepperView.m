@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Matthew Krager. All rights reserved.
 //
 
-#import "kragerStepperView.h"
-@interface kragerStepperView() {
+#import "KragerStepperView.h"
+@interface KragerStepperView() {
     IBOutlet UIButton *minusButton;
     IBOutlet UIButton *plusButton;
     IBOutlet UILabel *number;
@@ -15,7 +15,7 @@
 }
 @end
 
-@implementation kragerStepperView
+@implementation KragerStepperView
 
 - (id)initWithFrame:(CGRect)frame
 {

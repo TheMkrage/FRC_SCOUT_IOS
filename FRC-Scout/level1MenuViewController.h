@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface level1MenuViewController : UIViewController
+@interface Level1MenuViewController : UIViewController
 
 @end

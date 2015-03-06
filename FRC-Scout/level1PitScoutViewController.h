@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface level1PitScoutViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate>
+@interface Level1PitScoutViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate>
 -(NSString*)getTeam;
-+ (level1PitScoutViewController*)getInstance;
++ (Level1PitScoutViewController*)getInstance;
 - (void)textFieldShouldBeEditable: (UITextField*)field ;
 @end

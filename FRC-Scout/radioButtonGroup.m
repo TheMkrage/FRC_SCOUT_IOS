@@ -6,14 +6,14 @@
 //  Copyright (c) 2015 Matthew Krager. All rights reserved.
 //
 
-#import "radioButtonGroup.h"
-#import "checkBoxLabel.h"
-@interface radioButtonGroup () {
+#import "RadioButtonGroup.h"
+#import "CheckBoxLabel.h"
+@interface RadioButtonGroup () {
 
 }
 @property NSMutableArray *arrayOfChecks;
 @end
-@implementation radioButtonGroup
+@implementation RadioButtonGroup
 
 -(id)initWithCheckBoxes:(NSMutableArray*) array {
     self = [super init];
@@ -25,7 +25,7 @@
     }
     return self;
 }
--(void)setEverythingOtherThan:(checkBoxLabel*) checkBox {
+-(void)setEverythingOtherThan:(CheckBoxLabel*) checkBox {
     NSLog(@"FDSAFA");
     for(int i = 0; i < [self arrayOfChecks].count; i ++) {
         if(checkBox == [[self arrayOfChecks] objectAtIndex:i])

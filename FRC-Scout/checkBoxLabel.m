@@ -6,16 +6,16 @@
 //  Copyright (c) 2015 Matthew Krager. All rights reserved.
 //
 
-#import "checkBoxLabel.h"
-#import "radioButtonGroup.h"
-@interface checkBoxLabel() {
+#import "CheckBoxLabel.h"
+#import "RadioButtonGroup.h"
+@interface CheckBoxLabel() {
     id hiddenObj;
-    radioButtonGroup *radioGroup;
+    RadioButtonGroup *radioGroup;
 }
 @end
 
 
-@implementation checkBoxLabel
+@implementation CheckBoxLabel
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -93,7 +93,7 @@
 
 }
 
--(void) setRadioGroup: (radioButtonGroup*) group {
+-(void) setRadioGroup: (RadioButtonGroup*) group {
     radioGroup = group;
 }
 /*

@@ -6,16 +6,17 @@
 //  Copyright (c) 2014 Matthew Krager. All rights reserved.
 //
 
-#import "level1PitScoutViewController.h"
-#import "kragerPickerView.h"
+#import "Level1PitScoutViewController.h"
+#import "KragerPickerView.h"
+#import "KragerSwitchView.h"
 #import "JSONObject.h"
 #import "QueueManager.h"
 #import "JSONRequest.h"
 #import "ImageRequest.h"
 #import "DataManager.h"
-#import "kragerTextField.h"
+#import "KragerTextField.h"
 #import <Firebase/Firebase.h>
-@interface level1PitScoutViewController ()
+@interface Level1PitScoutViewController ()
 {
     id activeAspect;
     UIImage *teamsImage;
@@ -46,19 +47,19 @@
 //DRIVE TRAIN
 @property (strong, nonatomic) IBOutlet UILabel *driveTrainLabel;
 @property (strong, nonatomic) IBOutlet UITextField *driveTextField;
-@property (strong, nonatomic) IBOutlet kragerPickerView *drivePicker;
-@property (strong, nonatomic) IBOutlet kragerPickerView * cimPicker;
-@property (strong, nonatomic) IBOutlet kragerPickerView *frameStrengthPicker;
-@property (strong, nonatomic) IBOutlet UISwitch *twoSpeedSlider;
+@property (strong, nonatomic) IBOutlet KragerPickerView *drivePicker;
+@property (strong, nonatomic) IBOutlet KragerPickerView * cimPicker;
+@property (strong, nonatomic) IBOutlet KragerPickerView *frameStrengthPicker;
+@property (strong, nonatomic) IBOutlet KragerSwitchView *twoSpeedSlider;
 @property (strong, nonatomic) IBOutlet UILabel *oneSpeedLabel;
 @property (strong, nonatomic) IBOutlet UILabel *twoSpeedLabel;
 @property (strong, nonatomic) IBOutlet UITextField *cimTextField;
-@property (strong, nonatomic) IBOutlet kragerTextField *maxSpeedTextField;
+@property (strong, nonatomic) IBOutlet UITextField *maxSpeedTextField;
 @property (strong, nonatomic) IBOutlet UITextField *frameStrengthTextField;
 
 
 //LIFT SYSTEM
-@property (strong, nonatomic) IBOutlet kragerPickerView *liftPicker;
+@property (strong, nonatomic) IBOutlet KragerPickerView *liftPicker;
 @property (strong, nonatomic) IBOutlet UITextField *liftTextField;
 @property (strong, nonatomic) IBOutlet UITextField *maxTotesAtOneTimeTextField;
 @property (strong, nonatomic) IBOutlet UITextField *maxToteHeightTextField;
@@ -66,19 +67,19 @@
 @property (strong, nonatomic) IBOutlet UILabel *liftSystemLabel;
 @property (strong, nonatomic) IBOutlet UILabel *internalLabel;
 @property (strong, nonatomic) IBOutlet UILabel *externalLabel;
-@property (strong, nonatomic) IBOutlet UISwitch *externalInternalSwitch;
+@property (strong, nonatomic) IBOutlet KragerSwitchView *externalInternalSwitch;
 
 
 //INTAKE SYSTEM
-@property (strong, nonatomic) IBOutlet kragerPickerView *intakePicker;
+@property (strong, nonatomic) IBOutlet KragerPickerView *intakePicker;
 @property (strong, nonatomic) IBOutlet UITextField *intakeTextField;
 @property (strong, nonatomic) IBOutlet UILabel *intakeSystemLabel;
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *noYesLabels;
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *intakeLabels;
-@property (strong, nonatomic) IBOutlet UISwitch *changeOrientationSwitch;
-@property (strong, nonatomic) IBOutlet UISwitch *upsideDownTotesSwitch;
-@property (strong, nonatomic) IBOutlet UISwitch *canOffGround;
-@property (strong, nonatomic) IBOutlet UISwitch *poolNoodles;
+@property (strong, nonatomic) IBOutlet KragerSwitchView*changeOrientationSwitch;
+@property (strong, nonatomic) IBOutlet KragerSwitchView *upsideDownTotesSwitch;
+@property (strong, nonatomic) IBOutlet KragerSwitchView *canOffGround;
+@property (strong, nonatomic) IBOutlet KragerSwitchView *poolNoodles;
 
 
 
@@ -93,11 +94,11 @@
 #define FONT_BEBAS_20 [UIFont fontWithName: @"Bebas Neue" size:20]
 #define FONT_BEBAS_25 [UIFont fontWithName: @"Bebas Neue" size:25]
 #define FONT_BEBAS_28 [UIFont fontWithName: @"Bebas Neue" size:28]
-static level1PitScoutViewController* instance;
+static Level1PitScoutViewController* instance;
 
-@implementation level1PitScoutViewController
+@implementation Level1PitScoutViewController
 
-+ (level1PitScoutViewController*)getInstance {
++ (Level1PitScoutViewController*)getInstance {
     return instance;
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -167,7 +168,19 @@ static level1PitScoutViewController* instance;
     
     pictureSelected = false;
     
+    [self.externalInternalSwitch setCode:@"lift_ext"];
     [self.externalInternalSwitch addTarget:self action:@selector(changeSwitch:) forControlEvents:UIControlEventValueChanged];
+    [self.twoSpeedSlider setCode:@"speed"];
+    [self.externalInternalSwitch addTarget:self action:@selector(changeSwitch:) forControlEvents:UIControlEventValueChanged];
+    [self.changeOrientationSwitch setCode:@"tote_orientation_change"];
+    [self.changeOrientationSwitch addTarget:self action:@selector(changeSwitch:) forControlEvents:UIControlEventValueChanged];
+    [self.upsideDownTotesSwitch setCode:@"inverted_totes"];
+    [self.upsideDownTotesSwitch addTarget:self action:@selector(changeSwitch:) forControlEvents:UIControlEventValueChanged];
+    [self.canOffGround setCode:@"can_off_ground"];
+    [self.canOffGround addTarget:self action:@selector(changeSwitch:) forControlEvents:UIControlEventValueChanged];
+    [self.poolNoodles setCode:@"pool_noodles"];
+    [self.poolNoodles addTarget:self action:@selector(changeSwitch:) forControlEvents:UIControlEventValueChanged];
+    
     
     [self teamTextField].placeholder = @"Team";
     [self driveTextField].placeholder = @"Drive";
@@ -175,18 +188,18 @@ static level1PitScoutViewController* instance;
     [self liftTextField].placeholder = @"Lift";
     [self cimTextField].placeholder = @"CIM";
     [self heightTextField].placeholder = @"Height";
-    [(kragerTextField*)self.heightTextField setCode:@"height"];
+    [(KragerTextField*)self.heightTextField setCode:@"height"];
     [self weightTextField].placeholder = @"Weight";
-    [(kragerTextField*)self.weightTextField setCode:@"weight"];
+    [(KragerTextField*)self.weightTextField setCode:@"weight"];
     [self maxSpeedTextField].placeholder = @"Max Speed";
-    [(kragerTextField*) self.maxSpeedTextField setCode:@"max_speed"];
+    [(KragerTextField*) self.maxSpeedTextField setCode:@"max_speed"];
     [self frameStrengthTextField].placeholder = @"Frame Strength";
     [self maxCanHeightTextField].placeholder = @"Can Stack Height";
-    [(kragerTextField*)self.maxCanHeightTextField setCode:@"can"];
+    [(KragerTextField*)self.maxCanHeightTextField setCode:@"can"];
     [self maxToteHeightTextField].placeholder = @"Tote Stack Height";
-    [(kragerTextField*)self.maxToteHeightTextField setCode:@"tote_stack_height"];
+    [(KragerTextField*)self.maxToteHeightTextField setCode:@"tote_stack_height"];
     [self maxTotesAtOneTimeTextField].placeholder = @"Max Tote";
-    [(kragerTextField*)self.maxTotesAtOneTimeTextField setCode:@"max_tote"];
+    [(KragerTextField*)self.maxTotesAtOneTimeTextField setCode:@"max_tote"];
     
     
     /*[commentsTextView setKeyboardDismissMode:UIScrollViewKeyboardDismissModeInteractive];
@@ -221,10 +234,18 @@ static level1PitScoutViewController* instance;
     NSLog(@"VIEW WILL DIS");
     [self setAllPickersHidden];
     
-    [self saveData];
+    //[self saveData];
 }
 
--(void) saveData {
+- (void)changeSwitch:(KragerSwitchView*)sender{
+    NSString* key = [sender getCode];
+    NSLog(@"CODE: %@", key);
+    Firebase *ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit/%@", self.teamTextField.text, key]];
+    [ref setValue:[NSNumber numberWithBool:[sender isOn]]];
+    NSLog(@"FROM CHANGED %hhd", [sender isOn]);
+    
+}
+/*-(void) saveData {
     //save all data and add to datamanager
     JSONObject *sendingData = [[JSONObject alloc] init];
     //[sendingData addObject:[NSNumber numberWithInt:2] forKey:@"status"];
@@ -262,7 +283,7 @@ static level1PitScoutViewController* instance;
     //adds to the DataManager to be sent at a later time
     [dataMan addJSONObject:sendingData onArray:0 at:0];
     
-}
+}*/
 
 -(void) viewWillAppear:(BOOL)animated {
     NSLog(@"VIEW WILL APP");
@@ -326,7 +347,7 @@ static level1PitScoutViewController* instance;
     [self turnOffActiveAspect];
 }
 - (void) turnOffActiveAspect {
-    if([activeAspect isKindOfClass:[kragerPickerView class]]) {
+    if([activeAspect isKindOfClass:[KragerPickerView class]]) {
         [activeAspect setHidden:YES];
     } else {
         NSLog(@"STOP");
@@ -448,6 +469,20 @@ static level1PitScoutViewController* instance;
     [self setTextOfField:self.maxToteHeightTextField   withValue:snapshot.value[@"tote_stack_height"]];
     [self setTextOfField:self.maxCanHeightTextField withValue:snapshot.value[@"can"]];
     [self setTextOfField:self.intakeTextField withValue:snapshot.value[@"intake"]];
+    
+   }
+
+-(void) setBoolOfSwitch: (UISwitch*) switcher withValue: (BOOL) value {
+    /*bool val;
+    if(value == 0)
+        val = true;
+    else if(value == 1)
+        val = false;
+    else
+        val = false;*/
+    NSLog(@"OBSERVER B4: %hhd", value);
+    [switcher setOn:!value];
+    NSLog(@"OBSERVER AFTER: %hhd", [switcher isOn]);
 }
 
 -(void) setTextOfField: (UITextField*)field withValue: (id)  value {
@@ -485,7 +520,7 @@ static level1PitScoutViewController* instance;
 
 
 #pragma mark - UITextFieldDelegate
--(BOOL) textFieldShouldBeActive: (kragerPickerView*) picker {
+-(BOOL) textFieldShouldBeActive: (KragerPickerView*) picker {
     [picker setCenter:CGPointMake(picker.frame.origin.x + picker.frame.size.width/2, self.view.frame.size.height - 150)];
     [picker setBackgroundColor:[UIColor whiteColor]];
     NSLog(@":ACTIVEFADSFASDFASDFADS");
@@ -540,16 +575,26 @@ static level1PitScoutViewController* instance;
     return NO;
 }
 
--(void)textFieldDidEndEditing:(kragerTextField *)textField {
+-(void)textFieldDidEndEditing:(KragerTextField *)textField {
     
     if(textField == self.teamTextField) {
         NSLog(@"FDit worksSFADSF %@", self.teamTextField.text);
         Firebase *ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit", self.teamTextField.text]];
+        __block FDataSnapshot* snap;
         [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
             [self setFieldsToValue:snapshot];
+            snap = snapshot;
         } withCancelBlock:^(NSError *error) {
             NSLog(@"Cancel");
         }];
+        
+        [self setBoolOfSwitch: self.externalInternalSwitch withValue:  (BOOL)snap.value[@"lift_ext"]];
+        [self setBoolOfSwitch: self.twoSpeedSlider withValue:  (BOOL)snap.value[@"speed/high"]];
+        [self setBoolOfSwitch: self.changeOrientationSwitch withValue:  (BOOL)snap.value[@"tote_orientation_change"]];
+        [self setBoolOfSwitch: self.upsideDownTotesSwitch withValue:  (BOOL)snap.value[@"inverted_totes"]];
+        [self setBoolOfSwitch: self.canOffGround withValue:  (BOOL)snap.value[@"can_off_ground"]];
+        [self setBoolOfSwitch: self.poolNoodles withValue:  (BOOL)snap.value[@"pool_noodles"]];
+
     }else {
         NSString* key = [textField getCode];
         Firebase *ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit/%@", self.teamTextField.text, key]];

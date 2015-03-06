@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface pitScoutView : UIView
+@interface PitScoutView : UIView
 @property(strong, nonatomic)IBOutlet UILabel* driver;
 @property(strong, nonatomic)IBOutlet UILabel* shooter;
 @property(strong, nonatomic)IBOutlet UILabel* intake;

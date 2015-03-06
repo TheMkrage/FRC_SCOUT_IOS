@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Matthew Krager. All rights reserved.
 //
 
-#import "level1TeamListTableViewController.h"
-#import "level1ProfilesViewController.h"
-#import "pickListCell.h"
+#import "Level1TeamListTableViewController.h"
+#import "Level1ProfilesViewController.h"
+#import "PickListCell.h"
 
-@interface level1TeamListTableViewController ()
+@interface Level1TeamListTableViewController ()
 
 @property NSMutableArray *teamArray;
 @end
@@ -19,7 +19,7 @@
 #define FONT_BEBAS_25 [UIFont fontWithName: @"Bebas Neue" size:25]
 #define FONT_BEBAS_28 [UIFont fontWithName: @"Bebas Neue" size:28]
 
-@implementation level1TeamListTableViewController
+@implementation Level1TeamListTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -104,7 +104,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"teamCell";
-    pickListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    PickListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     long row = [indexPath row];
     cell.teamNumLabel.text = [_teamArray objectAtIndex:row];
@@ -117,7 +117,7 @@
     NSString * storyboardName = @"Main_iPhone";
     NSString * viewControllerID = @"level1Profile";
     UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
-    level1ProfilesViewController* controller = (level1ProfilesViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
+    Level1ProfilesViewController* controller = (Level1ProfilesViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
     [self.navigationController pushViewController:controller animated:YES];
 
 }

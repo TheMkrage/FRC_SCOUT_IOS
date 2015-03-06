@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface level1RankingsViewController : UIViewController
+@interface Level1RankingsViewController : UIViewController
 
 @end

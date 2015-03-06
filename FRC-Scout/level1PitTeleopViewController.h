@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface level1PitTeleopViewController : UIViewController <UITextFieldDelegate,UITextViewDelegate>
+@interface Level1PitTeleopViewController : UIViewController <UITextFieldDelegate,UITextViewDelegate>
 
 @end

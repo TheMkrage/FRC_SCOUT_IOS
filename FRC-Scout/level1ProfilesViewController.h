@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface level1ProfilesViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
+@interface Level1ProfilesViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 
 @end

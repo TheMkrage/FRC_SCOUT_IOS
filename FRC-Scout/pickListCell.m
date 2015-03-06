@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Matthew Krager. All rights reserved.
 //
 
-#import "pickListCell.h"
+#import "PickListCell.h"
 
-@implementation pickListCell
+@implementation PickListCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

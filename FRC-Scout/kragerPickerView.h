@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface kragerPickerView : UIView<UIPickerViewDelegate,UIPickerViewDataSource>
+@interface KragerPickerView : UIView<UIPickerViewDelegate,UIPickerViewDataSource>
 
 -(void) setData: (NSArray*) data textField: (UITextField*) textField withController: (UIViewController*) viewController withCode:(NSString*) code1;
 - (NSString*)getSelectedItem;

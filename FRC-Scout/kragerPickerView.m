@@ -6,30 +6,30 @@
 //  Copyright (c) 2014 Matthew Krager. All rights reserved.
 //
 
-#import "kragerPickerView.h"
-#import "level1PitScoutViewController.h"
+#import "KragerPickerView.h"
+#import "Level1PitScoutViewController.h"
 #import <Firebase/Firebase.h>
-@interface kragerPickerView()
+@interface KragerPickerView()
 {
     IBOutlet UIPickerView* picker;
     IBOutlet UIButton* doneButton;
     NSString* code;
     NSArray* pickerData;
     NSString* selectedItem;
-    level1PitScoutViewController* controller;
+    Level1PitScoutViewController* controller;
     
 }
 @property UITextField* linkedTextField;
 @end
 
-@implementation kragerPickerView
+@implementation KragerPickerView
 
 - (void) setData: (NSArray*) data textField: (UITextField*) textField withController: (UIViewController*) viewController withCode:(NSString*) code1{
     code = code1;
     selectedItem = pickerData[0];
     [picker setDataSource:self];
     [picker setDelegate:self];
-    controller = (level1PitScoutViewController*)viewController;
+    controller = (Level1PitScoutViewController*)viewController;
     //[self setFrame:CGRectMake(0, 0, 320, 225)];
     pickerData = data;
     _linkedTextField = textField;

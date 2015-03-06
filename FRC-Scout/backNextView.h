@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface backNextView : UIView
+@interface BackNextView : UIView
 
 @end

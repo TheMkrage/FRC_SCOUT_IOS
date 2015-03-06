@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Matthew Krager. All rights reserved.
 //
 
-#import "level1RankingsViewController.h"
+#import "Level1RankingsViewController.h"
 
-@interface level1RankingsViewController ()
+@interface Level1RankingsViewController ()
 
 @end
 
-@implementation level1RankingsViewController
+@implementation Level1RankingsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

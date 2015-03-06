@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "radioButtonGroup.h"
+#import "RadioButtonGroup.h"
 
-@interface checkBoxLabel : UIButton
+@interface CheckBoxLabel : UIButton
 -(void) setHiddenObject: (id) hiddenObject;
 -(void) setTicked;
 -(void) setTickedToggle;
 -(void) setUnticked;
--(void) setRadioGroup: (radioButtonGroup*) group;
+-(void) setRadioGroup: (RadioButtonGroup*) group;
 @end

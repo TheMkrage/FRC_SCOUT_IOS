@@ -8,7 +8,7 @@
 
 #import "mainViewController.h"
 #import "textUIDelegate.h"
-#import "level1MenuViewController.h"
+#import "Level1MenuViewController.h"
 
 @interface mainViewController () {
     IBOutlet UIScrollView *scrollView;
@@ -65,7 +65,7 @@
             NSString * storyboardName = @"Main_iPhone";
             NSString * viewControllerID = @"level1";
             UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
-            level1MenuViewController * controller = (level1MenuViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
+            Level1MenuViewController * controller = (Level1MenuViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
             [self.navigationController pushViewController:controller animated:YES];
             
         }else {
@@ -91,7 +91,7 @@
     NSString * storyboardName = @"Main_iPhone";
     NSString * viewControllerID = @"level1";
     UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
-    level1MenuViewController * controller = (level1MenuViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
+    Level1MenuViewController * controller = (Level1MenuViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
     [self.navigationController pushViewController:controller animated:YES];
     
 }

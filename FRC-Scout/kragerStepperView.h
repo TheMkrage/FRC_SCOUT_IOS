@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface kragerStepperView : UIView
+@interface KragerStepperView : UIView
 -(NSInteger)getCurrentValue;
 @end

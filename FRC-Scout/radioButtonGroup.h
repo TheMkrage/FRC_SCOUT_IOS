@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-@class checkBoxLabel;
-@interface radioButtonGroup : NSObject
--(void)setEverythingOtherThan:(checkBoxLabel*) checkBox;
+@class CheckBoxLabel;
+@interface RadioButtonGroup : NSObject
+-(void)setEverythingOtherThan:(CheckBoxLabel*) checkBox;
 -(id)initWithCheckBoxes:(NSMutableArray*) array;
 @end

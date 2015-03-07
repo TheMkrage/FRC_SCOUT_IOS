@@ -24,11 +24,21 @@
 
 //LITTS
 @property (strong, nonatomic) IBOutlet UILabel *LiftLabel;
-@property (strong, nonatomic) IBOutlet UILabel *MaxSpeedLabe;
+@property (strong, nonatomic) IBOutlet UILabel *maxToteLabel;
+
 @property (strong, nonatomic) IBOutlet UILabel *ToteStackHeightLabel;
 @property (strong, nonatomic) IBOutlet UILabel *InternalExternalLabel;
 @property (strong, nonatomic) IBOutlet UILabel *CanStackHeightLabel;
 
+//INTAKE
+@property (strong, nonatomic) IBOutlet UILabel *intakeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *invertedLabel;
+@property (strong, nonatomic) IBOutlet UILabel *changeOrientationLabel;
+@property (strong, nonatomic) IBOutlet UILabel *containerOffGroundLabel;
+@property (strong, nonatomic) IBOutlet UILabel *poolNoodlesLabel;
+
+
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -49,13 +59,69 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) viewDidLayoutSubviews {
+    self.scrollView.frame = CGRectMake(self.scrollView.frame.origin.x, 0, 320, self.view.frame.size.height);
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, 1200);
+    //[scrollView  setCenter:CGPointMake(scrollView.center.x, scrollView.center.y - 62)];
+    [self.view layoutSubviews];
+}
+
 - (void) addDataToLabels {
     Firebase* ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat: @"https://friarscout.firebaseio.com/teams/%@/pit", team]];
     [ref observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         
+        [self addString: snapshot.value[@"cim"] toLabel: self.CIMLabel];
+        [self addString: snapshot.value[@"drive"] toLabel: self.DriveLabel];
+        [self addString: snapshot.value[@"lift"] toLabel: self.LiftLabel];
+        [self addString: snapshot.value[@"tote_max_carried"] toLabel: self.maxToteLabel];
+        [self addString: snapshot.value[@"tote_stack_height"] toLabel: self.ToteStackHeightLabel];
+        [self addString: snapshot.value[@"max_can_height"] toLabel: self.CanStackHeightLabel];
+        [self addString: snapshot.value[@"intake"] toLabel: self.intakeLabel];
+         [self addBool: snapshot.value[@"inverted_totes"] toLabel: self.invertedLabel];
+        [self addBool: snapshot.value[@"tote_orientation_change"] toLabel: self.changeOrientationLabel];
+        [self addBool: snapshot.value[@"can_off_ground"] toLabel: self.containerOffGroundLabel];
+        [self addBool: snapshot.value[@"pool_noodles"] toLabel: self.poolNoodlesLabel];
+        
+        
+        
         
             }];
 
+}
+
+- (void) addString: (id)string toLabel: (UILabel*) label {
+    NSLog(@"STRING: %@", string);
+    @try {
+        if(![string isEqualToString:@""]) {
+            label.text = [NSString stringWithFormat:@"%@ %@",label.text, string];
+            NSLog(@"LABEL: %@",label.text );
+        }
+
+    }
+    @catch (NSException *exception) {
+        NSLog(@"LOL NOPE");
+    }
+    
+    
+    
+}
+
+- (void) addBool: (NSNumber*)string toLabel: (UILabel*) label {
+    bool b = [string boolValue];
+    NSLog(@"STRING: %@", string);
+    @try {
+        
+            label.text = [NSString stringWithFormat:@"%@ %s",label.text, b ? "true" : "false"];
+            NSLog(@"LABEL: %@",label.text );
+        
+        
+    }
+    @catch (NSException *exception) {
+        NSLog(@"LOL NOPE");
+    }
+    
+    
+    
 }
 /*
 #pragma mark - Navigation

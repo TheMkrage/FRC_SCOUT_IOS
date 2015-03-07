@@ -40,11 +40,11 @@
 		7EBBB0121A4CCB0D003F0C89 /* KragerPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBBB0111A4CCB0D003F0C89 /* KragerPickerView.m */; };
 		7EBF71FD1A6CEC5100A38BFE /* BackNextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBF71FC1A6CEC5100A38BFE /* BackNextView.m */; };
 		7EC356111AA582A4003F4EE6 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC356101AA582A4003F4EE6 /* DataManager.m */; };
-		7EC3DC2D1AABA3C3009FF501 /* AutoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EC3DC2C1AABA3C3009FF501 /* AutoIcon.png */; };
-		7EC3DC2F1AABA5CB009FF501 /* RobotSpecsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EC3DC2E1AABA5CB009FF501 /* RobotSpecsIcon.png */; };
-		7EC3DC311AABA63B009FF501 /* TeleopIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EC3DC301AABA63B009FF501 /* TeleopIcon.png */; };
 		7EC3DC331AABA7E8009FF501 /* MiscIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EC3DC321AABA7E8009FF501 /* MiscIcon.png */; };
-		7EC3DC351AABA81F009FF501 /* PickerBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EC3DC341AABA81F009FF501 /* PickerBorder.png */; };
+		7EC3DC371AABAC3E009FF501 /* PickerBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EC3DC361AABAC3E009FF501 /* PickerBorder.png */; };
+		7EC3DC411AABAF86009FF501 /* AutoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EC3DC401AABAF86009FF501 /* AutoIcon.png */; };
+		7EC3DC431AABAFA4009FF501 /* TeleopIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EC3DC421AABAFA4009FF501 /* TeleopIcon.png */; };
+		7EC3DC451AABAFC9009FF501 /* RobotSpecsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EC3DC441AABAFC9009FF501 /* RobotSpecsIcon.png */; };
 		7EC4B8721A734ACE00BA97C8 /* CheckBoxLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC4B8711A734ACE00BA97C8 /* CheckBoxLabel.m */; };
 		7EC58B801AA91EB000267534 /* KragerTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC58B7F1AA91EB000267534 /* KragerTextField.m */; };
 		7EC58B831AA935D500267534 /* KragerSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC58B821AA935D500267534 /* KragerSwitchView.m */; };
@@ -136,11 +136,11 @@
 		7EBF71FC1A6CEC5100A38BFE /* BackNextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackNextView.m; sourceTree = "<group>"; };
 		7EC3560F1AA582A4003F4EE6 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		7EC356101AA582A4003F4EE6 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
-		7EC3DC2C1AABA3C3009FF501 /* AutoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AutoIcon.png; sourceTree = "<group>"; };
-		7EC3DC2E1AABA5CB009FF501 /* RobotSpecsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RobotSpecsIcon.png; sourceTree = "<group>"; };
-		7EC3DC301AABA63B009FF501 /* TeleopIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TeleopIcon.png; sourceTree = "<group>"; };
 		7EC3DC321AABA7E8009FF501 /* MiscIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MiscIcon.png; path = ../../MiscIcon.png; sourceTree = "<group>"; };
-		7EC3DC341AABA81F009FF501 /* PickerBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PickerBorder.png; path = ../../PickerBorder.png; sourceTree = "<group>"; };
+		7EC3DC361AABAC3E009FF501 /* PickerBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PickerBorder.png; sourceTree = "<group>"; };
+		7EC3DC401AABAF86009FF501 /* AutoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AutoIcon.png; path = ../../AutoIcon.png; sourceTree = "<group>"; };
+		7EC3DC421AABAFA4009FF501 /* TeleopIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TeleopIcon.png; path = ../../TeleopIcon.png; sourceTree = "<group>"; };
+		7EC3DC441AABAFC9009FF501 /* RobotSpecsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RobotSpecsIcon.png; path = ../../RobotSpecsIcon.png; sourceTree = "<group>"; };
 		7EC4B8701A734ACE00BA97C8 /* CheckBoxLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckBoxLabel.h; sourceTree = "<group>"; };
 		7EC4B8711A734ACE00BA97C8 /* CheckBoxLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckBoxLabel.m; sourceTree = "<group>"; };
 		7EC58B7E1AA91EB000267534 /* KragerTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KragerTextField.h; sourceTree = "<group>"; };
@@ -220,11 +220,11 @@
 				7E94F7AD1A49FF8C0087C196 /* Views */,
 				7EBFBBF91A5A0221003316CE /* MainScreenControllers */,
 				7E24AA591A29A58E00D13837 /* mileymelon.jpg */,
-				7EC3DC301AABA63B009FF501 /* TeleopIcon.png */,
-				7EC3DC2E1AABA5CB009FF501 /* RobotSpecsIcon.png */,
-				7EC3DC2C1AABA3C3009FF501 /* AutoIcon.png */,
+				7EC3DC421AABAFA4009FF501 /* TeleopIcon.png */,
 				7EC3DC321AABA7E8009FF501 /* MiscIcon.png */,
-				7EC3DC341AABA81F009FF501 /* PickerBorder.png */,
+				7EC3DC401AABAF86009FF501 /* AutoIcon.png */,
+				7EC3DC441AABAFC9009FF501 /* RobotSpecsIcon.png */,
+				7EC3DC361AABAC3E009FF501 /* PickerBorder.png */,
 				7E0E6FFD1A26746E004969C0 /* Level1RankingsViewController.h */,
 				7E0E6FFE1A26746E004969C0 /* Level1RankingsViewController.m */,
 			);
@@ -532,19 +532,19 @@
 			files = (
 				7EC6A1311AA002E2001C43B9 /* Tote.png in Resources */,
 				7EA3E2F41A1AEE4A00F534A5 /* Main_iPad.storyboard in Resources */,
+				7EC3DC411AABAF86009FF501 /* AutoIcon.png in Resources */,
 				7EA3E2F91A1AEE4A00F534A5 /* Images.xcassets in Resources */,
-				7EC3DC351AABA81F009FF501 /* PickerBorder.png in Resources */,
 				7EA3E2F11A1AEE4A00F534A5 /* Main_iPhone.storyboard in Resources */,
 				7EC3DC331AABA7E8009FF501 /* MiscIcon.png in Resources */,
-				7EC3DC2F1AABA5CB009FF501 /* RobotSpecsIcon.png in Resources */,
-				7EC3DC2D1AABA3C3009FF501 /* AutoIcon.png in Resources */,
 				7EC6A1391AA1467B001C43B9 /* TrashCan.png in Resources */,
+				7EC3DC431AABAFA4009FF501 /* TeleopIcon.png in Resources */,
 				7ECCF80E1A7F4AF20026D6F2 /* scoutingapp.png in Resources */,
 				7EC6A13B1AA15E86001C43B9 /* Tote_Outline.png in Resources */,
-				7EC3DC311AABA63B009FF501 /* TeleopIcon.png in Resources */,
 				7E9778CF1A2055CE008B2D3A /* BebasNeue.otf in Resources */,
+				7EC3DC451AABAFC9009FF501 /* RobotSpecsIcon.png in Resources */,
 				7EC6A12F1A9FFB7B001C43B9 /* BadTote.png in Resources */,
 				7EC6A1371AA13DD6001C43B9 /* CanBoy.jpg in Resources */,
+				7EC3DC371AABAC3E009FF501 /* PickerBorder.png in Resources */,
 				7E24AA5A1A29A58E00D13837 /* mileymelon.jpg in Resources */,
 				7EA3E2E81A1AEE4900F534A5 /* InfoPlist.strings in Resources */,
 			);

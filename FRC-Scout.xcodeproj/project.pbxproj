@@ -21,6 +21,7 @@
 		7E9778CF1A2055CE008B2D3A /* BebasNeue.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9778CE1A205589008B2D3A /* BebasNeue.otf */; };
 		7E9778D01A2055CF008B2D3A /* BebasNeue.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9778CE1A205589008B2D3A /* BebasNeue.otf */; };
 		7E98771B1A244F92004735C8 /* Level1MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E98771A1A244F92004735C8 /* Level1MenuViewController.m */; };
+		7E9D90D51AAAC90700FADE9A /* Level1PitScoutDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D90D41AAAC90700FADE9A /* Level1PitScoutDisplayViewController.m */; };
 		7EA3E2DE1A1AEE4900F534A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA3E2DD1A1AEE4900F534A5 /* Foundation.framework */; };
 		7EA3E2E01A1AEE4900F534A5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA3E2DF1A1AEE4900F534A5 /* CoreGraphics.framework */; };
 		7EA3E2E21A1AEE4900F534A5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA3E2E11A1AEE4900F534A5 /* UIKit.framework */; };
@@ -102,6 +103,8 @@
 		7E9778CE1A205589008B2D3A /* BebasNeue.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BebasNeue.otf; sourceTree = "<group>"; };
 		7E9877191A244F92004735C8 /* Level1MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level1MenuViewController.h; sourceTree = "<group>"; };
 		7E98771A1A244F92004735C8 /* Level1MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level1MenuViewController.m; sourceTree = "<group>"; };
+		7E9D90D31AAAC90700FADE9A /* Level1PitScoutDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level1PitScoutDisplayViewController.h; sourceTree = "<group>"; };
+		7E9D90D41AAAC90700FADE9A /* Level1PitScoutDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level1PitScoutDisplayViewController.m; sourceTree = "<group>"; };
 		7EA3E2DA1A1AEE4900F534A5 /* FRC-Scout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FRC-Scout.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EA3E2DD1A1AEE4900F534A5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7EA3E2DF1A1AEE4900F534A5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -207,8 +210,6 @@
 				7E94F7AD1A49FF8C0087C196 /* Views */,
 				7EBFBBF91A5A0221003316CE /* MainScreenControllers */,
 				7E24AA591A29A58E00D13837 /* mileymelon.jpg */,
-				7E0E6FF71A26739E004969C0 /* Level1ProfilesViewController.h */,
-				7E0E6FF81A26739E004969C0 /* Level1ProfilesViewController.m */,
 				7E0E6FFD1A26746E004969C0 /* Level1RankingsViewController.h */,
 				7E0E6FFE1A26746E004969C0 /* Level1RankingsViewController.m */,
 			);
@@ -247,6 +248,19 @@
 				7E94F7AB1A49F2B40087C196 /* PickListCell.m */,
 			);
 			name = "Tables and Cell";
+			sourceTree = "<group>";
+		};
+		7E9D90D21AAAC8AF00FADE9A /* Disply View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7E95BBEC1A4646BF004F3828 /* Level1TeamListTableViewController.h */,
+				7E95BBED1A4646BF004F3828 /* Level1TeamListTableViewController.m */,
+				7E0E6FF71A26739E004969C0 /* Level1ProfilesViewController.h */,
+				7E0E6FF81A26739E004969C0 /* Level1ProfilesViewController.m */,
+				7E9D90D31AAAC90700FADE9A /* Level1PitScoutDisplayViewController.h */,
+				7E9D90D41AAAC90700FADE9A /* Level1PitScoutDisplayViewController.m */,
+			);
+			name = "Disply View Controllers";
 			sourceTree = "<group>";
 		};
 		7EA3E2D11A1AEE4900F534A5 = {
@@ -346,10 +360,9 @@
 		7EBFBBF91A5A0221003316CE /* MainScreenControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7E9D90D21AAAC8AF00FADE9A /* Disply View Controllers */,
 				7EC3717F1A5E5BDC00EF764A /* MatchViewControllers */,
 				7ECEB7B51A760EE200D5F40A /* Pit Scout Controller */,
-				7E95BBEC1A4646BF004F3828 /* Level1TeamListTableViewController.h */,
-				7E95BBED1A4646BF004F3828 /* Level1TeamListTableViewController.m */,
 			);
 			name = MainScreenControllers;
 			sourceTree = "<group>";
@@ -558,6 +571,7 @@
 				7E95DEFE1A47EC57000D9A6D /* MatchScoutTableCell.m in Sources */,
 				7E98771B1A244F92004735C8 /* Level1MenuViewController.m in Sources */,
 				7EA3E2EE1A1AEE4900F534A5 /* mainAppDelegate.m in Sources */,
+				7E9D90D51AAAC90700FADE9A /* Level1PitScoutDisplayViewController.m in Sources */,
 				7EC6A1271A9FE26D001C43B9 /* JSONRequest.m in Sources */,
 				7E94F7AC1A49F2B40087C196 /* PickListCell.m in Sources */,
 				7EC4B8721A734ACE00BA97C8 /* CheckBoxLabel.m in Sources */,

@@ -8,11 +8,17 @@
 
 #import "Level1PitScoutDisplayViewController.h"
 
-@interface Level1PitScoutDisplayViewController ()
+@interface Level1PitScoutDisplayViewController () {
+    NSNumber* team;
+}
 
 @end
 
 @implementation Level1PitScoutDisplayViewController
+
+-(void)setTeam:(NSNumber *)num {
+    team = num;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,6 +29,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 /*
 #pragma mark - Navigation

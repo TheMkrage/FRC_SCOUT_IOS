@@ -338,7 +338,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="c52-Ed-0ik" kind="push" id="WDY-yG-IoC"/>
+                                                    <action selector="OpenPitScoutButton:" destination="TAM-PI-opy" eventType="touchUpInside" id="8i0-mE-wRb"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -379,13 +379,19 @@
             </objects>
             <point key="canvasLocation" x="1746" y="-52"/>
         </scene>
-        <!--View Controller-->
+        <!--Level1 Pit Scout Display View Controller-->
         <scene sceneID="uoa-ra-zLn">
             <objects>
-                <viewController id="c52-Ed-0ik" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Level1PitDisplay" id="c52-Ed-0ik" customClass="Level1PitScoutDisplayViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xvW-Gp-D3N">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="acv-Qz-o61">
+                                <rect key="frame" x="0.0" y="62" width="320" height="506"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Ohm-Pc-gbb"/>

@@ -10,4 +10,6 @@
 
 @interface Level1PitScoutDisplayViewController : UIViewController
 
+-(void) setTeam: (NSNumber*) num;
+
 @end

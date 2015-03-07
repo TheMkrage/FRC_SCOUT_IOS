@@ -7,6 +7,7 @@
 //
 
 #import "Level1ProfilesViewController.h"
+#import "Level1PitScoutDisplayViewController.h"
 #import "MatchScoutTableCell.h"
 #import "PitScoutView.h"
 @interface Level1ProfilesViewController (){
@@ -15,6 +16,7 @@
     IBOutlet UIScrollView *scrollView;
     IBOutlet PitScoutView *pitScoutView;
     NSMutableArray *quals;
+    NSNumber* team;
 }
 
 @end
@@ -34,6 +36,8 @@
 {
     [super viewDidLoad];
     
+    self.title = [NSString stringWithFormat:@"%@",team];
+    
     quals = [[NSMutableArray alloc]initWithArray:@[@"Q1",@"Q12",@"Q123",@"Q01",@"Q001",@"Q1",@"Q12",@"Q123",@"Q01",@"Q001"]]
     ;
     [matchScoutTable setDataSource:self];
@@ -46,6 +50,17 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) viewDidLayoutSubviews {
+    scrollView.frame = CGRectMake(scrollView.frame.origin.x, 0, 320, self.view.frame.size.height);
+    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height - 63);
+    //[scrollView  setCenter:CGPointMake(scrollView.center.x, scrollView.center.y - 62)];
+    [self.view layoutSubviews];
+}
+
+-(void)setTeam:(NSNumber*)num {
+   team = num;
 }
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -70,6 +85,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+}
+- (IBAction)OpenPitScoutButton:(UIButton *)sender {
+    
+    NSString * storyboardName = @"Main_iPhone";
+    NSString * viewControllerID = @"Level1PitDisplay";
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+    Level1PitScoutDisplayViewController* controller = (Level1PitScoutDisplayViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
+    //NSLog(@"fdasf: %ld",(long)  [indexPath row]);
+    [controller setTeam:team];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 

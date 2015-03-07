@@ -11,5 +11,9 @@
 @interface PickListCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *robotImage;
 @property (strong, nonatomic) IBOutlet UILabel *teamNumLabel;
+@property (strong, nonatomic) IBOutlet UILabel *AvgLabel;
+@property (strong, nonatomic) IBOutlet UILabel *driveLabel;
+@property (strong, nonatomic) IBOutlet UILabel *liftLabel;
+@property (strong, nonatomic) IBOutlet UILabel *intakeLabel;
 
 @end

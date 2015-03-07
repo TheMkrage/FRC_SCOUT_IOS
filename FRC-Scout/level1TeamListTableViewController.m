@@ -9,10 +9,14 @@
 #import "Level1TeamListTableViewController.h"
 #import "Level1ProfilesViewController.h"
 #import "PickListCell.h"
-
+#import <Firebase/Firebase.h>
 @interface Level1TeamListTableViewController ()
 
 @property NSMutableArray *teamArray;
+@property NSMutableArray *avgArray;
+@property NSMutableArray *driveArray;
+@property NSMutableArray *liftArray;
+@property NSMutableArray *intakeArray;
 @end
 
 #define FONT_BEBAS_15 [UIFont fontWithName: @"Bebas Neue" size:15]
@@ -36,48 +40,69 @@
       FONT_BEBAS_28,
       NSFontAttributeName, nil]];
     
-    self.title = @"Pick List";
+    self.title = @"Team List";
 }
 - (void) viewWillLoad {
-    
-    
     
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSString *noteDataString = @"teams";
-    NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
+    self.tableView.delegate = self;
     
-    NSURL * url = [NSURL URLWithString:@"http://mrflark.org/frcscout/list-teams.php"];
-    NSMutableURLRequest * urlRequest = [NSMutableURLRequest requestWithURL:url];
-    [urlRequest setHTTPMethod:@"POST"];
-    
-    [urlRequest setHTTPBody:[noteDataString dataUsingEncoding:NSUTF8StringEncoding]];
-    NSURLSessionDataTask * dataTask =[defaultSession dataTaskWithRequest:urlRequest completionHandler:^(NSData *dataRaw, NSURLResponse *header, NSError *error) {
-        NSDictionary *json = [NSJSONSerialization
-                              JSONObjectWithData:dataRaw
-                              options:kNilOptions error:&error];
-        NSString *string =[json valueForKey:@"teams"];
-        NSLog(@"%@",string);
-        NSLog(@"%@",json[@"teams"]);
-        _teamArray = [json valueForKey:@"teams"];
-        NSLog(@"%@",_teamArray);
-        [self.tableView reloadData];
+    self.teamArray = [[NSMutableArray alloc] init];
+    self.avgArray = [[NSMutableArray alloc] init];
+    self.intakeArray = [[NSMutableArray alloc] init];
+    self.liftArray = [[NSMutableArray alloc] init];
+    self.driveArray = [[NSMutableArray alloc] init];
+    Firebase* ref = [[Firebase alloc] initWithUrl:@"https://friarscout.firebaseio.com/teams"];
+    [[ref queryOrderedByValue] observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
+        [self.teamArray addObject:snapshot.key];
+        if(snapshot.value[@"avg"] == nil) {
+        }else{
+            [self.avgArray addObject:snapshot.value[@"avg"]];
+        }
+        
+        
+        Firebase* ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat: @"https://friarscout.firebaseio.com/teams/%@/pit", snapshot.value[@"number"]]];
+        [ref observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+            
+                NSLog(@"%@", snapshot.value[@"drivetrain"]);
+                @try {
+                    [self.driveArray addObject:snapshot.value[@"drivetrain"]];
+                }
+                @catch (NSException *exception) {
+                    [self.driveArray addObject:@"none"];
+                }
+                
+            
+            
+            @try {
+                [self.liftArray addObject:snapshot.value[@"lift"]];
+            }
+            @catch (NSException *exception) {
+                [self.liftArray addObject:@"none"];
+            }
+            
+            @try {
+                [self.intakeArray addObject:snapshot.value[@"intake"]];
+            }
+            @catch (NSException *exception) {
+                [self.intakeArray addObject:@"none"];
+            }
+            
+            
+            
+            NSLog(@"The %@ dinosaur's score is %@", snapshot.key, snapshot.value);
+            
+            [self.tableView reloadData];
+        }];
+        
+        
+        NSLog(@"FDASFDSAFDSA");
+        
         
     }];
-    
-    [dataTask resume];
-
-    
-
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -97,7 +122,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    NSLog(@"reas %lu",(unsigned long)[_teamArray count]);
     return [_teamArray count];
 }
 
@@ -108,6 +132,26 @@
     
     long row = [indexPath row];
     cell.teamNumLabel.text = [_teamArray objectAtIndex:row];
+    
+    if(self.avgArray.count > row) {
+        cell.AvgLabel.text = [NSString stringWithFormat:@"Avg: %@",[self.avgArray objectAtIndex:row]];
+    }
+    
+    if(self.driveArray.count > row) {
+        cell.driveLabel.text = [NSString stringWithFormat:@"Drive: %@",[self.driveArray objectAtIndex:row]];
+    }
+    
+    if(self.liftArray.count > row) {
+        cell.liftLabel.text = [NSString stringWithFormat:@"Lift: %@",[self.liftArray objectAtIndex:row]];
+    }
+
+    if(self.intakeArray.count > row){
+        cell.intakeLabel.text = [NSString stringWithFormat:@"Intake: %@",[self.intakeArray objectAtIndex:row]];
+    }
+    
+    
+    
+    //[self.driveTrainArray objectAtIndex: row];
     // Configure the cell...
     
     return cell;
@@ -118,59 +162,9 @@
     NSString * viewControllerID = @"level1Profile";
     UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
     Level1ProfilesViewController* controller = (Level1ProfilesViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
+    //NSLog(@"fdasf: %ld",(long)  [indexPath row]);
+    [controller setTeam:[self.teamArray objectAtIndex:[indexPath row]]];
     [self.navigationController pushViewController:controller animated:YES];
-
+    
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
-
 @end

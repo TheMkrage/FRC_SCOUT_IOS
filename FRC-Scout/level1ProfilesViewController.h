@@ -10,4 +10,5 @@
 
 @interface Level1ProfilesViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 
+-(void)setTeam:(NSNumber*)num;
 @end

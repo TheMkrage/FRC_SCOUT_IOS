@@ -242,7 +242,7 @@ static Level1PitScoutViewController* instance;
     NSLog(@"CODE: %@", key);
     Firebase *ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit/%@", self.teamTextField.text, key]];
     [ref setValue:[NSNumber numberWithBool:[sender isOn]]];
-    NSLog(@"FROM CHANGED %hhd", [sender isOn]);
+    //NSLog(@"FROM CHANGED %@", [sender isOn] );
     
 }
 /*-(void) saveData {
@@ -480,9 +480,9 @@ static Level1PitScoutViewController* instance;
         val = false;
     else
         val = false;*/
-    NSLog(@"OBSERVER B4: %hhd", value);
+    //NSLog(@"OBSERVER B4: %hhd", value);
     [switcher setOn:!value];
-    NSLog(@"OBSERVER AFTER: %hhd", [switcher isOn]);
+    //NSLog(@"OBSERVER AFTER: %hhd", [switcher isOn]);
 }
 
 -(void) setTextOfField: (UITextField*)field withValue: (id)  value {

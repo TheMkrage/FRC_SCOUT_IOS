@@ -160,40 +160,7 @@
         textFieldShouldEdit= NO;
         return YES;
     }
-#warning GET RID OF THIS
     return YES;
-    /*if(([self drivePicker].hidden == NO || [self intakePicker].hidden == NO || [self liftPicker].hidden == NO || [self cimPicker].hidden == NO || [self frameStrengthPicker].hidden == NO)) {
-     activeAspect = NULL;
-     if([self drivePicker].hidden == NO) {
-     [[self drivePicker] setSelectedValueToTextField];
-     }else if(![self intakePicker].isHidden) {
-     [[self intakePicker] setSelectedValueToTextField];
-     }else if(![self liftPicker].isHidden) {
-     [[self liftPicker] setSelectedValueToTextField];
-     }else if(![self frameStrengthPicker].isHidden) {
-     [[self frameStrengthPicker] setSelectedValueToTextField];
-     }else if(![self cimPicker].isHidden) {
-     [[self cimPicker] setSelectedValueToTextField];
-     }
-     NSLog(@"%hhd",[self liftPicker].hidden);
-     [self setAllPickersHidden];
-     
-     
-     }
-     if(activeTextField == [self driveTextField]){
-     return [self textFieldShouldBeActive: self.drivePicker];
-     }else if(activeTextField == [self intakeTextField]) {
-     return [self textFieldShouldBeActive: self.intakePicker];
-     }else if(activeTextField == [self liftTextField]) {
-     return [self textFieldShouldBeActive: self.liftPicker];
-     }else if(activeTextField == [self cimTextField]) {
-     return [self textFieldShouldBeActive: self.cimPicker];
-     }else if(activeTextField == [self frameStrengthTextField]) {
-     return [self textFieldShouldBeActive: self.frameStrengthPicker];
-     }
-     
-     return YES;
-     */
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

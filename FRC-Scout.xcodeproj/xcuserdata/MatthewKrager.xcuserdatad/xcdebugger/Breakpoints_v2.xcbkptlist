@@ -105,7 +105,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "263"
             endingLineNumber = "263"
-            landmarkName = "@implementation level1PitScoutViewController"
+            landmarkName = "@implementation Level1PitScoutViewController"
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
@@ -122,6 +122,22 @@
             startingLineNumber = "484"
             endingLineNumber = "484"
             landmarkName = "-setBoolOfSwitch:withValue:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FRC-Scout/Level1TeamListTableViewController.m"
+            timestampString = "447389216.155088"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

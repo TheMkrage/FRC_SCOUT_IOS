@@ -7,10 +7,28 @@
 //
 
 #import "Level1PitScoutDisplayViewController.h"
-
+#import <Firebase/Firebase.h>
 @interface Level1PitScoutDisplayViewController () {
     NSNumber* team;
 }
+
+//SPECS:
+@property (strong, nonatomic) IBOutlet UILabel *weightLabel;
+@property (strong, nonatomic) IBOutlet UILabel *heightLabel;
+
+//DRIVE TRAIN
+@property (strong, nonatomic) IBOutlet UILabel *CIMLabel;
+@property (strong, nonatomic) IBOutlet UILabel *MaxSpeedLabel;
+@property (strong, nonatomic) IBOutlet UILabel *DriveLabel;
+@property (strong, nonatomic) IBOutlet UILabel *speedLabel;
+
+//LITTS
+@property (strong, nonatomic) IBOutlet UILabel *LiftLabel;
+@property (strong, nonatomic) IBOutlet UILabel *MaxSpeedLabe;
+@property (strong, nonatomic) IBOutlet UILabel *ToteStackHeightLabel;
+@property (strong, nonatomic) IBOutlet UILabel *InternalExternalLabel;
+@property (strong, nonatomic) IBOutlet UILabel *CanStackHeightLabel;
+
 
 @end
 
@@ -22,7 +40,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+   
+    [self addDataToLabels];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,7 +49,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) addDataToLabels {
+    Firebase* ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat: @"https://friarscout.firebaseio.com/teams/%@/pit", team]];
+    [ref observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        
+        
+            }];
 
+}
 /*
 #pragma mark - Navigation
 

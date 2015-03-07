@@ -61,13 +61,11 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)viewDidLayoutSubviews {
-    NSLog(@"LAYED OUT");
-    scrollView.frame = CGRectMake(scrollView.frame.origin.x, scrollView.frame.origin.y, 320, self.view.frame.size.height);
-    scrollView.contentSize = CGSizeMake(320, 1600);
-   
+-(void) viewDidLayoutSubviews {
+    scrollView.frame = CGRectMake(scrollView.frame.origin.x, 63, 320, self.view.frame.size.height);
+    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height - 63);
+    //[scrollView  setCenter:CGPointMake(scrollView.center.x, scrollView.center.y - 62)];
     [self.view layoutSubviews];
-    
 }
 
 -(void) setFonts {

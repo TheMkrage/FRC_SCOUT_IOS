@@ -35,6 +35,15 @@
     _linkedTextField = textField;
     selectedItem = pickerData[0];
     
+    
+   
+    UIImage *img = [UIImage imageNamed:@"PickerBorder.png"];
+    
+    UIImageView* imageView = [[UIImageView alloc] initWithImage:img];
+    
+    [self addSubview:imageView ];
+    [self sendSubviewToBack:imageView ];
+    
 }
 
 - (IBAction)doneButton:(id)sender {

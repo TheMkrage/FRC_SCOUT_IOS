@@ -55,7 +55,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *twoSpeedLabel;
 @property (strong, nonatomic) IBOutlet UITextField *cimTextField;
 @property (strong, nonatomic) IBOutlet UITextField *maxSpeedTextField;
-@property (strong, nonatomic) IBOutlet UITextField *frameStrengthTextField;
 
 
 //LIFT SYSTEM
@@ -138,7 +137,6 @@ static Level1PitScoutViewController* instance;
     [self.intakePicker setData:@[@"intake", @"Item 2", @"Item 3", @"Item 4", @"Item 5", @"Other"] textField:self.intakeTextField withController:self withCode:@"intake"];
     [self.liftPicker setData:@[@"lift", @"Item 2", @"Item 3", @"Item 4", @"Item 5", @"Other"] textField:self.liftTextField withController:self withCode:@"lift"];
     [self.cimPicker setData:@[@"2CIM", @"3CIM", @"4IM"] textField:[self cimTextField] withController:self withCode:@"cim"];
-    [self.frameStrengthPicker setData:@[@"1",@"2",@"3",@"4"] textField: self.frameStrengthTextField withController:self withCode:@"frame_strength"];
     
     
 }
@@ -193,7 +191,6 @@ static Level1PitScoutViewController* instance;
     [(KragerTextField*)self.weightTextField setCode:@"weight"];
     [self maxSpeedTextField].placeholder = @"Max Speed";
     [(KragerTextField*) self.maxSpeedTextField setCode:@"max_speed"];
-    [self frameStrengthTextField].placeholder = @"Frame Strength";
     [self maxCanHeightTextField].placeholder = @"Can Stack Height";
     [(KragerTextField*)self.maxCanHeightTextField setCode:@"can"];
     [self maxToteHeightTextField].placeholder = @"Tote Stack Height";
@@ -226,7 +223,6 @@ static Level1PitScoutViewController* instance;
     [self maxToteHeightTextField].delegate = self;
     [self maxTotesAtOneTimeTextField].delegate = self;
     [self maxCanHeightTextField].delegate = self;
-    [self frameStrengthTextField].delegate = self;
     commentsTextView.delegate = self;
 }
 
@@ -319,7 +315,6 @@ static Level1PitScoutViewController* instance;
     [self weightTextField].font = FONT_BEBAS_20;
     [self heightTextField].font = FONT_BEBAS_20;
     [self maxSpeedTextField].font = FONT_BEBAS_20;
-    [self frameStrengthTextField].font = FONT_BEBAS_20;
     [self driveTrainLabel].font = FONT_BEBAS_28;
     [self robotSpecsLabel].font = FONT_BEBAS_28;
     [self oneSpeedLabel].font = FONT_BEBAS_20;
@@ -458,18 +453,21 @@ static Level1PitScoutViewController* instance;
     NSLog(@"FDSAFDSAFQSD");
     if(snapshot == nil)
         return;
+    
+    @try {
     [self setTextOfField:self.weightTextField withValue:snapshot.value[@"weight"]];
     [self setTextOfField:self.heightTextField withValue:snapshot.value[@"height"]];
     [self setTextOfField:self.cimTextField withValue:snapshot.value[@"cim"]];
     [self setTextOfField:self.maxSpeedTextField withValue:snapshot.value[@"speed"]];
     [self setTextOfField:self.driveTextField withValue:snapshot.value[@"drivetrain"]];
-    [self setTextOfField:self.frameStrengthTextField withValue:snapshot.value[@"frame_strength"]];
     [self setTextOfField:self.liftTextField withValue:snapshot.value[@"lift"]];
     [self setTextOfField:self.maxTotesAtOneTimeTextField withValue:snapshot.value[@"max_tote"]];
     [self setTextOfField:self.maxToteHeightTextField   withValue:snapshot.value[@"tote_stack_height"]];
     [self setTextOfField:self.maxCanHeightTextField withValue:snapshot.value[@"can"]];
     [self setTextOfField:self.intakeTextField withValue:snapshot.value[@"intake"]];
-    
+    } @catch (NSException* e) {
+        
+    }
    }
 
 -(void) setBoolOfSwitch: (UISwitch*) switcher withValue: (BOOL) value {
@@ -488,7 +486,11 @@ static Level1PitScoutViewController* instance;
 -(void) setTextOfField: (UITextField*)field withValue: (id)  value {
     if(value == nil)
         return;
+    @try{
     [field setText:[NSString stringWithFormat:@"%@",value]];
+    }@catch (NSException* e) {
+        NSLog(@"TDDFAS");
+    }
 }
 
 -(void)textFieldShouldBeEditable: (UITextField*)field {
@@ -563,10 +565,7 @@ static Level1PitScoutViewController* instance;
         return [self textFieldShouldBeActive: self.liftPicker];
     }else if(activeTextField == [self cimTextField]) {
         return [self textFieldShouldBeActive: self.cimPicker];
-    }else if(activeTextField == [self frameStrengthTextField]) {
-        return [self textFieldShouldBeActive: self.frameStrengthPicker];
     }
-    
     return YES;
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

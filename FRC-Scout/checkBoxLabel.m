@@ -30,7 +30,6 @@
 
 -(void) togglePaidStatus
 {
-    NSString *untickedBoxStr = @"\u2610";
     NSString *tickedBoxStr = @"\u2611";
     
     if ([[self titleLabel].text isEqualToString:tickedBoxStr])
@@ -44,7 +43,7 @@
     
 }
 -(void) setTickedToggle {
-    NSString *untickedBoxStr = @"\u2610";
+    
     NSString *tickedBoxStr = @"\u2611";
     [self setTitle:tickedBoxStr forState:UIControlStateNormal];
     
@@ -54,7 +53,6 @@
 }
 
 -(void) setTicked {
-    NSString *untickedBoxStr = @"\u2610";
     NSString *tickedBoxStr = @"\u2611";
     [self setTitle:tickedBoxStr forState:UIControlStateNormal];
     NSLog(@"TICK");
@@ -67,7 +65,6 @@
 
 -(void) setUnticked {
     NSString *untickedBoxStr = @"\u2610";
-    NSString *tickedBoxStr = @"\u2611";
     [self setTitle:untickedBoxStr forState:UIControlStateNormal];
     if(hiddenObj!= nil)
         [hiddenObj setHidden:YES];

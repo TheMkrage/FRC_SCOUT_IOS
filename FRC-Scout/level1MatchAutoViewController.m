@@ -113,8 +113,6 @@
     [self otherGoalsTextField].delegate = self;
 }
 
-
-
 -(void) viewDidLayoutSubviews {
     scrollView.frame = CGRectMake(scrollView.frame.origin.x , scrollView.frame.origin.y, 320, self.view.frame.size.height);
     scrollView.contentSize = CGSizeMake(320, 900);

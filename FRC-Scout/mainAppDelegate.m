@@ -7,9 +7,14 @@
 //
 
 #import "mainAppDelegate.h"
+//#import <FPPicker/FPPicker.h>
 
 @implementation mainAppDelegate
 
+/*+ (void)initialize
+{
+    [FPConfig sharedInstance].APIKey = @"SET_FILEPICKER.IO_APIKEY_HERE";
+}*/
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.

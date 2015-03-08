@@ -8,21 +8,19 @@
 
 #import "Level1PitTeleopViewController.h"
 #import "KragerPickerView.h"
+#import "Level1PitScoutViewController.h"
 #import "CheckBoxLabel.h"
+#import <Firebase/Firebase.h>
 
 @interface Level1PitTeleopViewController () {
     IBOutlet UIScrollView *scrollView;
     bool textFieldShouldEdit;
     UITextField *activeTextField;
     id activeAspect;
+    NSString* team;
 }
 @property (strong, nonatomic) IBOutlet UITextField *cooperationTextField;
-@property (strong, nonatomic) IBOutlet KragerPickerView *cooperationPicker;
 @property (strong, nonatomic) IBOutlet UITextField *preferredTextField;
-@property (strong, nonatomic) IBOutlet KragerPickerView *preferredPicker;
-
-@property (strong, nonatomic) IBOutlet UITextView *strategyTextView;
-@property (strong, nonatomic) IBOutlet UIScrollView *humanPlayerBoyGirlSwitch;
 @property (strong, nonatomic) IBOutlet UISwitch *humanPlayerNoodlesSwitch;
 
 
@@ -40,6 +38,8 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    team = [[self.tabBarController.viewControllers objectAtIndex:0] getTeam];
+    NSLog(@"%@", team);
     UITapGestureRecognizer *singleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
     singleTapGestureRecognizer.numberOfTapsRequired = 1;
     singleTapGestureRecognizer.enabled = YES;
@@ -50,10 +50,6 @@
     
     [self setData];
     
-    self.strategyTextView.layer.cornerRadius = 5;
-    self.strategyTextView.layer.borderWidth = 2;
-    self.strategyTextView.layer.borderColor = [[UIColor grayColor] CGColor];
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,9 +69,17 @@
 }
 
 -(void) setData {
-    /*[[self cooperationPicker] setData:@[@"None",@"Stacked",@"Not Stacked"] textField:[self cooperationTextField] withController:self];
-    [[self preferredPicker] setData:@[@"Totes",@"Cans",@"Noodles",@"Cooperation",@"Other"] textField:[self preferredTextField] withController:self];
-    */
+    Firebase* ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit/teleop",team]];
+    [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        
+        @try {
+            self.preferredTextField.text = snapshot.value[@"preferred_scoring"];
+            self.cooperationTextField.text = snapshot.value[@"coop"];
+            [self.humanPlayerNoodlesSwitch setOn:[snapshot.value[@"hp_throw_noodles"] boolValue] animated:YES];
+        }@catch (NSException* e) {
+            
+        }
+    }];
     [self cooperationTextField].placeholder = @"Cooperation";
     [self preferredTextField].placeholder = @"Preferred Scoring";
 }
@@ -83,11 +87,10 @@
 -(void) setDelegates {
     [self cooperationTextField].delegate = self;
     [self preferredTextField].delegate = self;
-    [self strategyTextView].delegate = self;
 }
 
 -(void) singleTap:(UITapGestureRecognizer*)gesture {
-
+    
     [self turnOffActiveAspect];
 }
 
@@ -96,13 +99,17 @@
         [activeAspect setHidden:YES];
     } else {
         [activeAspect resignFirstResponder];
-            NSLog(@"TAP");
+        NSLog(@"TAP");
     }
+}
+- (IBAction)humanPlayerSwitch:(UISwitch *)sender {
+    NSLog(@"DSGA %hhd", sender.isOn);
+    Firebase* ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit/teleop/hp_throw_noodles", team]];
+    [ref setValue:[NSNumber numberWithBool:sender.isOn]];
+        
 }
 
 - (void) setAllPickersHidden {
-    self.cooperationPicker.hidden = YES;
-    self.preferredPicker.hidden = YES;
 }
 -(void)textFieldShouldBeEditable: (UITextField*)field {
     textFieldShouldEdit = true;
@@ -110,6 +117,7 @@
 }
 
 #pragma mark - UITextFieldDelegate
+
 -(BOOL) textFieldShouldBeActive: (KragerPickerView*) picker {
     [picker setCenter:CGPointMake(picker.frame.origin.x + picker.frame.size.width/2, self.view.frame.size.height - 150)];
     [picker setBackgroundColor:[UIColor whiteColor]];
@@ -119,6 +127,7 @@
     picker.hidden = NO;
     return NO;
 }
+
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     [self turnOffActiveAspect];
     activeTextField = textField;
@@ -129,21 +138,6 @@
         return YES;
     }
     NSLog(@"GFD");
-    if(([self cooperationPicker].hidden == NO || [self preferredPicker].hidden == NO)) {
-        activeAspect = NULL;
-        if([self cooperationPicker].hidden == NO) {
-            [[self cooperationPicker] setSelectedValueToTextField];
-        }else if([self preferredPicker].hidden == NO) {
-            [[self preferredPicker] setSelectedValueToTextField];
-        }
-        [self setAllPickersHidden];
-    }
-    
-    if(activeTextField == [self cooperationTextField]){
-        return [self textFieldShouldBeActive: self.cooperationPicker];
-    }else if(activeTextField == [self preferredTextField]){
-        return [self textFieldShouldBeActive: self.preferredPicker];
-    }
     return YES;
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -153,43 +147,20 @@
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField {
+    
     NSLog(@"ENDED");
+    if(textField == self.cooperationTextField) {
+        Firebase* ref = [[Firebase alloc]initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit/teleop/coop", team]];
+        [ref setValue:self.cooperationTextField.text];
+    }else if(textField == self.preferredTextField) {
+        Firebase* ref = [[Firebase alloc]initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit/teleop/preferred_scoring", team]];
+        [ref setValue:self.preferredTextField.text];
+    }
 }
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     NSLog(@"SELECTED");
     
     activeTextField = textField;
-}
-
-#pragma mark - UITextViewDelegate
--(void)textViewDidBeginEditing:(UITextView *)textView{
-    if(!(textView == activeAspect)) {
-        [self turnOffActiveAspect];
-        activeAspect = textView;
-    }
-    [scrollView setContentOffset:CGPointMake(0, ((UITextView*)activeAspect).center.y - scrollView.frame.size.height/4) animated:YES];
-}
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range
- replacementText:(NSString *)text
-{
-    // Any new character added is passed in as the "text" parameter
-    if ([text isEqualToString:@"\n"]) {
-        // Be sure to test for equality using the "isEqualToString" message
-        [textView resignFirstResponder];
-        
-        // Return FALSE so that the final '\n' character doesn't get added
-        return FALSE;
-    }
-    // For any other character return TRUE so that the text gets added to the view
-    return TRUE;
-}
-- (void)textViewDidEndEditing:(UITextView *)textView {
-    [textView resignFirstResponder];
-}
--(BOOL)textViewShouldEndEditing:(UITextView *)textView {
-    NSLog(@"STOP");
-    [textView resignFirstResponder];
-    return YES;
 }
 
 

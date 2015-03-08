@@ -7,8 +7,10 @@
 //
 
 #import "Level1AutonomousViewController.h"
+#import "Level1PitScoutViewController.h"
 #import"KragerPickerView.h"
 #import "CheckBoxLabel.h"
+#import <Firebase/Firebase.h>
 @interface Level1AutonomousViewController () {
     bool textFieldShouldEdit;
     UITextField *activeTextField;
@@ -36,6 +38,10 @@
 @property (strong, nonatomic) IBOutlet CheckBoxLabel *robotMovedCheckBox;
 @property (strong, nonatomic) IBOutlet UITextField *otherGoalsTextField;
 
+@property (strong, nonatomic) IBOutlet UITextField *totesMovedIntoZoneTextField;
+@property (strong, nonatomic) IBOutlet UITextField *trashCansMovedIntoZoneTextField;
+@property (strong, nonatomic) IBOutlet UITextField *canRecievedFromMiddleTextField;
+
 
 
 @end
@@ -58,6 +64,9 @@
     [super viewDidLoad];
 
     
+    self.totesMovedIntoZoneTextField.keyboardType = UIKeyboardTypeNumberPad;
+    self.trashCansMovedIntoZoneTextField.keyboardType = UIKeyboardTypeNumberPad;
+    self.canRecievedFromMiddleTextField.keyboardType = UIKeyboardTypeNumberPad;
     UITapGestureRecognizer *singleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
     singleTapGestureRecognizer.numberOfTapsRequired = 1;
     singleTapGestureRecognizer.enabled = YES;
@@ -98,6 +107,9 @@
 -(void) setDelegates {
     [self otherPosTextField].delegate = self;
     [self otherGoalsTextField].delegate = self;
+    self.totesMovedIntoZoneTextField.delegate = self;
+    self.trashCansMovedIntoZoneTextField.delegate = self;
+    self.canRecievedFromMiddleTextField.delegate = self;
 }
 
 
@@ -107,6 +119,7 @@
     scrollView.contentSize = CGSizeMake(320, 900);
     //[scrollView  setCenter:CGPointMake(scrollView.center.x, scrollView.center.y - 62)];
     [self.view layoutSubviews];
+    
 }
 
 -(void) singleTap: (UITapGestureRecognizer*)gesture {
@@ -122,6 +135,51 @@
     }
     
 }
+
+-(void) viewWillDisappear:(BOOL)animated {
+    NSString* team = [[self.tabBarController.viewControllers objectAtIndex:0] getTeam];
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    Firebase* ref = [[Firebase alloc] initWithUrl: [NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit/auto/starting_locations",team]];
+    
+    //Starting Locations
+    [dict setObject:[NSNumber numberWithBool:[self.byLandFillCheckBox getStatus]] forKey:@"by_landfill"];
+    [dict setObject:[NSNumber numberWithBool:[self.byYellowToteCheckBox getStatus]] forKey:@"by_yellow_tote"];
+    [dict setObject:[NSNumber numberWithBool:[self.immobileCheckBox getStatus]] forKey:@"immobile"];
+    if([self.otherPosCheckBox getStatus]) {
+         [dict setObject:self.otherPosTextField.text forKey:@"other"];
+    }
+    
+    [ref updateChildValues:dict];
+    dict = [[NSMutableDictionary alloc] init];
+    
+    //AUTO GOALS
+    ref = [[Firebase alloc] initWithUrl: [NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit/auto",team]];
+    
+    [dict setObject:[NSNumber numberWithBool:[self.robotMovedCheckBox getStatus]] forKey:@"robot set"];
+    
+    if([self.totesMovedCheckBox getStatus]) {
+        
+        [dict setObject:[NSNumber numberWithInt:[self.totesMovedIntoZoneTextField.text intValue]] forKey:@"totes_in_zone"];
+    }
+    if([self.trashCanMovedCheckBox getStatus]) {
+        [dict setObject:[NSNumber numberWithInt:[self.trashCansMovedIntoZoneTextField.text intValue]] forKey:@"cans_in_zone"];
+    }
+
+    if([self.trashCansFromMiddleCheckBox getStatus]) {
+        [dict setObject:[NSNumber numberWithInt:[self.canRecievedFromMiddleTextField.text intValue]] forKey:@"step_cans"];
+
+    }
+    [dict setObject:[NSNumber numberWithBool:[self.totesStackedCheckBox getStatus]] forKey:@"tote_stack"];
+    if([self.otherGoalsCheckBox getStatus]) {
+        [dict setObject:self.otherGoalsTextField.text forKey:@"other"];
+        
+    }
+    [ref updateChildValues:dict];
+    
+    
+}
+
+
 
 #pragma mark - UITextFieldDelegate
 

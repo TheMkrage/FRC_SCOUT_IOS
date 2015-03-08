@@ -12,4 +12,5 @@
 -(NSString*)getTeam;
 + (Level1PitScoutViewController*)getInstance;
 - (void)textFieldShouldBeEditable: (UITextField*)field ;
+
 @end

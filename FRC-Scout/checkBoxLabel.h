@@ -15,4 +15,5 @@
 -(void) setTickedToggle;
 -(void) setUnticked;
 -(void) setRadioGroup: (RadioButtonGroup*) group;
+-(bool)getStatus;
 @end

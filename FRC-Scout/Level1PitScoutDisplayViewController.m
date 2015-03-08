@@ -50,7 +50,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    
     [self addDataToLabels];
 }
 
@@ -70,6 +70,8 @@
     Firebase* ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat: @"https://friarscout.firebaseio.com/teams/%@/pit", team]];
     [ref observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         
+        [self addDataThatNeedsManual:snapshot];
+        
         [self addString: snapshot.value[@"cim"] toLabel: self.CIMLabel];
         [self addString: snapshot.value[@"drive"] toLabel: self.DriveLabel];
         [self addString: snapshot.value[@"lift"] toLabel: self.LiftLabel];
@@ -77,7 +79,7 @@
         [self addString: snapshot.value[@"tote_stack_height"] toLabel: self.ToteStackHeightLabel];
         [self addString: snapshot.value[@"max_can_height"] toLabel: self.CanStackHeightLabel];
         [self addString: snapshot.value[@"intake"] toLabel: self.intakeLabel];
-         [self addBool: snapshot.value[@"inverted_totes"] toLabel: self.invertedLabel];
+        [self addBool: snapshot.value[@"inverted_totes"] toLabel: self.invertedLabel];
         [self addBool: snapshot.value[@"tote_orientation_change"] toLabel: self.changeOrientationLabel];
         [self addBool: snapshot.value[@"can_off_ground"] toLabel: self.containerOffGroundLabel];
         [self addBool: snapshot.value[@"pool_noodles"] toLabel: self.poolNoodlesLabel];
@@ -85,8 +87,30 @@
         
         
         
-            }];
+    }];
+    
+}
 
+-(void) addDataThatNeedsManual: (FDataSnapshot*) snapshot {
+    @try {
+        
+        self.weightLabel.text = [NSString stringWithFormat:@"%@ %@ lb",self.weightLabel.text, snapshot.value[@"weight"]];
+        
+        
+    }
+    @catch (NSException *exception) {
+        NSLog(@"LOL NOPE");
+    }
+    
+    @try {
+        self.heightLabel.text = [NSString stringWithFormat:@"%@ %@ ft",self.heightLabel.text, snapshot.value[@"height"]];
+        
+        
+    }
+    @catch (NSException *exception) {
+        NSLog(@"LOL NOPE");
+    }
+    
 }
 
 - (void) addString: (id)string toLabel: (UILabel*) label {
@@ -96,7 +120,7 @@
             label.text = [NSString stringWithFormat:@"%@ %@",label.text, string];
             NSLog(@"LABEL: %@",label.text );
         }
-
+        
     }
     @catch (NSException *exception) {
         NSLog(@"LOL NOPE");
@@ -111,8 +135,8 @@
     NSLog(@"STRING: %@", string);
     @try {
         
-            label.text = [NSString stringWithFormat:@"%@ %s",label.text, b ? "true" : "false"];
-            NSLog(@"LABEL: %@",label.text );
+        label.text = [NSString stringWithFormat:@"%@ %s",label.text, b ? "true" : "false"];
+        NSLog(@"LABEL: %@",label.text );
         
         
     }
@@ -124,13 +148,13 @@
     
 }
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

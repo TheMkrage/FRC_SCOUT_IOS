@@ -13,6 +13,9 @@
 		7E0E6FFF1A26746E004969C0 /* Level1RankingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0E6FFE1A26746E004969C0 /* Level1RankingsViewController.m */; };
 		7E24AA5A1A29A58E00D13837 /* mileymelon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7E24AA591A29A58E00D13837 /* mileymelon.jpg */; };
 		7E2FFD271A7CA0D10089ABFF /* RadioButtonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E2FFD261A7CA0D10089ABFF /* RadioButtonGroup.m */; };
+		7E7201BA1AABC6AC00B9D857 /* Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7201B91AABC6AC00B9D857 /* Arrow.png */; };
+		7E7201BC1AABC84B00B9D857 /* CheckedBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7201BB1AABC84B00B9D857 /* CheckedBox.png */; };
+		7E7201BE1AABC86F00B9D857 /* UncheckedBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7201BD1AABC86F00B9D857 /* UncheckedBox.png */; };
 		7E94F7AC1A49F2B40087C196 /* PickListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E94F7AB1A49F2B40087C196 /* PickListCell.m */; };
 		7E94F7B01A49FFB70087C196 /* KragerStepperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E94F7AF1A49FFB70087C196 /* KragerStepperView.m */; };
 		7E94FA9F1A493B7B0010D0FD /* PitScoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E94FA9E1A493B7B0010D0FD /* PitScoutView.m */; };
@@ -68,7 +71,6 @@
 		7EC6A13E1AA16A4B001C43B9 /* ToteStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6A13D1AA16A4B001C43B9 /* ToteStack.m */; };
 		7EC71E161A78697600E3546B /* Level1PitTeleopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC71E151A78697600E3546B /* Level1PitTeleopViewController.m */; };
 		7ECCF80E1A7F4AF20026D6F2 /* scoutingapp.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ECCF80D1A7F4AF20026D6F2 /* scoutingapp.png */; };
-		7ED0F0BF1A7B5488004237F6 /* Level1PitMiscViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED0F0BE1A7B5488004237F6 /* Level1PitMiscViewController.m */; };
 		7EEA9AE21A9C470E00BF5CCA /* JSONObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EEA9AE11A9C470E00BF5CCA /* JSONObject.m */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +97,9 @@
 		7E24AA591A29A58E00D13837 /* mileymelon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mileymelon.jpg; sourceTree = "<group>"; };
 		7E2FFD251A7CA0D10089ABFF /* RadioButtonGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioButtonGroup.h; sourceTree = "<group>"; };
 		7E2FFD261A7CA0D10089ABFF /* RadioButtonGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioButtonGroup.m; sourceTree = "<group>"; };
+		7E7201B91AABC6AC00B9D857 /* Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Arrow.png; path = ../../Arrow.png; sourceTree = "<group>"; };
+		7E7201BB1AABC84B00B9D857 /* CheckedBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CheckedBox.png; path = "../../MyIcons (1)/png/CheckedBox.png"; sourceTree = "<group>"; };
+		7E7201BD1AABC86F00B9D857 /* UncheckedBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UncheckedBox.png; sourceTree = "<group>"; };
 		7E94F7AA1A49F2B40087C196 /* PickListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickListCell.h; sourceTree = "<group>"; };
 		7E94F7AB1A49F2B40087C196 /* PickListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickListCell.m; sourceTree = "<group>"; };
 		7E94F7AE1A49FFB70087C196 /* KragerStepperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KragerStepperView.h; sourceTree = "<group>"; };
@@ -176,8 +181,6 @@
 		7EC71E141A78697600E3546B /* Level1PitTeleopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level1PitTeleopViewController.h; sourceTree = "<group>"; };
 		7EC71E151A78697600E3546B /* Level1PitTeleopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level1PitTeleopViewController.m; sourceTree = "<group>"; };
 		7ECCF80D1A7F4AF20026D6F2 /* scoutingapp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scoutingapp.png; sourceTree = "<group>"; };
-		7ED0F0BD1A7B5488004237F6 /* Level1PitMiscViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level1PitMiscViewController.h; sourceTree = "<group>"; };
-		7ED0F0BE1A7B5488004237F6 /* Level1PitMiscViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level1PitMiscViewController.m; sourceTree = "<group>"; };
 		7EEA9AE01A9C470E00BF5CCA /* JSONObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONObject.h; sourceTree = "<group>"; };
 		7EEA9AE11A9C470E00BF5CCA /* JSONObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -220,11 +223,14 @@
 				7E94F7AD1A49FF8C0087C196 /* Views */,
 				7EBFBBF91A5A0221003316CE /* MainScreenControllers */,
 				7E24AA591A29A58E00D13837 /* mileymelon.jpg */,
+				7E7201B91AABC6AC00B9D857 /* Arrow.png */,
 				7EC3DC421AABAFA4009FF501 /* TeleopIcon.png */,
 				7EC3DC321AABA7E8009FF501 /* MiscIcon.png */,
 				7EC3DC401AABAF86009FF501 /* AutoIcon.png */,
 				7EC3DC441AABAFC9009FF501 /* RobotSpecsIcon.png */,
 				7EC3DC361AABAC3E009FF501 /* PickerBorder.png */,
+				7E7201BD1AABC86F00B9D857 /* UncheckedBox.png */,
+				7E7201BB1AABC84B00B9D857 /* CheckedBox.png */,
 				7E0E6FFD1A26746E004969C0 /* Level1RankingsViewController.h */,
 				7E0E6FFE1A26746E004969C0 /* Level1RankingsViewController.m */,
 			);
@@ -435,8 +441,6 @@
 				7EC59A111A6DA4B20044E5C0 /* Level1AutonomousViewController.m */,
 				7EC71E141A78697600E3546B /* Level1PitTeleopViewController.h */,
 				7EC71E151A78697600E3546B /* Level1PitTeleopViewController.m */,
-				7ED0F0BD1A7B5488004237F6 /* Level1PitMiscViewController.h */,
-				7ED0F0BE1A7B5488004237F6 /* Level1PitMiscViewController.m */,
 			);
 			name = "Pit Scout Controller";
 			sourceTree = "<group>";
@@ -535,12 +539,15 @@
 				7EC3DC411AABAF86009FF501 /* AutoIcon.png in Resources */,
 				7EA3E2F91A1AEE4A00F534A5 /* Images.xcassets in Resources */,
 				7EA3E2F11A1AEE4A00F534A5 /* Main_iPhone.storyboard in Resources */,
+				7E7201BC1AABC84B00B9D857 /* CheckedBox.png in Resources */,
 				7EC3DC331AABA7E8009FF501 /* MiscIcon.png in Resources */,
 				7EC6A1391AA1467B001C43B9 /* TrashCan.png in Resources */,
 				7EC3DC431AABAFA4009FF501 /* TeleopIcon.png in Resources */,
 				7ECCF80E1A7F4AF20026D6F2 /* scoutingapp.png in Resources */,
 				7EC6A13B1AA15E86001C43B9 /* Tote_Outline.png in Resources */,
+				7E7201BE1AABC86F00B9D857 /* UncheckedBox.png in Resources */,
 				7E9778CF1A2055CE008B2D3A /* BebasNeue.otf in Resources */,
+				7E7201BA1AABC6AC00B9D857 /* Arrow.png in Resources */,
 				7EC3DC451AABAFC9009FF501 /* RobotSpecsIcon.png in Resources */,
 				7EC6A12F1A9FFB7B001C43B9 /* BadTote.png in Resources */,
 				7EC6A1371AA13DD6001C43B9 /* CanBoy.jpg in Resources */,
@@ -585,7 +592,6 @@
 				7E0E6FEF1A2672B8004969C0 /* Level1PitScoutViewController.m in Sources */,
 				7E94F7B01A49FFB70087C196 /* KragerStepperView.m in Sources */,
 				7EC71E161A78697600E3546B /* Level1PitTeleopViewController.m in Sources */,
-				7ED0F0BF1A7B5488004237F6 /* Level1PitMiscViewController.m in Sources */,
 				7E2FFD271A7CA0D10089ABFF /* RadioButtonGroup.m in Sources */,
 				7E0E6FF91A26739E004969C0 /* Level1ProfilesViewController.m in Sources */,
 				7E95DEFE1A47EC57000D9A6D /* MatchScoutTableCell.m in Sources */,

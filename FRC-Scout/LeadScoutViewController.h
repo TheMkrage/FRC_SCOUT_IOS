@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LeadScoutViewController : UIViewController
+@interface LeadScoutViewController : UIViewController <UITextFieldDelegate>
 
 @end

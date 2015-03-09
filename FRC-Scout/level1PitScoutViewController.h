@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface Level1PitScoutViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate>
+#import <FPPicker/FPPicker.h>
+@interface Level1PitScoutViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate, FPPickerDelegate>
 -(NSString*)getTeam;
 + (Level1PitScoutViewController*)getInstance;
 - (void)textFieldShouldBeEditable: (UITextField*)field ;

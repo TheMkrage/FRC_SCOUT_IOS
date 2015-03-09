@@ -9,17 +9,21 @@
 #import "Level1MatchAutoViewController.h"
 #import"KragerPickerView.h"
 #import "CheckBoxLabel.h"
+#import "KragerSwitchView.h"
+#import <Firebase/Firebase.h>
 @interface Level1MatchAutoViewController () {
     bool textFieldShouldEdit;
     UITextField *activeTextField;
     id activeAspect;
     IBOutlet UIScrollView* scrollView;
-    
+    NSString* team;
+    NSString* matchNum;
     
 }
 //Starting Pos
-
+@property (strong, nonatomic) IBOutlet UITextField *teamTextField;
 //checkBoxes
+@property (strong, nonatomic) IBOutlet UITextField *matchNumTextField;
 @property (strong, nonatomic) IBOutlet CheckBoxLabel *byLandFillCheckBox;
 @property (strong, nonatomic) IBOutlet CheckBoxLabel *byYellowToteCheckBox;
 @property (strong, nonatomic) IBOutlet CheckBoxLabel *immobileCheckBox;
@@ -69,14 +73,69 @@
     scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
     
     [self setData];
+    
+    [self fetchTeamAndMatch];
+    team = self.teamTextField.text;
+    matchNum = self.matchNumTextField.text;
 }
 
+-(void) fetchTeamAndMatch {
+    
+}
+-(void) viewWillDisappear:(BOOL)animated {
+    
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    Firebase* ref = [[Firebase alloc] initWithUrl: [NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/match/%@/auto", team, matchNum]];
+    
+    //Starting Locations
+    if([self.byLandFillCheckBox getStatus]) {
+        [dict setObject:@"By Landfill" forKey:@"starting_location"];
+    }
+    if([self.byYellowToteCheckBox getStatus]) {
+        [dict setObject:@"By Yellow Totes" forKey:@"starting_location"];
+    }
+    if([self.immobileCheckBox getStatus]) {
+        [dict setObject:@"Immobile" forKey:@"starting_location"];
+    }
+    if([self.otherPosCheckBox getStatus]) {
+        [dict setObject:self.otherPosTextField.text forKey:@"starting_location"];
+    }
+    
+    //GOALS
+    [dict setObject:[NSNumber numberWithBool:[self.robotMovedCheckBox getStatus]] forKey:@"robot set"];
+    
+    if([self.totesMovedCheckBox getStatus]) {
+        
+        [dict setObject:[NSNumber numberWithInt:[[self.autoPicker getSelectedItem] intValue]] forKey:@"totes_in_zone"];
+    }
+    if([self.trashCanMovedCheckBox getStatus]) {
+        [dict setObject:[NSNumber numberWithInt:[[self.autoPicker getSelectedItem] intValue]] forKey:@"cans_in_zone"];
+    }
+    
+    if([self.trashCansFromMiddleCheckBox getStatus]) {
+        [dict setObject:[NSNumber numberWithInt:[[self.autoPicker getSelectedItem] intValue]] forKey:@"step_cans"];
+        
+    }
+    if([self.totesStackedCheckBox getStatus]) {
+        [dict setObject:[NSNumber numberWithInt:[[self.autoPicker getSelectedItem] intValue]] forKey:@"tote_stack"];
+        
+    }
+
+    if([self.otherGoalsCheckBox getStatus]) {
+        [dict setObject:self.otherGoalsTextField.text forKey:@"other"];
+        
+    }
+    [ref updateChildValues:dict];
+    
+
+}
 -(void) setFonts {
     //the box will show up when user clicks checkbox
     [[self otherPosTextField] setHidden:YES];
     [[self otherPosTextField] setPlaceholder:@"Other"];
     [[self otherGoalsTextField] setHidden:YES];
     [[self otherGoalsTextField] setPlaceholder:@"Other"];
+    self.teamTextField.placeholder = @"Team";
     
     [[self byLandFillCheckBox] setTitle:@"\u2610" forState:UIControlStateNormal];
     [[self byYellowToteCheckBox] setTitle:@"\u2610" forState:UIControlStateNormal];
@@ -111,6 +170,9 @@
 -(void) setDelegates {
     [self otherPosTextField].delegate = self;
     [self otherGoalsTextField].delegate = self;
+}
+- (IBAction)accomplishSwitch:(KragerSwitchView *)sender {
+    
 }
 
 -(void) viewDidLayoutSubviews {

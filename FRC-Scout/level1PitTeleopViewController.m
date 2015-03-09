@@ -103,7 +103,7 @@
     }
 }
 - (IBAction)humanPlayerSwitch:(UISwitch *)sender {
-    NSLog(@"DSGA %hhd", sender.isOn);
+   // NSLog(@"DSGA %hhd", sender.isOn);
     Firebase* ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit/teleop/hp_throw_noodles", team]];
     [ref setValue:[NSNumber numberWithBool:sender.isOn]];
         

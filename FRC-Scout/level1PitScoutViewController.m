@@ -16,6 +16,8 @@
 #import "DataManager.h"
 #import "KragerTextField.h"
 #import <Firebase/Firebase.h>
+#import <FPPicker/FPPicker.h>
+#import <AVFoundation/AVFoundation.h>
 @interface Level1PitScoutViewController ()
 {
     id activeAspect;
@@ -49,12 +51,9 @@
 @property (strong, nonatomic) IBOutlet UITextField *driveTextField;
 @property (strong, nonatomic) IBOutlet KragerPickerView *drivePicker;
 @property (strong, nonatomic) IBOutlet KragerPickerView * cimPicker;
-@property (strong, nonatomic) IBOutlet KragerPickerView *frameStrengthPicker;
-@property (strong, nonatomic) IBOutlet KragerSwitchView *twoSpeedSlider;
-@property (strong, nonatomic) IBOutlet UILabel *oneSpeedLabel;
-@property (strong, nonatomic) IBOutlet UILabel *twoSpeedLabel;
 @property (strong, nonatomic) IBOutlet UITextField *cimTextField;
-@property (strong, nonatomic) IBOutlet UITextField *maxSpeedTextField;
+@property (strong, nonatomic) IBOutlet UITextField *highSpeedTextField;
+@property (strong, nonatomic) IBOutlet UITextField *lowSpeedTextField;
 
 
 //LIFT SYSTEM
@@ -109,18 +108,78 @@ static Level1PitScoutViewController* instance;
     return self;
 }
 - (IBAction)imageTaker:(id)sender {
-    UIImagePickerController* picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    [self presentViewController:picker animated:YES completion:NULL];
+    FPPickerController *pickerController = [FPPickerController new];
+    
+    // Set the delegate
+    
+    pickerController.fpdelegate = self;
+    
+    // Select and order the sources (Optional) Default is all sources
+    
+    pickerController.sourceNames = @[
+                                     FPSourceCamera
+                                     ];
+    
+    // You can set some of the in built Camera properties as you would with UIImagePicker
+    pickerController.allowsEditing = YES;
+    
+    // Allowing multiple file selection
+    
+    pickerController.selectMultiple = NO;
+    
+    
+    /* Control if we should upload or download the files for you.
+     * Default is YES.
+     * When a user selects a local file, we'll upload it and return a remote URL.
+     * When a user selects a remote file, we'll download it and return the filedata to you.
+     */
+    
+    pickerController.shouldUpload = YES;
+    pickerController.shouldDownload = NO;
+    
+    // Display it
+    
+    [self presentViewController:pickerController
+                       animated:YES
+                     completion:nil];
 }
 - (IBAction)imagePicker:(id)sender {
-    UIImagePickerController* picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    [self presentViewController:picker animated:YES completion:NULL];
+    FPPickerController *pickerController = [FPPickerController new];
+    
+    // Set the delegate
+    
+    pickerController.fpdelegate = self;
+    
+    // Select and order the sources (Optional) Default is all sources
+    
+    pickerController.sourceNames = @[
+                                     FPSourceCameraRoll
+                                     ];
+    
+    // You can set some of the in built Camera properties as you would with UIImagePicker
+    pickerController.allowsEditing = YES;
+    
+    // Allowing multiple file selection
+    
+    pickerController.selectMultiple = NO;
+    
+    
+    /* Control if we should upload or download the files for you.
+     * Default is YES.
+     * When a user selects a local file, we'll upload it and return a remote URL.
+     * When a user selects a remote file, we'll download it and return the filedata to you.
+     */
+    
+    pickerController.shouldUpload = YES;
+    pickerController.shouldDownload = NO;
+    
+    // Display it
+    
+    [self presentViewController:pickerController
+                       animated:YES
+                     completion:nil];
+
+
 }
 
 //DO THESE WHEN ADDING NEW PICKER
@@ -129,11 +188,10 @@ static Level1PitScoutViewController* instance;
     self.intakePicker.hidden = YES;
     self.liftPicker.hidden = YES;
     self.cimPicker.hidden = YES;
-    self.frameStrengthPicker.hidden = YES;
 }
 -(void) addDataToPickers {
     // Connect data
-    [self.drivePicker setData:@[@"Swerve", @"Tank", @"Slide", @"Mecanum", @"Butterfly", @"Octanum", @"Nonum", @"Holonomic", @"Other"] textField: self.driveTextField withController:self withCode:@"drive"];
+    [self.drivePicker setData:@[@"Swerve", @"Tank", @"Slide", @"Mecanum", @"Butterfly", @"Octanum", @"Nonum", @"Holonomic", @"Other"] textField: self.driveTextField withController:self withCode:@"drivetrain"];
     [self.intakePicker setData:@[@"intake", @"Item 2", @"Item 3", @"Item 4", @"Item 5", @"Other"] textField:self.intakeTextField withController:self withCode:@"intake"];
     [self.liftPicker setData:@[@"lift", @"Item 2", @"Item 3", @"Item 4", @"Item 5", @"Other"] textField:self.liftTextField withController:self withCode:@"lift"];
     [self.cimPicker setData:@[@"2CIM", @"3CIM", @"4IM"] textField:[self cimTextField] withController:self withCode:@"cim"];
@@ -153,9 +211,6 @@ static Level1PitScoutViewController* instance;
     [scrollView addGestureRecognizer:singleTapGestureRecognizer];
     
     textFieldShouldEdit = false;
-    
-    
-    
     [self setAllPickersHidden];
     [self addDataToPickers];
     
@@ -168,7 +223,6 @@ static Level1PitScoutViewController* instance;
     
     [self.externalInternalSwitch setCode:@"lift_ext"];
     [self.externalInternalSwitch addTarget:self action:@selector(changeSwitch:) forControlEvents:UIControlEventValueChanged];
-    [self.twoSpeedSlider setCode:@"speed"];
     [self.externalInternalSwitch addTarget:self action:@selector(changeSwitch:) forControlEvents:UIControlEventValueChanged];
     [self.changeOrientationSwitch setCode:@"tote_orientation_change"];
     [self.changeOrientationSwitch addTarget:self action:@selector(changeSwitch:) forControlEvents:UIControlEventValueChanged];
@@ -189,23 +243,23 @@ static Level1PitScoutViewController* instance;
     [(KragerTextField*)self.heightTextField setCode:@"height"];
     [self weightTextField].placeholder = @"Weight";
     [(KragerTextField*)self.weightTextField setCode:@"weight"];
-    [self maxSpeedTextField].placeholder = @"Max Speed";
-    [(KragerTextField*) self.maxSpeedTextField setCode:@"max_speed"];
+    [self highSpeedTextField].placeholder = @"Max Speed";
+    [(KragerTextField*) self.highSpeedTextField setCode:@"speed/high"];
     [self maxCanHeightTextField].placeholder = @"Can Stack Height";
-    [(KragerTextField*)self.maxCanHeightTextField setCode:@"can"];
+    [(KragerTextField*) self.maxCanHeightTextField setCode:@"can"];
     [self maxToteHeightTextField].placeholder = @"Tote Stack Height";
-    [(KragerTextField*)self.maxToteHeightTextField setCode:@"tote_stack_height"];
+    [(KragerTextField*) self.maxToteHeightTextField setCode:@"tote_stack_height"];
     [self maxTotesAtOneTimeTextField].placeholder = @"Max Tote";
     [(KragerTextField*)self.maxTotesAtOneTimeTextField setCode:@"max_tote"];
-    
-    
+    [self.lowSpeedTextField setPlaceholder:@"Low Speed"];
+    [(KragerTextField*)self.lowSpeedTextField setCode:@"speed/low"];
     /*[commentsTextView setKeyboardDismissMode:UIScrollViewKeyboardDismissModeInteractive];
      commentsTextView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;*/
     
     [self teamTextField].keyboardType = UIKeyboardTypeNumberPad;
     [self weightTextField].keyboardType = UIKeyboardTypeNumberPad;
     [self heightTextField].keyboardType = UIKeyboardTypeNumberPad;
-    [self maxSpeedTextField].keyboardType = UIKeyboardTypeNumberPad;
+    [self highSpeedTextField].keyboardType = UIKeyboardTypeNumberPad;
     [[self maxTotesAtOneTimeTextField]setKeyboardType:UIKeyboardTypeNumberPad];
     [self maxToteHeightTextField].keyboardType = UIKeyboardTypeNumberPad;
     [self maxCanHeightTextField].keyboardType = UIKeyboardTypeNumberPad;
@@ -219,11 +273,12 @@ static Level1PitScoutViewController* instance;
     [self cimTextField].delegate = self;
     [self heightTextField].delegate = self;
     [self weightTextField].delegate = self;
-    [self maxSpeedTextField].delegate = self;
+    [self highSpeedTextField].delegate = self;
     [self maxToteHeightTextField].delegate = self;
     [self maxTotesAtOneTimeTextField].delegate = self;
     [self maxCanHeightTextField].delegate = self;
     commentsTextView.delegate = self;
+    self.lowSpeedTextField.delegate = self;
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -241,45 +296,7 @@ static Level1PitScoutViewController* instance;
     //NSLog(@"FROM CHANGED %@", [sender isOn] );
     
 }
-/*-(void) saveData {
-    //save all data and add to datamanager
-    JSONObject *sendingData = [[JSONObject alloc] init];
-    //[sendingData addObject:[NSNumber numberWithInt:2] forKey:@"status"];
-    //[sendingData addObject:@"add team" forKey:@"cmd"];
-    //[sendingData addObject:self.teamTextField.text forKey:@"team_number"];
-    [sendingData addObject:self.weightTextField.text forKey:@"weight"];
-    [sendingData addObject:self.heightTextField.text forKey:@"height"];
-    [sendingData addObject:self.maxSpeedTextField.text forKey:@"speed"];
-    [sendingData addObject:self.cimTextField.text forKey:@"cim"];
-    [sendingData addObject:self.driveTextField.text forKey:@"drivetrain"];
-    [sendingData addObject:self.liftTextField.text forKey:@"lift"];
-    [sendingData addObject:self.intakeSystemLabel.text forKey:@"intake"];
-    
-    //switches
-#warning boolean using nsnumber value
-    [sendingData addObject:[NSNumber numberWithBool:[self.twoSpeedSlider isOn]]  forKey:@"max_speed"];
-    [sendingData addObject:[NSNumber numberWithBool:[self.externalInternalSwitch isOn]] forKey:@"left_ext"];
-    [sendingData addObject:[NSNumber numberWithBool:[self.changeOrientationSwitch isOn]] forKey:@"tote_orientation_change"];
-    [sendingData addObject:[NSNumber numberWithBool:[self.upsideDownTotesSwitch isOn]] forKey: @"tote_inverted"];
-    [sendingData addObject:[NSNumber numberWithBool:[self.canOffGround isOn]] forKey:@"cans_held"];
-    [sendingData addObject:[NSNumber numberWithBool:[self.poolNoodles isOn]] forKey:@"pool_noodles"];
-    
-    [sendingData addObject:self.frameStrengthTextField.text forKey:@"frame_strength"];
-    [sendingData addObject:self.maxTotesAtOneTimeTextField.text forKey:@"max_tote"];
-    [sendingData addObject:self.maxToteHeightTextField.text forKey:@"tote_stack_height"];
-    [sendingData addObject:self.maxCanHeightTextField.text forKey:@"can"];
-    [sendingData addObject:[NSNumber numberWithLong: [UIImagePNGRepresentation(chooseImage) length]] forKey:@"image_size"];
-    
-    Firebase* ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit",self.teamTextField.text]] ;
-    [ref setValue:[sendingData getDictionary]];
-    
-    
-    DataManager *dataMan = [DataManager sharedManager];
-    
-    //adds to the DataManager to be sent at a later time
-    [dataMan addJSONObject:sendingData onArray:0 at:0];
-    
-}*/
+
 
 -(void) viewWillAppear:(BOOL)animated {
     NSLog(@"VIEW WILL APP");
@@ -294,8 +311,8 @@ static Level1PitScoutViewController* instance;
 
 -(void)viewDidLayoutSubviews {
     NSLog(@"LAYED OUT");
-    scrollView.frame = CGRectMake(scrollView.frame.origin.x, 0, 320, self.view.frame.size.height);
-    scrollView.contentSize = CGSizeMake(320, 1600);
+    scrollView.frame = CGRectMake(scrollView.frame.origin.x, 63, 320, self.view.frame.size.height);
+    scrollView.contentSize = CGSizeMake(320, 1680);
     //[scrollView  setCenter:CGPointMake(scrollView.center.x, scrollView.center.y - 62)];
     [self.view layoutSubviews];
     
@@ -308,17 +325,16 @@ static Level1PitScoutViewController* instance;
     imageTaker.titleLabel.font = FONT_BEBAS_25;
     [self liftSystemLabel].font = FONT_BEBAS_28;
     [self teamTextField].font = FONT_BEBAS_20;
+    [self.lowSpeedTextField setFont:FONT_BEBAS_20];
     [self intakeTextField].font = FONT_BEBAS_20;
     [self liftTextField].font = FONT_BEBAS_20;
     [self driveTextField].font = FONT_BEBAS_20;
     [self cimTextField].font = FONT_BEBAS_20;
     [self weightTextField].font = FONT_BEBAS_20;
     [self heightTextField].font = FONT_BEBAS_20;
-    [self maxSpeedTextField].font = FONT_BEBAS_20;
+    [self highSpeedTextField].font = FONT_BEBAS_20;
     [self driveTrainLabel].font = FONT_BEBAS_28;
     [self robotSpecsLabel].font = FONT_BEBAS_28;
-    [self oneSpeedLabel].font = FONT_BEBAS_20;
-    [self twoSpeedLabel].font = FONT_BEBAS_20;
     [self maxCanHeightTextField].font
     = FONT_BEBAS_20;
     [self maxToteHeightTextField].font = FONT_BEBAS_20;
@@ -356,97 +372,6 @@ static Level1PitScoutViewController* instance;
     [ref setValue:@"FDSA"];
     //[self saveData];
 }
-/*CFReadStreamRef rstream;
- CFWriteStreamRef wstream;
- 
- //connect to server
- CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)@"mrflark.org", 3309, &rstream, &wstream);
- NSLog(@"connected to server");
- 
- //init i/o with server
- NSInputStream* is = objc_unretainedObject(rstream);
- [is scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
- [is open];
- 
- NSOutputStream* os = objc_unretainedObject(wstream);
- 
- 
- 
- [os scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
- [os open];
- 
- 
- NSLog(@"%lu",(unsigned long)[UIImagePNGRepresentation(chooseImage) length]);
- 
- //[data appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
- */
-
-#warning DID NOT COMPLETE SWITCHES, THE FIRST MAX SPEED SHOULD BE ONE SPEED, TWO SPEED
-//NSString *toSend = [NSString stringWithFormat:@"{status:2,cmd:\"add team\",team_number:%@,weight:%@,height:%@,speed:%@,cim:\"%@\",drivetrain:\"%@\",lift:\"%@\",max_speed:%@,frame_strength:%@,max_tote:%@,tote_stack_height:%@,can:%@,image_size:%lu}", [self teamTextField].text, [self weightTextField].text, [self heightTextField].text, [self maxSpeedTextField].text, [self cimTextField].text, [self driveTextField].text, [self liftTextField].text, [self maxSpeedTextField].text, [self frameStrengthTextField].text, [self maxTotesAtOneTimeTextField].text, [self maxToteHeightTextField].text, [self maxCanHeightTextField].text, (unsigned long)[UIImagePNGRepresentation(chooseImage) length]];
-
-//the following code was the original server test that worked.  It will be kept until we are sure we do not need to test anymore
-/*
- NSString* toSend = [sendingData getJSONString];
- 
- QueueManager* man = [QueueManager sharedManager];
- JSONRequest* req = [[JSONRequest alloc] initWithString:toSend];
- [man addRequestObject:req];
- NSLog(@"%@",toSend);
- 
- // NSString *toSend = [NSString stringWithFormat:@"]
- 
- //in case qqueue dont work
- */
-
-
-//the rest of these are old tries of uploading, they will be kept until it is apparent that they can be deleted
-/*
- data = [NSMutableData dataWithData:[toSend dataUsingEncoding:NSUTF8StringEncoding]];
- const uint8_t* bytesString = (const uint8_t*)[data bytes];
- [os write:bytesString maxLength:[data length]];
- */
-
-//sends image request
-/*ImageRequest* imageReq = [[ImageRequest alloc] initWithImage:chooseImage];
- [man addRequestObject:imageReq];*/
-
-
-//in case queue doesnt work
-/*
- data = [NSMutableData dataWithData:UIImagePNGRepresentation(chooseImage)];
- 
- NSUInteger len = [data length];
- Byte* byteData = (Byte*)malloc(len);
- [data getBytes:byteData length:len];
- 
- //[os write:byteData maxLength:len];
- byteIndex = 0;
- //worked last time
- while(byteIndex < [data length]) {
- uint8_t *readBytes = (uint8_t *)[data mutableBytes];
- readBytes += byteIndex; // instance variable to move pointer
- NSUInteger data_len = [data length];
- unsigned long len = ((data_len - byteIndex >= 1024) ?
- 1024 : (data_len-byteIndex));
- uint8_t buf[len];
- (void)memcpy(buf, readBytes, len);
- len = [(NSOutputStream*)os write:(const uint8_t *)buf maxLength:len];
- byteIndex += len;
- 
- }
- 
- NSLog(@"loading image...");
- NSLog(@"image loaded");
- NSLog(@"sent data");
- */
-
-
-//[is close];
-//[os close];
-
-//}
-
-
 
 -(void) setFieldsToValue:(FDataSnapshot*)snapshot {
     
@@ -458,13 +383,19 @@ static Level1PitScoutViewController* instance;
     [self setTextOfField:self.weightTextField withValue:snapshot.value[@"weight"]];
     [self setTextOfField:self.heightTextField withValue:snapshot.value[@"height"]];
     [self setTextOfField:self.cimTextField withValue:snapshot.value[@"cim"]];
-    [self setTextOfField:self.maxSpeedTextField withValue:snapshot.value[@"speed"]];
     [self setTextOfField:self.driveTextField withValue:snapshot.value[@"drivetrain"]];
     [self setTextOfField:self.liftTextField withValue:snapshot.value[@"lift"]];
     [self setTextOfField:self.maxTotesAtOneTimeTextField withValue:snapshot.value[@"max_tote"]];
     [self setTextOfField:self.maxToteHeightTextField   withValue:snapshot.value[@"tote_stack_height"]];
     [self setTextOfField:self.maxCanHeightTextField withValue:snapshot.value[@"can"]];
     [self setTextOfField:self.intakeTextField withValue:snapshot.value[@"intake"]];
+        
+    Firebase* ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit/speed", self.teamTextField.text]];
+    [ref observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        [self setTextOfField:self.highSpeedTextField withValue:snapshot.value[@"high"]];
+        [self setTextOfField:self.lowSpeedTextField withValue:snapshot.value[@"low"]];
+    }];
+    
     } @catch (NSException* e) {
         
     }
@@ -507,18 +438,6 @@ static Level1PitScoutViewController* instance;
 
 #pragma mark - UINavigationController
 
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    
-    NSLog(@"Runnin");
-    chooseImage = info[UIImagePickerControllerEditedImage];
-    
-    teamsImage = chooseImage;
-    teamImageView.image = chooseImage;
-    
-    
-    //do button later
-    [picker dismissViewControllerAnimated:YES completion:NULL];
-}
 
 
 #pragma mark - UITextFieldDelegate
@@ -540,7 +459,7 @@ static Level1PitScoutViewController* instance;
         textFieldShouldEdit= NO;
         return YES;
     }
-    if(([self drivePicker].hidden == NO || [self intakePicker].hidden == NO || [self liftPicker].hidden == NO || [self cimPicker].hidden == NO || [self frameStrengthPicker].hidden == NO)) {
+    if(([self drivePicker].hidden == NO || [self intakePicker].hidden == NO || [self liftPicker].hidden == NO || [self cimPicker].hidden == NO )) {
         activeAspect = NULL;
         if([self drivePicker].hidden == NO) {
             [[self drivePicker] setSelectedValueToTextField];
@@ -548,8 +467,6 @@ static Level1PitScoutViewController* instance;
             [[self intakePicker] setSelectedValueToTextField];
         }else if(![self liftPicker].isHidden) {
             [[self liftPicker] setSelectedValueToTextField];
-        }else if(![self frameStrengthPicker].isHidden) {
-            [[self frameStrengthPicker] setSelectedValueToTextField];
         }else if(![self cimPicker].isHidden) {
             [[self cimPicker] setSelectedValueToTextField];
         }
@@ -566,6 +483,7 @@ static Level1PitScoutViewController* instance;
     }else if(activeTextField == [self cimTextField]) {
         return [self textFieldShouldBeActive: self.cimPicker];
     }
+    NSLog(@"%@", activeAspect);
     return YES;
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -576,6 +494,7 @@ static Level1PitScoutViewController* instance;
 
 -(void)textFieldDidEndEditing:(KragerTextField *)textField {
     
+    NSLog(@"FDASFADS");
     if(textField == self.teamTextField) {
         NSLog(@"FDit worksSFADSF %@", self.teamTextField.text);
         Firebase *ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit", self.teamTextField.text]];
@@ -588,7 +507,6 @@ static Level1PitScoutViewController* instance;
         }];
         
         [self setBoolOfSwitch: self.externalInternalSwitch withValue:  (BOOL)snap.value[@"lift_ext"]];
-        [self setBoolOfSwitch: self.twoSpeedSlider withValue:  (BOOL)snap.value[@"speed/high"]];
         [self setBoolOfSwitch: self.changeOrientationSwitch withValue:  (BOOL)snap.value[@"tote_orientation_change"]];
         [self setBoolOfSwitch: self.upsideDownTotesSwitch withValue:  (BOOL)snap.value[@"inverted_totes"]];
         [self setBoolOfSwitch: self.canOffGround withValue:  (BOOL)snap.value[@"can_off_ground"]];
@@ -626,24 +544,33 @@ static Level1PitScoutViewController* instance;
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range
  replacementText:(NSString *)text
 {
-    // Any new character added is passed in as the "text" parameter
-    if ([text isEqualToString:@"\n"]) {
-        // Be sure to test for equality using the "isEqualToString" message
-        [commentsTextView resignFirstResponder];
-        
-        // Return FALSE so that the final '\n' character doesn't get added
-        return FALSE;
-    }
-    // For any other character return TRUE so that the text gets added to the view
+    
     return TRUE;
 }
 - (void)textViewDidEndEditing:(UITextView *)textView {
     [textView resignFirstResponder];
+    Firebase *ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit/notes", self.teamTextField.text]];
+    [ref setValue:commentsTextView.text];
 }
 -(BOOL)textViewShouldEndEditing:(UITextView *)textView {
     NSLog(@"STOP");
     [textView resignFirstResponder];
     return YES;
+}
+
+#pragma mark FPPICker Delegate
+- (void)FPPickerController:(FPPickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    Firebase* ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/image", self.teamTextField.text]];
+    [ref setValue:[[info objectForKey:@"FPPickerControllerRemoteURL"] absoluteString]];
+   
+    [self dismissViewControllerAnimated:YES completion:nil];
+    teamImageView.image = [info objectForKey:@"FPPickerControllerOriginalImage"];
+    
+}
+
+-(void)FPPickerControllerDidCancel:(FPPickerController *)picker {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 

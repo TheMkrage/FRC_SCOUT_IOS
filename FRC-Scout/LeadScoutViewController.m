@@ -34,12 +34,10 @@
     self.markMatchAsPlayedTextField.delegate =self;*/
 }
 - (IBAction)markMatchAsPlayed:(id)sender {
-#warning IS THIS RIGHT URL?
     Firebase *ref = [[Firebase alloc]initWithUrl: [NSString stringWithFormat:@"https://friarscout.firebaseio.com/matches/%d/played", [self.markMatchAsPlayedTextField.text intValue]]];
     [ref setValue:[NSNumber numberWithBool:true]];
 }
 - (IBAction)markMatchAsPlayedButton:(UIButton *)sender {
-#warning IS THIS RIGHT URL?
     Firebase *ref = [[Firebase alloc]initWithUrl: [NSString stringWithFormat:@"https://friarscout.firebaseio.com/matches/%d/played", [self.markMatchAsNotPlayedTextField.text intValue]]];
     [ref setValue:[NSNumber numberWithBool:false]];
 }

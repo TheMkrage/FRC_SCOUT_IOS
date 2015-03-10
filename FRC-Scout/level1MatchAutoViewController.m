@@ -18,7 +18,8 @@
     IBOutlet UIScrollView* scrollView;
     NSString* team;
     NSString* matchNum;
-    
+    __block bool foundFirstUnplayedMatch;
+    __block int match;
 }
 //Starting Pos
 @property (strong, nonatomic) IBOutlet UITextField *teamTextField;
@@ -56,6 +57,8 @@
     self.tabBarController.title = @"Autonomous";
     [self setFonts];
     [self setDelegates];
+    foundFirstUnplayedMatch = false;
+    match = 1;
     
 }
 
@@ -81,6 +84,40 @@
 
 -(void) fetchTeamAndMatch {
     
+    
+    
+    //while(!foundFirstUnplayedMatch) {
+        Firebase *ref = [[Firebase alloc]initWithUrl:
+                         [NSString stringWithFormat:@"https://friarscout.firebaseio.com/matches" ]];
+        
+        [ref observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+            //NSLog(@"TEST %@", snapshot.value[@"played"]);
+            //NSLog(@"CAN WE DO THIS? %@", snapshot.value[@"played"]);
+            //false
+            NSLog(@"HE %@", [snapshot childSnapshotForPath:@"1"].value[@"played"]);
+            /*@try {
+                if(![snapshot.value[@"played"] boolValue] && !foundFirstUnplayedMatch) {
+                    int curMatch = i;
+                    foundFirstUnplayedMatch = true;
+                    self.matchNumTextField.text = [NSString stringWithFormat:@"d %d", curMatch];
+                    
+                    foundFirstUnplayedMatch = true;
+                    //i = 205;
+                }
+            }@catch(NSException* e) {
+                if(!foundFirstUnplayedMatch) {
+                    int curMatch = i;
+                    foundFirstUnplayedMatch = true;
+                    self.matchNumTextField.text = [NSString stringWithFormat:@"d %d", curMatch];
+                    
+                    foundFirstUnplayedMatch = true;
+                    //i = 205;
+                    
+                }
+            }*/
+        }];
+   // }
+    //}
 }
 -(void) viewWillDisappear:(BOOL)animated {
     
@@ -120,14 +157,14 @@
         [dict setObject:[NSNumber numberWithInt:[[self.autoPicker getSelectedItem] intValue]] forKey:@"tote_stack"];
         
     }
-
+    
     if([self.otherGoalsCheckBox getStatus]) {
         [dict setObject:self.otherGoalsTextField.text forKey:@"other"];
         
     }
     [ref updateChildValues:dict];
     
-
+    
 }
 -(void) setFonts {
     //the box will show up when user clicks checkbox
@@ -136,6 +173,7 @@
     [[self otherGoalsTextField] setHidden:YES];
     [[self otherGoalsTextField] setPlaceholder:@"Other"];
     self.teamTextField.placeholder = @"Team";
+    [self.matchNumTextField setPlaceholder:@"MatchNum"];
     
     [[self byLandFillCheckBox] setTitle:@"\u2610" forState:UIControlStateNormal];
     [[self byYellowToteCheckBox] setTitle:@"\u2610" forState:UIControlStateNormal];
@@ -176,8 +214,8 @@
 }
 
 -(void) viewDidLayoutSubviews {
-    scrollView.frame = CGRectMake(scrollView.frame.origin.x , scrollView.frame.origin.y, 320, self.view.frame.size.height);
-    scrollView.contentSize = CGSizeMake(320, 900);
+    scrollView.frame = CGRectMake(scrollView.frame.origin.x, 63, 320, self.view.frame.size.height);
+    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, 1200);
     //[scrollView  setCenter:CGPointMake(scrollView.center.x, scrollView.center.y - 62)];
     [self.view layoutSubviews];
 }

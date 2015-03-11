@@ -1325,12 +1325,16 @@
                                 <rect key="frame" x="123" y="390" width="75" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TrashCan.png" id="jK1-EJ-Oxw">
-                                <rect key="frame" x="128" y="356" width="65" height="84"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tote.png" id="Y4n-CW-eSm">
                                 <rect key="frame" x="123" y="248" width="75" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Noodle.png" id="jie-26-cmK">
+                                <rect key="frame" x="155" y="327" width="10" height="81"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TrashCan.png" id="jK1-EJ-Oxw">
+                                <rect key="frame" x="128" y="356" width="65" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gaf-5r-5OL">
@@ -1378,12 +1382,15 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GbM-Wm-ePa">
-                                <rect key="frame" x="221" y="190" width="82" height="30"/>
+                                <rect key="frame" x="206" y="190" width="119" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="BebasNeue" family="Bebas Neue" pointSize="18"/>
                                 <state key="normal" title="Add Noodle">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="addNoodle:" destination="ZW0-5d-mSc" eventType="touchUpInside" id="Vn1-H7-FoU"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1399,8 +1406,10 @@
                         <outlet property="Tote4" destination="86A-cP-FMT" id="A8w-VH-Nvd"/>
                         <outlet property="Tote5" destination="NVQ-iP-dgq" id="95A-2y-5xe"/>
                         <outlet property="addCanButton" destination="gaf-5r-5OL" id="JDO-n2-cnR"/>
+                        <outlet property="addNoodle" destination="GbM-Wm-ePa" id="knS-Sw-IbJ"/>
                         <outlet property="canBoyImageView" destination="jK1-EJ-Oxw" id="q8x-BO-zjf"/>
                         <outlet property="counterLabel" destination="VMu-fs-gyC" id="Tpf-Nn-A5Z"/>
+                        <outlet property="noodleImageView" destination="jie-26-cmK" id="HtK-dG-dpF"/>
                         <outlet property="prevStackButton" destination="6Ml-xe-Cu5" id="Jct-aN-rCk"/>
                     </connections>
                 </viewController>
@@ -1949,31 +1958,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="750"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" id="xqI-6u-2qE" customClass="KragerPickerView">
-                                <rect key="frame" x="0.0" y="271" width="320" height="209"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <pickerView contentMode="scaleToFill" id="6Ad-OS-tMQ">
-                                        <rect key="frame" x="0.0" y="4" width="320" height="162"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </pickerView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ehx-mE-KMT">
-                                        <rect key="frame" x="142" y="170" width="37" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Done">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="doneButton:" destination="xqI-6u-2qE" eventType="touchUpInside" id="XRX-pP-6Nx"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="doneButton" destination="ehx-mE-KMT" id="Kk6-XC-wjO"/>
-                                    <outlet property="picker" destination="6Ad-OS-tMQ" id="PIT-RU-cPl"/>
-                                </connections>
-                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="gL6-ij-Z7x">
                                 <rect key="frame" x="0.0" y="20" width="320" height="730"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2212,6 +2196,31 @@
                                     </textField>
                                 </subviews>
                             </scrollView>
+                            <view contentMode="scaleToFill" id="xqI-6u-2qE" customClass="KragerPickerView">
+                                <rect key="frame" x="0.0" y="271" width="320" height="209"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" id="6Ad-OS-tMQ">
+                                        <rect key="frame" x="0.0" y="4" width="320" height="162"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ehx-mE-KMT">
+                                        <rect key="frame" x="142" y="170" width="37" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Done">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="doneButton:" destination="xqI-6u-2qE" eventType="touchUpInside" id="XRX-pP-6Nx"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="doneButton" destination="ehx-mE-KMT" id="Kk6-XC-wjO"/>
+                                    <outlet property="picker" destination="6Ad-OS-tMQ" id="PIT-RU-cPl"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -2219,6 +2228,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="750"/>
                     <connections>
+                        <outlet property="accomplishSwitch" destination="UaZ-GI-KqM" id="DF9-iJ-dG8"/>
                         <outlet property="autoPicker" destination="xqI-6u-2qE" id="5DB-ks-Mur"/>
                         <outlet property="byLandFillCheckBox" destination="7ui-qJ-2vU" id="lXT-Nf-aaD"/>
                         <outlet property="byYellowToteCheckBox" destination="RCe-F6-Ql5" id="bPo-aV-4dd"/>
@@ -2245,6 +2255,7 @@
     <resources>
         <image name="Arrow.png" width="32" height="32"/>
         <image name="AutoIcon.png" width="32" height="32"/>
+        <image name="Noodle.png" width="100" height="1400"/>
         <image name="RobotSpecsIcon.png" width="32" height="32"/>
         <image name="TeleopIcon.png" width="32" height="32"/>
         <image name="Tote.png" width="1225" height="923"/>

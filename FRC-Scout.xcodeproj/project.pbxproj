@@ -62,6 +62,7 @@
 		7EC650291AA8280E002A8A11 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC650281AA8280E002A8A11 /* Security.framework */; };
 		7EC6502B1AA8281E002A8A11 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC6502A1AA8281E002A8A11 /* SystemConfiguration.framework */; };
 		7EC685BD1A7C569800E44086 /* Level1MatchAutoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC685BC1A7C569800E44086 /* Level1MatchAutoViewController.m */; };
+		7EC689C01AAFEE1D00D2CBBE /* Noodle.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EC689BF1AAFEE1D00D2CBBE /* Noodle.png */; };
 		7EC6A1231A9FDC7F001C43B9 /* QueueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6A1221A9FDC7F001C43B9 /* QueueManager.m */; };
 		7EC6A1271A9FE26D001C43B9 /* JSONRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6A1261A9FE26D001C43B9 /* JSONRequest.m */; };
 		7EC6A12A1A9FE618001C43B9 /* ImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6A1291A9FE618001C43B9 /* ImageRequest.m */; };
@@ -170,6 +171,7 @@
 		7EC6502A1AA8281E002A8A11 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		7EC685BB1A7C569800E44086 /* Level1MatchAutoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level1MatchAutoViewController.h; sourceTree = "<group>"; };
 		7EC685BC1A7C569800E44086 /* Level1MatchAutoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level1MatchAutoViewController.m; sourceTree = "<group>"; };
+		7EC689BF1AAFEE1D00D2CBBE /* Noodle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Noodle.png; sourceTree = "<group>"; };
 		7EC6A1211A9FDC7F001C43B9 /* QueueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueueManager.h; sourceTree = "<group>"; };
 		7EC6A1221A9FDC7F001C43B9 /* QueueManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueueManager.m; sourceTree = "<group>"; };
 		7EC6A1251A9FE26D001C43B9 /* JSONRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONRequest.h; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				7EC3DC401AABAF86009FF501 /* AutoIcon.png */,
 				7EC3DC441AABAFC9009FF501 /* RobotSpecsIcon.png */,
 				7EC3DC361AABAC3E009FF501 /* PickerBorder.png */,
+				7EC689BF1AAFEE1D00D2CBBE /* Noodle.png */,
 				7E7201BD1AABC86F00B9D857 /* UncheckedBox.png */,
 				7E7201BB1AABC84B00B9D857 /* CheckedBox.png */,
 				7E0E6FFD1A26746E004969C0 /* Level1RankingsViewController.h */,
@@ -604,6 +607,7 @@
 				7EA3E2F11A1AEE4A00F534A5 /* Main_iPhone.storyboard in Resources */,
 				7E7201BC1AABC84B00B9D857 /* CheckedBox.png in Resources */,
 				7EC3DC331AABA7E8009FF501 /* MiscIcon.png in Resources */,
+				7EC689C01AAFEE1D00D2CBBE /* Noodle.png in Resources */,
 				7EC6A1391AA1467B001C43B9 /* TrashCan.png in Resources */,
 				7EC3DC431AABAFA4009FF501 /* TeleopIcon.png in Resources */,
 				7ECCF80E1A7F4AF20026D6F2 /* scoutingapp.png in Resources */,

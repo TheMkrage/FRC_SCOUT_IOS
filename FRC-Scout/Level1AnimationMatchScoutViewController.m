@@ -14,6 +14,7 @@
     bool doneGoingRight;
     bool timerRunning;
 }
+@property (strong, nonatomic) IBOutlet UIButton *addNoodle;
 @property (strong, nonatomic) IBOutlet UIImageView *canBoyImageView;
 @property (strong, nonatomic) IBOutlet UIButton *addCanButton;
 @property (strong, nonatomic) IBOutlet UILabel *counterLabel;
@@ -24,6 +25,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *Tote4;
 @property (strong, nonatomic) IBOutlet UIImageView *Tote5;
 @property (strong, nonatomic) IBOutlet UIButton *prevStackButton;
+@property (strong, nonatomic) IBOutlet UIImageView *noodleImageView;
 @property (strong, nonatomic) NSMutableArray* toteStackArray;
 @property (strong, nonatomic) NSTimer* goOffScreenTimer;
 @property int numberOfTotes;
@@ -75,6 +77,7 @@
     [self.toteArray addObject:self.Tote4];
     [self.toteArray addObject:self.Tote5];
     
+    [self setNoodleOff];
     self.numberOfTotes = 1;
     NSLog(@"%lu", (unsigned long)self.toteArray.count);
 }
@@ -110,9 +113,11 @@
            
             [self.counterLabel setFrame:CGRectMake([self.counterLabel frame].origin.x, 384, [self.counterLabel  frame].size.width, [self.counterLabel frame].size.height)];
             [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x, 356, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
+            [self.noodleImageView setFrame:CGRectMake(self.noodleImageView.frame.origin.x, 356, self.noodleImageView.frame.size.width, self.noodleImageView.frame.size.height)];
         }else {
             [self.counterLabel setFrame:CGRectMake([self.counterLabel frame].origin.x, [[self.toteArray objectAtIndex:self.numberOfTotes - 1] frame].origin.y, [self.counterLabel  frame].size.width, [self.counterLabel frame].size.height)];
             [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x, [[self.toteArray objectAtIndex:self.numberOfTotes - 1] frame].origin.y - self.canBoyImageView.frame.size.height, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
+            [self.noodleImageView setFrame:CGRectMake(self.noodleImageView.frame.origin.x, [[self.toteArray objectAtIndex:self.numberOfTotes - 1] frame].origin.y - self.noodleImageView.frame.size.height -50, self.noodleImageView.frame.size.width, self.noodleImageView.frame.size.height)];
         }
 
         
@@ -120,6 +125,15 @@
         
         
     }
+}
+- (IBAction)addNoodle:(UIButton *)sender {
+    if(![self isNoodleActivated])  {
+        [self setNoodleOn];
+        
+    }else if([self isNoodleActivated]){
+        [self setNoodleOff];
+    }
+
 }
 - (IBAction)addCanMethod:(UIButton *)sender {
     
@@ -159,6 +173,25 @@
     return 1;
 }
 
+-(int) isNoodleActivated {
+    if([self.noodleImageView isHidden]) {
+        return 0;
+    }
+    return 1;
+}
+
+-(void) setNoodleOff {
+    [self.addNoodle setTitle:@"Add Noodle" forState:UIControlStateNormal];
+    [self.noodleImageView setHidden:YES];
+}
+
+-(void) setNoodleOn {
+    [self.noodleImageView setHidden:NO];
+    [self.addNoodle setTitle: @"Remove Noodle" forState:UIControlStateNormal];
+    
+}
+
+
 -(void) setCanOff {
     [self.addCanButton setTitle:@"Add Can" forState:UIControlStateNormal];
     [self.canBoyImageView setHidden:YES];
@@ -177,6 +210,8 @@
             [view setFrame:CGRectMake(view.frame.origin.x + 10, view.frame.origin.y, view.frame.size.width, view.frame.size.height)];
         }
         [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x + 10, self.canBoyImageView.frame.origin.y, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
+        [self.noodleImageView setFrame:CGRectMake(self.noodleImageView.frame.origin.x + 10, self.noodleImageView.frame.origin.y
+                                                  , self.noodleImageView.frame.size.width, self.noodleImageView.frame.size.height)];
     }else {
         if(!doneGoingRight) {
             doneGoingRight = true;

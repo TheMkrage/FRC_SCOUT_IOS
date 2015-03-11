@@ -40,6 +40,7 @@
 @property (strong, nonatomic) IBOutlet CheckBoxLabel *otherGoalsCheckBox;
 @property (strong, nonatomic) IBOutlet CheckBoxLabel *robotMovedCheckBox;
 @property (strong, nonatomic) IBOutlet UITextField *otherGoalsTextField;
+@property (strong, nonatomic) IBOutlet KragerSwitchView *accomplishSwitch;
 
 @property (strong, nonatomic) IBOutlet KragerPickerView *autoPicker;
 
@@ -87,43 +88,58 @@
     
     
     //while(!foundFirstUnplayedMatch) {
-        Firebase *ref = [[Firebase alloc]initWithUrl:
-                         [NSString stringWithFormat:@"https://friarscout.firebaseio.com/matches" ]];
+    Firebase *ref = [[Firebase alloc]initWithUrl:
+                     [NSString stringWithFormat:@"https://friarscout.firebaseio.com/matches" ]];
+    
+    [ref observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         
-        [ref observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-            //NSLog(@"TEST %@", snapshot.value[@"played"]);
-            //NSLog(@"CAN WE DO THIS? %@", snapshot.value[@"played"]);
-            //false
-            NSLog(@"HE %@", [snapshot childSnapshotForPath:@"1"].value[@"played"]);
-            /*@try {
-                if(![snapshot.value[@"played"] boolValue] && !foundFirstUnplayedMatch) {
-                    int curMatch = i;
+        
+        for(int i = 1; i < 200; i ++){
+            if(!foundFirstUnplayedMatch) {
+                if([snapshot childSnapshotForPath:[NSString stringWithFormat:@"%d", i]].value[@"played"]  == (id)[NSNull null] || [[snapshot childSnapshotForPath:[NSString stringWithFormat:@"%d", i]].value[@"played"] boolValue] == false) {
+                    NSLog(@"FOUND MATCH");
                     foundFirstUnplayedMatch = true;
-                    self.matchNumTextField.text = [NSString stringWithFormat:@"d %d", curMatch];
+                    self.matchNumTextField.text = [NSString stringWithFormat:@"%d",i];
                     
-                    foundFirstUnplayedMatch = true;
-                    //i = 205;
+                    bool foundTeam = false;
+                    
+                    //Where it finds the team
+                    for(int x = 0; x < 3; x ++) {
+                        
+                        if(!foundTeam) {
+                            NSLog(@"FDSF: %df", x);
+                            if ([[snapshot childSnapshotForPath:[NSString stringWithFormat:@"%d/blue/%d", i, x]].value[@"assigned"]   boolValue] == false ||[snapshot childSnapshotForPath:[NSString stringWithFormat:@"%d/blue/%d", i, x]].value[@"assigned"]  == (id)[NSNull null] ) {
+                                
+                                self.teamTextField.text =
+                                [snapshot childSnapshotForPath:[NSString stringWithFormat:@"%d/blue/%d", i, x]].value[@"team"];
+                                
+                                Firebase *ref1 = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/matches/%d/blue/%d/assigned", i, x]];
+                                [ref1 setValue:[NSNumber numberWithBool:true]];
+                                foundTeam = true;
+                            }else if ([[snapshot childSnapshotForPath:[NSString stringWithFormat:@"%d/red/%d", i, x]].value[@"assigned"]   boolValue] == false ||[snapshot childSnapshotForPath:[NSString stringWithFormat:@"%d/red/%d", i, x]].value[@"assigned"]  == (id)[NSNull null] ) {
+                                
+                                self.teamTextField.text =
+                                [snapshot childSnapshotForPath:[NSString stringWithFormat:@"%d/red/%d", i, x]].value[@"team"];
+                                
+                                Firebase *ref1 = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/matches/%d/red/%d/assigned", i, x]];
+                                [ref1 setValue:[NSNumber numberWithBool:true]];
+                                foundTeam = true;
+                            }
+                        }
+                    }
+                }else {
+                    NSLog(@"HE %@", [snapshot childSnapshotForPath:[NSString stringWithFormat:@"%d", i]].value[@"played"]);
                 }
-            }@catch(NSException* e) {
-                if(!foundFirstUnplayedMatch) {
-                    int curMatch = i;
-                    foundFirstUnplayedMatch = true;
-                    self.matchNumTextField.text = [NSString stringWithFormat:@"d %d", curMatch];
-                    
-                    foundFirstUnplayedMatch = true;
-                    //i = 205;
-                    
-                }
-            }*/
-        }];
-   // }
-    //}
+            }
+        }
+    }];
+    
 }
 -(void) viewWillDisappear:(BOOL)animated {
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-    Firebase* ref = [[Firebase alloc] initWithUrl: [NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/match/%@/auto", team, matchNum]];
-    
+    Firebase* ref = [[Firebase alloc] initWithUrl: [NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/matches/%@/auto", self.teamTextField.text, self.matchNumTextField.text]];
+    NSLog(@"%@",[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/matches/%@/auto", self.teamTextField.text, self.matchNumTextField.text] );
     //Starting Locations
     if([self.byLandFillCheckBox getStatus]) {
         [dict setObject:@"By Landfill" forKey:@"starting_location"];
@@ -162,6 +178,7 @@
         [dict setObject:self.otherGoalsTextField.text forKey:@"other"];
         
     }
+    [dict setObject:[NSNumber numberWithBool:self.accomplishSwitch.isOn] forKey:@"accomplished"];
     [ref updateChildValues:dict];
     
     
@@ -219,6 +236,8 @@
     //[scrollView  setCenter:CGPointMake(scrollView.center.x, scrollView.center.y - 62)];
     [self.view layoutSubviews];
 }
+
+
 - (IBAction)totesMovedCheckBox:(id)sender {
     [self pickerSetTo: (CheckBoxLabel*) self.totesMovedCheckBox];
 }

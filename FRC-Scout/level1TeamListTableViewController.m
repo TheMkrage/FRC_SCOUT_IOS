@@ -67,7 +67,7 @@
         Firebase* ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat: @"https://friarscout.firebaseio.com/teams/%@/pit", snapshot.value[@"number"]]];
         [ref observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
             
-                NSLog(@"%@", snapshot.value[@"drivetrain"]);
+                //NSLog(@"%@", snapshot.value[@"drivetrain"]);
                 @try {
                     [self.driveArray addObject:snapshot.value[@"drivetrain"]];
                 }

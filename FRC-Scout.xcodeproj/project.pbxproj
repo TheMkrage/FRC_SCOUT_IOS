@@ -18,7 +18,6 @@
 		7E5028C31AACFE1100750EEF /* libPods-FRC-Scout-AFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5028C21AACFE1000750EEF /* libPods-FRC-Scout-AFNetworking.a */; };
 		7E5028C71AAD670400750EEF /* LeadScoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E5028C61AAD670400750EEF /* LeadScoutViewController.m */; };
 		7E7201BA1AABC6AC00B9D857 /* Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7201B91AABC6AC00B9D857 /* Arrow.png */; };
-		7E7201BC1AABC84B00B9D857 /* CheckedBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7201BB1AABC84B00B9D857 /* CheckedBox.png */; };
 		7E7201BE1AABC86F00B9D857 /* UncheckedBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7201BD1AABC86F00B9D857 /* UncheckedBox.png */; };
 		7E94F7AC1A49F2B40087C196 /* PickListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E94F7AB1A49F2B40087C196 /* PickListCell.m */; };
 		7E94F7B01A49FFB70087C196 /* KragerStepperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E94F7AF1A49FFB70087C196 /* KragerStepperView.m */; };
@@ -108,7 +107,6 @@
 		7E5028C51AAD670400750EEF /* LeadScoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeadScoutViewController.h; sourceTree = "<group>"; };
 		7E5028C61AAD670400750EEF /* LeadScoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeadScoutViewController.m; sourceTree = "<group>"; };
 		7E7201B91AABC6AC00B9D857 /* Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Arrow.png; path = ../../Arrow.png; sourceTree = "<group>"; };
-		7E7201BB1AABC84B00B9D857 /* CheckedBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CheckedBox.png; path = "../../MyIcons (1)/png/CheckedBox.png"; sourceTree = "<group>"; };
 		7E7201BD1AABC86F00B9D857 /* UncheckedBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UncheckedBox.png; sourceTree = "<group>"; };
 		7E94F7AA1A49F2B40087C196 /* PickListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickListCell.h; sourceTree = "<group>"; };
 		7E94F7AB1A49F2B40087C196 /* PickListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickListCell.m; sourceTree = "<group>"; };
@@ -259,7 +257,6 @@
 				7EC3DC361AABAC3E009FF501 /* PickerBorder.png */,
 				7EC689BF1AAFEE1D00D2CBBE /* Noodle.png */,
 				7E7201BD1AABC86F00B9D857 /* UncheckedBox.png */,
-				7E7201BB1AABC84B00B9D857 /* CheckedBox.png */,
 				7E0E6FFD1A26746E004969C0 /* Level1RankingsViewController.h */,
 				7E0E6FFE1A26746E004969C0 /* Level1RankingsViewController.m */,
 			);
@@ -605,7 +602,6 @@
 				7EC3DC411AABAF86009FF501 /* AutoIcon.png in Resources */,
 				7EA3E2F91A1AEE4A00F534A5 /* Images.xcassets in Resources */,
 				7EA3E2F11A1AEE4A00F534A5 /* Main_iPhone.storyboard in Resources */,
-				7E7201BC1AABC84B00B9D857 /* CheckedBox.png in Resources */,
 				7EC3DC331AABA7E8009FF501 /* MiscIcon.png in Resources */,
 				7EC689C01AAFEE1D00D2CBBE /* Noodle.png in Resources */,
 				7EC6A1391AA1467B001C43B9 /* TrashCan.png in Resources */,

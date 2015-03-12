@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface ToteStack : NSObject
--(id) initWithTotes: (int) totes Can: (int) can;
+-(id) initWithTotes: (int) totes2 Can: (int) can2 Noodle: (int) noodle2;
 -(void) setCan:(int)can;
 -(void) setTotes:(int)totes;
 -(int) getCan;
 -(int) getTotes;
+-(int) getNoodle;
+-(void) setNoodle:(int) noodle1;
 @end

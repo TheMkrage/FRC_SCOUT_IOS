@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface Level1MatchAutoViewController : UIViewController <UITextViewDelegate,UITextFieldDelegate>
-
+- (NSString*) getMatch;
+-(NSString*) getTeam;
+- (NSString*) getTeamID;
 @end

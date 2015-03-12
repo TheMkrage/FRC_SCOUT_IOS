@@ -7,12 +7,17 @@
 //
 
 #import "Level1AnimationMatchScoutViewController.h"
+#import "Level1MatchAutoViewController.h"
 #import "ToteSwipeGestureRecognizer.h"
 #import "ToteStack.h"
+#import <Firebase/Firebase.h>
 @interface Level1AnimationMatchScoutViewController () {
     bool firstTime;
     bool doneGoingRight;
     bool timerRunning;
+    NSString* team;
+    NSString* match;
+    NSString* matchID;
 }
 @property (strong, nonatomic) IBOutlet UIButton *addNoodle;
 @property (strong, nonatomic) IBOutlet UIImageView *canBoyImageView;
@@ -52,6 +57,9 @@
     [[self view] addGestureRecognizer:recognizer];
     [recognizer setDelegate:self];
     
+    match =[[[self.tabBarController viewControllers] objectAtIndex:0] getMatch];
+    matchID =[[[self.tabBarController viewControllers] objectAtIndex:0] getTeamID];
+    team = [[[self.tabBarController viewControllers] objectAtIndex:0] getTeam];
     NSLog(@"PIC HIDDEN");
 }
 
@@ -110,7 +118,7 @@
         
         //if no tote to put label next to
         if(self.numberOfTotes == 0) {
-           
+            
             [self.counterLabel setFrame:CGRectMake([self.counterLabel frame].origin.x, 384, [self.counterLabel  frame].size.width, [self.counterLabel frame].size.height)];
             [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x, 356, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
             [self.noodleImageView setFrame:CGRectMake(self.noodleImageView.frame.origin.x, 356, self.noodleImageView.frame.size.width, self.noodleImageView.frame.size.height)];
@@ -119,7 +127,7 @@
             [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x, [[self.toteArray objectAtIndex:self.numberOfTotes - 1] frame].origin.y - self.canBoyImageView.frame.size.height, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
             [self.noodleImageView setFrame:CGRectMake(self.noodleImageView.frame.origin.x, [[self.toteArray objectAtIndex:self.numberOfTotes - 1] frame].origin.y - self.noodleImageView.frame.size.height -50, self.noodleImageView.frame.size.width, self.noodleImageView.frame.size.height)];
         }
-
+        
         
         [self.counterLabel setText:[NSString stringWithFormat:@"%d",self.numberOfTotes]];
         
@@ -133,7 +141,7 @@
     }else if([self isNoodleActivated]){
         [self setNoodleOff];
     }
-
+    
 }
 - (IBAction)addCanMethod:(UIButton *)sender {
     
@@ -160,7 +168,7 @@
 }
 
 -(void) prepareForNextStack {
-    ToteStack* temp = [[ToteStack alloc] initWithTotes: self.numberOfTotes Can: [self isCanActivated]];
+    ToteStack* temp = [[ToteStack alloc] initWithTotes: self.numberOfTotes Can: [self isCanActivated] Noodle: [self isNoodleActivated]];
     [self.toteStackArray setObject:temp atIndexedSubscript:self.stackNumber];
     
 }
@@ -220,6 +228,7 @@
                 [view setFrame:CGRectMake(-80, view.frame.origin.y, view.frame.size.width, view.frame.size.height)];
             }
             [self.canBoyImageView setFrame:CGRectMake(-75, self.canBoyImageView.frame.origin.y, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
+            [self.noodleImageView setFrame:CGRectMake(-48, self.noodleImageView.frame.origin.y, self.noodleImageView.frame.size.width, self.noodleImageView.frame.size.height)];
             self.stackNumber++;
             [self updateStackToStack: self.stackNumber];
         }
@@ -230,6 +239,7 @@
                 [view setFrame:CGRectMake(view.frame.origin.x + 10, view.frame.origin.y, view.frame.size.width, view.frame.size.height)];
             }
             [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x + 10, self.canBoyImageView.frame.origin.y, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
+            [self.noodleImageView setFrame:CGRectMake(self.noodleImageView.frame.origin.x + 10, self.noodleImageView.frame.origin.y, self.noodleImageView.frame.size.width, self.noodleImageView.frame.size.height)];
         }else {
             [self.goOffScreenTimer invalidate];
             self.goOffScreenTimer = nil;
@@ -242,7 +252,7 @@
 
 -(void) updateStackToStack: (int) num{
     if(num >= self.toteStackArray.count) {
-        [self.toteStackArray setObject:[[ToteStack alloc]initWithTotes:0 Can:0] atIndexedSubscript:num];
+        [self.toteStackArray setObject:[[ToteStack alloc]initWithTotes:0 Can:0 Noodle:0] atIndexedSubscript:num];
     }
     
     
@@ -251,6 +261,14 @@
         [self setCanOn];
     }else {
         [self setCanOff];
+        
+    }
+    
+    if([[self.toteStackArray objectAtIndex:num] getNoodle] == 1) {
+        [self setNoodleOn];
+    }else {
+        [self setNoodleOff];
+        
     }
     
     if(num == 0) {
@@ -326,6 +344,7 @@
             [view setFrame:CGRectMake(view.frame.origin.x - 10, view.frame.origin.y, view.frame.size.width, view.frame.size.height)];
         }
         [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x - 10, self.canBoyImageView.frame.origin.y, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
+        [self.noodleImageView setFrame:CGRectMake(self.noodleImageView.frame.origin.x - 10, self.noodleImageView.frame.origin.y, self.noodleImageView.frame.size.width, self.noodleImageView.frame.size.height)];
     }else {
         if(!doneGoingRight) {
             doneGoingRight = true;
@@ -334,6 +353,7 @@
                 [view setFrame:CGRectMake(self.view.frame.size.width + 50, view.frame.origin.y, view.frame.size.width, view.frame.size.height)];
             }
             [self.canBoyImageView setFrame:CGRectMake(self.view.frame.size.width + 55, self.canBoyImageView.frame.origin.y, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
+            [self.noodleImageView setFrame:CGRectMake(self.view.frame.size.width + 55 + 27, self.noodleImageView.frame.origin.y, self.noodleImageView.frame.size.width, self.noodleImageView.frame.size.height)];
             self.stackNumber--;
             [self updateStackToStack: self.stackNumber];
         }
@@ -344,6 +364,7 @@
                 [view setFrame:CGRectMake(view.frame.origin.x - 10, view.frame.origin.y, view.frame.size.width, view.frame.size.height)];
             }
             [self.canBoyImageView setFrame:CGRectMake(self.canBoyImageView.frame.origin.x - 10, self.canBoyImageView.frame.origin.y, self.canBoyImageView.frame.size.width, self.canBoyImageView.frame.size.height)];
+            [self.noodleImageView setFrame:CGRectMake(self.noodleImageView.frame.origin.x - 10, self.noodleImageView.frame.origin.y, self.noodleImageView.frame.size.width, self.noodleImageView.frame.size.height)];
         }else {
             [self.goOffScreenTimer invalidate];
             self.goOffScreenTimer = nil;
@@ -355,6 +376,27 @@
     
 }
 
+//UPLOAD THE FUN
+- (IBAction)doneButton:(UIButton *)sender {
+    
+    
+    for( int i = 0; i < self.toteStackArray.count; i++) {
+        ToteStack* stack = [self.toteStackArray objectAtIndex:i];
+        
+        Firebase *ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/matches/%@/teleop/stacks/%d", team, match, i]];
+        
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+        [dict setObject:[NSNumber numberWithInt:[stack getTotes]] forKey:@"height"];
+        [dict setObject:[NSNumber numberWithBool:[stack getCan]] forKey:@"can"];
+        [dict setObject:[NSNumber numberWithBool:[stack getNoodle]] forKey:@"noodle"];
+        [ref updateChildValues:dict];
+        
+        ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/matches/%@/%@/assigned",  match, matchID]];
+        [ref setValue:[NSNumber numberWithBool:false]];
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
 
 
 /*

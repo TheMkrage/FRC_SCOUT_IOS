@@ -18,6 +18,7 @@
     IBOutlet UIScrollView* scrollView;
     NSString* team;
     NSString* matchNum;
+    NSString* teamID;
     __block bool foundFirstUnplayedMatch;
     __block int match;
 }
@@ -109,8 +110,10 @@
                         if(!foundTeam) {
                             NSLog(@"FDSF: %df", x);
                             if ([[snapshot childSnapshotForPath:[NSString stringWithFormat:@"%d/blue/%d", i, x]].value[@"assigned"]   boolValue] == false ||[snapshot childSnapshotForPath:[NSString stringWithFormat:@"%d/blue/%d", i, x]].value[@"assigned"]  == (id)[NSNull null] ) {
+                        
+                                teamID = [NSString stringWithFormat:@"blue/%d", x];
                                 
-                                self.teamTextField.text =
+                        self.teamTextField.text =
                                 [snapshot childSnapshotForPath:[NSString stringWithFormat:@"%d/blue/%d", i, x]].value[@"team"];
                                 
                                 Firebase *ref1 = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/matches/%d/blue/%d/assigned", i, x]];
@@ -118,7 +121,9 @@
                                 foundTeam = true;
                             }else if ([[snapshot childSnapshotForPath:[NSString stringWithFormat:@"%d/red/%d", i, x]].value[@"assigned"]   boolValue] == false ||[snapshot childSnapshotForPath:[NSString stringWithFormat:@"%d/red/%d", i, x]].value[@"assigned"]  == (id)[NSNull null] ) {
                                 
-                                self.teamTextField.text =
+                                teamID = [NSString stringWithFormat:@"red/%d", x];
+                                
+                        self.teamTextField.text =
                                 [snapshot childSnapshotForPath:[NSString stringWithFormat:@"%d/red/%d", i, x]].value[@"team"];
                                 
                                 Firebase *ref1 = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/matches/%d/red/%d/assigned", i, x]];
@@ -233,10 +238,20 @@
 -(void) viewDidLayoutSubviews {
     scrollView.frame = CGRectMake(scrollView.frame.origin.x, 63, 320, self.view.frame.size.height);
     scrollView.contentSize = CGSizeMake(self.view.frame.size.width, 1200);
-    //[scrollView  setCenter:CGPointMake(scrollView.center.x, scrollView.center.y - 62)];
     [self.view layoutSubviews];
 }
 
+-(NSString*)getTeam {
+    return self.teamTextField.text;
+}
+
+-(NSString*)getMatch {
+    return self.matchNumTextField.text;
+}
+
+-(NSString*) getTeamID {
+    return teamID;
+}
 
 - (IBAction)totesMovedCheckBox:(id)sender {
     [self pickerSetTo: (CheckBoxLabel*) self.totesMovedCheckBox];

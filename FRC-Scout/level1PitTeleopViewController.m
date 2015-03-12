@@ -38,6 +38,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     team = [[self.tabBarController.viewControllers objectAtIndex:0] getTeam];
     NSLog(@"%@", team);
     UITapGestureRecognizer *singleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];

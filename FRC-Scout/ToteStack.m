@@ -10,14 +10,16 @@
 @interface ToteStack () {
     int totes;
     int can;
+    int noodle;
 }
 @end
 @implementation ToteStack
 
--(id) initWithTotes: (int) totes2 Can: (int) can2 {
+-(id) initWithTotes: (int) totes2 Can: (int) can2 Noodle: (int) noodle2{
     self = [super init];
     totes = totes2;
     can = can2;
+    noodle = noodle2;
     return self;
 }
 
@@ -29,12 +31,20 @@
     return can;
 }
 
+-(int) getNoodle {
+    return noodle;
+}
+
 -(void) setCan:(int)can1 {
     can = can1;
 }
 
 -(void) setTotes:(int)totes1 {
     totes = totes1;
+}
+
+-(void) setNoodle:(int) noodle1 {
+    noodle = noodle1;
 }
 
 @end

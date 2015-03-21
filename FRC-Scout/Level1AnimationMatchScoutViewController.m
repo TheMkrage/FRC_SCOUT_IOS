@@ -379,8 +379,10 @@
 //UPLOAD THE FUN
 - (IBAction)doneButton:(UIButton *)sender {
     
-    
+    ToteStack* stack = [[ToteStack alloc] initWithTotes:self.numberOfTotes Can:[self isCanActivated] Noodle:[self isNoodleActivated]];
+    [self.toteStackArray setObject:stack atIndexedSubscript:self.stackNumber];
     for( int i = 0; i < self.toteStackArray.count; i++) {
+        NSLog(@"FDSA %lu", (unsigned long)self.toteStackArray.count);
         ToteStack* stack = [self.toteStackArray objectAtIndex:i];
         
         Firebase *ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/matches/%@/teleop/stacks/%d", team, match, i]];
@@ -395,6 +397,7 @@
         [ref setValue:[NSNumber numberWithBool:false]];
         
         [self.navigationController popViewControllerAnimated:YES];
+        NSLog(@"BACK");
     }
 }
 

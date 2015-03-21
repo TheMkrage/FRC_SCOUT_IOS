@@ -74,6 +74,8 @@
 		7EC6A13B1AA15E86001C43B9 /* Tote_Outline.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EC6A13A1AA15E86001C43B9 /* Tote_Outline.png */; };
 		7EC6A13E1AA16A4B001C43B9 /* ToteStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6A13D1AA16A4B001C43B9 /* ToteStack.m */; };
 		7EC71E161A78697600E3546B /* Level1PitTeleopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC71E151A78697600E3546B /* Level1PitTeleopViewController.m */; };
+		7ECC7D5A1AB29E7D00EC25BD /* MatchCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ECC7D591AB29E7D00EC25BD /* MatchCommentsViewController.m */; };
+		7ECC7D5C1AB29EB800EC25BD /* MiscIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ECC7D5B1AB29EB800EC25BD /* MiscIcon.png */; };
 		7ECCF80E1A7F4AF20026D6F2 /* scoutingapp.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ECCF80D1A7F4AF20026D6F2 /* scoutingapp.png */; };
 		7EEA9AE21A9C470E00BF5CCA /* JSONObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EEA9AE11A9C470E00BF5CCA /* JSONObject.m */; };
 /* End PBXBuildFile section */
@@ -189,6 +191,9 @@
 		7EC6A13D1AA16A4B001C43B9 /* ToteStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToteStack.m; sourceTree = "<group>"; };
 		7EC71E141A78697600E3546B /* Level1PitTeleopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level1PitTeleopViewController.h; sourceTree = "<group>"; };
 		7EC71E151A78697600E3546B /* Level1PitTeleopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level1PitTeleopViewController.m; sourceTree = "<group>"; };
+		7ECC7D581AB29E7D00EC25BD /* MatchCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchCommentsViewController.h; sourceTree = "<group>"; };
+		7ECC7D591AB29E7D00EC25BD /* MatchCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchCommentsViewController.m; sourceTree = "<group>"; };
+		7ECC7D5B1AB29EB800EC25BD /* MiscIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MiscIcon.png; sourceTree = "<group>"; };
 		7ECCF80D1A7F4AF20026D6F2 /* scoutingapp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scoutingapp.png; sourceTree = "<group>"; };
 		7EDF014B1AACF500008D21EF /* Breakpoints_v2.xcbkptlist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Breakpoints_v2.xcbkptlist; sourceTree = "<group>"; };
 		7EDF014D1AACF500008D21EF /* FRC-Scout.xcscheme */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "FRC-Scout.xcscheme"; sourceTree = "<group>"; };
@@ -251,6 +256,7 @@
 				7E24AA591A29A58E00D13837 /* mileymelon.jpg */,
 				7E7201B91AABC6AC00B9D857 /* Arrow.png */,
 				7EC3DC421AABAFA4009FF501 /* TeleopIcon.png */,
+				7ECC7D5B1AB29EB800EC25BD /* MiscIcon.png */,
 				7EC3DC321AABA7E8009FF501 /* MiscIcon.png */,
 				7EC3DC401AABAF86009FF501 /* AutoIcon.png */,
 				7EC3DC441AABAFC9009FF501 /* RobotSpecsIcon.png */,
@@ -439,6 +445,8 @@
 				7EC685BC1A7C569800E44086 /* Level1MatchAutoViewController.m */,
 				7EC6A12B1A9FF5CA001C43B9 /* Level1AnimationMatchScoutViewController.h */,
 				7EC6A12C1A9FF5CA001C43B9 /* Level1AnimationMatchScoutViewController.m */,
+				7ECC7D581AB29E7D00EC25BD /* MatchCommentsViewController.h */,
+				7ECC7D591AB29E7D00EC25BD /* MatchCommentsViewController.m */,
 			);
 			name = MatchViewControllers;
 			sourceTree = "<group>";
@@ -608,6 +616,7 @@
 				7EC3DC431AABAFA4009FF501 /* TeleopIcon.png in Resources */,
 				7ECCF80E1A7F4AF20026D6F2 /* scoutingapp.png in Resources */,
 				7EC6A13B1AA15E86001C43B9 /* Tote_Outline.png in Resources */,
+				7ECC7D5C1AB29EB800EC25BD /* MiscIcon.png in Resources */,
 				7E7201BE1AABC86F00B9D857 /* UncheckedBox.png in Resources */,
 				7E9778CF1A2055CE008B2D3A /* BebasNeue.otf in Resources */,
 				7E7201BA1AABC6AC00B9D857 /* Arrow.png in Resources */,
@@ -683,6 +692,7 @@
 				7EBF71FD1A6CEC5100A38BFE /* BackNextView.m in Sources */,
 				7E94FA9F1A493B7B0010D0FD /* PitScoutView.m in Sources */,
 				7E95BBEE1A4646BF004F3828 /* Level1TeamListTableViewController.m in Sources */,
+				7ECC7D5A1AB29E7D00EC25BD /* MatchCommentsViewController.m in Sources */,
 				7E0E6FF61A267347004969C0 /* Level1MatchScoutViewController.m in Sources */,
 				7EC6A13E1AA16A4B001C43B9 /* ToteStack.m in Sources */,
 				7E0E6FEF1A2672B8004969C0 /* Level1PitScoutViewController.m in Sources */,
@@ -852,6 +862,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -878,6 +889,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

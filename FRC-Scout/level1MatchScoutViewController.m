@@ -53,6 +53,11 @@
 	// Do any additional setup after loading the view.
 }
 
+-(void) viewWillDisappear:(BOOL)animated{
+    
+    
+}
+
 -(void) viewWillAppear:(BOOL)animated {
     [self.navigationController.navigationBar setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:

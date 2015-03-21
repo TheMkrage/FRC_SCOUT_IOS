@@ -32,6 +32,11 @@
             <string>BebasNeue</string>
             <string>BebasNeue</string>
             <string>BebasNeue</string>
+            <string>BebasNeue</string>
+            <string>BebasNeue</string>
+            <string>BebasNeue</string>
+            <string>BebasNeue</string>
+            <string>BebasNeue</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -265,10 +270,6 @@
                                 <rect key="frame" x="0.0" y="62" width="320" height="506"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="p3E-0L-A8P">
-                                        <rect key="frame" x="20" y="20" width="120" height="109"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Hlz-Aw-a6l">
                                         <rect key="frame" x="20" y="230" width="280" height="232"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -378,6 +379,10 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="p3E-0L-A8P">
+                                        <rect key="frame" x="20" y="20" width="120" height="109"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -385,6 +390,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="LE9-JI-gds"/>
                     <connections>
+                        <outlet property="imageView" destination="p3E-0L-A8P" id="Dcz-Il-huo"/>
                         <outlet property="matchScoutTable" destination="Hlz-Aw-a6l" id="s1M-pO-FeN"/>
                         <outlet property="pitScoutView" destination="68T-cy-Q1P" id="SvZ-jI-1x5"/>
                         <outlet property="scrollView" destination="fro-k5-Bc4" id="eUr-F8-4tz"/>
@@ -400,11 +406,11 @@
             <objects>
                 <viewController storyboardIdentifier="Level1PitDisplay" id="c52-Ed-0ik" customClass="Level1PitScoutDisplayViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xvW-Gp-D3N">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="900"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="acv-Qz-o61">
-                                <rect key="frame" x="0.0" y="62" width="320" height="838"/>
+                                <rect key="frame" x="0.0" y="62" width="320" height="1038"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tfg-6b-8rK">
@@ -595,6 +601,10 @@
                                         <color key="textColor" red="0.20784315466880798" green="0.0" blue="0.97254908084869385" alpha="1" colorSpace="deviceRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="zg4-89-W34">
+                                        <rect key="frame" x="8" y="812" width="304" height="218"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -602,7 +612,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Ohm-Pc-gbb"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="900"/>
+                    <size key="freeformSize" width="320" height="1100"/>
                     <connections>
                         <outlet property="CIMLabel" destination="n8Q-gC-Fjr" id="dTt-hr-yUu"/>
                         <outlet property="CanStackHeightLabel" destination="1Ut-KP-qnZ" id="RJZ-1O-y6x"/>
@@ -614,6 +624,7 @@
                         <outlet property="changeOrientationLabel" destination="j7R-g8-cAg" id="kJo-C1-1Fn"/>
                         <outlet property="containerOffGroundLabel" destination="PuB-gE-KjM" id="b73-5e-T0E"/>
                         <outlet property="heightLabel" destination="Tfg-6b-8rK" id="nC2-Vn-1OV"/>
+                        <outlet property="imageView" destination="zg4-89-W34" id="Nnf-tM-M7J"/>
                         <outlet property="intakeLabel" destination="5iR-HA-B5q" id="unY-KN-5Ia"/>
                         <outlet property="invertedLabel" destination="Kuy-8j-YX7" id="gnV-YR-85W"/>
                         <outlet property="maxToteLabel" destination="fNN-Sr-Lvy" id="Xl6-qe-Uqx"/>
@@ -625,7 +636,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bh5-Mq-5Fi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1746" y="768"/>
+            <point key="canvasLocation" x="1746" y="930"/>
         </scene>
         <!--Lead Scout View Controller-->
         <scene sceneID="hNG-gq-3Bv">
@@ -961,6 +972,7 @@
                     <connections>
                         <segue destination="7fk-Ih-Zur" kind="relationship" relationship="viewControllers" id="BTf-P5-2Lk"/>
                         <segue destination="ZW0-5d-mSc" kind="relationship" relationship="viewControllers" id="srh-4y-MA7"/>
+                        <segue destination="kJX-sV-ZJS" kind="relationship" relationship="viewControllers" id="01B-4y-6Nw"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DnJ-tT-rrO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1287,6 +1299,40 @@
             </objects>
             <point key="canvasLocation" x="2852" y="-448"/>
         </scene>
+        <!--Comments-->
+        <scene sceneID="RkT-eb-ASg">
+            <objects>
+                <viewController id="kJX-sV-ZJS" customClass="MatchCommentsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DJx-So-8v6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="AqO-Cy-c3b">
+                                <rect key="frame" x="0.0" y="115" width="320" height="224"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="BebasNeue" family="Bebas Neue" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ptX-fk-S41">
+                                <rect key="frame" x="118" y="86" width="85" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="BebasNeue" family="Bebas Neue" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Comments" image="MiscIcon.png" id="hXv-5l-J6F"/>
+                    <connections>
+                        <outlet property="commentsTextView" destination="AqO-Cy-c3b" id="2Ck-AD-eiK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TRA-l2-8Dh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2091" y="-459"/>
+        </scene>
         <!--Match-->
         <scene sceneID="AqD-JC-uNq">
             <objects>
@@ -1385,7 +1431,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Vfh-wR-vvU">
-                                <rect key="frame" x="266" y="400" width="43" height="30"/>
+                                <rect key="frame" x="261" y="287" width="43" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="BebasNeue" family="Bebas Neue" pointSize="23"/>
                                 <state key="normal" title="DONE">
@@ -1693,6 +1739,39 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="h5A-fY-3Ol">
+                                        <rect key="frame" x="9" y="739" width="84" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BebasNeue" family="Bebas Neue" pointSize="20"/>
+                                        <state key="normal" title="Horizantal">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="horizontalBut:" destination="nSA-J4-GrH" eventType="touchUpInside" id="2f1-NL-E6c"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="o3P-bO-Rnd">
+                                        <rect key="frame" x="266" y="739" width="33" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BebasNeue" family="Bebas Neue" pointSize="20"/>
+                                        <state key="normal" title="Both">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="bothBut:" destination="nSA-J4-GrH" eventType="touchUpInside" id="U7p-Jw-Un1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fJV-ja-Bln">
+                                        <rect key="frame" x="133" y="739" width="81" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BebasNeue" family="Bebas Neue" pointSize="20"/>
+                                        <state key="normal" title="Vertical">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="verticalBut:" destination="nSA-J4-GrH" eventType="touchUpInside" id="OzU-vu-Nh9"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <inset key="scrollIndicatorInsets" minX="320" minY="0.0" maxX="700" maxY="0.0"/>
                             </scrollView>
@@ -1804,6 +1883,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="1700"/>
                     <connections>
+                        <outlet property="bothButto" destination="o3P-bO-Rnd" id="vJh-sm-oPZ"/>
                         <outlet property="canOffGround" destination="T3E-7C-d9f" id="2a7-h3-DjN"/>
                         <outlet property="changeOrientationSwitch" destination="aY3-cx-DXX" id="6re-3Q-s5F"/>
                         <outlet property="cimPicker" destination="RPf-cN-Zww" id="r4T-y3-gPY"/>
@@ -1817,6 +1897,7 @@
                         <outlet property="externalLabel" destination="MLl-Hk-0En" id="RCj-Sz-A9k"/>
                         <outlet property="heightTextField" destination="n0r-h1-bNB" id="8EW-eN-un1"/>
                         <outlet property="highSpeedTextField" destination="FUn-Qq-jCY" id="2gE-r9-RCJ"/>
+                        <outlet property="horizontalButton" destination="h5A-fY-3Ol" id="hua-uH-mge"/>
                         <outlet property="imagePicker" destination="A4n-pn-A1v" id="q9B-Cb-IgG"/>
                         <outlet property="imageTaker" destination="7h9-Sb-RVh" id="KRy-wB-QJK"/>
                         <outlet property="intakePicker" destination="Og9-XK-Ls9" id="bSF-PZ-ug3"/>
@@ -1836,6 +1917,7 @@
                         <outlet property="teamImageView" destination="iJP-t2-4IJ" id="MBa-ml-86y"/>
                         <outlet property="teamTextField" destination="adw-38-xYQ" id="KR7-rr-h7O"/>
                         <outlet property="upsideDownTotesSwitch" destination="vPS-ao-Cde" id="S2J-bq-gGw"/>
+                        <outlet property="verticalButton" destination="fJV-ja-Bln" id="nqi-sw-Cuh"/>
                         <outlet property="weightTextField" destination="Atp-nU-Gno" id="179-9N-0f5"/>
                         <outletCollection property="noYesLabels" destination="iPE-n3-JXf" id="2Ri-o9-8GG"/>
                         <outletCollection property="noYesLabels" destination="S0g-uH-9Pj" id="c2Y-8o-wfs"/>
@@ -2247,6 +2329,7 @@
     <resources>
         <image name="Arrow.png" width="32" height="32"/>
         <image name="AutoIcon.png" width="32" height="32"/>
+        <image name="MiscIcon.png" width="32" height="32"/>
         <image name="Noodle.png" width="100" height="1400"/>
         <image name="RobotSpecsIcon.png" width="32" height="32"/>
         <image name="TeleopIcon.png" width="32" height="32"/>

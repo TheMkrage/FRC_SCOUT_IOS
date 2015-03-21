@@ -22,6 +22,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *DriveLabel;
 @property (strong, nonatomic) IBOutlet UILabel *speedLabel;
 
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
 //LITTS
 @property (strong, nonatomic) IBOutlet UILabel *LiftLabel;
 @property (strong, nonatomic) IBOutlet UILabel *maxToteLabel;
@@ -52,6 +53,13 @@
     [super viewDidLoad];
     
     [self addDataToLabels];
+    
+    Firebase* ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat: @"https://friarscout.firebaseio.com/teams/%@", team]];
+    [ref observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        UIImage* image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:snapshot.value[@"image"]]]];
+        self.imageView.image = image;
+    }];
+
 }
 
 - (void)didReceiveMemoryWarning {

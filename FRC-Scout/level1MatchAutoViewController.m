@@ -141,9 +141,12 @@
     
 }
 -(void) viewWillDisappear:(BOOL)animated {
+    Firebase* ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/matches/%d/%@/assigned",  match, teamID]];
+    [ref setValue:[NSNumber numberWithBool:false]];
+
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-    Firebase* ref = [[Firebase alloc] initWithUrl: [NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/matches/%@/auto", self.teamTextField.text, self.matchNumTextField.text]];
+    ref = [[Firebase alloc] initWithUrl: [NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/matches/%@/auto", self.teamTextField.text, self.matchNumTextField.text]];
     NSLog(@"%@",[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/matches/%@/auto", self.teamTextField.text, self.matchNumTextField.text] );
     //Starting Locations
     if([self.byLandFillCheckBox getStatus]) {

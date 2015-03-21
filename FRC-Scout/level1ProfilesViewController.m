@@ -10,6 +10,7 @@
 #import "Level1PitScoutDisplayViewController.h"
 #import "MatchScoutTableCell.h"
 #import "PitScoutView.h"
+#import <Firebase/Firebase.h>
 @interface Level1ProfilesViewController (){
     
     IBOutlet UITableView *matchScoutTable;
@@ -18,6 +19,7 @@
     NSMutableArray *quals;
     NSNumber* team;
 }
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
 
 @end
 
@@ -38,10 +40,18 @@
     
     self.title = [NSString stringWithFormat:@"%@",team];
     
+   
     quals = [[NSMutableArray alloc]initWithArray:@[@"Q1",@"Q12",@"Q123",@"Q01",@"Q001",@"Q1",@"Q12",@"Q123",@"Q01",@"Q001"]]
     ;
     [matchScoutTable setDataSource:self];
     [matchScoutTable setDelegate:self];
+    
+     Firebase* ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat: @"https://friarscout.firebaseio.com/teams/%@", team]];
+    [ref observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        UIImage* image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:snapshot.value[@"image"]]]];
+        self.imageView.image = image;
+    }];
+    
     
 	// Do any additional setup after loading the view.
 }

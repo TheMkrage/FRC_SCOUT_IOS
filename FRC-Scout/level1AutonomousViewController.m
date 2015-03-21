@@ -155,7 +155,7 @@
     //AUTO GOALS
     ref = [[Firebase alloc] initWithUrl: [NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit/auto",team]];
     
-    [dict setObject:[NSNumber numberWithBool:[self.robotMovedCheckBox getStatus]] forKey:@"robot set"];
+    [dict setObject:[NSNumber numberWithBool:[self.robotMovedCheckBox getStatus]] forKey:@"robot_set"];
     
     if([self.totesMovedCheckBox getStatus]) {
         

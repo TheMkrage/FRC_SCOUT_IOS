@@ -38,7 +38,10 @@
     
     NSMutableData* data;
     NSUInteger byteIndex;
+    IBOutlet UIButton *horizontalButton;
 }
+@property (strong, nonatomic) IBOutlet UIButton *verticalButton;
+@property (strong, nonatomic) IBOutlet UIButton *bothButto;
 
 //ROBOT SPECS
 @property (strong, nonatomic) IBOutlet UILabel *robotSpecsLabel;
@@ -66,6 +69,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *internalLabel;
 @property (strong, nonatomic) IBOutlet UILabel *externalLabel;
 @property (strong, nonatomic) IBOutlet KragerSwitchView *externalInternalSwitch;
+
 
 
 //INTAKE SYSTEM
@@ -192,9 +196,9 @@ static Level1PitScoutViewController* instance;
 -(void) addDataToPickers {
     // Connect data
     [self.drivePicker setData:@[@"Swerve", @"Tank", @"Slide", @"Mecanum", @"Butterfly", @"Octanum", @"Nonum", @"Holonomic", @"Other"] textField: self.driveTextField withController:self withCode:@"drivetrain"];
-    [self.intakePicker setData:@[@"intake", @"Item 2", @"Item 3", @"Item 4", @"Item 5", @"Other"] textField:self.intakeTextField withController:self withCode:@"intake"];
-    [self.liftPicker setData:@[@"lift", @"Item 2", @"Item 3", @"Item 4", @"Item 5", @"Other"] textField:self.liftTextField withController:self withCode:@"lift"];
-    [self.cimPicker setData:@[@"2CIM", @"3CIM", @"4IM"] textField:[self cimTextField] withController:self withCode:@"cim"];
+    [self.intakePicker setData:@[@"Wheels", @"Rollers", @"Actuation", @"Drive Into", @"Other"] textField:self.intakeTextField withController:self withCode:@"intake"];
+    [self.liftPicker setData:@[@"Forklift", @"Arm", @"Internal Tote", @"Passive Hook", @"Other"] textField:self.liftTextField withController:self withCode:@"lift"];
+    [self.cimPicker setData:@[@"2CIM", @"3CIM", @"4CIM", @"+4CIM"] textField:[self cimTextField] withController:self withCode:@"cim"];
     
     
 }
@@ -221,7 +225,7 @@ static Level1PitScoutViewController* instance;
     
     pictureSelected = false;
     
-    [self.externalInternalSwitch setCode:@"lift_ext"];
+    [self.externalInternalSwitch setCode:@"lift_external"];
     [self.externalInternalSwitch addTarget:self action:@selector(changeSwitch:) forControlEvents:UIControlEventValueChanged];
     [self.externalInternalSwitch addTarget:self action:@selector(changeSwitch:) forControlEvents:UIControlEventValueChanged];
     [self.changeOrientationSwitch setCode:@"tote_orientation_change"];
@@ -245,12 +249,12 @@ static Level1PitScoutViewController* instance;
     [(KragerTextField*)self.weightTextField setCode:@"weight"];
     [self highSpeedTextField].placeholder = @"Max Speed";
     [(KragerTextField*) self.highSpeedTextField setCode:@"speed/high"];
-    [self maxCanHeightTextField].placeholder = @"Can Stack Height";
-    [(KragerTextField*) self.maxCanHeightTextField setCode:@"can"];
+    [self maxCanHeightTextField].placeholder = @"RC Stack Height";
+    [(KragerTextField*) self.maxCanHeightTextField setCode:@"max_can_height"];
     [self maxToteHeightTextField].placeholder = @"Tote Stack Height";
     [(KragerTextField*) self.maxToteHeightTextField setCode:@"tote_stack_height"];
     [self maxTotesAtOneTimeTextField].placeholder = @"Max Tote";
-    [(KragerTextField*)self.maxTotesAtOneTimeTextField setCode:@"max_tote"];
+    [(KragerTextField*)self.maxTotesAtOneTimeTextField setCode:@"tote_max_carried"];
     [self.lowSpeedTextField setPlaceholder:@"Low Speed"];
     [(KragerTextField*)self.lowSpeedTextField setCode:@"speed/low"];
     /*[commentsTextView setKeyboardDismissMode:UIScrollViewKeyboardDismissModeInteractive];
@@ -316,6 +320,19 @@ static Level1PitScoutViewController* instance;
     //[scrollView  setCenter:CGPointMake(scrollView.center.x, scrollView.center.y - 62)];
     [self.view layoutSubviews];
     
+}
+- (IBAction)horizontalBut:(id)sender {
+    
+    Firebase *ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit/can_orientation", self.teamTextField.text]];
+    [ref setValue:@"horizontal"];
+}
+- (IBAction)verticalBut:(id)sender {
+    Firebase *ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit/can_orientation", self.teamTextField.text]];
+    [ref setValue:@"vertical"];
+}
+- (IBAction)bothBut:(id)sender {
+    Firebase *ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit/can_orientation", self.teamTextField.text]];
+    [ref setValue:@"both"];
 }
 
 -(void) setFonts {
@@ -385,15 +402,23 @@ static Level1PitScoutViewController* instance;
     [self setTextOfField:self.cimTextField withValue:snapshot.value[@"cim"]];
     [self setTextOfField:self.driveTextField withValue:snapshot.value[@"drivetrain"]];
     [self setTextOfField:self.liftTextField withValue:snapshot.value[@"lift"]];
-    [self setTextOfField:self.maxTotesAtOneTimeTextField withValue:snapshot.value[@"max_tote"]];
+    [self setTextOfField:self.maxTotesAtOneTimeTextField withValue:snapshot.value[@"tote_max_carried"]];
     [self setTextOfField:self.maxToteHeightTextField   withValue:snapshot.value[@"tote_stack_height"]];
-    [self setTextOfField:self.maxCanHeightTextField withValue:snapshot.value[@"can"]];
+    [self setTextOfField:self.maxCanHeightTextField withValue:snapshot.value[@"max_can_height"]];
     [self setTextOfField:self.intakeTextField withValue:snapshot.value[@"intake"]];
+    
         
     Firebase* ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit/speed", self.teamTextField.text]];
     [ref observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        @try {
+            
+       
+        
         [self setTextOfField:self.highSpeedTextField withValue:snapshot.value[@"high"]];
         [self setTextOfField:self.lowSpeedTextField withValue:snapshot.value[@"low"]];
+        } @catch (NSException *exception) {
+            
+        }
     }];
     
     } @catch (NSException* e) {
@@ -506,7 +531,7 @@ static Level1PitScoutViewController* instance;
             NSLog(@"Cancel");
         }];
         
-        [self setBoolOfSwitch: self.externalInternalSwitch withValue:  (BOOL)snap.value[@"lift_ext"]];
+        [self setBoolOfSwitch: self.externalInternalSwitch withValue:  (BOOL)snap.value[@"lift_external"]];
         [self setBoolOfSwitch: self.changeOrientationSwitch withValue:  (BOOL)snap.value[@"tote_orientation_change"]];
         [self setBoolOfSwitch: self.upsideDownTotesSwitch withValue:  (BOOL)snap.value[@"inverted_totes"]];
         [self setBoolOfSwitch: self.canOffGround withValue:  (BOOL)snap.value[@"can_off_ground"]];

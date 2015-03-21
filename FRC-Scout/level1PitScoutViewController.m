@@ -406,7 +406,7 @@ static Level1PitScoutViewController* instance;
     [self setTextOfField:self.maxToteHeightTextField   withValue:snapshot.value[@"tote_stack_height"]];
     [self setTextOfField:self.maxCanHeightTextField withValue:snapshot.value[@"max_can_height"]];
     [self setTextOfField:self.intakeTextField withValue:snapshot.value[@"intake"]];
-    
+        commentsTextView.text = snapshot.value[@"notes"];
         
     Firebase* ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit/speed", self.teamTextField.text]];
     [ref observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {

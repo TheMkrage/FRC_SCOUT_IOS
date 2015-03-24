@@ -393,8 +393,8 @@
         [dict setObject:[NSNumber numberWithBool:[stack getNoodle]] forKey:@"noodle"];
         [ref updateChildValues:dict];
         
-        ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/matches/%@/%@/assigned",  match, matchID]];
-        [ref setValue:[NSNumber numberWithBool:false]];
+       /* ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/matches/%@/%@/assigned",  match, matchID]];
+        [ref setValue:[NSNumber numberWithBool:false]];*/
         
         [self.navigationController popViewControllerAnimated:YES];
         NSLog(@"BACK");

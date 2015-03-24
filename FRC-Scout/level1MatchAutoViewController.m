@@ -66,14 +66,15 @@
 
 -(void) viewDidLoad {
     [super viewDidLoad];
-    
+    self.teamTextField.keyboardType = UIKeyboardTypeNumberPad;
+    self.matchNumTextField.keyboardType = UIKeyboardTypeNumberPad;
     [[self autoPicker] setHidden:YES];
     [[self autoPicker] setCenter:CGPointMake(self.autoPicker.frame.origin.x + self.autoPicker.frame.size.width/2, self.view.frame.size.height - 150)];
     UITapGestureRecognizer *singleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
     singleTapGestureRecognizer.numberOfTapsRequired = 1;
     singleTapGestureRecognizer.enabled = YES;
     singleTapGestureRecognizer.cancelsTouchesInView = NO;
-    [scrollView addGestureRecognizer:singleTapGestureRecognizer];
+    [self.view addGestureRecognizer:singleTapGestureRecognizer];
     
     scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
     
@@ -87,7 +88,7 @@
 -(void) fetchTeamAndMatch {
     
     
-    
+    /*
     //while(!foundFirstUnplayedMatch) {
     Firebase *ref = [[Firebase alloc]initWithUrl:
                      [NSString stringWithFormat:@"https://friarscout.firebaseio.com/matches" ]];
@@ -138,7 +139,7 @@
             }
         }
     }];
-    
+    */
 }
 -(void) viewWillDisappear:(BOOL)animated {
     Firebase* ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"https://friarscout.firebaseio.com/matches/%d/%@/assigned",  match, teamID]];
@@ -233,6 +234,8 @@
 -(void) setDelegates {
     [self otherPosTextField].delegate = self;
     [self otherGoalsTextField].delegate = self;
+    self.teamTextField.delegate = self;
+    self.matchNumTextField.delegate = self;
 }
 - (IBAction)accomplishSwitch:(KragerSwitchView *)sender {
     
@@ -300,7 +303,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     NSLog(@"fds");
-    [textField resignFirstResponder];
+    //[textField resignFirstResponder];
     return NO;
 }
 

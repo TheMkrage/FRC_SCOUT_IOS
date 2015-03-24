@@ -57,6 +57,42 @@
     self.tabBarController.title = @"Autonomous";
     [self setFonts];
     [self setDelegates];
+    NSString* team = [[self.tabBarController.viewControllers objectAtIndex:0] getTeam];
+   
+    Firebase* ref = [[Firebase alloc] initWithUrl: [NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit/auto/starting_locations",team]];
+    [ref observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        if(snapshot.value[@"by_landfill"] == [NSNull null] || snapshot.value[@"by_landfill"] == false) {
+            [self.byLandFillCheckBox setUnticked];
+        }else {
+            [self.byLandFillCheckBox setTicked];
+        }
+        
+    if(snapshot.value[@"by_yellow_tote"] == [NSNull null] || snapshot.value[@"by_yellow_tote"] == false) {
+            [self.byYellowToteCheckBox setUnticked];
+        }else {
+            [self.byYellowToteCheckBox setTicked];
+        }
+        
+    if(snapshot.value[@"by_landfill"] == [NSNull null] || snapshot.value[@"by_landfill"] == false) {
+            [self.byLandFillCheckBox setUnticked];
+        }else {
+            [self.byLandFillCheckBox setTicked];
+        }
+        
+    if(snapshot.value[@"immobile"] == [NSNull null] || snapshot.value[@"immobile"] == false) {
+            [self.immobileCheckBox setUnticked];
+        }else {
+            [self.immobileCheckBox setTicked];
+        }
+    }];
+    
+    
+    
+    Firebase* ref2 = [[Firebase alloc] initWithUrl: [NSString stringWithFormat:@"https://friarscout.firebaseio.com/teams/%@/pit/auto/",team]];
+    [ref2 observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot){
+        
+    }];
+     
     
 }
 

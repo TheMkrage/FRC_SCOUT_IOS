@@ -195,7 +195,7 @@ static Level1PitScoutViewController* instance;
 }
 -(void) addDataToPickers {
     // Connect data
-    [self.drivePicker setData:@[@"Swerve", @"Tank", @"Slide", @"Mecanum", @"Butterfly", @"Octanum", @"Nonum", @"Holonomic", @"Other"] textField: self.driveTextField withController:self withCode:@"drivetrain"];
+    [self.drivePicker setData:@[@"Swerve", @"Tank", @"Slide", @"Mecanum", @"Butterfly", @"Octanum", @"Nonum", @"Holonomic", @"Westcoast" ,@"Other"] textField: self.driveTextField withController:self withCode:@"drivetrain"];
     [self.intakePicker setData:@[@"Wheels", @"Rollers", @"Actuation", @"Drive Into", @"Other"] textField:self.intakeTextField withController:self withCode:@"intake"];
     [self.liftPicker setData:@[@"Forklift", @"Arm", @"Internal Tote", @"Passive Hook", @"Other"] textField:self.liftTextField withController:self withCode:@"lift"];
     [self.cimPicker setData:@[@"2CIM", @"3CIM", @"4CIM", @"+4CIM"] textField:[self cimTextField] withController:self withCode:@"cim"];
